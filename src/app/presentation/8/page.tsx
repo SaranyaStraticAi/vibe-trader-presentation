@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Rocket, Users, TrendingUp, Target } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 export default function Slide8() {
   const { nextSlide, prevSlide } = useSlideNavigation();
@@ -35,9 +36,7 @@ export default function Slide8() {
         }}
       />
 
-      {/* Geometric accent shapes */}
-      <div className="absolute top-20 right-20 w-32 h-32 border-4 border-gray-300 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 left-20 w-40 h-40 border-4 border-gray-300 rotate-45 opacity-10"></div>
+      <GlobeWatermark />
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <motion.div
