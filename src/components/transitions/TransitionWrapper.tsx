@@ -122,7 +122,7 @@ export function TransitionWrapper({ children, transition }: TransitionWrapperPro
   const variants = getTransitionVariants(transition);
   
   // Parse easing function
-  const getEase = (ease: string | number[] | [number, number, number, number]) => {
+  const getEase = (ease: string | number[] | [number, number, number, number]): any => {
     if (typeof ease === 'string') {
       return ease;
     }
