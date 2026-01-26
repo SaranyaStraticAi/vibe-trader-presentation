@@ -62,7 +62,7 @@ export default function Slide1() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          Modernizing Forex Trading with<br />AI-Powered Social Intelligence
+          Modernizing Global<br />FOREX Trading
         </motion.p>
 
         {/* CTA Button */}
@@ -89,16 +89,16 @@ export default function Slide1() {
           transition={{ delay: 0.7, duration: 0.8 }}
         >
           <div>
-            <p className="text-3xl font-bold text-black">24/7</p>
-            <p className="text-sm text-gray-500">Global Markets</p>
+            <p className="text-3xl font-bold text-black">$9.6T</p>
+            <p className="text-sm text-gray-500">Daily Volume</p>
           </div>
           <div>
             <p className="text-3xl font-bold text-black">AI</p>
-            <p className="text-sm text-gray-500">Powered Analysis</p>
+            <p className="text-sm text-gray-500">Native OS</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-black">Social</p>
-            <p className="text-sm text-gray-500">Trading Network</p>
+            <p className="text-3xl font-bold text-black">B2B2C</p>
+            <p className="text-sm text-gray-500">Distribution</p>
           </div>
         </motion.div>
       </motion.div>
@@ -115,17 +115,17 @@ export default function Slide1() {
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[1, 2, 3].map((i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
-            key={i}
+            key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 1
+              i === 0
                 ? 'w-8 bg-black'
                 : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.1 }}
+            transition={{ delay: 0.8 + i * 0.05 }}
           />
         ))}
       </div>
