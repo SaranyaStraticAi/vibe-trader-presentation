@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Globe, Bitcoin, TrendingUp, Shield } from 'lucide-react';
+import { Globe, Bitcoin, TrendingUp, Shield, AlertTriangle, DollarSign, Languages, Users } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Footnote, SuperScript } from '@/components/Footnote';
@@ -17,12 +17,6 @@ export default function Slide6() {
     { market: 'Options', value: 500, color: '#f59e0b' },
   ];
 
-  const expansionRoadmap = [
-    { phase: 'Phase 1', market: 'FOREX', status: 'active' },
-    { phase: 'Phase 2', market: 'Bitcoin', status: 'planned' },
-    { phase: 'Phase 3', market: 'Options/Futures', status: 'future' },
-    { phase: 'Phase 4', market: 'Global Expansion', status: 'future' },
-  ];
 
   return (
     <div className="relative flex h-screen w-screen items-center overflow-hidden bg-white">
@@ -57,7 +51,7 @@ export default function Slide6() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Scale: FOREX as<br />a Starting Point
+            Why FOREX First?
           </motion.h1>
 
           <motion.p
@@ -66,7 +60,7 @@ export default function Slide6() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Massive market with minimal regulation and infinite expansion potential
+            $7.5T daily volume trapped in 20-year-old tools with 70-80% trader churn
           </motion.p>
 
           <div className="grid grid-cols-2 gap-12">
@@ -109,67 +103,94 @@ export default function Slide6() {
               </motion.div>
             </motion.div>
 
-            {/* Expansion Roadmap */}
+            {/* Market Problems */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              <h3 className="text-lg font-bold text-black mb-6">Expansion Roadmap</h3>
-              <div className="space-y-4">
-                {expansionRoadmap.map((phase, index) => (
-                  <motion.div
-                    key={index}
-                    className={`flex items-center gap-4 p-4 border-2 ${
-                      phase.status === 'active' 
-                        ? 'border-black bg-gray-50' 
-                        : phase.status === 'planned'
-                        ? 'border-gray-400 bg-gray-50'
-                        : 'border-gray-300 bg-gray-50'
-                    }`}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
-                  >
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      phase.status === 'active' 
-                        ? 'bg-black text-white' 
-                        : phase.status === 'planned'
-                        ? 'bg-gray-600 text-white'
-                        : 'bg-gray-300 text-gray-600'
-                    }`}>
-                      {phase.phase === 'Phase 1' && <Globe className="w-6 h-6" />}
-                      {phase.phase === 'Phase 2' && <Bitcoin className="w-6 h-6" />}
-                      {phase.phase === 'Phase 3' && <TrendingUp className="w-6 h-6" />}
-                      {phase.phase === 'Phase 4' && <Shield className="w-6 h-6" />}
-                    </div>
-                    <div>
-                      <p className="font-bold text-black">{phase.phase}</p>
-                      <p className="text-gray-600">{phase.market}</p>
-                    </div>
-                    {phase.status === 'active' && (
-                      <span className="ml-auto px-3 py-1 bg-black text-white text-sm font-bold">
-                        LIVE
-                      </span>
-                    )}
-                  </motion.div>
-                ))}
+              <h3 className="text-lg font-bold text-black mb-6">Why FOREX is Perfect Entry</h3>
+              
+              <div className="space-y-3">
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-red-200 bg-red-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.9, duration: 0.5 }}
+                >
+                  <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">70-80% Trader Churn</p>
+                    <p className="text-sm text-gray-600">Brokers lose most traders in first 90 days</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-orange-200 bg-orange-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.0, duration: 0.5 }}
+                >
+                  <DollarSign className="w-5 h-5 text-orange-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">$2,000-4,000 CAC</p>
+                    <p className="text-sm text-gray-600">Brokers spend massively to acquire traders</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-gray-300 bg-gray-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.1, duration: 0.5 }}
+                >
+                  <Globe className="w-5 h-5 text-gray-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">20-Year-Old Tools</p>
+                    <p className="text-sm text-gray-600">MT4 (2005), MT5 (2010) - no innovation</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-purple-200 bg-purple-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                >
+                  <Languages className="w-5 h-5 text-purple-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">English-Only Platforms</p>
+                    <p className="text-sm text-gray-600">Global traders forced to use English tools</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-blue-200 bg-blue-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.3, duration: 0.5 }}
+                >
+                  <Users className="w-5 h-5 text-blue-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">No Behavioral Analytics</p>
+                    <p className="text-sm text-gray-600">Brokers blind to why traders fail</p>
+                  </div>
+                </motion.div>
               </div>
 
-              {/* Key advantages */}
+              {/* Our Solution */}
               <motion.div
-                className="mt-6 grid grid-cols-2 gap-4"
+                className="mt-6 bg-black text-white p-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.3, duration: 0.5 }}
+                transition={{ delay: 1.4, duration: 0.5 }}
               >
-                <div className="text-center">
-                  <p className="text-2xl font-black text-black">Low</p>
-                  <p className="text-sm text-gray-600">Regulation</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-2xl font-black text-black">High</p>
-                  <p className="text-sm text-gray-600">Scalability</p>
+                <p className="font-bold mb-2">Vibe Trader Solves All This</p>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div>✓ Multilingual AI</div>
+                  <div>✓ Behavioral insights</div>
+                  <div>✓ Modern tools</div>
+                  <div>✓ Reduce churn to &lt;20%</div>
                 </div>
               </motion.div>
             </motion.div>
@@ -179,7 +200,7 @@ export default function Slide6() {
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(10)].map((_, i) => (
+        {[...Array(14)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${

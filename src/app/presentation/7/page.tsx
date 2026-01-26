@@ -1,47 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Award, DollarSign, Target, Shield, Zap } from 'lucide-react';
+import { Users, Award, DollarSign, Shield } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 export default function Slide7() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const riskFactors = [
-    { factor: 'Team', score: 95, fullMark: 100 },
-    { factor: 'Market', score: 90, fullMark: 100 },
-    { factor: 'Product', score: 85, fullMark: 100 },
-    { factor: 'Distribution', score: 92, fullMark: 100 },
-    { factor: 'Unit Economics', score: 88, fullMark: 100 },
-    { factor: 'Scalability', score: 94, fullMark: 100 },
-  ];
-
   const deRiskingFactors = [
     {
       icon: Users,
-      title: 'High-Pedigree Team',
-      desc: 'Ex-Amazon, Fortune 500 consulting, SaaS leaders',
-      highlight: 'Proven execution'
+      title: '8 Brokers in Pipeline',
+      desc: '5.25M+ trader reach, demos complete',
+      highlight: 'B2B2C validated'
+    },
+    {
+      icon: Award,
+      title: '312 Beta Users',
+      desc: '96% retention, 94% would recommend',
+      highlight: 'Product-market fit'
     },
     {
       icon: DollarSign,
-      title: '$250/mo ARPU',
-      desc: 'Triples standard SaaS unit economics',
-      highlight: '3x industry standard'
-    },
-    {
-      icon: Target,
-      title: 'B2B2C Strategy',
-      desc: 'Broker partnerships reduce CAC',
-      highlight: 'Low acquisition cost'
+      title: '$15K/mo Burn Rate',
+      desc: '21 team members = $0.71/day per person',
+      highlight: 'Ultra-efficient'
     },
     {
       icon: Shield,
-      title: 'Pilot Program',
-      desc: '2,500 users → $7.5M ARR',
-      highlight: 'Clear path to revenue'
+      title: 'Multilingual + AI',
+      desc: 'Only platform with GPT-4, Claude, Gemini',
+      highlight: 'Unique moat'
     },
   ];
 
@@ -118,38 +108,56 @@ export default function Slide7() {
               })}
             </div>
 
-            {/* Risk Score Radar Chart */}
+            {/* Concrete Validation */}
             <motion.div
-              className="flex flex-col items-center"
+              className="space-y-4"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7, duration: 0.6 }}
             >
-              <h3 className="text-lg font-bold text-black mb-4">Risk Mitigation Score</h3>
-              <ResponsiveContainer width={400} height={350}>
-                <RadarChart data={riskFactors}>
-                  <PolarGrid stroke="#e5e7eb" />
-                  <PolarAngleAxis dataKey="factor" tick={{ fontSize: 12 }} />
-                  <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fontSize: 10 }} />
-                  <Radar 
-                    name="Score" 
-                    dataKey="score" 
-                    stroke="#6366f1" 
-                    fill="#6366f1" 
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-              </ResponsiveContainer>
+              <h3 className="text-lg font-bold text-black mb-4">Market Validation</h3>
               
-              <motion.div
-                className="text-center mt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.5 }}
-              >
-                <p className="text-5xl font-black text-black">91%</p>
-                <p className="text-sm text-gray-600">Overall De-Risk Score</p>
-              </motion.div>
+              <div className="bg-gray-50 border-2 border-black p-4">
+                <p className="font-bold text-black mb-2">Broker Interest Confirmed</p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Blueberry Markets</span>
+                    <span className="font-bold">Pilot Ready</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">LIRUNEX</span>
+                    <span className="font-bold">Demo Complete</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Libertex</span>
+                    <span className="font-bold">In Discussion</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">EC Markets</span>
+                    <span className="font-bold">Demo Complete</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-green-50 border-2 border-green-200 p-4">
+                <p className="font-bold text-black mb-2">Traction Metrics</p>
+                <div className="space-y-1 text-sm">
+                  <p className="text-gray-700">• 312 active beta users</p>
+                  <p className="text-gray-700">• 8 brokers in pipeline</p>
+                  <p className="text-gray-700">• 5.25M+ trader reach</p>
+                  <p className="text-gray-700">• 5 demos completed</p>
+                </div>
+              </div>
+              
+              <div className="bg-blue-50 border-2 border-blue-200 p-4">
+                <p className="font-bold text-black mb-2">Efficiency Metrics</p>
+                <div className="space-y-1 text-sm">
+                  <p className="text-gray-700">• $15K/month burn rate</p>
+                  <p className="text-gray-700">• 21 team members globally</p>
+                  <p className="text-gray-700">• 67 months runway with $1M</p>
+                  <p className="text-gray-700">• $0.71/day per team member</p>
+                </div>
+              </div>
             </motion.div>
           </div>
 
@@ -163,15 +171,15 @@ export default function Slide7() {
             <div className="grid grid-cols-3 gap-6">
               <div>
                 <p className="text-3xl font-black text-black">$10M</p>
-                <p className="text-sm text-gray-600">Internal Valuation</p>
+                <p className="text-sm text-gray-600">Pre-money Valuation</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-black">12mo</p>
+                <p className="text-3xl font-black text-black">67mo</p>
                 <p className="text-sm text-gray-600">Runway with $1M</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-black">M&A</p>
-                <p className="text-sm text-gray-600">Clear Exit Strategy</p>
+                <p className="text-3xl font-black text-black">2026</p>
+                <p className="text-sm text-gray-600">Target Exit/Series A</p>
               </div>
             </div>
           </motion.div>
@@ -180,7 +188,7 @@ export default function Slide7() {
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(10)].map((_, i) => (
+        {[...Array(14)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${

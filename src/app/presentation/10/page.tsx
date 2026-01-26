@@ -1,26 +1,62 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { DollarSign, Rocket, Trophy, Clock } from 'lucide-react';
+import { Calendar, Target, Rocket, CheckCircle } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 export default function Slide10() {
-  const { prevSlide, goToFirst } = useSlideNavigation();
+  const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const useOfFunds = [
-    { name: 'Engineering & Product', value: 40, color: '#10b981' },
-    { name: 'Sales & Marketing', value: 30, color: '#3b82f6' },
-    { name: 'Operations', value: 20, color: '#f59e0b' },
-    { name: 'Legal & Compliance', value: 10, color: '#8b5cf6' },
+  const timeline = [
+    {
+      quarter: 'Q1 2025',
+      title: 'Foundation',
+      tasks: [
+        'Complete core platform',
+        'Onboard first broker partner',
+        '500 active users'
+      ],
+      kpis: { users: 500, brokers: 1, arr: '$1.5M' }
+    },
+    {
+      quarter: 'Q2 2025',
+      title: 'Scale',
+      tasks: [
+        'Launch AI trading assistant',
+        '2 additional broker partners',
+        'Mobile app beta'
+      ],
+      kpis: { users: 1000, brokers: 3, arr: '$3M' }
+    },
+    {
+      quarter: 'Q3 2025',
+      title: 'Expand',
+      tasks: [
+        'Data monetization pilot',
+        'International expansion',
+        'Advanced analytics suite'
+      ],
+      kpis: { users: 1800, brokers: 5, arr: '$5.4M' }
+    },
+    {
+      quarter: 'Q4 2025',
+      title: 'Dominate',
+      tasks: [
+        'D2C channel launch',
+        'Bitcoin trading integration',
+        'Series A preparation'
+      ],
+      kpis: { users: 2500, brokers: 8, arr: '$7.5M' }
+    }
   ];
 
-  const investmentTerms = [
-    { label: 'Raise Amount', value: '$1M' },
-    { label: 'Valuation', value: '$10M' },
-    { label: 'Equity', value: '10%' },
-    { label: 'Type', value: 'SAFE' },
+  const monthlyBurn = [
+    { category: 'Engineering', amount: 40 },
+    { category: 'Sales & Marketing', amount: 25 },
+    { category: 'Operations', amount: 15 },
+    { category: 'Infrastructure', amount: 10 },
+    { category: 'Other', amount: 10 },
   ];
 
   return (
@@ -51,12 +87,12 @@ export default function Slide10() {
           />
 
           <motion.h1
-            className="text-7xl md:text-8xl font-black text-black mb-4 tracking-tighter"
+            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Our Ask
+            Our Timeline
           </motion.h1>
 
           <motion.p
@@ -65,154 +101,111 @@ export default function Slide10() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Join us at the ground floor of a revolutionary opportunity
+            Clear path to market dominance in 12 months
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-12">
-            {/* Investment Terms */}
-            <div>
+          {/* Timeline */}
+          <div className="grid grid-cols-4 gap-6 mb-12">
+            {timeline.map((quarter, index) => (
               <motion.div
-                className="grid grid-cols-2 gap-4 mb-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, staggerChildren: 0.1 }}
-              >
-                {investmentTerms.map((term, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-black text-white p-6 text-center"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1 }}
-                  >
-                    <p className="text-3xl font-black mb-2">{term.value}</p>
-                    <p className="text-sm opacity-80">{term.label}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Special callout */}
-              <motion.div
-                className="bg-gray-50 border-2 border-black text-black p-6"
-                initial={{ opacity: 0, y: 20 }}
+                key={index}
+                className="relative"
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.6 }}
+                transition={{ delay: 0.5 + index * 0.15, duration: 0.5 }}
               >
-                <Trophy className="w-8 h-8 mb-3 text-black" />
-                <p className="text-2xl font-black mb-2">
-                  Early Stage Opportunity
-                </p>
-                <p className="text-sm">
-                  200 validated beta users with strong engagement.
-                  Pre-revenue valuation based on market opportunity.
-                </p>
-              </motion.div>
-            </div>
+                {/* Connection line */}
+                {index < timeline.length - 1 && (
+                  <div className="absolute top-6 left-full w-full h-0.5 bg-gray-300 z-0" />
+                )}
+                
+                <div className="relative z-10">
+                  {/* Quarter header */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center">
+                      <Calendar className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-black">{quarter.quarter}</p>
+                      <p className="text-sm text-gray-600">{quarter.title}</p>
+                    </div>
+                  </div>
 
-            {/* Use of Funds Chart */}
-            <div>
-              <motion.h3
-                className="text-lg font-bold text-black mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                Use of Funds
-              </motion.h3>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-              >
-                <ResponsiveContainer width="100%" height={300}>
-                  <PieChart>
-                    <Pie
-                      data={useOfFunds}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={60}
-                      outerRadius={120}
-                      paddingAngle={2}
-                      dataKey="value"
-                      label={({name, value}) => `${value}%`}
-                      labelLine={true}
-                    >
-                      {useOfFunds.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
+                  {/* Tasks */}
+                  <div className="bg-gray-50 p-4 border-2 border-gray-200 mb-4">
+                    <ul className="space-y-2">
+                      {quarter.tasks.map((task, taskIndex) => (
+                        <li key={taskIndex} className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-gray-700">{task}</span>
+                        </li>
                       ))}
-                    </Pie>
-                    <Tooltip 
-                      formatter={(value) => `${value}%`}
-                      contentStyle={{ 
-                        backgroundColor: 'white', 
-                        border: '2px solid black',
-                        borderRadius: 0 
-                      }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-              </motion.div>
+                    </ul>
+                  </div>
 
-              {/* Timeline */}
-              <motion.div
-                className="mt-6 bg-gray-50 p-4 border-2 border-gray-300"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <Clock className="w-5 h-5 text-gray-600" />
-                  <p className="font-bold text-black">12-Month Runway</p>
+                  {/* KPIs */}
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">Users:</span>
+                      <span className="font-bold">{quarter.kpis.users}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">Brokers:</span>
+                      <span className="font-bold">{quarter.kpis.brokers}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">ARR:</span>
+                      <span className="font-bold text-black">{quarter.kpis.arr}</span>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-600">
-                  Enough time to reach profitability or Series A metrics
-                </p>
               </motion.div>
-            </div>
+            ))}
           </div>
 
-          {/* Bottom CTA */}
+          {/* Monthly burn breakdown */}
           <motion.div
-            className="mt-12 bg-black text-white p-8"
-            initial={{ opacity: 0, y: 30 }}
+            className="grid grid-cols-2 gap-8"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.6 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <div className="grid grid-cols-3 gap-8 text-center">
-              <div>
-                <Rocket className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-3xl font-black mb-1">10x</p>
-                <p className="text-sm opacity-80">Return Potential</p>
-              </div>
-              <div>
-                <DollarSign className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-3xl font-black mb-1">$100B</p>
-                <p className="text-sm opacity-80">Market Opportunity</p>
-              </div>
-              <div>
-                <Trophy className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-3xl font-black mb-1">2026</p>
-                <p className="text-sm opacity-80">Exit Timeline</p>
+            <div className="bg-gray-50 p-6 border-2 border-black">
+              <h3 className="text-lg font-bold text-black mb-4">Monthly Burn Rate: $83K</h3>
+              <div className="space-y-2">
+                {monthlyBurn.map((item, index) => (
+                  <div key={index} className="flex justify-between">
+                    <span className="text-gray-600">{item.category}</span>
+                    <span className="font-bold">${item.amount}K ({Math.round(item.amount * 100 / 83)}%)</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </motion.div>
 
-          {/* Contact info */}
-          <motion.div
-            className="mt-6 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.6, duration: 0.6 }}
-          >
-            <p className="text-lg font-bold text-black">Let's Build the Future Together</p>
-            <p className="text-gray-600">invest@vibetrader.com</p>
+            <div className="bg-gray-50 p-6 border-2 border-gray-300">
+              <h3 className="text-lg font-bold text-black mb-4">Key Transitions</h3>
+              <div className="space-y-3">
+                <div>
+                  <p className="font-bold text-black">B2B2C → D2C</p>
+                  <p className="text-sm text-gray-600">Q4: Launch direct consumer channel</p>
+                </div>
+                <div>
+                  <p className="font-bold text-black">Data Monetization</p>
+                  <p className="text-sm text-gray-600">Q3: Begin selling market insights</p>
+                </div>
+                <div>
+                  <p className="font-bold text-black">Geographic Expansion</p>
+                  <p className="text-sm text-gray-600">Q3: Enter Asian markets</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(10)].map((_, i) => (
+        {[...Array(14)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
@@ -236,11 +229,11 @@ export default function Slide10() {
         ←
       </button>
       <button
-        onClick={goToFirst}
+        onClick={nextSlide}
         className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
-        aria-label="Back to start"
+        aria-label="Next slide"
       >
-        ↺
+        →
       </button>
     </div>
   );
