@@ -1,35 +1,54 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { DollarSign, TrendingUp, Users, BarChart3, Target, Shield } from 'lucide-react';
+import { DollarSign, TrendingUp, Users, BarChart3, AlertTriangle, Languages, Brain, Zap } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 export default function Slide4() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const revenueGrowth = [
-    { month: 'Jan', revenue: 100, volume: 50 },
-    { month: 'Feb', revenue: 120, volume: 65 },
-    { month: 'Mar', revenue: 145, volume: 80 },
-    { month: 'Apr', revenue: 180, volume: 95 },
-    { month: 'May', revenue: 220, volume: 120 },
-    { month: 'Jun', revenue: 280, volume: 150 },
+  const retentionComparison = [
+    { month: 'Month 1', current: 100, target: 100, potential: 100 },
+    { month: 'Month 2', current: 70, target: 85, potential: 90 },
+    { month: 'Month 3', current: 50, target: 70, potential: 80 },
+    { month: 'Month 6', current: 30, target: 55, potential: 70 },
+    { month: 'Month 9', current: 25, target: 50, potential: 65 },
+    { month: 'Month 12', current: 20, target: 50, potential: 60 },
   ];
 
-  const customerInsights = [
-    { name: 'Winners', value: 30, color: '#10b981' },
-    { name: 'Losers', value: 20, color: '#ef4444' },
-    { name: 'Active', value: 35, color: '#3b82f6' },
-    { name: 'Dormant', value: 15, color: '#9ca3af' },
+  const valueProps = [
+    { name: 'Volume Increase', value: 45, color: '#10b981' },
+    { name: 'Retention Lift', value: 35, color: '#3b82f6' },
+    { name: 'CAC Reduction', value: 20, color: '#f59e0b' },
   ];
 
-  const benefits = [
-    { icon: DollarSign, title: 'Increase Revenue', desc: '3x trading volume' },
-    { icon: TrendingUp, title: 'Cut Costs', desc: '50% operational savings' },
-    { icon: Users, title: 'Higher Retention', desc: '80% user retention' },
-    { icon: BarChart3, title: 'Customer Analytics', desc: 'Real-time insights' },
+  const brokerPains = [
+    { 
+      icon: AlertTriangle, 
+      title: '70-80% Churn Rate', 
+      desc: 'Most traders quit in 90 days',
+      solution: '→ Target: 50%+ retention'
+    },
+    { 
+      icon: TrendingUp, 
+      title: 'Low Trading Volume', 
+      desc: 'Slow analysis = fewer trades',
+      solution: '→ 1.5-2x volume (seen 10-15x)'
+    },
+    { 
+      icon: DollarSign, 
+      title: '$2,000-4,000 CAC', 
+      desc: 'Massive acquisition costs',
+      solution: '→ Better LTV/CAC ratio'
+    },
+    { 
+      icon: Languages, 
+      title: 'English-Only Tools', 
+      desc: 'Losing global traders',
+      solution: '→ Multilingual AI platform'
+    },
   ];
 
   return (
@@ -74,106 +93,141 @@ export default function Slide4() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Drive revenue, cut costs, and finally understand your customers
+            AI speeds up analysis → More trades → Better retention → Higher revenue
           </motion.p>
 
           {/* Main content grid */}
           <div className="grid grid-cols-3 gap-8">
-            {/* Benefits list */}
-            <div className="space-y-4">
-              {benefits.map((benefit, index) => {
-                const Icon = benefit.icon;
+            {/* Broker Pain Points */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold text-black mb-3">Broker Pain Points</h3>
+              {brokerPains.map((pain, index) => {
+                const Icon = pain.icon;
                 return (
                   <motion.div
                     key={index}
-                    className="flex items-start gap-3 group"
+                    className="border border-gray-200 p-3 hover:border-black transition-all"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
                   >
-                    <div className="w-10 h-10 bg-black text-white flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-black">{benefit.title}</p>
-                      <p className="text-sm text-gray-600">{benefit.desc}</p>
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="font-bold text-black text-sm">{pain.title}</p>
+                        <p className="text-xs text-gray-600">{pain.desc}</p>
+                        <p className="text-xs text-green-600 font-bold mt-1">{pain.solution}</p>
+                      </div>
                     </div>
                   </motion.div>
                 );
               })}
             </div>
 
-            {/* Revenue & Volume Chart */}
+            {/* Retention Comparison Chart */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
             >
-              <h3 className="text-sm font-bold text-black mb-3">Revenue & Volume Growth</h3>
+              <h3 className="text-sm font-bold text-black mb-3">Retention Improvement Opportunity</h3>
               <ResponsiveContainer width="100%" height={250}>
-                <AreaChart data={revenueGrowth}>
+                <LineChart data={retentionComparison}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis dataKey="month" tick={{ fontSize: 11 }} />
                   <YAxis tick={{ fontSize: 11 }} />
                   <Tooltip 
+                    formatter={(value) => `${value}%`}
                     contentStyle={{ 
                       backgroundColor: 'white', 
                       border: '2px solid black',
                       borderRadius: 0 
                     }}
                   />
-                  <Area type="monotone" dataKey="revenue" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.6} name="Revenue" />
-                  <Area type="monotone" dataKey="volume" stroke="#10b981" fill="#10b981" fillOpacity={0.6} name="Volume" />
-                </AreaChart>
+                  <Line type="monotone" dataKey="current" stroke="#ef4444" strokeWidth={2} name="Current State" />
+                  <Line type="monotone" dataKey="target" stroke="#f59e0b" strokeWidth={2} strokeDasharray="5 5" name="Pilot Target" />
+                  <Line type="monotone" dataKey="potential" stroke="#10b981" strokeWidth={2} strokeDasharray="3 3" name="Future Potential" />
+                </LineChart>
               </ResponsiveContainer>
+              <div className="mt-2 text-xs text-center text-gray-600">
+                <span className="text-red-500">● Current: 20%</span>
+                <span className="mx-2">→</span>
+                <span className="text-orange-500">● Target: 50%</span>
+                <span className="mx-2">→</span>
+                <span className="text-green-600">● Potential: 60%+</span>
+              </div>
             </motion.div>
 
-            {/* Customer Insights */}
+            {/* Value Creation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              <h3 className="text-sm font-bold text-black mb-3">Customer Segmentation</h3>
-              <ResponsiveContainer width="100%" height={250}>
+              <h3 className="text-sm font-bold text-black mb-3">Expected Pilot Outcomes</h3>
+              <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
                   <Pie
-                    data={customerInsights}
+                    data={valueProps}
                     cx="50%"
                     cy="50%"
-                    outerRadius={80}
+                    outerRadius={70}
                     dataKey="value"
-                    label={({name, value}) => `${name}: ${value}%`}
+                    label={({name, value}) => `${value}%`}
                     labelLine={false}
                   >
-                    {customerInsights.map((entry, index) => (
+                    {valueProps.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
                   <Tooltip />
                 </PieChart>
               </ResponsiveContainer>
+              <div className="space-y-2 mt-3">
+                {valueProps.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3" style={{ backgroundColor: item.color }}></div>
+                      <span>{item.name}</span>
+                    </div>
+                    <span className="font-bold">{item.value}%</span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
 
-          {/* Bottom highlight */}
+          {/* Bottom ROI Calculation */}
           <motion.div
-            className="mt-12 grid grid-cols-3 gap-6 bg-gray-50 p-6 border-2 border-black"
+            className="mt-12 bg-black text-white p-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
           >
-            <div>
-              <p className="text-3xl font-black text-black">3x</p>
-              <p className="text-sm text-gray-600">Trading Volume</p>
-            </div>
-            <div>
-              <p className="text-3xl font-black text-black">50%</p>
-              <p className="text-sm text-gray-600">Cost Reduction</p>
-            </div>
-            <div>
-              <p className="text-3xl font-black text-black">80%</p>
-              <p className="text-sm text-gray-600">User Retention</p>
+            <p className="text-sm font-bold mb-3">Why Brokers Are Running Pilots</p>
+            <div className="grid grid-cols-4 gap-4">
+              <div>
+                <p className="text-2xl font-black text-green-400">1.5-2x</p>
+                <p className="text-xs opacity-80">Trading volume lift</p>
+                <p className="text-xs opacity-60 mt-1">(Seen 10-15x)</p>
+              </div>
+              <div>
+                <p className="text-2xl font-black text-green-400">2.5x</p>
+                <p className="text-xs opacity-80">Retention improvement</p>
+                <p className="text-xs opacity-60 mt-1">(20% → 50%)</p>
+              </div>
+              <div>
+                <p className="text-2xl font-black text-green-400">8</p>
+                <p className="text-xs opacity-80">Brokers engaged</p>
+                <p className="text-xs opacity-60 mt-1">5.25M reach</p>
+              </div>
+              <div>
+                <p className="text-2xl font-black text-yellow-400">Q2 2026</p>
+                <p className="text-xs opacity-80">Pilot results</p>
+                <p className="text-xs opacity-60 mt-1">Go to market</p>
+              </div>
             </div>
           </motion.div>
         </motion.div>
@@ -181,7 +235,7 @@ export default function Slide4() {
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(10)].map((_, i) => (
+        {[...Array(14)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
