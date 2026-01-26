@@ -34,8 +34,8 @@ export default function Slide10() {
       />
 
       {/* Geometric accent shapes */}
-      <div className="absolute top-20 right-20 w-32 h-32 border-4 border-yellow-500 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 left-20 w-40 h-40 border-4 border-yellow-500 rotate-45 opacity-10"></div>
+      <div className="absolute top-20 right-20 w-32 h-32 border-4 border-gray-300 rounded-full opacity-10"></div>
+      <div className="absolute bottom-20 left-20 w-40 h-40 border-4 border-gray-300 rotate-45 opacity-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <motion.div
@@ -45,7 +45,7 @@ export default function Slide10() {
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-yellow-500 mb-8"
+            className="w-12 h-1 bg-black mb-8"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -94,12 +94,12 @@ export default function Slide10() {
 
               {/* Special callout */}
               <motion.div
-                className="bg-emerald-50 border-2 border-emerald-500 text-black p-6"
+                className="bg-gray-50 border-2 border-black text-black p-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
               >
-                <Trophy className="w-8 h-8 mb-3 text-emerald-500" />
+                <Trophy className="w-8 h-8 mb-3 text-black" />
                 <p className="text-2xl font-black mb-2">
                   Early Stage Opportunity
                 </p>

@@ -36,8 +36,8 @@ export default function Slide8() {
       />
 
       {/* Geometric accent shapes */}
-      <div className="absolute top-20 right-20 w-32 h-32 border-4 border-orange-500 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 left-20 w-40 h-40 border-4 border-orange-500 rotate-45 opacity-10"></div>
+      <div className="absolute top-20 right-20 w-32 h-32 border-4 border-gray-300 rounded-full opacity-10"></div>
+      <div className="absolute bottom-20 left-20 w-40 h-40 border-4 border-gray-300 rotate-45 opacity-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <motion.div
@@ -47,7 +47,7 @@ export default function Slide8() {
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-orange-500 mb-8"
+            className="w-12 h-1 bg-black mb-8"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -148,11 +148,11 @@ export default function Slide8() {
                   key={index}
                   className={`p-4 border-2 text-center ${
                     milestone.status === 'achieved' 
-                      ? 'border-green-500 bg-green-50'
+                      ? 'border-black bg-gray-50'
                       : milestone.status === 'in-progress'
-                      ? 'border-orange-500 bg-orange-50'
+                      ? 'border-gray-600 bg-gray-50'
                       : milestone.status === 'upcoming'
-                      ? 'border-blue-500 bg-blue-50'
+                      ? 'border-gray-400 bg-gray-50'
                       : 'border-gray-300 bg-gray-50'
                   }`}
                   initial={{ opacity: 0, y: 20 }}
@@ -161,22 +161,22 @@ export default function Slide8() {
                 >
                   <Icon className={`w-8 h-8 mx-auto mb-2 ${
                     milestone.status === 'achieved' 
-                      ? 'text-green-500'
+                      ? 'text-black'
                       : milestone.status === 'in-progress'
-                      ? 'text-orange-500'
+                      ? 'text-gray-600'
                       : milestone.status === 'upcoming'
-                      ? 'text-blue-500'
+                      ? 'text-gray-500'
                       : 'text-gray-400'
                   }`} />
                   <p className="text-2xl font-black text-black">{milestone.value}</p>
                   <p className="text-sm text-gray-600">{milestone.label}</p>
                   {milestone.status === 'achieved' && (
-                    <span className="inline-block mt-2 px-2 py-1 bg-green-500 text-white text-xs font-bold">
+                    <span className="inline-block mt-2 px-2 py-1 bg-black text-white text-xs font-bold">
                       ACHIEVED
                     </span>
                   )}
                   {milestone.status === 'in-progress' && (
-                    <span className="inline-block mt-2 px-2 py-1 bg-orange-500 text-white text-xs font-bold">
+                    <span className="inline-block mt-2 px-2 py-1 bg-gray-600 text-white text-xs font-bold">
                       IN PROGRESS
                     </span>
                   )}
@@ -187,7 +187,7 @@ export default function Slide8() {
 
           {/* Partnership pipeline */}
           <motion.div
-            className="mt-8 bg-orange-50 p-6 border-2 border-orange-500"
+            className="mt-8 bg-gray-50 p-6 border-2 border-black"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4, duration: 0.6 }}
@@ -198,7 +198,7 @@ export default function Slide8() {
                 <p className="text-gray-600">5 brokers in active discussions</p>
               </div>
               <div className="text-right">
-                <p className="text-3xl font-black text-orange-500">10,000+</p>
+                <p className="text-3xl font-black text-black">10,000+</p>
                 <p className="text-sm text-gray-600">Potential users</p>
               </div>
             </div>

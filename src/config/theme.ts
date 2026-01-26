@@ -1,30 +1,46 @@
-// Unified theme configuration for consistent presentation
+// Unified theme configuration for consistent presentation - Black & White design with colored charts
 export const THEME_CONFIG = {
-  // Primary accent color used throughout all slides
-  accentColor: '#10b981', // Emerald-500 - represents growth and success
+  // Grayscale palette for sophisticated, minimalist design
+  colors: {
+    black: '#000000',
+    darkGray: '#1f2937',    // Gray-800
+    mediumGray: '#6b7280',  // Gray-500
+    lightGray: '#9ca3af',   // Gray-400
+    paleGray: '#e5e7eb',    // Gray-200
+    offWhite: '#f9fafb',    // Gray-50
+    white: '#ffffff',
+  },
   
-  // Chart colors for consistency
+  // Chart colors - keeping colors for data visualization clarity
   chartColors: {
-    primary: '#10b981',   // Emerald-500
-    secondary: '#3b82f6', // Blue-500
-    tertiary: '#f59e0b',  // Amber-500
-    negative: '#ef4444',  // Red-500
-    neutral: '#6b7280',   // Gray-500
+    primary: '#10b981',     // Emerald-500
+    secondary: '#3b82f6',   // Blue-500
+    tertiary: '#f59e0b',    // Amber-500
+    negative: '#ef4444',    // Red-500
+    neutral: '#6b7280',     // Gray-500
   },
   
-  // Status colors
+  // Status colors in grayscale
   statusColors: {
-    achieved: '#10b981',    // Emerald-500
-    inProgress: '#f59e0b',  // Amber-500
-    upcoming: '#3b82f6',    // Blue-500
-    future: '#9ca3af',      // Gray-400
+    achieved: '#000000',     // Black - strong/complete
+    inProgress: '#6b7280',   // Gray-500 - working
+    upcoming: '#9ca3af',     // Gray-400 - future
+    future: '#d1d5db',       // Gray-300 - distant
   },
   
-  // Background colors
+  // Background classes
   backgrounds: {
-    accent: 'bg-emerald-50',
-    border: 'border-emerald-500',
-    hover: 'hover:bg-emerald-500',
-    text: 'text-emerald-500',
+    accent: 'bg-gray-50',
+    border: 'border-black',
+    hover: 'hover:bg-gray-100',
+    text: 'text-black',
+  },
+  
+  // Chart patterns for accessibility and differentiation
+  patterns: {
+    solid: 'solid',
+    dots: 'dots',
+    lines: 'lines',
+    crosshatch: 'crosshatch',
   }
 };

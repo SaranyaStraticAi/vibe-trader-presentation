@@ -56,8 +56,8 @@ export default function Slide7() {
       />
 
       {/* Geometric accent shapes */}
-      <div className="absolute top-20 left-20 w-32 h-32 border-4 border-indigo-500 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 right-20 w-40 h-40 border-4 border-indigo-500 rotate-45 opacity-10"></div>
+      <div className="absolute top-20 left-20 w-32 h-32 border-4 border-gray-300 rounded-full opacity-10"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 border-4 border-gray-300 rotate-45 opacity-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <motion.div
@@ -67,7 +67,7 @@ export default function Slide7() {
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-indigo-500 mb-8"
+            className="w-12 h-1 bg-black mb-8"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -99,18 +99,18 @@ export default function Slide7() {
                 return (
                   <motion.div
                     key={index}
-                    className="flex gap-4 p-4 border-2 border-gray-200 hover:border-indigo-500 transition-colors group"
+                    className="flex gap-4 p-4 border-2 border-gray-200 hover:border-black transition-colors group"
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
                   >
-                    <div className="w-12 h-12 bg-black text-white flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-500 transition-colors">
+                    <div className="w-12 h-12 bg-black text-white flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div className="flex-1">
                       <p className="font-bold text-black">{factor.title}</p>
                       <p className="text-sm text-gray-600 mb-2">{factor.desc}</p>
-                      <span className="inline-block px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold">
+                      <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs font-bold">
                         {factor.highlight}
                       </span>
                     </div>
@@ -148,7 +148,7 @@ export default function Slide7() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
               >
-                <p className="text-5xl font-black text-indigo-500">91%</p>
+                <p className="text-5xl font-black text-black">91%</p>
                 <p className="text-sm text-gray-600">Overall De-Risk Score</p>
               </motion.div>
             </motion.div>
@@ -156,22 +156,22 @@ export default function Slide7() {
 
           {/* Bottom valuation highlight */}
           <motion.div
-            className="mt-12 bg-indigo-50 p-6 border-2 border-indigo-500"
+            className="mt-12 bg-gray-50 p-6 border-2 border-black"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
             <div className="grid grid-cols-3 gap-6">
               <div>
-                <p className="text-3xl font-black text-indigo-500">$10M</p>
+                <p className="text-3xl font-black text-black">$10M</p>
                 <p className="text-sm text-gray-600">Internal Valuation</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-indigo-500">12mo</p>
+                <p className="text-3xl font-black text-black">12mo</p>
                 <p className="text-sm text-gray-600">Runway with $1M</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-indigo-500">M&A</p>
+                <p className="text-3xl font-black text-black">M&A</p>
                 <p className="text-sm text-gray-600">Clear Exit Strategy</p>
               </div>
             </div>

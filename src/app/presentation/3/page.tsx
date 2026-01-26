@@ -50,9 +50,9 @@ export default function Slide3() {
         }}
       />
 
-      {/* Geometric accent shapes */}
-      <div className="absolute top-20 left-20 w-32 h-32 border-4 border-green-500 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 right-20 w-40 h-40 border-4 border-green-500 rotate-45 opacity-10"></div>
+      {/* Subtle geometric accent shapes */}
+      <div className="absolute top-20 left-20 w-32 h-32 border-2 border-gray-300 rounded-full opacity-20"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 border-2 border-gray-300 rotate-45 opacity-20"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <motion.div
@@ -62,7 +62,7 @@ export default function Slide3() {
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-green-500 mb-8"
+            className="w-12 h-1 bg-black mb-8"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -100,7 +100,7 @@ export default function Slide3() {
                     transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
                   >
                     <div className="border-2 border-gray-200 p-6 hover:border-black transition-colors h-full">
-                      <div className="w-12 h-12 bg-black text-white flex items-center justify-center mb-4 group-hover:bg-green-500 transition-colors">
+                      <div className="w-12 h-12 bg-black text-white flex items-center justify-center mb-4 group-hover:bg-gray-700 transition-colors">
                         <Icon className="w-6 h-6" />
                       </div>
                       <h3 className="text-lg font-bold text-black mb-2">{feature.title}</h3>
@@ -149,12 +149,12 @@ export default function Slide3() {
 
           {/* Bottom highlight */}
           <motion.div
-            className="mt-12 flex items-center gap-4 bg-green-50 p-6 border-2 border-green-500"
+            className="mt-12 flex items-center gap-4 bg-gray-50 p-6 border-2 border-black"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
           >
-            <Sparkles className="w-8 h-8 text-green-500" />
+            <Sparkles className="w-8 h-8 text-black" />
             <div>
               <p className="text-xl text-black font-bold">
                 Transform your trading with AI-powered intelligence

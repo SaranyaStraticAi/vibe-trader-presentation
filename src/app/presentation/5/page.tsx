@@ -26,8 +26,8 @@ export default function Slide5() {
       />
 
       {/* Geometric accent shapes */}
-      <div className="absolute top-20 left-20 w-32 h-32 border-4 border-purple-500 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 right-20 w-40 h-40 border-4 border-purple-500 rotate-45 opacity-10"></div>
+      <div className="absolute top-20 left-20 w-32 h-32 border-4 border-gray-300 rounded-full opacity-10"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 border-4 border-gray-300 rotate-45 opacity-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <motion.div
@@ -37,7 +37,7 @@ export default function Slide5() {
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-purple-500 mb-8"
+            className="w-12 h-1 bg-black mb-8"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -96,8 +96,8 @@ export default function Slide5() {
                     transition={{ delay: 0.7 + index * 0.15, duration: 0.5 }}
                   >
                     <div className="group cursor-pointer">
-                      <div className="w-24 h-24 bg-white border-4 border-purple-500 rounded-full flex items-center justify-center mb-2 group-hover:bg-purple-500 group-hover:border-black transition-colors">
-                        <Icon className="w-10 h-10 text-purple-500 group-hover:text-white" />
+                      <div className="w-24 h-24 bg-white border-4 border-black rounded-full flex items-center justify-center mb-2 group-hover:bg-gray-700 group-hover:border-black transition-colors">
+                        <Icon className="w-10 h-10 text-black group-hover:text-white" />
                       </div>
                       <div className="text-center">
                         <p className="font-bold text-sm">{step.title}</p>
@@ -115,7 +115,7 @@ export default function Slide5() {
                   cy="50%"
                   r="220"
                   fill="none"
-                  stroke="#a855f7"
+                  stroke="#000000"
                   strokeWidth="2"
                   strokeDasharray="10 5"
                   initial={{ strokeDashoffset: 1000 }}
@@ -132,15 +132,15 @@ export default function Slide5() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5, duration: 0.6 }}
             >
-              <div className="bg-purple-50 p-4 border-2 border-purple-200">
+              <div className="bg-gray-50 p-4 border-2 border-gray-300">
                 <p className="font-bold text-black mb-1">Marketing & Sales</p>
                 <p className="text-sm text-gray-600">Target right customers</p>
               </div>
-              <div className="bg-purple-50 p-4 border-2 border-purple-200">
+              <div className="bg-gray-50 p-4 border-2 border-gray-300">
                 <p className="font-bold text-black mb-1">Data as a Service</p>
                 <p className="text-sm text-gray-600">Monetize insights</p>
               </div>
-              <div className="bg-purple-50 p-4 border-2 border-purple-200">
+              <div className="bg-gray-50 p-4 border-2 border-gray-300">
                 <p className="font-bold text-black mb-1">New Technologies</p>
                 <p className="text-sm text-gray-600">Build better products</p>
               </div>

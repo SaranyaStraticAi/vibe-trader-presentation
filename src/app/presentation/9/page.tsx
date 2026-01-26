@@ -70,8 +70,8 @@ export default function Slide9() {
       />
 
       {/* Geometric accent shapes */}
-      <div className="absolute top-20 left-20 w-32 h-32 border-4 border-teal-500 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 right-20 w-40 h-40 border-4 border-teal-500 rotate-45 opacity-10"></div>
+      <div className="absolute top-20 left-20 w-32 h-32 border-4 border-gray-300 rounded-full opacity-10"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 border-4 border-gray-300 rotate-45 opacity-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <motion.div
@@ -81,7 +81,7 @@ export default function Slide9() {
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-teal-500 mb-8"
+            className="w-12 h-1 bg-black mb-8"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -123,7 +123,7 @@ export default function Slide9() {
                 <div className="relative z-10">
                   {/* Quarter header */}
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="w-12 h-12 bg-teal-500 text-white rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center">
                       <Calendar className="w-6 h-6" />
                     </div>
                     <div>
@@ -137,7 +137,7 @@ export default function Slide9() {
                     <ul className="space-y-2">
                       {quarter.tasks.map((task, taskIndex) => (
                         <li key={taskIndex} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-teal-500 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{task}</span>
                         </li>
                       ))}
@@ -156,7 +156,7 @@ export default function Slide9() {
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-600">ARR:</span>
-                      <span className="font-bold text-teal-500">{quarter.kpis.arr}</span>
+                      <span className="font-bold text-black">{quarter.kpis.arr}</span>
                     </div>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function Slide9() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <div className="bg-teal-50 p-6 border-2 border-teal-500">
+            <div className="bg-gray-50 p-6 border-2 border-black">
               <h3 className="text-lg font-bold text-black mb-4">Monthly Burn Rate: $83K</h3>
               <div className="space-y-2">
                 {monthlyBurn.map((item, index) => (

@@ -51,9 +51,9 @@ export default function Slide2() {
         }}
       />
 
-      {/* Geometric accent shapes */}
-      <div className="absolute top-20 right-20 w-32 h-32 border-4 border-red-500 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 left-20 w-40 h-40 border-4 border-red-500 rotate-45 opacity-10"></div>
+      {/* Subtle geometric accent shapes */}
+      <div className="absolute top-20 right-20 w-32 h-32 border-2 border-gray-300 rounded-full opacity-20"></div>
+      <div className="absolute bottom-20 left-20 w-40 h-40 border-2 border-gray-300 rotate-45 opacity-20"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <div className="grid grid-cols-2 gap-16 items-start">
@@ -65,7 +65,7 @@ export default function Slide2() {
           >
             {/* Small accent line */}
             <motion.div 
-              className="w-12 h-1 bg-red-500 mb-8"
+              className="w-12 h-1 bg-black mb-8"
               initial={{ width: 0 }}
               animate={{ width: 48 }}
               transition={{ delay: 0.2, duration: 0.5 }}
@@ -105,7 +105,7 @@ export default function Slide2() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 + index * 0.1 }}
                   >
-                    <div className="w-10 h-10 rounded-none bg-black text-white flex items-center justify-center flex-shrink-0 group-hover:bg-red-500 transition-colors">
+                    <div className="w-10 h-10 rounded-none bg-black text-white flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
                       <Icon className="w-5 h-5" />
                     </div>
                     <span className="text-lg text-gray-700">
@@ -145,7 +145,7 @@ export default function Slide2() {
                   formatter={(value) => `${value}%`}
                   contentStyle={{ 
                     backgroundColor: 'white', 
-                    border: '2px solid black',
+                    border: '1px solid #000',
                     borderRadius: 0 
                   }}
                 />
@@ -163,7 +163,7 @@ export default function Slide2() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.6 }}
             >
-              <p className="text-5xl font-black text-red-500">75-85%<SuperScript number={3} /></p>
+              <p className="text-5xl font-black text-black">75-85%<SuperScript number={3} /></p>
               <p className="text-sm text-gray-500 mt-2">MetaTrader dominance</p>
             </motion.div>
           </motion.div>

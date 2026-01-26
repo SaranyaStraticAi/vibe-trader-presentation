@@ -35,8 +35,8 @@ export default function Slide6() {
       />
 
       {/* Geometric accent shapes */}
-      <div className="absolute top-20 right-20 w-32 h-32 border-4 border-emerald-500 rounded-full opacity-10"></div>
-      <div className="absolute bottom-20 left-20 w-40 h-40 border-4 border-emerald-500 rotate-45 opacity-10"></div>
+      <div className="absolute top-20 right-20 w-32 h-32 border-4 border-gray-300 rounded-full opacity-10"></div>
+      <div className="absolute bottom-20 left-20 w-40 h-40 border-4 border-gray-300 rotate-45 opacity-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
         <motion.div
@@ -46,7 +46,7 @@ export default function Slide6() {
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-emerald-500 mb-8"
+            className="w-12 h-1 bg-black mb-8"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -100,12 +100,12 @@ export default function Slide6() {
               </ResponsiveContainer>
               
               <motion.div
-                className="mt-6 bg-emerald-50 p-4 border-2 border-emerald-500"
+                className="mt-6 bg-gray-50 p-4 border-2 border-black"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
               >
-                <p className="text-4xl font-black text-emerald-500">75x</p>
+                <p className="text-4xl font-black text-black">75x</p>
                 <p className="text-sm text-gray-600">Larger than NYSE</p>
               </motion.div>
             </motion.div>
@@ -123,9 +123,9 @@ export default function Slide6() {
                     key={index}
                     className={`flex items-center gap-4 p-4 border-2 ${
                       phase.status === 'active' 
-                        ? 'border-emerald-500 bg-emerald-50' 
+                        ? 'border-black bg-gray-50' 
                         : phase.status === 'planned'
-                        ? 'border-blue-500 bg-blue-50'
+                        ? 'border-gray-400 bg-gray-50'
                         : 'border-gray-300 bg-gray-50'
                     }`}
                     initial={{ opacity: 0, x: -20 }}
@@ -134,9 +134,9 @@ export default function Slide6() {
                   >
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
                       phase.status === 'active' 
-                        ? 'bg-emerald-500 text-white' 
+                        ? 'bg-black text-white' 
                         : phase.status === 'planned'
-                        ? 'bg-blue-500 text-white'
+                        ? 'bg-gray-600 text-white'
                         : 'bg-gray-300 text-gray-600'
                     }`}>
                       {phase.phase === 'Phase 1' && <Globe className="w-6 h-6" />}
@@ -149,7 +149,7 @@ export default function Slide6() {
                       <p className="text-gray-600">{phase.market}</p>
                     </div>
                     {phase.status === 'active' && (
-                      <span className="ml-auto px-3 py-1 bg-emerald-500 text-white text-sm font-bold">
+                      <span className="ml-auto px-3 py-1 bg-black text-white text-sm font-bold">
                         LIVE
                       </span>
                     )}
