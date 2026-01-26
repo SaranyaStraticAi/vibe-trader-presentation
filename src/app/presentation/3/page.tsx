@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Bot, Cloud, BarChart3, Library, Brain, Sparkles } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Footnote } from '@/components/Footnote';
 
 export default function Slide3() {
   const { nextSlide, prevSlide } = useSlideNavigation();
@@ -117,7 +118,7 @@ export default function Slide3() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="flex flex-col"
             >
-              <h3 className="text-lg font-bold text-black mb-4">Impact on Trader Performance</h3>
+              <h3 className="text-lg font-bold text-black mb-4">Projected Impact on Performance*</h3>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={confidenceData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
@@ -182,6 +183,13 @@ export default function Slide3() {
           />
         ))}
       </div>
+
+      {/* References */}
+      <Footnote 
+        references={[
+          { number: 1, text: '*Based on backtesting and simulated projections' },
+        ]}
+      />
 
       {/* Navigation */}
       <button

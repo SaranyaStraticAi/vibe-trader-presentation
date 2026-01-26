@@ -4,14 +4,15 @@ import { motion } from 'framer-motion';
 import { Globe, Bitcoin, TrendingUp, Shield } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { Footnote, SuperScript } from '@/components/Footnote';
 
 export default function Slide6() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   const marketComparison = [
-    { market: 'FOREX', value: 9600, color: '#10b981' },
+    { market: 'FOREX', value: 7500, color: '#10b981' },
     { market: 'Crypto', value: 2000, color: '#3b82f6' },
-    { market: 'NYSE', value: 80, color: '#6b7280' },
+    { market: 'NYSE', value: 100, color: '#6b7280' },
     { market: 'Options', value: 500, color: '#f59e0b' },
   ];
 
@@ -76,7 +77,7 @@ export default function Slide6() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <h3 className="text-lg font-bold text-black mb-4">Daily Trading Volume ($B)</h3>
+              <h3 className="text-lg font-bold text-black mb-4">Daily Trading Volume ($B)<SuperScript number={1} /></h3>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={marketComparison}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
@@ -104,7 +105,7 @@ export default function Slide6() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
               >
-                <p className="text-4xl font-black text-emerald-500">120x</p>
+                <p className="text-4xl font-black text-emerald-500">75x</p>
                 <p className="text-sm text-gray-600">Larger than NYSE</p>
               </motion.div>
             </motion.div>
@@ -193,6 +194,13 @@ export default function Slide6() {
           />
         ))}
       </div>
+
+      {/* References */}
+      <Footnote 
+        references={[
+          { number: 1, text: 'BIS 2024, NYSE Market Data 2024' },
+        ]}
+      />
 
       {/* Navigation */}
       <button

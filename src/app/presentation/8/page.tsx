@@ -18,10 +18,10 @@ export default function Slide8() {
   ];
 
   const milestones = [
-    { value: '200', label: 'Beta Users', status: 'achieved', icon: Users },
-    { value: '2,500', label: 'Pilot Program', status: 'in-progress', icon: Target },
-    { value: '$7.5M', label: 'ARR Target', status: 'upcoming', icon: TrendingUp },
-    { value: 'Exit', label: 'M&A Ready', status: 'future', icon: Rocket },
+    { value: '200', label: 'Beta Users (Current)', status: 'achieved', icon: Users },
+    { value: '2,500', label: 'Target Users Q4', status: 'in-progress', icon: Target },
+    { value: '$7.5M', label: 'ARR Goal Year 1', status: 'upcoming', icon: TrendingUp },
+    { value: '2026', label: 'Exit Strategy', status: 'future', icon: Rocket },
   ];
 
   return (
@@ -59,7 +59,7 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Traction & Growth
+            Current Traction & Projections
           </motion.h1>
 
           <motion.p
@@ -68,7 +68,7 @@ export default function Slide8() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            From 200 organic users to $7.5M ARR in 12 months
+            200 organic beta users today • Projecting $7.5M ARR in 12 months
           </motion.p>
 
           {/* Growth Charts */}
@@ -78,7 +78,7 @@ export default function Slide8() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <h3 className="text-lg font-bold text-black mb-4">User Growth Trajectory</h3>
+              <h3 className="text-lg font-bold text-black mb-4">User Growth Projection</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <AreaChart data={growthData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
@@ -108,7 +108,7 @@ export default function Slide8() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
             >
-              <h3 className="text-lg font-bold text-black mb-4">ARR Growth ($M)</h3>
+              <h3 className="text-lg font-bold text-black mb-4">Projected ARR ($M)</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={growthData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />

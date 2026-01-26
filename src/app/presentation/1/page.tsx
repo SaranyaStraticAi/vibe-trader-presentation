@@ -81,7 +81,7 @@ export default function Slide1() {
           </Button>
         </motion.div>
 
-        {/* Stats or key points */}
+        {/* Vision points */}
         <motion.div 
           className="mt-16 flex gap-12"
           initial={{ opacity: 0 }}
@@ -89,16 +89,16 @@ export default function Slide1() {
           transition={{ delay: 0.7, duration: 0.8 }}
         >
           <div>
-            <p className="text-3xl font-bold text-black">$9.6T</p>
-            <p className="text-sm text-gray-500">Daily Volume</p>
+            <p className="text-3xl font-bold text-black">AI-Powered</p>
+            <p className="text-sm text-gray-500">Intelligence</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-black">AI</p>
-            <p className="text-sm text-gray-500">Native OS</p>
+            <p className="text-3xl font-bold text-black">Social</p>
+            <p className="text-sm text-gray-500">Trading</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-black">B2B2C</p>
-            <p className="text-sm text-gray-500">Distribution</p>
+            <p className="text-3xl font-bold text-black">Global</p>
+            <p className="text-sm text-gray-500">Markets</p>
           </div>
         </motion.div>
       </motion.div>

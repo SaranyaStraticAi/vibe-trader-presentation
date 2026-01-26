@@ -4,20 +4,22 @@ import { motion } from 'framer-motion';
 import { TrendingDown, Zap, DollarSign, Users, Activity } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
+import { Footnote, SuperScript } from '@/components/Footnote';
 
 export default function Slide2() {
   const { nextSlide, prevSlide, currentSlide } = useSlideNavigation();
 
   const marketData = [
-    { name: 'MetaTrader', value: 70, color: '#ef4444' },
-    { name: 'Other Legacy', value: 25, color: '#f87171' },
+    { name: 'MetaTrader', value: 75, color: '#ef4444' },
+    { name: 'Other Legacy', value: 20, color: '#f87171' },
     { name: 'Modern Platforms', value: 5, color: '#10b981' },
   ];
 
   const problems = [
     {
       icon: DollarSign,
-      text: '$9.6 Trillion traded on legacy platforms',
+      text: '$7.5 Trillion daily forex volume',
+      ref: 1,
     },
     {
       icon: Zap,
@@ -25,7 +27,8 @@ export default function Slide2() {
     },
     {
       icon: TrendingDown,
-      text: '90% of retail traders lose money',
+      text: '70-90% of retail traders lose money',
+      ref: 2,
     },
     {
       icon: Users,
@@ -105,7 +108,10 @@ export default function Slide2() {
                     <div className="w-10 h-10 rounded-none bg-black text-white flex items-center justify-center flex-shrink-0 group-hover:bg-red-500 transition-colors">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-lg text-gray-700">{problem.text}</span>
+                    <span className="text-lg text-gray-700">
+                      {problem.text}
+                      {problem.ref && <SuperScript number={problem.ref} />}
+                    </span>
                   </motion.div>
                 );
               })}
@@ -157,8 +163,8 @@ export default function Slide2() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.6 }}
             >
-              <p className="text-5xl font-black text-red-500">95%</p>
-              <p className="text-sm text-gray-500 mt-2">on legacy platforms</p>
+              <p className="text-5xl font-black text-red-500">75-85%<SuperScript number={3} /></p>
+              <p className="text-sm text-gray-500 mt-2">MetaTrader dominance</p>
             </motion.div>
           </motion.div>
         </div>
@@ -180,6 +186,15 @@ export default function Slide2() {
           />
         ))}
       </div>
+
+      {/* References */}
+      <Footnote 
+        references={[
+          { number: 1, text: 'BIS Triennial Survey 2024' },
+          { number: 2, text: 'ESMA CFD Disclosure Requirements' },
+          { number: 3, text: 'Finance Magnates Intelligence 2024' },
+        ]}
+      />
 
       {/* Navigation */}
       <button

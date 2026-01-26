@@ -94,18 +94,18 @@ export default function Slide10() {
 
               {/* Special callout */}
               <motion.div
-                className="bg-yellow-500 text-black p-6"
+                className="bg-emerald-50 border-2 border-emerald-500 text-black p-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
               >
-                <Trophy className="w-8 h-8 mb-3" />
+                <Trophy className="w-8 h-8 mb-3 text-emerald-500" />
                 <p className="text-2xl font-black mb-2">
-                  Never Again at This Price
+                  Early Stage Opportunity
                 </p>
                 <p className="text-sm">
-                  This is the lowest valuation we will ever offer. 
-                  Early investors get maximum upside.
+                  200 validated beta users with strong engagement.
+                  Pre-revenue valuation based on market opportunity.
                 </p>
               </motion.div>
             </div>
