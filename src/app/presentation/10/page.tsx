@@ -134,8 +134,8 @@ export default function Slide10() {
                       outerRadius={120}
                       paddingAngle={2}
                       dataKey="value"
-                      label={({name, value}) => `${name}: ${value}%`}
-                      labelLine={false}
+                      label={({name, value}) => `${value}%`}
+                      labelLine={true}
                     >
                       {useOfFunds.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.color} />

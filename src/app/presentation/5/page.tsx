@@ -1,19 +1,23 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Database, Brain, Target, Zap, ArrowRight } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import dynamic from 'next/dynamic';
+
+// Dynamically import the DataFlywheel component to avoid SSR issues
+// Dynamically import the DataFlywheel component to avoid SSR issues
+const DataFlywheel = dynamic(() => import('@/components/DataFlywheelMagic'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-[600px] h-[600px] flex items-center justify-center">
+      <div className="text-gray-400">Loading flywheel...</div>
+    </div>
+  ),
+});
 
 export default function Slide5() {
   const { nextSlide, prevSlide } = useSlideNavigation();
-
-  const dataFlywheelSteps = [
-    { icon: Database, title: 'Trading Data', desc: 'Chats, trades, behavior' },
-    { icon: Brain, title: 'AI Analysis', desc: 'Predictive insights' },
-    { icon: Target, title: 'Customer Data', desc: 'Segment & target' },
-    { icon: Zap, title: 'Product Improvement', desc: 'Better features' },
-  ];
 
   return (
     <div className="relative flex h-screen w-screen items-center overflow-hidden bg-white">
@@ -62,67 +66,7 @@ export default function Slide5() {
 
           {/* Data Flywheel Visualization */}
           <div className="relative">
-            <motion.div 
-              className="relative w-[600px] h-[600px] mx-auto"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              {/* Center hub */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-black rounded-full flex items-center justify-center z-10">
-                <p className="text-white font-bold text-center">Data<br />Flywheel</p>
-              </div>
-
-              {/* Flywheel items */}
-              {dataFlywheelSteps.map((step, index) => {
-                const Icon = step.icon;
-                const angle = (index * 90) - 90;
-                const radius = 220;
-                const x = radius * Math.cos(angle * Math.PI / 180);
-                const y = radius * Math.sin(angle * Math.PI / 180);
-                
-                return (
-                  <motion.div
-                    key={index}
-                    className="absolute"
-                    style={{
-                      top: '50%',
-                      left: '50%',
-                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.7 + index * 0.15, duration: 0.5 }}
-                  >
-                    <div className="group cursor-pointer">
-                      <div className="w-24 h-24 bg-white border-4 border-black rounded-full flex items-center justify-center mb-2 group-hover:bg-gray-700 group-hover:border-black transition-colors">
-                        <Icon className="w-10 h-10 text-black group-hover:text-white" />
-                      </div>
-                      <div className="text-center">
-                        <p className="font-bold text-sm">{step.title}</p>
-                        <p className="text-xs text-gray-600">{step.desc}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-
-              {/* Connecting arrows */}
-              <svg className="absolute inset-0 w-full h-full" style={{ transform: 'rotate(45deg)' }}>
-                <motion.circle
-                  cx="50%"
-                  cy="50%"
-                  r="220"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="2"
-                  strokeDasharray="10 5"
-                  initial={{ strokeDashoffset: 1000 }}
-                  animate={{ strokeDashoffset: 0 }}
-                  transition={{ delay: 0.6, duration: 2, repeat: Infinity, ease: 'linear' }}
-                />
-              </svg>
-            </motion.div>
+            <DataFlywheel />
 
             {/* Data usage points */}
             <motion.div

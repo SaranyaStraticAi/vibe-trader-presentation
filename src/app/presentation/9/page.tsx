@@ -176,7 +176,7 @@ export default function Slide9() {
                 {monthlyBurn.map((item, index) => (
                   <div key={index} className="flex justify-between">
                     <span className="text-gray-600">{item.category}</span>
-                    <span className="font-bold">${item.amount}K ({item.amount * 100 / 83}%)</span>
+                    <span className="font-bold">${item.amount}K ({Math.round(item.amount * 100 / 83)}%)</span>
                   </div>
                 ))}
               </div>
