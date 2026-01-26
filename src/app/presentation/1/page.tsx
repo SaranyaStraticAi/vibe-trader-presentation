@@ -17,7 +17,7 @@ const Globe = dynamic(() => import('@/components/Globe'), {
 });
 
 export default function Slide1() {
-  const { goToNext } = useSlideNavigation();
+  const { nextSlide } = useSlideNavigation();
 
   return (
     <div className="relative flex h-screen w-screen items-center overflow-hidden bg-white">
@@ -72,7 +72,7 @@ export default function Slide1() {
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           <Button
-            onClick={goToNext}
+            onClick={nextSlide}
             size="lg"
             className="group bg-black text-white hover:bg-gray-800 text-lg px-10 py-7 rounded-none font-medium transition-all duration-300"
           >
