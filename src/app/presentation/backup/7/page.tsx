@@ -192,7 +192,7 @@ export default function Slide7() {
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 13
+              i === 6
                 ? 'w-8 bg-black'
                 : 'w-2 bg-gray-300'
             } rounded-full`}

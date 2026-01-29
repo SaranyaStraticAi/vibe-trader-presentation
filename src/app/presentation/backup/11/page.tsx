@@ -91,35 +91,21 @@ export default function Slide10() {
                 ))}
               </motion.div>
 
-              {/* Unit Economics */}
+              {/* Special callout */}
               <motion.div
                 className="bg-gray-50 border-2 border-black text-black p-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
               >
-                <DollarSign className="w-8 h-8 mb-3 text-black" />
-                <p className="text-2xl font-black mb-3">
-                  Unit Economics
+                <Trophy className="w-8 h-8 mb-3 text-black" />
+                <p className="text-2xl font-black mb-2">
+                  Early Stage Opportunity
                 </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>CAC (via broker)</span>
-                    <span className="font-bold">$0</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>ARPU</span>
-                    <span className="font-bold">$125/mo</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Gross Margin</span>
-                    <span className="font-bold">85%</span>
-                  </div>
-                  <div className="flex justify-between border-t pt-2">
-                    <span>Payback</span>
-                    <span className="font-bold text-green-600">Instant</span>
-                  </div>
-                </div>
+                <p className="text-sm">
+                  200 validated beta users with strong engagement.
+                  Pre-revenue valuation based on market opportunity.
+                </p>
               </motion.div>
             </div>
 
@@ -205,7 +191,7 @@ export default function Slide10() {
               </div>
               <div>
                 <Trophy className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-3xl font-black mb-1">2028</p>
+                <p className="text-3xl font-black mb-1">2026</p>
                 <p className="text-sm opacity-80">Exit Timeline</p>
               </div>
             </div>
@@ -226,11 +212,11 @@ export default function Slide10() {
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(14)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 12
+              i === 9
                 ? 'w-8 bg-black'
                 : 'w-2 bg-gray-300'
             } rounded-full`}

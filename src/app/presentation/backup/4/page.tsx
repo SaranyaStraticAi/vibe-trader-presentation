@@ -199,65 +199,37 @@ export default function Slide4() {
             </motion.div>
           </div>
 
-          {/* Revenue Model & ROI */}
-          <div className="grid grid-cols-2 gap-6 mt-8">
-            {/* Revenue Model */}
-            <motion.div
-              className="bg-gray-50 border-2 border-black p-6"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
-            >
-              <p className="text-sm font-bold text-black mb-3">Revenue Model</p>
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Per Active Trader</span>
-                  <span className="font-bold">$100-150/mo</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Paid by Broker</span>
-                  <span className="font-bold">100%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">No upfront cost</span>
-                  <span className="font-bold">$0</span>
-                </div>
+          {/* Bottom ROI Calculation */}
+          <motion.div
+            className="mt-12 bg-black text-white p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.6 }}
+          >
+            <p className="text-sm font-bold mb-3">Why Brokers Are Running Pilots</p>
+            <div className="grid grid-cols-4 gap-4">
+              <div>
+                <p className="text-2xl font-black text-green-400">1.5-2x</p>
+                <p className="text-xs opacity-80">Trading volume lift</p>
+                <p className="text-xs opacity-60 mt-1">(Seen 10-15x)</p>
               </div>
-              <div className="mt-3 pt-3 border-t border-gray-300">
-                <p className="text-xs text-gray-600">Example: 1,000 traders</p>
-                <p className="text-lg font-black text-black">$1.5M ARR</p>
-                <p className="text-xs text-gray-600">@ $125/trader/month</p>
+              <div>
+                <p className="text-2xl font-black text-green-400">2.5x</p>
+                <p className="text-xs opacity-80">Retention improvement</p>
+                <p className="text-xs opacity-60 mt-1">(20% → 50%)</p>
               </div>
-            </motion.div>
-
-            {/* ROI Metrics */}
-            <motion.div
-              className="bg-black text-white p-6"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
-            >
-              <p className="text-sm font-bold mb-3">Pilot Results Expected</p>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <p className="text-2xl font-black text-green-400">1.5-2x</p>
-                  <p className="text-xs opacity-80">Volume increase</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-green-400">2.5x</p>
-                  <p className="text-xs opacity-80">Retention lift</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-green-400">8</p>
-                  <p className="text-xs opacity-80">Brokers ready</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-yellow-400">Q2 '26</p>
-                  <p className="text-xs opacity-80">Market launch</p>
-                </div>
+              <div>
+                <p className="text-2xl font-black text-green-400">8</p>
+                <p className="text-xs opacity-80">Brokers engaged</p>
+                <p className="text-xs opacity-60 mt-1">5.25M reach</p>
               </div>
-            </motion.div>
-          </div>
+              <div>
+                <p className="text-2xl font-black text-yellow-400">Q2 2026</p>
+                <p className="text-xs opacity-80">Pilot results</p>
+                <p className="text-xs opacity-60 mt-1">Go to market</p>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -267,7 +239,7 @@ export default function Slide4() {
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 4
+              i === 3
                 ? 'w-8 bg-black'
                 : 'w-2 bg-gray-300'
             } rounded-full`}

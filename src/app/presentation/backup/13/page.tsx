@@ -305,7 +305,7 @@ export default function Slide12() {
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 9
+              i === 11
                 ? 'w-8 bg-black'
                 : 'w-2 bg-gray-300'
             } rounded-full`}

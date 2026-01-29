@@ -116,7 +116,7 @@ export default function Slide9() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            B2B2C distribution: Land brokers → Reach millions
+            B2B2C distribution already in motion
           </motion.p>
 
           {/* Achievement banner */}
@@ -243,31 +243,19 @@ export default function Slide9() {
                 );
               })}
 
-              {/* GTM Scaling Strategy */}
+              {/* Conversion potential */}
               <motion.div
                 className="mt-6 p-4 bg-black text-white"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.3, duration: 0.5 }}
               >
-                <p className="text-xs uppercase tracking-wide opacity-70 mb-2">Scaling Strategy</p>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <p className="text-xs">Q2: Launch 2 pilots</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    <p className="text-xs">Q3: 5 more brokers</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                    <p className="text-xs">Q4: Platform partners</p>
-                  </div>
-                </div>
+                <p className="text-xs uppercase tracking-wide opacity-70 mb-2">Conservative Conversion</p>
+                <p className="text-3xl font-black">52,500</p>
+                <p className="text-xs opacity-70">Traders at 1% adoption</p>
                 <div className="mt-3 pt-3 border-t border-white/20">
-                  <p className="text-lg font-bold text-green-400">Target: 20 brokers</p>
-                  <p className="text-xs opacity-70">By end of 2026</p>
+                  <p className="text-xl font-bold text-green-400">$157M ARR</p>
+                  <p className="text-xs opacity-70">at $250/mo pricing</p>
                 </div>
               </motion.div>
             </div>
