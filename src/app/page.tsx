@@ -1,58 +1,132 @@
-import Link from "next/link";
+'use client';
+
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import { useAuth } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
+
+// Dynamically import Globe component (requires browser window)
+const Globe = dynamic(() => import('@/components/Globe'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-[600px] h-[600px] flex items-center justify-center">
+      <div className="text-gray-400">Loading globe...</div>
+    </div>
+  ),
+});
 
 export default function Home() {
+  const { isSignedIn } = useAuth();
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    if (isSignedIn) {
+      router.push('/presentation/1');
+    } else {
+      router.push('/sign-in');
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-900">
-      <div className="max-w-4xl mx-auto px-6 py-12 text-center">
-        <div className="mb-12">
-          <h1 className="text-6xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-            Vibe Trader
-          </h1>
-          <p className="text-xl text-gray-300 mb-8">
-            The Next Generation Trading Platform
-          </p>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Experience the future of trading with our innovative platform. 
-            Request access to view our exclusive pitch deck presentation.
-          </p>
-        </div>
+    <div className="relative flex h-screen w-screen items-center overflow-hidden bg-white">
+      {/* Subtle dot pattern background */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
+      />
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link
-            href="/waitlist"
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            Request Access
-          </Link>
-          
-          <Link
-            href="/sign-in"
-            className="px-8 py-4 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-700 transition-all duration-200 border border-gray-700"
-          >
-            Sign In
-          </Link>
-        </div>
+      {/* Left side - Content */}
+      <motion.div 
+        className="relative z-10 flex-1 px-20"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        {/* Small accent line */}
+        <motion.div 
+          className="w-12 h-1 bg-black mb-8"
+          initial={{ width: 0 }}
+          animate={{ width: 48 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        />
+        
+        {/* Title */}
+        <motion.h1 
+          className="mb-8 text-8xl font-black text-black leading-[0.9] md:text-9xl tracking-tighter"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+        >
+          Vibe<br />Trader
+        </motion.h1>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
-            <div className="text-3xl mb-3">🚀</div>
-            <h3 className="text-xl font-semibold text-white mb-2">Innovative</h3>
-            <p className="text-gray-400">Cutting-edge trading technology at your fingertips</p>
-          </div>
+        {/* Subtitle */}
+        <motion.p 
+          className="mb-12 text-2xl text-gray-700 md:text-3xl max-w-2xl font-light"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          Modernizing Global<br />FOREX Trading
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <Button
+            onClick={handleButtonClick}
+            size="lg"
+            className="group bg-black text-white hover:bg-gray-800 text-lg px-10 py-7 rounded-none font-medium transition-all duration-300"
+          >
+            {isSignedIn ? 'View Pitch Deck' : 'Sign In to Continue'}
+            <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </Button>
           
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
-            <div className="text-3xl mb-3">🔒</div>
-            <h3 className="text-xl font-semibold text-white mb-2">Secure</h3>
-            <p className="text-gray-400">Enterprise-grade security for your investments</p>
+          {/* Professional messaging */}
+          <p className="mt-4 text-sm text-gray-500">
+            Confidential investor materials
+          </p>
+        </motion.div>
+
+        {/* Vision points */}
+        <motion.div 
+          className="mt-16 flex gap-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+        >
+          <div>
+            <p className="text-3xl font-bold text-black">AI-Powered</p>
+            <p className="text-sm text-gray-500">Intelligence</p>
           </div>
-          
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
-            <div className="text-3xl mb-3">📊</div>
-            <h3 className="text-xl font-semibold text-white mb-2">Data-Driven</h3>
-            <p className="text-gray-400">Advanced analytics powered by AI</p>
+          <div>
+            <p className="text-3xl font-bold text-black">Social</p>
+            <p className="text-sm text-gray-500">Trading</p>
           </div>
-        </div>
-      </div>
+          <div>
+            <p className="text-3xl font-bold text-black">Global</p>
+            <p className="text-sm text-gray-500">Markets</p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Right side - Globe */}
+      <motion.div 
+        className="relative flex-1 h-full flex items-center justify-center"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.4, duration: 1 }}
+      >
+        <Globe />
+      </motion.div>
     </div>
   );
 }
