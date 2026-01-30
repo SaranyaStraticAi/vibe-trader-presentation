@@ -86,14 +86,14 @@ export default function Home() {
           <Button
             onClick={handleButtonClick}
             size="lg"
-            className="group bg-black text-white hover:bg-gray-800 text-lg px-10 py-7 rounded-none font-medium transition-all duration-300"
+            className="group bg-black text-white hover:bg-gray-800 text-3xl px-16 py-10 rounded-none font-bold transition-all duration-300"
           >
             {isSignedIn ? 'View Pitch Deck' : 'Sign In to Continue'}
-            <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-1" />
           </Button>
           
           {/* Professional messaging */}
-          <p className="mt-4 text-sm text-gray-500">
+          <p className="mt-6 text-2xl text-gray-600 font-semibold">
             Confidential investor materials
           </p>
         </motion.div>
