@@ -20,7 +20,7 @@ export default function Slide1() {
   const { nextSlide } = useSlideNavigation();
 
   return (
-    <div className="relative flex h-screen w-screen items-center overflow-hidden bg-white">
+    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
       {/* Subtle dot pattern background */}
       <div 
         className="absolute inset-0 opacity-[0.02]"
@@ -32,7 +32,7 @@ export default function Slide1() {
 
       {/* Left side - Content */}
       <motion.div 
-        className="relative z-10 flex-1 px-20"
+        className="relative z-10 w-1/2 px-20"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -47,7 +47,7 @@ export default function Slide1() {
         
         {/* Title */}
         <motion.h1 
-          className="mb-8 text-8xl font-black text-black leading-[0.9] md:text-9xl tracking-tighter"
+          className="mb-8 text-9xl font-black text-black leading-[0.9] tracking-tighter"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
@@ -57,7 +57,7 @@ export default function Slide1() {
 
         {/* Subtitle */}
         <motion.p 
-          className="mb-12 text-2xl text-gray-700 md:text-3xl max-w-2xl font-light"
+          className="mb-12 text-3xl text-gray-700 max-w-2xl font-light"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
@@ -105,7 +105,7 @@ export default function Slide1() {
 
       {/* Right side - Globe */}
       <motion.div 
-        className="relative flex-1 h-full flex items-center justify-center"
+        className="relative w-1/2 h-full flex items-center justify-center"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 1 }}

@@ -25,6 +25,7 @@
     "react-dom": "19.2.3",
     "react-email": "^5.2.5",
     "react-globe.gl": "^2.37.0",
+    "react-use-measure": "^2.1.7",
     "recharts": "^3.7.0",
     "resend": "^6.8.0",
     "svix": "^1.84.1",
