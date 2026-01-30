@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const TOTAL_SLIDES = 3;
+const TOTAL_SLIDES = 14;
 const SWIPE_THRESHOLD = 50;
 
 export function SwipeHandler({ children }: { children: React.ReactNode }) {
