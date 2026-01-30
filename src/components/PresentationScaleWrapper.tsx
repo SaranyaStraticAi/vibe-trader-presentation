@@ -22,7 +22,12 @@ export function PresentationScaleWrapper({
 
     const scaleX = bounds.width / baseWidth;
     const scaleY = bounds.height / baseHeight;
-    const scale = Math.min(scaleX, scaleY);
+    
+    // Use different scaling strategy based on aspect ratio
+    // For portrait orientations (mobile/tablet), fill width
+    // For landscape, fit entire slide
+    const isPortrait = bounds.height > bounds.width;
+    const scale = isPortrait ? scaleX : Math.min(scaleX, scaleY);
 
     // Calculate centering offsets
     const scaledWidth = baseWidth * scale;
