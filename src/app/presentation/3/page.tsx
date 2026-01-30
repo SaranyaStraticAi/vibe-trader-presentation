@@ -41,7 +41,7 @@ export default function Slide3() {
   ];
 
   return (
-    <div className="relative flex h-screen w-screen items-center overflow-hidden bg-white">
+    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
       {/* Subtle dot pattern background */}
       <div 
         className="absolute inset-0 opacity-[0.02]"
