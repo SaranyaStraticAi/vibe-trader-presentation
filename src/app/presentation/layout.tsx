@@ -3,6 +3,7 @@
 import { KeyboardHandler } from '@/components/navigation/KeyboardHandler';
 import { SlideControls } from '@/components/navigation/SlideControls';
 import { ProgressIndicator } from '@/components/navigation/ProgressIndicator';
+import { SwipeHandler } from '@/components/navigation/SwipeHandler';
 import { PresentationScaleWrapper } from '@/components/PresentationScaleWrapper';
 
 export default function PresentationLayout({
@@ -15,9 +16,11 @@ export default function PresentationLayout({
       <div className="relative h-full w-full overflow-hidden">
         <KeyboardHandler />
         
-        <main className="h-full w-full">
-          {children}
-        </main>
+        <SwipeHandler>
+          <main className="h-full w-full">
+            {children}
+          </main>
+        </SwipeHandler>
         
         <SlideControls />
         <ProgressIndicator />
