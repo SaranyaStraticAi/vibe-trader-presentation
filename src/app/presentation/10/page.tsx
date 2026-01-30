@@ -94,7 +94,7 @@ export default function Slide12() {
   ];
 
   return (
-    <div className="relative flex h-screen w-screen items-center overflow-hidden bg-white">
+    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
       {/* Subtle dot pattern background */}
       <div 
         className="absolute inset-0 opacity-[0.02]"
@@ -106,7 +106,7 @@ export default function Slide12() {
 
       <GlobeWatermark />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
+      <div className="relative z-10 px-20 w-full">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
