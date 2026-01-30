@@ -7,8 +7,24 @@ const GlobeComponent = () => {
   const globeEl = useRef<any>(null);
   const [dots, setDots] = useState<any[]>([]);
   const [arcsData, setArcsData] = useState<any[]>([]);
+  const [webGLSupported, setWebGLSupported] = useState(true);
 
   useEffect(() => {
+    // Check WebGL support
+    const checkWebGL = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+        return !!gl;
+      } catch (e) {
+        return false;
+      }
+    };
+
+    if (!checkWebGL()) {
+      setWebGLSupported(false);
+      return;
+    }
     // Auto-rotate
     if (globeEl.current) {
       globeEl.current.controls().autoRotate = true;
@@ -74,6 +90,25 @@ const GlobeComponent = () => {
     ];
     setArcsData(tradingConnections);
   }, []);
+
+  // Fallback UI when WebGL is not supported
+  if (!webGLSupported) {
+    return (
+      <div className="w-[600px] h-[600px] flex items-center justify-center bg-gray-50 rounded-full relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <svg viewBox="0 0 600 600" className="w-full h-full">
+            <circle cx="300" cy="300" r="290" fill="none" stroke="#000" strokeWidth="1" />
+            <circle cx="300" cy="300" r="200" fill="none" stroke="#000" strokeWidth="0.5" strokeDasharray="5,5" />
+            <circle cx="300" cy="300" r="100" fill="none" stroke="#000" strokeWidth="0.5" strokeDasharray="5,5" />
+          </svg>
+        </div>
+        <div className="text-center z-10">
+          <div className="text-6xl mb-4">🌍</div>
+          <p className="text-gray-600 text-sm">Global Markets</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Globe
