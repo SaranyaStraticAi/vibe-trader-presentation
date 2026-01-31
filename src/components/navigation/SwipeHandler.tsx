@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const TOTAL_SLIDES = 14;
-const SWIPE_THRESHOLD = 50;
+const SWIPE_THRESHOLD = 30;
 
 export function SwipeHandler({ children }: { children: React.ReactNode }) {
   const router = useRouter();

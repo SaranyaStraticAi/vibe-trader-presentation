@@ -25,10 +25,13 @@ const GlobeComponent = () => {
       setWebGLSupported(false);
       return;
     }
-    // Auto-rotate
+    // Auto-rotate and disable interactions
     if (globeEl.current) {
       globeEl.current.controls().autoRotate = true;
       globeEl.current.controls().autoRotateSpeed = 1;
+      globeEl.current.controls().enableZoom = false;
+      globeEl.current.controls().enablePan = false;
+      globeEl.current.controls().enableRotate = false;
       globeEl.current.pointOfView({ lat: 20, lng: 0, altitude: 2.5 });
     }
 
@@ -111,6 +114,7 @@ const GlobeComponent = () => {
   }
 
   return (
+    <div style={{ pointerEvents: 'none' }}>
     <Globe
       ref={globeEl}
       width={600}
@@ -156,6 +160,7 @@ const GlobeComponent = () => {
       labelDotRadius="size"
       labelDotOrientation={() => 'bottom'}
     />
+    </div>
   );
 };
 
