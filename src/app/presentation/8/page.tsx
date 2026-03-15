@@ -10,7 +10,7 @@ export default function Slide8() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   const growthData = [
-    { month: 'Today', users: 312, brokers: 0 },
+    { month: 'Today', users: 440, brokers: 0 },
     { month: 'Q1 2026', users: 1000, brokers: 2 },
     { month: 'Q2 2026', users: 2500, brokers: 4 },
     { month: 'Q3 2026', users: 5000, brokers: 8 },
@@ -19,10 +19,10 @@ export default function Slide8() {
   ];
 
   const milestones = [
-    { value: '312', label: 'Beta Users', status: 'achieved', icon: Users },
-    { value: '8', label: 'Brokers in Pipeline', status: 'achieved', icon: Building2 },
-    { value: '5', label: 'Demos Complete', status: 'achieved', icon: CheckCircle },
-    { value: '2', label: 'Pilots Ready', status: 'in-progress', icon: Rocket },
+    { value: '440', label: 'Beta Users', status: 'achieved', icon: Users },
+    { value: '13', label: 'Brokers in Pipeline', status: 'achieved', icon: Building2 },
+    { value: '30', label: 'Demos Complete', status: 'achieved', icon: CheckCircle },
+    { value: '1', label: 'Pilots In Progress', status: 'in-progress', icon: Rocket },
   ];
 
   return (
@@ -216,7 +216,7 @@ export default function Slide8() {
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(14)].map((_, i) => (
+        {[...Array(16)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${

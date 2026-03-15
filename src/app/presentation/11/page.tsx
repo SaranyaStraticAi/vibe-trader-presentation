@@ -1,106 +1,66 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Globe2, Award, Building2 } from 'lucide-react';
+import { Calendar, Target, Rocket, CheckCircle } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
-import { DottedMap } from '@/components/ui/dotted-map';
 
 export default function Slide11() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const leadership = [
+  const timeline = [
     {
-      name: 'Saranya A',
-      title: 'CEO',
-      background: [
-        'MS Penn State University',
-        'Serial Entrepreneur',
-        'Business Strategy'
-      ]
+      quarter: 'Now (Q1 2026)',
+      title: 'Launch Pilots',
+      tasks: [
+        'Start Blueberry pilot',
+        'Start D Prime pilot',
+        'Measure retention lift'
+      ],
+      kpis: { users: 1000, brokers: 2, arr: '$0.3M' },
+      status: 'current'
     },
     {
-      name: 'Nithya G',
-      title: 'CTO',
-      background: [
-        'MS Computer Science (AI/ML)',
-        '15+ Years Engineering',
-        'U Cincinnati'
-      ]
+      quarter: 'Q2 2026',
+      title: 'Validate & Scale',
+      tasks: [
+        'Pilot results analysis',
+        'Onboard 3 more brokers',
+        'Multilingual rollout'
+      ],
+      kpis: { users: 5000, brokers: 5, arr: '$1.5M' },
+      status: 'next'
     },
     {
-      name: 'Alex Martinez',
-      title: 'CSO',
-      background: [
-        'Professional Trader',
-        'Product Design Expert',
-        'Strategy Architect'
-      ]
+      quarter: 'Q3 2026',
+      title: 'Accelerate',
+      tasks: [
+        'Full broker rollouts',
+        'Launch affiliate program',
+        'API marketplace'
+      ],
+      kpis: { users: 15000, brokers: 10, arr: '$4.5M' },
+      status: 'future'
     },
     {
-      name: 'Mike Sotello',
-      title: 'CFO',
-      background: [
-        'Serial Business Owner',
-        'Financial Operations',
-        'Strategic Finance'
-      ]
+      quarter: 'Q4 2026',
+      title: 'Series A',
+      tasks: [
+        'Proven unit economics',
+        'International expansion',
+        'Raise Series A'
+      ],
+      kpis: { users: 30000, brokers: 20, arr: '$9M' },
+      status: 'future'
     }
   ];
 
-  const keyPersonnel = [
-    {
-      name: 'Tony Sotello',
-      role: 'Expert Trader & Product Specialist',
-      detail: 'Multi-decade trading experience'
-    },
-    {
-      name: 'Steve Lauver', 
-      role: 'Head of GTM & Strategic Partnerships',
-      detail: 'Enterprise sales, Finance background'
-    }
-  ];
-
-  const additionalTeam = [
-    {
-      name: 'Affiliate Manager',
-      role: 'Partner Growth',
-      detail: '15 affiliates onboarded, 1K users/mo pipeline'
-    },
-    {
-      name: 'Trading Influencer',
-      role: 'Content & Community (Contractor)',
-      detail: 'Professional trader with social following'
-    }
-  ];
-
-  const teamStats = {
-    engineering: 5,
-    sales: 5,
-    design: 3,
-    affiliate: 2,
-    leadership: 6,
-    total: 21,
-    burn: '$20K/month',
-    burnPerPerson: '$0.71/day'
-  };
-
-  const advisors = [
-    {
-      name: 'Anders Brown',
-      title: 'President, Tegria',
-      achievement: '$300M+ Deployed'
-    },
-    {
-      name: 'Edgar Martinez',
-      title: 'MLB Hall of Fame',
-      achievement: 'Co-Founder Plaza Bank'
-    },
-    {
-      name: 'Gregory Brown',
-      title: 'Co-CEO Caprock',
-      achievement: 'Columbia & Berkeley MBA'
-    }
+  const monthlyBurn = [
+    { category: 'Engineering', amount: 8 },
+    { category: 'Sales & Marketing', amount: 5 },
+    { category: 'Operations', amount: 4 },
+    { category: 'Infrastructure', amount: 2 },
+    { category: 'Other', amount: 1 },
   ];
 
   return (
@@ -116,175 +76,147 @@ export default function Slide11() {
 
       <GlobeWatermark />
 
-      <div className="relative z-10 px-20 w-full h-[85vh] flex flex-col justify-center">
+      <div className="relative z-10 px-20 w-full">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="flex-1 flex flex-col"
         >
-            <div className="mb-4">
-                <motion.div 
-                    className="w-12 h-1 bg-black mb-4"
-                    initial={{ width: 0 }}
-                    animate={{ width: 48 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                />
-                <motion.h1
-                    className="text-5xl font-black text-black mb-1 tracking-tighter"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
-                >
-                    The Team
-                </motion.h1>
-                <p className="text-xl text-gray-600 font-light">experienced operators building the future of trading</p>
-            </div>
+          {/* Small accent line */}
+          <motion.div 
+            className="w-12 h-1 bg-black mb-8"
+            initial={{ width: 0 }}
+            animate={{ width: 48 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          />
 
-          {/* Leadership Grid - Top Half */}
-          <div className="grid grid-cols-4 gap-6 mb-8 mt-4">
-            {leadership.map((leader, index) => (
+          <motion.h1
+            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            Our Timeline
+          </motion.h1>
+
+          <motion.p
+            className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-3xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Product built, beta tested, now executing B2B2C go-to-market
+          </motion.p>
+
+          {/* Timeline */}
+          <div className="grid grid-cols-4 gap-6 mb-12">
+            {timeline.map((quarter, index) => (
               <motion.div
                 key={index}
-                className="border-2 border-gray-200 p-5 hover:border-black transition-all group bg-white shadow-sm hover:shadow-md"
-                initial={{ opacity: 0, y: 20 }}
+                className="relative"
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+                transition={{ delay: 0.5 + index * 0.15, duration: 0.5 }}
               >
-                <div className="w-14 h-14 bg-gray-100 rounded-full mb-4 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                  <span className="text-xl font-bold">{leader.name.split(' ').map(n => n[0]).join('')}</span>
+                {/* Connection line */}
+                {index < timeline.length - 1 && (
+                  <div className="absolute top-6 left-full w-full h-0.5 bg-gray-300 z-0" />
+                )}
+                
+                <div className="relative z-10">
+                  {/* Quarter header */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                      quarter.status === 'current' 
+                        ? 'bg-green-600 text-white'
+                        : quarter.status === 'next'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-400 text-white'
+                    }`}>
+                      <Calendar className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-black">{quarter.quarter}</p>
+                      <p className="text-sm text-gray-600">{quarter.title}</p>
+                    </div>
+                  </div>
+
+                  {/* Tasks */}
+                  <div className="bg-gray-50 p-4 border-2 border-gray-200 mb-4">
+                    <ul className="space-y-2">
+                      {quarter.tasks.map((task, taskIndex) => (
+                        <li key={taskIndex} className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-gray-700">{task}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* KPIs */}
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">Users:</span>
+                      <span className="font-bold">{quarter.kpis.users}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">Brokers:</span>
+                      <span className="font-bold">{quarter.kpis.brokers}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">ARR:</span>
+                      <span className="font-bold text-black">{quarter.kpis.arr}</span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-bold text-black text-lg">{leader.name}</h3>
-                <p className="text-sm text-gray-500 font-medium mb-3 uppercase tracking-wide">{leader.title}</p>
-                <ul className="text-xs text-gray-600 space-y-1.5 leading-tight">
-                  {leader.background.map((item, i) => (
-                    <li key={i} className="flex items-start">
-                        <span className="mr-1.5 text-gray-400">•</span>
-                        {item}
-                    </li>
-                  ))}
-                </ul>
               </motion.div>
             ))}
           </div>
 
-          {/* Key Personnel & Additional Team */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            {/* Key Personnel */}
-            <div>
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Key Leadership</h3>
+          {/* Monthly burn breakdown */}
+          <motion.div
+            className="grid grid-cols-2 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            <div className="bg-gray-50 p-6 border-2 border-black">
+              <h3 className="text-lg font-bold text-black mb-4">Monthly Burn Rate: $20K</h3>
+              <p className="text-xs text-gray-600 mb-3 italic">*Some founders not taking salary</p>
               <div className="space-y-2">
-                {keyPersonnel.map((person, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start gap-3 p-3 bg-gray-50 border border-gray-200 rounded"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                  >
-                    <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs font-bold">{person.name.split(' ').map(n => n[0]).join('')}</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-bold text-black text-sm">{person.name}</p>
-                      <p className="text-xs text-gray-600">{person.role}</p>
-                      <p className="text-xs text-gray-500 mt-0.5">{person.detail}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Additional Team & Stats */}
-            <div>
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Growth Team & Stats</h3>
-              <div className="space-y-2">
-                {additionalTeam.map((person, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start gap-3 p-3 bg-blue-50 border border-blue-200 rounded"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
-                  >
-                    <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs font-bold">{index === 0 ? 'AM' : 'TI'}</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-bold text-black text-sm">{person.name}</p>
-                      <p className="text-xs text-gray-600">{person.role}</p>
-                      <p className="text-xs text-gray-500 mt-0.5">{person.detail}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Split: Advisors & Map */}
-          <div className="grid grid-cols-12 gap-8 h-48 border-t border-gray-100 pt-6">
-            
-            {/* Left: Advisors (Compact) */}
-            <div className="col-span-5 flex flex-col justify-between">
-                <div>
-                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Board of Advisors</h3>
-                    <div className="space-y-4">
-                        {advisors.map((advisor, index) => (
-                            <div key={index} className="flex justify-between items-baseline border-b border-dashed border-gray-200 pb-1">
-                                <p className="font-bold text-sm text-black">{advisor.name}</p>
-                                <p className="text-xs text-gray-500">{advisor.title}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="text-xs text-gray-400 mt-2">
-                    Backed by industry leaders in finance & sports
-                </div>
-            </div>
-
-            {/* Right: Operations Map */}
-            <div className="col-span-7 relative h-full">
-                 <DottedMap 
-                    className="w-full h-full bg-gray-900 rounded-lg shadow-inner"
-                    points={[
-                      { x: 25, y: 40, label: "USA" },
-                      { x: 70, y: 55, label: "India" }
-                    ]}
-                    connections={[
-                      [{ x: 25, y: 40 }, { x: 70, y: 55 }]
-                    ]}
-                  />
-                  <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-sm rounded p-3">
-                      <div className="grid grid-cols-2 gap-3 text-white">
-                          <div>
-                              <p className="text-xl font-black">{teamStats.total}+</p>
-                              <p className="text-[9px] uppercase tracking-wider opacity-70">Team Members</p>
-                          </div>
-                          <div>
-                              <p className="text-xl font-black">{teamStats.burn}</p>
-                              <p className="text-[9px] uppercase tracking-wider opacity-70">Monthly Burn*</p>
-                              <p className="text-[8px] opacity-60 mt-0.5">*Some founders no salary</p>
-                          </div>
-                          <div>
-                              <p className="text-xl font-black">24/7</p>
-                              <p className="text-[9px] uppercase tracking-wider opacity-70">Dev Cycle</p>
-                          </div>
-                          <div>
-                              <p className="text-xl font-black text-green-400">{teamStats.burnPerPerson}</p>
-                              <p className="text-[9px] uppercase tracking-wider opacity-70">Per Person</p>
-                          </div>
-                      </div>
+                {monthlyBurn.map((item, index) => (
+                  <div key={index} className="flex justify-between">
+                    <span className="text-gray-600">{item.category}</span>
+                    <span className="font-bold">${item.amount}K ({Math.round(item.amount * 100 / 20)}%)</span>
                   </div>
+                ))}
+              </div>
             </div>
 
-          </div>
-
+            <div className="bg-gray-50 p-6 border-2 border-gray-300">
+              <h3 className="text-lg font-bold text-black mb-4">Current Status</h3>
+              <div className="space-y-3">
+                <div>
+                  <p className="font-bold text-black">✓ Product Complete</p>
+                  <p className="text-sm text-gray-600">AI platform built and tested</p>
+                </div>
+                <div>
+                  <p className="font-bold text-black">✓ Beta Testing Done</p>
+                  <p className="text-sm text-gray-600">312 users, 96% retention</p>
+                </div>
+                <div>
+                  <p className="font-bold text-black">→ Broker Pilots Starting</p>
+                  <p className="text-sm text-gray-600">Blueberry & D Prime ready</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(14)].map((_, i) => (
+        {[...Array(16)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${

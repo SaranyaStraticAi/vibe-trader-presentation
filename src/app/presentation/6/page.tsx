@@ -16,7 +16,7 @@ const DataFlywheel = dynamic(() => import('@/components/DataFlywheelMagic'), {
   ),
 });
 
-export default function Slide5() {
+export default function Slide6() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
@@ -94,7 +94,7 @@ export default function Slide5() {
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(14)].map((_, i) => (
+        {[...Array(16)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${

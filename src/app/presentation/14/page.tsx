@@ -1,38 +1,26 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Award, DollarSign, Shield } from 'lucide-react';
+import { DollarSign, Rocket, Trophy, Clock } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide7() {
-  const { nextSlide, prevSlide } = useSlideNavigation();
+export default function Slide14() {
+  const { prevSlide, nextSlide } = useSlideNavigation();
 
-  const deRiskingFactors = [
-    {
-      icon: Users,
-      title: '8 Brokers in Pipeline',
-      desc: '5.25M+ trader reach, demos complete',
-      highlight: 'B2B2C validated'
-    },
-    {
-      icon: Award,
-      title: '312 Beta Users',
-      desc: '96% retention, 94% would recommend',
-      highlight: 'Product-market fit'
-    },
-    {
-      icon: DollarSign,
-      title: '$20K/mo Burn Rate',
-      desc: '21 team members (some founders no salary)',
-      highlight: 'Ultra-efficient'
-    },
-    {
-      icon: Shield,
-      title: 'Multilingual + AI',
-      desc: 'Only platform with GPT-4, Claude, Gemini',
-      highlight: 'Unique moat'
-    },
+  const useOfFunds = [
+    { name: 'Engineering & Product', value: 40, color: '#10b981' },
+    { name: 'Sales & Marketing', value: 30, color: '#3b82f6' },
+    { name: 'Operations', value: 20, color: '#f59e0b' },
+    { name: 'Legal & Compliance', value: 10, color: '#8b5cf6' },
+  ];
+
+  const investmentTerms = [
+    { label: 'Raise Amount', value: '$1M' },
+    { label: 'Valuation', value: '$10M' },
+    { label: 'Equity', value: '10%' },
+    { label: 'Type', value: 'SAFE' },
   ];
 
   return (
@@ -63,12 +51,12 @@ export default function Slide7() {
           />
 
           <motion.h1
-            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
+            className="text-7xl md:text-8xl font-black text-black mb-4 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            De-Risking the<br />Opportunity
+            Our Ask
           </motion.h1>
 
           <motion.p
@@ -77,118 +65,168 @@ export default function Slide7() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            High-efficiency model that significantly reduces investor risk
+            Join us at the ground floor of a revolutionary opportunity
           </motion.p>
 
           <div className="grid grid-cols-2 gap-12">
-            {/* De-risking factors */}
-            <div className="space-y-4">
-              {deRiskingFactors.map((factor, index) => {
-                const Icon = factor.icon;
-                return (
+            {/* Investment Terms */}
+            <div>
+              <motion.div
+                className="grid grid-cols-2 gap-4 mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, staggerChildren: 0.1 }}
+              >
+                {investmentTerms.map((term, index) => (
                   <motion.div
                     key={index}
-                    className="flex gap-4 p-4 border-2 border-gray-200 hover:border-black transition-colors group"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
+                    className="bg-black text-white p-6 text-center"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
                   >
-                    <div className="w-12 h-12 bg-black text-white flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-bold text-black">{factor.title}</p>
-                      <p className="text-sm text-gray-600 mb-2">{factor.desc}</p>
-                      <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs font-bold">
-                        {factor.highlight}
-                      </span>
-                    </div>
+                    <p className="text-3xl font-black mb-2">{term.value}</p>
+                    <p className="text-sm opacity-80">{term.label}</p>
                   </motion.div>
-                );
-              })}
-            </div>
+                ))}
+              </motion.div>
 
-            {/* Concrete Validation */}
-            <motion.div
-              className="space-y-4"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
-              <h3 className="text-lg font-bold text-black mb-4">Market Validation</h3>
-              
-              <div className="bg-gray-50 border-2 border-black p-4">
-                <p className="font-bold text-black mb-2">Broker Interest Confirmed</p>
+              {/* Unit Economics */}
+              <motion.div
+                className="bg-gray-50 border-2 border-black text-black p-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+              >
+                <DollarSign className="w-8 h-8 mb-3 text-black" />
+                <p className="text-2xl font-black mb-3">
+                  Unit Economics
+                </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Blueberry Markets</span>
-                    <span className="font-bold">Pilot Ready</span>
+                    <span>CAC (via broker)</span>
+                    <span className="font-bold">$0</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">LIRUNEX</span>
-                    <span className="font-bold">Demo Complete</span>
+                    <span>ARPU</span>
+                    <span className="font-bold">$125/mo</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Libertex</span>
-                    <span className="font-bold">In Discussion</span>
+                    <span>Gross Margin</span>
+                    <span className="font-bold">85%</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">EC Markets</span>
-                    <span className="font-bold">Demo Complete</span>
+                  <div className="flex justify-between border-t pt-2">
+                    <span>Payback</span>
+                    <span className="font-bold text-green-600">Instant</span>
                   </div>
                 </div>
-              </div>
-              
-              <div className="bg-green-50 border-2 border-green-200 p-4">
-                <p className="font-bold text-black mb-2">Traction Metrics</p>
-                <div className="space-y-1 text-sm">
-                  <p className="text-gray-700">• 312 active beta users</p>
-                  <p className="text-gray-700">• 8 brokers in pipeline</p>
-                  <p className="text-gray-700">• 5.25M+ trader reach</p>
-                  <p className="text-gray-700">• 5 demos completed</p>
+              </motion.div>
+            </div>
+
+            {/* Use of Funds Chart */}
+            <div>
+              <motion.h3
+                className="text-lg font-bold text-black mb-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                Use of Funds
+              </motion.h3>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+              >
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={useOfFunds}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={120}
+                      paddingAngle={2}
+                      dataKey="value"
+                      label={({name, value}) => `${value}%`}
+                      labelLine={true}
+                    >
+                      {useOfFunds.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      formatter={(value) => `${value}%`}
+                      contentStyle={{ 
+                        backgroundColor: 'white', 
+                        border: '2px solid black',
+                        borderRadius: 0 
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </motion.div>
+
+              {/* Timeline */}
+              <motion.div
+                className="mt-6 bg-gray-50 p-4 border-2 border-gray-300"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <Clock className="w-5 h-5 text-gray-600" />
+                  <p className="font-bold text-black">50-Month Runway</p>
                 </div>
-              </div>
-              
-              <div className="bg-blue-50 border-2 border-blue-200 p-4">
-                <p className="font-bold text-black mb-2">Efficiency Metrics</p>
-                <div className="space-y-1 text-sm">
-                  <p className="text-gray-700">• $20K/month burn rate</p>
-                  <p className="text-gray-700">• 21 team members globally</p>
-                  <p className="text-gray-700">• 50 months runway with $1M</p>
-                  <p className="text-gray-700">• Some founders no salary</p>
-                </div>
-              </div>
-            </motion.div>
+                <p className="text-sm text-gray-600">
+                  4+ years to reach profitability or Series A metrics
+                </p>
+              </motion.div>
+            </div>
           </div>
 
-          {/* Bottom valuation highlight */}
+          {/* Bottom CTA */}
           <motion.div
-            className="mt-12 bg-gray-50 p-6 border-2 border-black"
-            initial={{ opacity: 0, y: 20 }}
+            className="mt-12 bg-black text-white p-8"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
+            transition={{ delay: 1.4, duration: 0.6 }}
           >
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-8 text-center">
               <div>
-                <p className="text-3xl font-black text-black">$10M</p>
-                <p className="text-sm text-gray-600">Pre-money Valuation</p>
+                <Rocket className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-3xl font-black mb-1">10x</p>
+                <p className="text-sm opacity-80">Return Potential</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-black">50mo</p>
-                <p className="text-sm text-gray-600">Runway with $1M</p>
+                <DollarSign className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-3xl font-black mb-1">$100B</p>
+                <p className="text-sm opacity-80">Market Opportunity</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-black">2026</p>
-                <p className="text-sm text-gray-600">Target Exit/Series A</p>
+                <Trophy className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-3xl font-black mb-1">2028</p>
+                <p className="text-sm opacity-80">Exit Timeline</p>
               </div>
             </div>
+          </motion.div>
+
+          {/* Contact info */}
+          <motion.div
+            className="mt-6 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.6, duration: 0.6 }}
+          >
+            <p className="text-lg font-bold text-black">Let's Build the Future Together</p>
+            <p className="text-gray-600">invest@vibetrader.com</p>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(14)].map((_, i) => (
+        {[...Array(16)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${

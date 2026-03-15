@@ -1,251 +1,156 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Target, Rocket, CheckCircle } from 'lucide-react';
+import { DollarSign, Users, Building2, TrendingUp, ArrowRight, Sparkles } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide10() {
+export default function Slide12() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const timeline = [
+  const revenueStreams = [
     {
-      quarter: 'Now (Q1 2026)',
-      title: 'Launch Pilots',
-      tasks: [
-        'Start Blueberry pilot',
-        'Start D Prime pilot',
-        'Measure retention lift'
-      ],
-      kpis: { users: 1000, brokers: 2, arr: '$0.3M' },
-      status: 'current'
+      icon: DollarSign,
+      title: 'Performance-Based CPA',
+      description: '$X per lot',
+      detail: 'Scaled by performance increase',
+      color: 'from-green-500 to-emerald-600'
     },
     {
-      quarter: 'Q2 2026',
-      title: 'Validate & Scale',
-      tasks: [
-        'Pilot results analysis',
-        'Onboard 3 more brokers',
-        'Multilingual rollout'
-      ],
-      kpis: { users: 5000, brokers: 5, arr: '$1.5M' },
-      status: 'next'
+      icon: TrendingUp,
+      title: 'Revenue Share',
+      description: 'Success-aligned partnership',
+      detail: 'Grow together with brokers',
+      color: 'from-blue-500 to-indigo-600'
     },
     {
-      quarter: 'Q3 2026',
-      title: 'Accelerate',
-      tasks: [
-        'Full broker rollouts',
-        'Launch affiliate program',
-        'API marketplace'
-      ],
-      kpis: { users: 15000, brokers: 10, arr: '$4.5M' },
-      status: 'future'
-    },
-    {
-      quarter: 'Q4 2026',
-      title: 'Series A',
-      tasks: [
-        'Proven unit economics',
-        'International expansion',
-        'Raise Series A'
-      ],
-      kpis: { users: 30000, brokers: 20, arr: '$9M' },
-      status: 'future'
+      icon: Building2,
+      title: 'Enterprise Licensing',
+      description: 'White-label platform',
+      detail: 'Full integration solutions',
+      color: 'from-purple-500 to-pink-600'
     }
   ];
 
-  const monthlyBurn = [
-    { category: 'Engineering', amount: 8 },
-    { category: 'Sales & Marketing', amount: 5 },
-    { category: 'Operations', amount: 4 },
-    { category: 'Infrastructure', amount: 2 },
-    { category: 'Other', amount: 1 },
+  const partnershipFlow = [
+    { label: 'Broker Partners', icon: Users },
+    { label: 'AI Intelligence Layer', icon: Sparkles },
+    { label: 'Increased Volume', icon: TrendingUp },
+    { label: 'Shared Success', icon: DollarSign }
   ];
 
   return (
-    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
-      {/* Subtle dot pattern background */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
-          backgroundSize: '20px 20px',
-        }}
-      />
-
-      <GlobeWatermark />
-
-      <div className="relative z-10 px-20 w-full">
+    <div 
+      className="min-h-screen bg-white relative flex items-center justify-center overflow-hidden cursor-pointer"
+      onClick={nextSlide}
+      onKeyDown={(e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+      }}
+      tabIndex={0}
+    >
+      <GlobeWatermark opacity={0.03} />
+      
+      <div className="max-w-7xl mx-auto px-8 py-16 z-10">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          {/* Small accent line */}
-          <motion.div 
-            className="w-12 h-1 bg-black mb-8"
-            initial={{ width: 0 }}
-            animate={{ width: 48 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          />
+          <h1 className="text-7xl font-bold text-black mb-4">
+            Business Model
+          </h1>
+          <p className="text-2xl text-gray-600 mb-4">
+            Creating the AI Intelligence Category for Trading
+          </p>
+          <p className="text-xl text-gray-500 mb-12">
+            Partner with brokers globally • 10-15x trading volume increase
+          </p>
+        </motion.div>
 
-          <motion.h1
-            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            Our Timeline
-          </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+        >
+          {revenueStreams.map((stream, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              className="bg-white rounded-2xl border border-gray-200 p-8 shadow-lg hover:shadow-2xl transition-all"
+            >
+              <div className={`bg-gradient-to-br ${stream.color} w-16 h-16 rounded-xl flex items-center justify-center mb-6`}>
+                <stream.icon className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-2">{stream.title}</h3>
+              <p className="text-3xl font-bold text-black mb-2">{stream.description}</p>
+              <p className="text-gray-600">{stream.detail}</p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-3xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Product built, beta tested, now executing B2B2C go-to-market
-          </motion.p>
-
-          {/* Timeline */}
-          <div className="grid grid-cols-4 gap-6 mb-12">
-            {timeline.map((quarter, index) => (
-              <motion.div
-                key={index}
-                className="relative"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + index * 0.15, duration: 0.5 }}
-              >
-                {/* Connection line */}
-                {index < timeline.length - 1 && (
-                  <div className="absolute top-6 left-full w-full h-0.5 bg-gray-300 z-0" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-8"
+        >
+          <h3 className="text-2xl font-semibold text-black mb-8 text-center">Partnership Flow</h3>
+          <div className="flex items-center justify-between">
+            {partnershipFlow.map((step, index) => (
+              <React.Fragment key={index}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                  className="flex flex-col items-center"
+                >
+                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+                    <step.icon className="w-10 h-10 text-black" />
+                  </div>
+                  <span className="text-sm font-medium text-black text-center max-w-[100px]">
+                    {step.label}
+                  </span>
+                </motion.div>
+                {index < partnershipFlow.length - 1 && (
+                  <motion.div
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: 'auto', opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                  >
+                    <ArrowRight className="w-8 h-8 text-gray-400" />
+                  </motion.div>
                 )}
-                
-                <div className="relative z-10">
-                  {/* Quarter header */}
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      quarter.status === 'current' 
-                        ? 'bg-green-600 text-white'
-                        : quarter.status === 'next'
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-400 text-white'
-                    }`}>
-                      <Calendar className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-black">{quarter.quarter}</p>
-                      <p className="text-sm text-gray-600">{quarter.title}</p>
-                    </div>
-                  </div>
-
-                  {/* Tasks */}
-                  <div className="bg-gray-50 p-4 border-2 border-gray-200 mb-4">
-                    <ul className="space-y-2">
-                      {quarter.tasks.map((task, taskIndex) => (
-                        <li key={taskIndex} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{task}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* KPIs */}
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Users:</span>
-                      <span className="font-bold">{quarter.kpis.users}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Brokers:</span>
-                      <span className="font-bold">{quarter.kpis.brokers}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">ARR:</span>
-                      <span className="font-bold text-black">{quarter.kpis.arr}</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+              </React.Fragment>
             ))}
           </div>
+        </motion.div>
 
-          {/* Monthly burn breakdown */}
-          <motion.div
-            className="grid grid-cols-2 gap-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-          >
-            <div className="bg-gray-50 p-6 border-2 border-black">
-              <h3 className="text-lg font-bold text-black mb-4">Monthly Burn Rate: $20K</h3>
-              <p className="text-xs text-gray-600 mb-3 italic">*Some founders not taking salary</p>
-              <div className="space-y-2">
-                {monthlyBurn.map((item, index) => (
-                  <div key={index} className="flex justify-between">
-                    <span className="text-gray-600">{item.category}</span>
-                    <span className="font-bold">${item.amount}K ({Math.round(item.amount * 100 / 20)}%)</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-gray-50 p-6 border-2 border-gray-300">
-              <h3 className="text-lg font-bold text-black mb-4">Current Status</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-bold text-black">✓ Product Complete</p>
-                  <p className="text-sm text-gray-600">AI platform built and tested</p>
-                </div>
-                <div>
-                  <p className="font-bold text-black">✓ Beta Testing Done</p>
-                  <p className="text-sm text-gray-600">312 users, 96% retention</p>
-                </div>
-                <div>
-                  <p className="font-bold text-black">→ Broker Pilots Starting</p>
-                  <p className="text-sm text-gray-600">Blueberry & D Prime ready</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.4 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-xl text-gray-500 italic">
+            "Performance-based pricing aligned with broker success"
+          </p>
         </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(14)].map((_, i) => (
-          <motion.div
-            key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === 11
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
-            } rounded-full`}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
-          />
-        ))}
-      </div>
-
-      {/* Navigation */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
-        aria-label="Previous slide"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.6 }}
+        className="absolute bottom-8 right-8 flex items-center gap-2 text-gray-400"
       >
-        ←
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
-        aria-label="Next slide"
-      >
-        →
-      </button>
+        <span className="text-sm">Slide 12 of 16</span>
+      </motion.div>
     </div>
   );
 }

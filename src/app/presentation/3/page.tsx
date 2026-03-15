@@ -1,43 +1,53 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Bot, Cloud, BarChart3, Library, Brain, Sparkles } from 'lucide-react';
+import { UserX, Search, Copy, TrendingDown, DollarSign } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Footnote } from '@/components/Footnote';
+import { Footnote, SuperScript } from '@/components/Footnote';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 export default function Slide3() {
-  const { nextSlide, prevSlide } = useSlideNavigation();
+  const { nextSlide, prevSlide, currentSlide } = useSlideNavigation();
 
-  const features = [
-    { 
-      icon: Bot,
-      title: 'AI-Native OS', 
-      desc: 'Latest AI models for trading & analysis',
-    },
-    { 
-      icon: Cloud,
-      title: 'Cloud Backtesting', 
-      desc: 'Test strategies with historical data',
-    },
-    { 
-      icon: BarChart3,
-      title: 'Portfolio Analytics', 
-      desc: 'Behavioral insights on one platform',
-    },
-    { 
-      icon: Library,
-      title: 'Strategy Library', 
-      desc: 'Access proven trading strategies',
-    },
+  const retentionData = [
+    { month: 'Month 1', retention: 100 },
+    { month: 'Month 2', retention: 50 },
+    { month: 'Month 3', retention: 35 },
+    { month: 'Month 6', retention: 25 },
+    { month: 'Month 12', retention: 15 },
   ];
 
-  const confidenceData = [
-    { metric: 'Trading Confidence', before: 30, after: 85 },
-    { metric: 'Trade Volume', before: 40, after: 90 },
-    { metric: 'Win Rate', before: 10, after: 65 },
-    { metric: 'User Retention', before: 25, after: 80 },
+  const costData = [
+    { year: '2020', cost: 200 },
+    { year: '2021', cost: 500 },
+    { year: '2022', cost: 900 },
+    { year: '2023', cost: 1400 },
+    { year: '2024', cost: 2000 },
+  ];
+
+  const problems = [
+    {
+      icon: UserX,
+      title: 'Catastrophic Retention',
+      stat: '<25%',
+      description: '1-year trader retention rate',
+      highlight: true,
+      ref: 1,
+    },
+    {
+      icon: Search,
+      title: 'Acquisition Nightmare',
+      stat: '10x',
+      description: 'Cost increase since 2020',
+      ref: 2,
+    },
+    {
+      icon: Copy,
+      title: 'Zero Differentiation',
+      stat: '95%',
+      description: 'Brokers offer identical features',
+    },
   ];
 
   return (
@@ -51,124 +61,181 @@ export default function Slide3() {
         }}
       />
 
+      {/* Globe watermark */}
       <GlobeWatermark />
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="mb-10"
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-black mb-8"
+            className="w-12 h-1 bg-orange-500 mb-6"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
-          <motion.h1
-            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            Why Traders Care<br />and Keep Coming Back
-          </motion.h1>
+          <h1 className="text-6xl font-black text-black mb-3 tracking-tighter">
+            The Crisis
+          </h1>
+          <p className="text-2xl text-gray-600 font-light">
+            Brokers Face an Existential Threat
+          </p>
+        </motion.div>
 
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-12 font-light"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            AI-powered tools that actually deliver results
-          </motion.p>
-
-          <div className="grid grid-cols-2 gap-12">
-            {/* Features Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              {features.map((feature, index) => {
-                const Icon = feature.icon;
+        {/* Main content grid */}
+        <div className="grid grid-cols-2 gap-12">
+          {/* Left side - Key Problems */}
+          <div>
+            <div className="space-y-4">
+              {problems.map((problem, index) => {
+                const Icon = problem.icon;
                 return (
                   <motion.div
                     key={index}
-                    className="group"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
+                    className={`border ${problem.highlight ? 'border-orange-500 bg-orange-50' : 'border-gray-200 bg-white'} p-6 hover:shadow-lg transition-all`}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
                   >
-                    <div className="border-2 border-gray-200 p-6 hover:border-black transition-colors h-full">
-                      <div className="w-12 h-12 bg-black text-white flex items-center justify-center mb-4 group-hover:bg-gray-700 transition-colors">
+                    <div className="flex items-start gap-4">
+                      <div className={`w-12 h-12 ${problem.highlight ? 'bg-orange-500' : 'bg-gray-800'} text-white flex items-center justify-center flex-shrink-0`}>
                         <Icon className="w-6 h-6" />
                       </div>
-                      <h3 className="text-lg font-bold text-black mb-2">{feature.title}</h3>
-                      <p className="text-sm text-gray-600">{feature.desc}</p>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-black text-xl mb-1">
+                          {problem.title}
+                        </h3>
+                        <div className="flex items-baseline gap-3">
+                          <span className="text-4xl font-black text-black">
+                            {problem.stat}
+                            {problem.ref && <SuperScript number={problem.ref} />}
+                          </span>
+                          <span className="text-gray-600">
+                            {problem.description}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 );
               })}
             </div>
 
-            {/* Chart */}
+            {/* Cost breakdown */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-col"
+              className="mt-6 p-6 bg-gray-50 border border-gray-200"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
             >
-              <h3 className="text-lg font-bold text-black mb-4">Projected Impact on Performance*</h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={confidenceData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis 
-                    dataKey="metric" 
-                    tick={{ fontSize: 12 }}
-                    angle={-20}
-                    textAnchor="end"
-                    height={60}
-                  />
-                  <YAxis 
-                    tick={{ fontSize: 12 }}
-                    label={{ value: 'Score (%)', angle: -90, position: 'insideLeft' }}
-                  />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
-                      border: '2px solid black',
-                      borderRadius: 0 
-                    }}
-                  />
-                  <Bar dataKey="before" fill="#ef4444" name="Before VibeTrader" />
-                  <Bar dataKey="after" fill="#10b981" name="With VibeTrader" />
-                </BarChart>
-              </ResponsiveContainer>
+              <h3 className="font-bold text-black mb-3">The Churn & Burn Model is Dead</h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">New customer acquisition cost:</span>
+                  <span className="font-bold text-black">$200 → $2,000<SuperScript number={3} /></span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Cost to retain existing trader:</span>
+                  <span className="font-bold text-green-600">7x cheaper<SuperScript number={4} /></span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Broker failure rate (Year 1):</span>
+                  <span className="font-bold text-red-600">25%<SuperScript number={5} /></span>
+                </div>
+              </div>
             </motion.div>
           </div>
 
-          {/* Bottom highlight */}
-          <motion.div
-            className="mt-12 flex items-center gap-4 bg-gray-50 p-6 border-2 border-black"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
-          >
-            <Sparkles className="w-8 h-8 text-black" />
-            <div>
-              <p className="text-xl text-black font-bold">
-                Transform your trading with AI-powered intelligence
-              </p>
-              <p className="text-gray-600 mt-1">
-                Join thousands of traders already winning with VibeTrader
-              </p>
-            </div>
-          </motion.div>
+          {/* Right side - Charts */}
+          <div className="space-y-6">
+            {/* Retention Chart */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="bg-white border border-gray-200 p-6"
+            >
+              <h3 className="text-lg font-bold text-black mb-4">Trader Retention Cliff</h3>
+              <ResponsiveContainer width="100%" height={200}>
+                <AreaChart data={retentionData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis dataKey="month" stroke="#6b7280" fontSize={12} />
+                  <YAxis stroke="#6b7280" fontSize={12} />
+                  <Tooltip 
+                    formatter={(value) => `${value}%`}
+                    contentStyle={{ 
+                      backgroundColor: 'white', 
+                      border: '1px solid #e5e7eb',
+                      borderRadius: 0 
+                    }}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="retention" 
+                    stroke="#ef4444" 
+                    fill="#fee2e2"
+                    strokeWidth={2}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </motion.div>
+
+            {/* Acquisition Cost Chart */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              className="bg-white border border-gray-200 p-6"
+            >
+              <h3 className="text-lg font-bold text-black mb-4">Acquisition Cost Explosion</h3>
+              <ResponsiveContainer width="100%" height={200}>
+                <LineChart data={costData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis dataKey="year" stroke="#6b7280" fontSize={12} />
+                  <YAxis stroke="#6b7280" fontSize={12} />
+                  <Tooltip 
+                    formatter={(value) => `$${value}`}
+                    contentStyle={{ 
+                      backgroundColor: 'white', 
+                      border: '1px solid #e5e7eb',
+                      borderRadius: 0 
+                    }}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="cost" 
+                    stroke="#f97316" 
+                    strokeWidth={3}
+                    dot={{ fill: '#f97316', r: 4 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom insight */}
+        <motion.div
+          className="mt-8 text-center p-4 bg-black text-white"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.6 }}
+        >
+          <p className="text-lg">
+            <span className="font-bold">The Verdict:</span> Brokers must innovate or face extinction in a commoditized market
+          </p>
         </motion.div>
       </div>
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(10)].map((_, i) => (
+        {[...Array(16)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
@@ -186,7 +253,11 @@ export default function Slide3() {
       {/* References */}
       <Footnote 
         references={[
-          { number: 1, text: '*Based on backtesting and simulated projections' },
+          { number: 1, text: 'Industry Average Retention Rates, Finance Magnates 2024' },
+          { number: 2, text: 'Digital Acquisition Cost Analysis, Google & Meta Ads Data' },
+          { number: 3, text: 'CAC Growth Study - Bloomberg, Investopedia Ad Networks' },
+          { number: 4, text: 'Customer Retention Economics Research 2024' },
+          { number: 5, text: 'New Broker Failure Rate Analysis 2023-2024' },
         ]}
       />
 

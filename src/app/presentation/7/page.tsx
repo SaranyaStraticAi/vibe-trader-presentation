@@ -7,7 +7,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { Footnote, SuperScript } from '@/components/Footnote';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide6() {
+export default function Slide7() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   const marketComparison = [
@@ -200,11 +200,11 @@ export default function Slide6() {
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(14)].map((_, i) => (
+        {[...Array(16)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 5
+              i === 6
                 ? 'w-8 bg-black'
                 : 'w-2 bg-gray-300'
             } rounded-full`}

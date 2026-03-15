@@ -1,54 +1,72 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { DollarSign, TrendingUp, Users, BarChart3, AlertTriangle, Languages, Brain, Zap } from 'lucide-react';
+import { Sparkles, Brain, TrendingUp, MessageSquare, BarChart3, Zap, CheckCircle, Star } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide4() {
-  const { nextSlide, prevSlide } = useSlideNavigation();
+export default function Slide5() {
+  const { prevSlide, nextSlide } = useSlideNavigation();
 
-  const retentionComparison = [
-    { month: 'Month 1', current: 100, target: 100, potential: 100 },
-    { month: 'Month 2', current: 70, target: 85, potential: 90 },
-    { month: 'Month 3', current: 50, target: 70, potential: 80 },
-    { month: 'Month 6', current: 30, target: 55, potential: 70 },
-    { month: 'Month 9', current: 25, target: 50, potential: 65 },
-    { month: 'Month 12', current: 20, target: 50, potential: 60 },
+  const features = [
+    {
+      icon: Brain,
+      title: 'AI Strategy Builder',
+      description: 'Create strategies in plain English',
+      screenshot: 'Strategy: "Buy when RSI < 30 and MACD crosses up"',
+      time: '30 seconds'
+    },
+    {
+      icon: MessageSquare,
+      title: 'Natural Language Trading',
+      description: 'Talk to your portfolio like a copilot',
+      screenshot: 'You: "What\'s my risk exposure on EUR/USD?"',
+      time: 'Real-time'
+    },
+    {
+      icon: BarChart3,
+      title: 'One-Click Backtesting',
+      description: 'Test strategies across 10 years of data',
+      screenshot: 'Backtest complete: 73% win rate, 2.3 Sharpe ratio',
+      time: '5 seconds'
+    },
+    {
+      icon: Sparkles,
+      title: 'Automated Journaling',
+      description: 'AI captures every trade decision',
+      screenshot: 'Trade #1247: Entered due to support bounce pattern',
+      time: 'Automatic'
+    }
   ];
 
-  const valueProps = [
-    { name: 'Volume Increase', value: 45, color: '#10b981' },
-    { name: 'Retention Lift', value: 35, color: '#3b82f6' },
-    { name: 'CAC Reduction', value: 20, color: '#f59e0b' },
+  const testimonials = [
+    {
+      quote: "Completely transformed my trading. Strategy Builder helps me structure strategies with clarity. The Telegram notifications ensure I never miss important updates.",
+      author: "Farida Haruna, Nigeria",
+      metric: "Professional Trader"
+    },
+    {
+      quote: "Before Vibe, my trading felt scattered. Now I'm more patient, selective, and less reactive emotionally. Feels built by people who understand real traders.",
+      author: "Experienced Trader, India",
+      metric: "4+ years experience"
+    },
+    {
+      quote: "Strategy Builder is extremely powerful and well-designed. It's genuinely useful for improving trading decisions.",
+      author: "King Dave, South Africa",
+      metric: "Twitter Trading Community"
+    },
+    {
+      quote: "Helped me stay disciplined and avoid overtrading by keeping focus on high quality setups only. The simplicity is what stood out.",
+      author: "Mukunth, India",
+      metric: "2+ years experience"
+    }
   ];
 
-  const brokerPains = [
-    { 
-      icon: AlertTriangle, 
-      title: '70-80% Churn Rate', 
-      desc: 'Most traders quit in 90 days',
-      solution: '→ Target: 50%+ retention'
-    },
-    { 
-      icon: TrendingUp, 
-      title: 'Low Trading Volume', 
-      desc: 'Slow analysis = fewer trades',
-      solution: '→ 1.5-2x volume (seen 10-15x)'
-    },
-    { 
-      icon: DollarSign, 
-      title: '$2,000-4,000 CAC', 
-      desc: 'Massive acquisition costs',
-      solution: '→ Better LTV/CAC ratio'
-    },
-    { 
-      icon: Languages, 
-      title: 'English-Only Tools', 
-      desc: 'Losing global traders',
-      solution: '→ Multilingual AI platform'
-    },
+  const metrics = [
+    { label: 'Avg Strategy Creation', value: '2 min', comparison: 'vs 2 hours traditional' },
+    { label: 'AI Response Time', value: '<1 sec', comparison: 'Real-time insights' },
+    { label: 'Historical Data', value: '10 years', comparison: 'Tick-level accuracy' },
+    { label: 'User Satisfaction', value: '94%', comparison: 'Would recommend' }
   ];
 
   return (
@@ -72,53 +90,65 @@ export default function Slide4() {
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-black mb-8"
+            className="w-12 h-1 bg-black mb-6"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
+            className="text-5xl md:text-6xl font-black text-black mb-2 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Why Brokers Want In
+            See It In Action
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-12 font-light"
+            className="text-lg md:text-xl text-gray-600 mb-8 font-light"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            AI speeds up analysis → More trades → Better retention → Higher revenue
+            Real product, real users, real results
           </motion.p>
 
-          {/* Main content grid */}
-          <div className="grid grid-cols-3 gap-8">
-            {/* Broker Pain Points */}
+          <div className="grid grid-cols-2 gap-8">
+            {/* Left side - Feature Screenshots */}
             <div className="space-y-3">
-              <h3 className="text-sm font-bold text-black mb-3">Broker Pain Points</h3>
-              {brokerPains.map((pain, index) => {
-                const Icon = pain.icon;
+              <motion.h3
+                className="font-bold text-black mb-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                Core Features Live Now
+              </motion.h3>
+              
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
                 return (
                   <motion.div
                     key={index}
-                    className="border border-gray-200 p-3 hover:border-black transition-all"
+                    className="border border-gray-200 p-3 hover:border-black transition-all group"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
+                    transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
                   >
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-4 h-4" />
+                      <div className="w-10 h-10 bg-black text-white rounded flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
+                        <Icon className="w-5 h-5" />
                       </div>
                       <div className="flex-1">
-                        <p className="font-bold text-black text-sm">{pain.title}</p>
-                        <p className="text-xs text-gray-600">{pain.desc}</p>
-                        <p className="text-xs text-green-600 font-bold mt-1">{pain.solution}</p>
+                        <div className="flex items-center justify-between mb-1">
+                          <p className="font-bold text-black text-sm">{feature.title}</p>
+                          <span className="text-xs text-green-600 font-bold">{feature.time}</span>
+                        </div>
+                        <p className="text-xs text-gray-600 mb-2">{feature.description}</p>
+                        <div className="bg-gray-50 p-2 rounded border border-gray-200">
+                          <code className="text-xs text-gray-700">{feature.screenshot}</code>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -126,144 +156,91 @@ export default function Slide4() {
               })}
             </div>
 
-            {/* Retention Comparison Chart */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
-              <h3 className="text-sm font-bold text-black mb-3">Retention Improvement Opportunity</h3>
-              <ResponsiveContainer width="100%" height={250}>
-                <LineChart data={retentionComparison}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="month" tick={{ fontSize: 11 }} />
-                  <YAxis tick={{ fontSize: 11 }} />
-                  <Tooltip 
-                    formatter={(value) => `${value}%`}
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
-                      border: '2px solid black',
-                      borderRadius: 0 
-                    }}
-                  />
-                  <Line type="monotone" dataKey="current" stroke="#ef4444" strokeWidth={2} name="Current State" />
-                  <Line type="monotone" dataKey="target" stroke="#f59e0b" strokeWidth={2} strokeDasharray="5 5" name="Pilot Target" />
-                  <Line type="monotone" dataKey="potential" stroke="#10b981" strokeWidth={2} strokeDasharray="3 3" name="Future Potential" />
-                </LineChart>
-              </ResponsiveContainer>
-              <div className="mt-2 text-xs text-center text-gray-600">
-                <span className="text-red-500">● Current: 20%</span>
-                <span className="mx-2">→</span>
-                <span className="text-orange-500">● Target: 50%</span>
-                <span className="mx-2">→</span>
-                <span className="text-green-600">● Potential: 60%+</span>
-              </div>
-            </motion.div>
-
-            {/* Value Creation */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
-              <h3 className="text-sm font-bold text-black mb-3">Expected Pilot Outcomes</h3>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={valueProps}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={70}
-                    dataKey="value"
-                    label={({name, value}) => `${value}%`}
-                    labelLine={false}
-                  >
-                    {valueProps.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="space-y-2 mt-3">
-                {valueProps.map((item, index) => (
-                  <div key={index} className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3" style={{ backgroundColor: item.color }}></div>
-                      <span>{item.name}</span>
+            {/* Right side - Testimonials & Metrics */}
+            <div className="space-y-4">
+              {/* User Testimonials */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+              >
+                <h3 className="font-bold text-black mb-3">What Real Users Say</h3>
+                <div className="space-y-2">
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="bg-gray-50 p-2.5 border-l-4 border-black">
+                      <div className="flex items-start gap-1 mb-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-[11px] text-gray-700 italic mb-1.5 leading-tight">"{testimonial.quote}"</p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-[10px] font-bold text-black">- {testimonial.author}</p>
+                        <span className="text-[10px] text-green-600 font-bold">{testimonial.metric}</span>
+                      </div>
                     </div>
-                    <span className="font-bold">{item.value}%</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Performance Metrics */}
+              <motion.div
+                className="border-2 border-black p-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0, duration: 0.5 }}
+              >
+                <h3 className="font-bold text-black mb-3">Platform Performance</h3>
+                <div className="space-y-2">
+                  {metrics.map((metric, index) => (
+                    <div key={index} className="flex justify-between items-center">
+                      <span className="text-xs text-gray-600">{metric.label}</span>
+                      <div className="text-right">
+                        <span className="font-bold text-black text-sm">{metric.value}</span>
+                        <p className="text-xs text-gray-500">{metric.comparison}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
 
-          {/* Revenue Model & ROI */}
-          <div className="grid grid-cols-2 gap-6 mt-8">
-            {/* Revenue Model */}
-            <motion.div
-              className="bg-gray-50 border-2 border-black p-6"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
-            >
-              <p className="text-sm font-bold text-black mb-3">Revenue Model</p>
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Per Active Trader</span>
-                  <span className="font-bold">$100-150/mo</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Paid by Broker</span>
-                  <span className="font-bold">100%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">No upfront cost</span>
-                  <span className="font-bold">$0</span>
-                </div>
+          {/* Bottom CTA section */}
+          <motion.div
+            className="mt-8 bg-black text-white p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+          >
+            <div className="grid grid-cols-3 gap-6 text-center">
+              <div>
+                <Zap className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-2xl font-black">312</p>
+                <p className="text-xs opacity-80">Active Beta Users</p>
               </div>
-              <div className="mt-3 pt-3 border-t border-gray-300">
-                <p className="text-xs text-gray-600">Example: 1,000 traders</p>
-                <p className="text-lg font-black text-black">$1.5M ARR</p>
-                <p className="text-xs text-gray-600">@ $125/trader/month</p>
+              <div>
+                <CheckCircle className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-2xl font-black">4</p>
+                <p className="text-xs opacity-80">Enterprise Demos</p>
               </div>
-            </motion.div>
-
-            {/* ROI Metrics */}
-            <motion.div
-              className="bg-black text-white p-6"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
-            >
-              <p className="text-sm font-bold mb-3">Pilot Results Expected</p>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <p className="text-2xl font-black text-green-400">1.5-2x</p>
-                  <p className="text-xs opacity-80">Volume increase</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-green-400">2.5x</p>
-                  <p className="text-xs opacity-80">Retention lift</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-green-400">8</p>
-                  <p className="text-xs opacity-80">Brokers ready</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-yellow-400">Q2 '26</p>
-                  <p className="text-xs opacity-80">Market launch</p>
-                </div>
+              <div>
+                <TrendingUp className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-2xl font-black">94%</p>
+                <p className="text-xs opacity-80">Would Recommend</p>
               </div>
-            </motion.div>
-          </div>
+            </div>
+            <div className="mt-4 text-center">
+              <p className="text-sm font-bold">Live Demo Available Upon Request</p>
+              <p className="text-xs opacity-70 mt-1">See the full platform in action with real trading data</p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(14)].map((_, i) => (
+        {[...Array(16)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
@@ -289,9 +266,9 @@ export default function Slide4() {
       <button
         onClick={nextSlide}
         className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
-        aria-label="Next slide"
+        aria-label="Back to start"
       >
-        →
+        ↺
       </button>
     </div>
   );
