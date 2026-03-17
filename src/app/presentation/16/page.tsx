@@ -11,20 +11,20 @@ export default function Slide16() {
   const deRiskingFactors = [
     {
       icon: Users,
-      title: '8 Brokers in Pipeline',
-      desc: '5.25M+ trader reach, demos complete',
+      title: '20 Brokers in Pipeline',
+      desc: '5M+ trader reach, multiple demos complete',
       highlight: 'B2B2C validated'
     },
     {
       icon: Award,
-      title: '440 Beta Users',
-      desc: '96% retention, 94% would recommend',
+      title: '456 Users',
+      desc: 'Active traders using the platform',
       highlight: 'Product-market fit'
     },
     {
       icon: DollarSign,
       title: '$20K/mo Burn Rate',
-      desc: '21 team members (some founders no salary)',
+      desc: '14 team members (some founders no salary)',
       highlight: 'Ultra-efficient'
     },
     {
@@ -121,20 +121,20 @@ export default function Slide16() {
                 <p className="font-bold text-black mb-2">Broker Interest Confirmed</p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
+                    <span className="text-gray-600">Trading Latam</span>
+                    <span className="font-bold text-green-600">Pilot Live</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">HFM Markets</span>
+                    <span className="font-bold">Testing / Pilot Interest</span>
+                  </div>
+                  <div className="flex justify-between">
                     <span className="text-gray-600">Blueberry Markets</span>
-                    <span className="font-bold">Pilot Ready</span>
+                    <span className="font-bold">Pilot Interest</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">LIRUNEX</span>
-                    <span className="font-bold">Demo Complete</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Libertex</span>
-                    <span className="font-bold">In Discussion</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">EC Markets</span>
-                    <span className="font-bold">Demo Complete</span>
+                    <span className="text-gray-600">NAGA Group</span>
+                    <span className="font-bold">Partner Interest</span>
                   </div>
                 </div>
               </div>
@@ -142,10 +142,10 @@ export default function Slide16() {
               <div className="bg-green-50 border-2 border-green-200 p-4">
                 <p className="font-bold text-black mb-2">Traction Metrics</p>
                 <div className="space-y-1 text-sm">
-                  <p className="text-gray-700">• 312 active beta users</p>
-                  <p className="text-gray-700">• 8 brokers in pipeline</p>
-                  <p className="text-gray-700">• 5.25M+ trader reach</p>
-                  <p className="text-gray-700">• 5 demos completed</p>
+                  <p className="text-gray-700">• 456 active users</p>
+                  <p className="text-gray-700">• 20 brokers in pipeline</p>
+                  <p className="text-gray-700">• 5M+ trader reach</p>
+                  <p className="text-gray-700">• Multiple demos completed</p>
                 </div>
               </div>
               
@@ -153,8 +153,8 @@ export default function Slide16() {
                 <p className="font-bold text-black mb-2">Efficiency Metrics</p>
                 <div className="space-y-1 text-sm">
                   <p className="text-gray-700">• $20K/month burn rate</p>
-                  <p className="text-gray-700">• 21 team members globally</p>
-                  <p className="text-gray-700">• 50 months runway with $1M</p>
+                  <p className="text-gray-700">• 14 team members globally</p>
+                  <p className="text-gray-700">• 12 months runway with $1M</p>
                   <p className="text-gray-700">• Some founders no salary</p>
                 </div>
               </div>
@@ -174,12 +174,12 @@ export default function Slide16() {
                 <p className="text-sm text-gray-600">Pre-money Valuation</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-black">50mo</p>
+                <p className="text-3xl font-black text-black">12mo</p>
                 <p className="text-sm text-gray-600">Runway with $1M</p>
               </div>
               <div>
                 <p className="text-3xl font-black text-black">2026</p>
-                <p className="text-sm text-gray-600">Target Exit/Series A</p>
+                <p className="text-sm text-gray-600">Target Series A</p>
               </div>
             </div>
           </motion.div>

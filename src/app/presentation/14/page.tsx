@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { DollarSign, Rocket, Trophy, Clock } from 'lucide-react';
+import { DollarSign, Rocket, Clock } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
@@ -99,16 +99,17 @@ export default function Slide14() {
                 transition={{ delay: 1, duration: 0.6 }}
               >
                 <DollarSign className="w-8 h-8 mb-3 text-black" />
-                <p className="text-2xl font-black mb-3">
-                  Unit Economics
+                <p className="text-2xl font-black mb-1">
+                  Target Unit Economics
                 </p>
+                <p className="text-xs text-gray-500 mb-3">Pre-revenue • B2B2C model</p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span>CAC (via broker)</span>
                     <span className="font-bold">$0</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>ARPU</span>
+                    <span>Target ARPU</span>
                     <span className="font-bold">$125/mo</span>
                   </div>
                   <div className="flex justify-between">
@@ -176,10 +177,10 @@ export default function Slide14() {
               >
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="w-5 h-5 text-gray-600" />
-                  <p className="font-bold text-black">50-Month Runway</p>
+                  <p className="font-bold text-black">12-Month Runway</p>
                 </div>
                 <p className="text-sm text-gray-600">
-                  4+ years to reach profitability or Series A metrics
+                  Path to Series A with proven unit economics
                 </p>
               </motion.div>
             </div>
@@ -192,7 +193,7 @@ export default function Slide14() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4, duration: 0.6 }}
           >
-            <div className="grid grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-2 gap-8 text-center max-w-2xl mx-auto">
               <div>
                 <Rocket className="w-8 h-8 mx-auto mb-2" />
                 <p className="text-3xl font-black mb-1">10x</p>
@@ -202,11 +203,6 @@ export default function Slide14() {
                 <DollarSign className="w-8 h-8 mx-auto mb-2" />
                 <p className="text-3xl font-black mb-1">$100B</p>
                 <p className="text-sm opacity-80">Market Opportunity</p>
-              </div>
-              <div>
-                <Trophy className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-3xl font-black mb-1">2028</p>
-                <p className="text-sm opacity-80">Exit Timeline</p>
               </div>
             </div>
           </motion.div>
