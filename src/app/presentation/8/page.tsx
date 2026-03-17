@@ -1,28 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Rocket, Users, TrendingUp, Building2, CheckCircle, Globe } from 'lucide-react';
+import { Rocket, Users, Building2, CheckCircle } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 export default function Slide8() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   const growthData = [
-    { month: 'Today', users: 440, brokers: 0 },
-    { month: 'Q1 2026', users: 1000, brokers: 2 },
-    { month: 'Q2 2026', users: 2500, brokers: 4 },
-    { month: 'Q3 2026', users: 5000, brokers: 8 },
-    { month: 'Q4 2026', users: 10000, brokers: 15 },
-    { month: '2027', users: 25000, brokers: 30 },
+    { month: 'Today', users: 456, brokers: 1 },
+    { month: 'Q1 2026', users: 1000, brokers: 5 },
+    { month: 'Q2 2026', users: 2500, brokers: 10 },
+    { month: 'Q3 2026', users: 5000, brokers: 15 },
+    { month: 'Q4 2026', users: 10000, brokers: 25 },
+    { month: '2027', users: 25000, brokers: 40 },
   ];
 
   const milestones = [
-    { value: '440', label: 'Beta Users', status: 'achieved', icon: Users },
-    { value: '13', label: 'Brokers in Pipeline', status: 'achieved', icon: Building2 },
-    { value: '30', label: 'Demos Complete', status: 'achieved', icon: CheckCircle },
-    { value: '1', label: 'Pilots In Progress', status: 'in-progress', icon: Rocket },
+    { value: '456', label: 'Beta Users', status: 'achieved', icon: Users },
+    { value: '20', label: 'Brokers in Pipeline', status: 'achieved', icon: Building2 },
+    { value: '17', label: 'Demos Complete', status: 'achieved', icon: CheckCircle },
+    { value: '1', label: 'Active Pilot', status: 'achieved', icon: Rocket },
   ];
 
   return (
@@ -61,154 +61,97 @@ export default function Slide8() {
             Current Traction & Projections
           </motion.h1>
 
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-3xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            312 beta users • 8 brokers engaged • 5.25M trader reach
-          </motion.p>
-
-          {/* Growth Charts */}
-          <div className="grid grid-cols-2 gap-8 mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <h3 className="text-lg font-bold text-black mb-4">B2B2C User Growth (via Brokers)</h3>
-              <ResponsiveContainer width="100%" height={250}>
-                <AreaChart data={growthData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="month" tick={{ fontSize: 11 }} />
-                  <YAxis tick={{ fontSize: 11 }} />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
-                      border: '2px solid black',
-                      borderRadius: 0 
-                    }}
-                  />
-                  <Area 
-                    type="monotone" 
-                    dataKey="users" 
-                    stroke="#10b981" 
-                    fill="#10b981" 
-                    fillOpacity={0.6}
-                    strokeWidth={2}
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
-              <h3 className="text-lg font-bold text-black mb-4">Broker Partner Growth</h3>
-              <ResponsiveContainer width="100%" height={250}>
-                <LineChart data={growthData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="month" tick={{ fontSize: 11 }} />
-                  <YAxis tick={{ fontSize: 11 }} />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
-                      border: '2px solid black',
-                      borderRadius: 0 
-                    }}
-                  />
-                  <Line 
-                    type="monotone" 
-                    dataKey="brokers" 
-                    stroke="#3b82f6" 
-                    strokeWidth={3}
-                    dot={{ fill: '#3b82f6', r: 4 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </motion.div>
-          </div>
-
-          {/* Milestones */}
+          {/* Milestones - Primary Focus */}
           <motion.div
-            className="grid grid-cols-4 gap-4"
+            className="grid grid-cols-4 gap-6 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.9, staggerChildren: 0.1 }}
+            transition={{ delay: 0.5, staggerChildren: 0.1 }}
           >
             {milestones.map((milestone, index) => {
               const Icon = milestone.icon;
               return (
                 <motion.div
                   key={index}
-                  className={`p-4 border-2 text-center ${
-                    milestone.status === 'achieved' 
-                      ? 'border-black bg-gray-50'
-                      : milestone.status === 'in-progress'
-                      ? 'border-gray-600 bg-gray-50'
-                      : milestone.status === 'upcoming'
-                      ? 'border-gray-400 bg-gray-50'
-                      : 'border-gray-300 bg-gray-50'
-                  }`}
+                  className="p-6 border-2 border-black bg-white text-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + index * 0.1 }}
+                  transition={{ delay: 0.6 + index * 0.1 }}
                 >
-                  <Icon className={`w-8 h-8 mx-auto mb-2 ${
-                    milestone.status === 'achieved' 
-                      ? 'text-black'
-                      : milestone.status === 'in-progress'
-                      ? 'text-gray-600'
-                      : milestone.status === 'upcoming'
-                      ? 'text-gray-500'
-                      : 'text-gray-400'
-                  }`} />
-                  <p className="text-2xl font-black text-black">{milestone.value}</p>
-                  <p className="text-sm text-gray-600">{milestone.label}</p>
-                  {milestone.status === 'achieved' && (
-                    <span className="inline-block mt-2 px-2 py-1 bg-black text-white text-xs font-bold">
-                      ACHIEVED
-                    </span>
-                  )}
-                  {milestone.status === 'in-progress' && (
-                    <span className="inline-block mt-2 px-2 py-1 bg-gray-600 text-white text-xs font-bold">
-                      IN PROGRESS
-                    </span>
-                  )}
+                  <Icon className="w-10 h-10 mx-auto mb-3 text-black" />
+                  <p className="text-4xl font-black text-black">{milestone.value}</p>
+                  <p className="text-sm text-gray-600 mt-1">{milestone.label}</p>
                 </motion.div>
               );
             })}
           </motion.div>
 
-          {/* Key Broker Traction */}
+          {/* Broker Pipeline Status */}
           <motion.div
-            className="mt-8 bg-gray-50 p-6 border-2 border-black"
+            className="bg-black text-white p-6 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.6 }}
+            transition={{ delay: 1, duration: 0.6 }}
           >
+            <h3 className="text-lg font-bold mb-4 opacity-70">Pipeline Progression</h3>
             <div className="grid grid-cols-3 gap-6">
-              <div>
-                <p className="text-xl font-bold text-black">Blueberry + D Prime</p>
-                <p className="text-sm text-gray-600">Pilots starting Q1 2026</p>
-                <p className="text-2xl font-black text-green-600 mt-2">2.05M</p>
-                <p className="text-xs text-gray-600">Combined traders</p>
+              <div className="border-l-4 border-green-400 pl-4">
+                <p className="text-green-400 text-sm font-bold uppercase tracking-wide">Pilot Live</p>
+                <p className="text-xl font-black mt-1">Trading Latam</p>
+                <p className="text-sm opacity-60">Contract signed, launched</p>
               </div>
-              <div>
-                <p className="text-xl font-bold text-black">Libertex</p>
-                <p className="text-sm text-gray-600">Multilingual expansion</p>
-                <p className="text-2xl font-black text-blue-600 mt-2">2.9M</p>
-                <p className="text-xs text-gray-600">European traders</p>
+              <div className="border-l-4 border-blue-400 pl-4">
+                <p className="text-blue-400 text-sm font-bold uppercase tracking-wide">Entering Pilot</p>
+                <p className="text-xl font-black mt-1">NAGA, Blueberry, HFM</p>
+                <p className="text-sm opacity-60">High interest, scheduling kickoff</p>
               </div>
-              <div>
-                <p className="text-xl font-bold text-black">Total Pipeline</p>
-                <p className="text-sm text-gray-600">8 brokers engaged</p>
-                <p className="text-2xl font-black text-black mt-2">5.25M+</p>
-                <p className="text-xs text-gray-600">Total trader reach</p>
+              <div className="border-l-4 border-gray-400 pl-4">
+                <p className="text-gray-400 text-sm font-bold uppercase tracking-wide">In Pipeline</p>
+                <p className="text-xl font-black mt-1">12 Brokers + 8 Partners</p>
+                <p className="text-sm opacity-60">Active demos & conversations</p>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Growth Projections */}
+          <motion.div
+            className="grid grid-cols-2 gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            <div className="bg-gray-50 p-4 border border-gray-300">
+              <h3 className="text-sm font-bold text-gray-700 mb-2">Projected User Growth</h3>
+              <ResponsiveContainer width="100%" height={120}>
+                <AreaChart data={growthData}>
+                  <XAxis dataKey="month" tick={{ fontSize: 9 }} stroke="#6b7280" />
+                  <YAxis tick={{ fontSize: 9 }} stroke="#6b7280" />
+                  <Area
+                    type="monotone"
+                    dataKey="users"
+                    stroke="#10b981"
+                    fill="#10b981"
+                    fillOpacity={0.3}
+                    strokeWidth={2}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="bg-gray-50 p-4 border border-gray-300">
+              <h3 className="text-sm font-bold text-gray-700 mb-2">Projected Broker Partners</h3>
+              <ResponsiveContainer width="100%" height={120}>
+                <LineChart data={growthData}>
+                  <XAxis dataKey="month" tick={{ fontSize: 9 }} stroke="#6b7280" />
+                  <YAxis tick={{ fontSize: 9 }} stroke="#6b7280" />
+                  <Line
+                    type="monotone"
+                    dataKey="brokers"
+                    stroke="#3b82f6"
+                    strokeWidth={2}
+                    dot={{ fill: '#3b82f6', r: 3 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </motion.div>
         </motion.div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Database, Brain, Target, Zap } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 import dynamic from 'next/dynamic';
@@ -33,63 +34,95 @@ export default function Slide6() {
       <GlobeWatermark />
 
       <div className="relative z-10 px-20 w-full">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          {/* Small accent line */}
-          <motion.div 
-            className="w-12 h-1 bg-black mb-8"
-            initial={{ width: 0 }}
-            animate={{ width: 48 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          />
-
-          <motion.h1
-            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+        <div className="grid grid-cols-2 gap-8 items-center">
+          {/* Left Column - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            Our Moat:<br />Why Every Trade<br />Makes Us Smarter
-          </motion.h1>
-
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-16 font-light max-w-3xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Self-reinforcing data advantage that compounds over time
-          </motion.p>
-
-          {/* Data Flywheel Visualization */}
-          <div className="relative">
-            <DataFlywheel />
-
-            {/* Data usage points */}
+            {/* Small accent line */}
             <motion.div
-              className="grid grid-cols-3 gap-6 mt-12"
+              className="w-12 h-1 bg-black mb-6"
+              initial={{ width: 0 }}
+              animate={{ width: 48 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            />
+
+            <motion.h1
+              className="text-5xl font-black text-black mb-3 tracking-tighter"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <div className="bg-gray-50 p-4 border-2 border-gray-300">
-                <p className="font-bold text-black mb-1">Marketing & Sales</p>
-                <p className="text-sm text-gray-600">Target right customers</p>
+              Our Moat:<br />Why Every Trade<br />Makes Us Smarter
+            </motion.h1>
+
+            <motion.p
+              className="text-lg text-gray-600 mb-8 font-light"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              More users → More data → Smarter AI → Better outcomes → Repeat
+            </motion.p>
+
+            {/* Flywheel pillars - stacked vertically with matching icons */}
+            <motion.div
+              className="space-y-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
+              <div className="flex items-center gap-4 bg-gradient-to-r from-blue-50 to-cyan-50 p-4 border-2 border-black">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Database className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="font-bold text-black">Cross-Broker Data</p>
+                  <p className="text-sm text-gray-600">Trades, intent & strategies across all brokers - patterns no single broker sees</p>
+                </div>
               </div>
-              <div className="bg-gray-50 p-4 border-2 border-gray-300">
-                <p className="font-bold text-black mb-1">Data as a Service</p>
-                <p className="text-sm text-gray-600">Monetize insights</p>
+              <div className="flex items-center gap-4 bg-gradient-to-r from-violet-50 to-purple-50 p-4 border-2 border-black">
+                <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Brain className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="font-bold text-black">We Own The Data</p>
+                  <p className="text-sm text-gray-600">Users pick ChatGPT, Claude, Gemini - but none of them have our data</p>
+                </div>
               </div>
-              <div className="bg-gray-50 p-4 border-2 border-gray-300">
-                <p className="font-bold text-black mb-1">New Technologies</p>
-                <p className="text-sm text-gray-600">Build better products</p>
+              <div className="flex items-center gap-4 bg-gradient-to-r from-pink-50 to-rose-50 p-4 border-2 border-black">
+                <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Target className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="font-bold text-black">AI Gets Smarter</p>
+                  <p className="text-sm text-gray-600">More data = better predictions. Models keep learning and improving</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 bg-gradient-to-r from-amber-50 to-orange-50 p-4 border-2 border-black">
+                <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="font-bold text-black">Better Outcomes</p>
+                  <p className="text-sm text-gray-600">Traders win more → attracts more users → cycle repeats</p>
+                </div>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          {/* Right Column - Flywheel Graphic */}
+          <motion.div
+            className="flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            <DataFlywheel />
+          </motion.div>
+        </div>
       </div>
 
       {/* Progress indicator */}

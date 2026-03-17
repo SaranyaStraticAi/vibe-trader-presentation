@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function DataFlywheelMagic() {
   return (
-    <div className="relative h-[600px] w-[600px] mx-auto overflow-hidden flex items-center justify-center">
+    <div className="relative h-[500px] w-[500px] mx-auto flex items-center justify-center">
       {/* Center Hub - The Core Value */}
       <motion.div 
         className="relative z-10 w-40 h-40 bg-black rounded-full flex items-center justify-center shadow-2xl border border-gray-800"
@@ -58,7 +58,7 @@ export default function DataFlywheelMagic() {
                 <Database className="h-8 w-8 text-white" />
             </div>
             <div className="absolute -bottom-8 whitespace-nowrap rounded-md bg-gray-900 px-3 py-1 text-xs font-bold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                Trading Data
+                Cross-Broker Data
             </div>
         </div>
 
@@ -68,7 +68,7 @@ export default function DataFlywheelMagic() {
                 <Brain className="h-8 w-8 text-white" />
             </div>
             <div className="absolute -bottom-8 whitespace-nowrap rounded-md bg-gray-900 px-3 py-1 text-xs font-bold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                AI Models
+                Proprietary Intelligence
             </div>
         </div>
 
@@ -78,7 +78,7 @@ export default function DataFlywheelMagic() {
                 <Target className="h-8 w-8 text-white" />
             </div>
             <div className="absolute -bottom-8 whitespace-nowrap rounded-md bg-gray-900 px-3 py-1 text-xs font-bold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                User Insights
+                Trade Intent & Strategy
             </div>
         </div>
 
@@ -88,7 +88,7 @@ export default function DataFlywheelMagic() {
                 <Zap className="h-8 w-8 text-white" />
             </div>
             <div className="absolute -bottom-8 whitespace-nowrap rounded-md bg-gray-900 px-3 py-1 text-xs font-bold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                Platform Value
+                Better Outcomes
             </div>
         </div>
       </OrbitingCircles>
