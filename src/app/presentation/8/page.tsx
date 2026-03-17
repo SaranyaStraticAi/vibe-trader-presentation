@@ -1,29 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Rocket, Users, Building2, CheckCircle } from 'lucide-react';
+import { Globe, Bitcoin, TrendingUp, Shield, AlertTriangle, DollarSign, Languages, Users } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { LineChart, Line, AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { Footnote, SuperScript } from '@/components/Footnote';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide8() {
+export default function Slide7() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const growthData = [
-    { month: 'Today', users: 456, brokers: 1 },
-    { month: 'Q1 2026', users: 1000, brokers: 5 },
-    { month: 'Q2 2026', users: 2500, brokers: 10 },
-    { month: 'Q3 2026', users: 5000, brokers: 15 },
-    { month: 'Q4 2026', users: 10000, brokers: 25 },
-    { month: '2027', users: 25000, brokers: 40 },
+  const marketComparison = [
+    { market: 'FOREX', value: 7500, color: '#10b981' },
+    { market: 'Crypto', value: 2000, color: '#3b82f6' },
+    { market: 'NYSE', value: 100, color: '#6b7280' },
+    { market: 'Options', value: 500, color: '#f59e0b' },
   ];
 
-  const milestones = [
-    { value: '456', label: 'Beta Users', status: 'achieved', icon: Users },
-    { value: '20', label: 'Brokers in Pipeline', status: 'achieved', icon: Building2 },
-    { value: '17', label: 'Demos Complete', status: 'achieved', icon: CheckCircle },
-    { value: '1', label: 'Active Pilot', status: 'achieved', icon: Rocket },
-  ];
 
   return (
     <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
@@ -58,131 +51,160 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Current Traction & Projections
+            Why FOREX First?
           </motion.h1>
 
-          {/* Milestones - Primary Focus */}
-          <motion.div
-            className="grid grid-cols-4 gap-6 mb-8"
+          <motion.p
+            className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-3xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, staggerChildren: 0.1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
           >
-            {milestones.map((milestone, index) => {
-              const Icon = milestone.icon;
-              return (
+            $7.5T daily volume trapped in 20-year-old tools with 70-80% trader churn
+          </motion.p>
+
+          <div className="grid grid-cols-2 gap-12">
+            {/* Market Size Comparison */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
+              <h3 className="text-lg font-bold text-black mb-4">Daily Trading Volume ($B)<SuperScript number={1} /></h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={marketComparison}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis dataKey="market" />
+                  <YAxis />
+                  <Tooltip 
+                    formatter={(value) => `$${value}B`}
+                    contentStyle={{ 
+                      backgroundColor: 'white', 
+                      border: '2px solid black',
+                      borderRadius: 0 
+                    }}
+                  />
+                  <Bar dataKey="value">
+                    {marketComparison.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+              
+              <motion.div
+                className="mt-6 bg-gray-50 p-4 border-2 border-black"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+              >
+                <p className="text-4xl font-black text-black">75x</p>
+                <p className="text-sm text-gray-600">Larger than NYSE</p>
+              </motion.div>
+            </motion.div>
+
+            {/* Market Problems */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+            >
+              <h3 className="text-lg font-bold text-black mb-6">Why FOREX is Perfect Entry</h3>
+              
+              <div className="space-y-3">
                 <motion.div
-                  key={index}
-                  className="p-6 border-2 border-black bg-white text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
+                  className="flex items-start gap-3 p-3 border-2 border-red-200 bg-red-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.9, duration: 0.5 }}
                 >
-                  <Icon className="w-10 h-10 mx-auto mb-3 text-black" />
-                  <p className="text-4xl font-black text-black">{milestone.value}</p>
-                  <p className="text-sm text-gray-600 mt-1">{milestone.label}</p>
+                  <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">70-80% Trader Churn</p>
+                    <p className="text-sm text-gray-600">Brokers lose most traders in first 90 days</p>
+                  </div>
                 </motion.div>
-              );
-            })}
-          </motion.div>
 
-          {/* Broker Pipeline Status */}
-          <motion.div
-            className="bg-black text-white p-6 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
-          >
-            <div className="flex items-center gap-4">
-              {/* Stage 1: In Pipeline */}
-              <div className="flex-1 bg-gray-500/20 border border-gray-500/50 p-4 rounded">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-gray-400 rounded-full" />
-                  <span className="text-gray-400 text-xs font-bold uppercase tracking-wider">In Pipeline</span>
-                </div>
-                <p className="text-lg font-black">20 Total</p>
-                <p className="text-xs opacity-60">12 brokers + 8 partners</p>
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-orange-200 bg-orange-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.0, duration: 0.5 }}
+                >
+                  <DollarSign className="w-5 h-5 text-orange-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">$2,000-4,000 CAC</p>
+                    <p className="text-sm text-gray-600">Brokers spend massively to acquire traders</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-gray-300 bg-gray-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.1, duration: 0.5 }}
+                >
+                  <Globe className="w-5 h-5 text-gray-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">20-Year-Old Tools</p>
+                    <p className="text-sm text-gray-600">MT4 (2005), MT5 (2010) - no innovation</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-purple-200 bg-purple-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                >
+                  <Languages className="w-5 h-5 text-purple-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">English-Only Platforms</p>
+                    <p className="text-sm text-gray-600">Global traders forced to use English tools</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-start gap-3 p-3 border-2 border-blue-200 bg-blue-50"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.3, duration: 0.5 }}
+                >
+                  <Users className="w-5 h-5 text-blue-600 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-black">No Behavioral Analytics</p>
+                    <p className="text-sm text-gray-600">Brokers blind to why traders fail</p>
+                  </div>
+                </motion.div>
               </div>
 
-              {/* Arrow */}
-              <div className="text-gray-500 text-2xl">→</div>
-
-              {/* Stage 2: Entering Pilot */}
-              <div className="flex-1 bg-blue-500/20 border border-blue-500/50 p-4 rounded">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-blue-400 rounded-full" />
-                  <span className="text-blue-400 text-xs font-bold uppercase tracking-wider">Entering Pilot</span>
+              {/* Our Solution */}
+              <motion.div
+                className="mt-6 bg-black text-white p-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.4, duration: 0.5 }}
+              >
+                <p className="font-bold mb-2">Vibe Trader Solves All This</p>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div>✓ Multilingual AI</div>
+                  <div>✓ Behavioral insights</div>
+                  <div>✓ Modern tools</div>
+                  <div>✓ Reduce churn to &lt;20%</div>
                 </div>
-                <p className="text-lg font-black">NAGA, Blueberry, HFM</p>
-                <p className="text-xs opacity-60">Scheduling kickoff</p>
-              </div>
-
-              {/* Arrow */}
-              <div className="text-gray-500 text-2xl">→</div>
-
-              {/* Stage 3: Pilot Live */}
-              <div className="flex-1 bg-green-500/20 border border-green-500/50 p-4 rounded">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                  <span className="text-green-400 text-xs font-bold uppercase tracking-wider">Pilot Live</span>
-                </div>
-                <p className="text-lg font-black">Trading Latam</p>
-                <p className="text-xs opacity-60">Contract signed</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Growth Projections */}
-          <motion.div
-            className="grid grid-cols-2 gap-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-          >
-            <div className="bg-gray-50 p-4 border border-gray-300">
-              <h3 className="text-sm font-bold text-gray-700 mb-2">Projected User Growth</h3>
-              <ResponsiveContainer width="100%" height={120}>
-                <AreaChart data={growthData}>
-                  <XAxis dataKey="month" tick={{ fontSize: 9 }} stroke="#6b7280" />
-                  <YAxis tick={{ fontSize: 9 }} stroke="#6b7280" />
-                  <Area
-                    type="monotone"
-                    dataKey="users"
-                    stroke="#10b981"
-                    fill="#10b981"
-                    fillOpacity={0.3}
-                    strokeWidth={2}
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="bg-gray-50 p-4 border border-gray-300">
-              <h3 className="text-sm font-bold text-gray-700 mb-2">Projected Broker Partners</h3>
-              <ResponsiveContainer width="100%" height={120}>
-                <LineChart data={growthData}>
-                  <XAxis dataKey="month" tick={{ fontSize: 9 }} stroke="#6b7280" />
-                  <YAxis tick={{ fontSize: 9 }} stroke="#6b7280" />
-                  <Line
-                    type="monotone"
-                    dataKey="brokers"
-                    stroke="#3b82f6"
-                    strokeWidth={2}
-                    dot={{ fill: '#3b82f6', r: 3 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </motion.div>
+              </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(16)].map((_, i) => (
+        {[...Array(17)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 7
+              i === 6
                 ? 'w-8 bg-black'
                 : 'w-2 bg-gray-300'
             } rounded-full`}
@@ -192,6 +214,13 @@ export default function Slide8() {
           />
         ))}
       </div>
+
+      {/* References */}
+      <Footnote 
+        references={[
+          { number: 1, text: 'BIS 2024, NYSE Market Data 2024' },
+        ]}
+      />
 
       {/* Navigation */}
       <button

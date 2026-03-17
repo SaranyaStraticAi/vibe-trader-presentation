@@ -1,223 +1,168 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Award, DollarSign, Shield } from 'lucide-react';
+import { Sparkles, ArrowRight, Globe, Activity, Zap } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide16() {
+export default function Slide15() {
   const { prevSlide, goToFirst } = useSlideNavigation();
 
-  const deRiskingFactors = [
-    {
-      icon: Users,
-      title: '20 Brokers in Pipeline',
-      desc: '5M+ trader reach, multiple demos complete',
-      highlight: 'B2B2C validated'
+  const visionComparison = [
+    { 
+      company: 'Bloomberg',
+      role: 'Intelligence layer for institutional finance',
+      icon: Activity,
+      color: 'from-orange-500 to-amber-600'
     },
-    {
-      icon: Award,
-      title: '456 Users',
-      desc: 'Active traders using the platform',
-      highlight: 'Product-market fit'
-    },
-    {
-      icon: DollarSign,
-      title: '$20K/mo Burn Rate',
-      desc: '14 team members (some founders no salary)',
-      highlight: 'Ultra-efficient'
-    },
-    {
-      icon: Shield,
-      title: 'Multilingual + AI',
-      desc: 'Only platform with GPT-4, Claude, Gemini',
-      highlight: 'Unique moat'
-    },
+    { 
+      company: 'VibeTrader',
+      role: 'AI intelligence layer for global trading',
+      icon: Sparkles,
+      color: 'from-blue-500 to-green-500'
+    }
   ];
 
   return (
-    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
-      {/* Subtle dot pattern background */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
-          backgroundSize: '20px 20px',
-        }}
-      />
-
-      <GlobeWatermark />
-
-      <div className="relative z-10 px-20 w-full">
+    <div 
+      className="min-h-screen bg-white relative flex items-center justify-center overflow-hidden cursor-pointer"
+      onClick={goToFirst}
+      onKeyDown={(e) => {
+        if (e.key === 'ArrowRight') goToFirst();
+        if (e.key === 'ArrowLeft') prevSlide();
+      }}
+      tabIndex={0}
+    >
+      <GlobeWatermark opacity={0.03} />
+      
+      <div className="max-w-7xl mx-auto px-8 py-16 z-10">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          {/* Small accent line */}
-          <motion.div 
-            className="w-12 h-1 bg-black mb-8"
-            initial={{ width: 0 }}
-            animate={{ width: 48 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          />
+          <h1 className="text-7xl font-bold text-black mb-4">
+            Our Vision
+          </h1>
+          <p className="text-2xl text-gray-600">
+            Creating the category. Defining the future.
+          </p>
+        </motion.div>
 
-          <motion.h1
-            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            De-Risking the<br />Opportunity
-          </motion.h1>
-
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-3xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            High-efficiency model that significantly reduces investor risk
-          </motion.p>
-
-          <div className="grid grid-cols-2 gap-12">
-            {/* De-risking factors */}
-            <div className="space-y-4">
-              {deRiskingFactors.map((factor, index) => {
-                const Icon = factor.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    className="flex gap-4 p-4 border-2 border-gray-200 hover:border-black transition-colors group"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                  >
-                    <div className="w-12 h-12 bg-black text-white flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-bold text-black">{factor.title}</p>
-                      <p className="text-sm text-gray-600 mb-2">{factor.desc}</p>
-                      <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs font-bold">
-                        {factor.highlight}
-                      </span>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Concrete Validation */}
-            <motion.div
-              className="space-y-4"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
-              <h3 className="text-lg font-bold text-black mb-4">Market Validation</h3>
-              
-              <div className="bg-gray-50 border-2 border-black p-4">
-                <p className="font-bold text-black mb-2">Broker Interest Confirmed</p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Trading Latam</span>
-                    <span className="font-bold text-green-600">Pilot Live</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">HFM Markets</span>
-                    <span className="font-bold">Testing / Pilot Interest</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Blueberry Markets</span>
-                    <span className="font-bold">Pilot Interest</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">NAGA Group</span>
-                    <span className="font-bold">Partner Interest</span>
-                  </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-16"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            {visionComparison.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index === 0 ? -30 : 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                className="bg-white rounded-2xl border border-gray-200 p-8 shadow-lg hover:shadow-2xl transition-all"
+              >
+                <div className={`bg-gradient-to-br ${item.color} w-16 h-16 rounded-xl flex items-center justify-center mb-6`}>
+                  <item.icon className="w-8 h-8 text-white" />
                 </div>
-              </div>
-              
-              <div className="bg-green-50 border-2 border-green-200 p-4">
-                <p className="font-bold text-black mb-2">Traction Metrics</p>
-                <div className="space-y-1 text-sm">
-                  <p className="text-gray-700">• 456 active users</p>
-                  <p className="text-gray-700">• 20 brokers in pipeline</p>
-                  <p className="text-gray-700">• 5M+ trader reach</p>
-                  <p className="text-gray-700">• Multiple demos completed</p>
-                </div>
-              </div>
-              
-              <div className="bg-blue-50 border-2 border-blue-200 p-4">
-                <p className="font-bold text-black mb-2">Efficiency Metrics</p>
-                <div className="space-y-1 text-sm">
-                  <p className="text-gray-700">• $20K/month burn rate</p>
-                  <p className="text-gray-700">• 14 team members globally</p>
-                  <p className="text-gray-700">• 12 months runway with $1M</p>
-                  <p className="text-gray-700">• Some founders no salary</p>
-                </div>
-              </div>
-            </motion.div>
+                <h3 className="text-3xl font-bold text-black mb-3">{item.company}</h3>
+                <p className="text-lg text-gray-600">{item.role}</p>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Bottom valuation highlight */}
           <motion.div
-            className="mt-12 bg-gray-50 p-6 border-2 border-black"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex justify-center mb-8"
           >
-            <div className="grid grid-cols-3 gap-6">
-              <div>
-                <p className="text-3xl font-black text-black">$10M</p>
-                <p className="text-sm text-gray-600">Pre-money Valuation</p>
-              </div>
-              <div>
-                <p className="text-3xl font-black text-black">12mo</p>
-                <p className="text-sm text-gray-600">Runway with $1M</p>
-              </div>
-              <div>
-                <p className="text-3xl font-black text-black">2026</p>
-                <p className="text-sm text-gray-600">Target Series A</p>
-              </div>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-0.5 bg-gray-300"></div>
+              <Zap className="w-8 h-8 text-gray-400" />
+              <div className="w-12 h-0.5 bg-gray-300"></div>
             </div>
           </motion.div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="bg-gradient-to-r from-blue-50 to-green-50 rounded-3xl p-12 text-center"
+        >
+          <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed">
+            Just as <span className="font-bold text-orange-600">Bloomberg</span> became the 
+            intelligence layer for finance,
+          </p>
+          <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed mt-4">
+            <span className="font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+              VibeTrader
+            </span> aims to become the AI intelligence layer 
+            for global trading
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="flex justify-center gap-6 mt-12"
+        >
+          {[Globe, Activity, Sparkles].map((Icon, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.2, rotate: 360 }}
+              transition={{ duration: 0.5 }}
+              className="w-14 h-14 bg-black rounded-full flex items-center justify-center"
+            >
+              <Icon className="w-7 h-7 text-white" />
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.5 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-xl text-gray-500 italic">
+            "The standard analytics layer for trading platforms"
+          </p>
+        </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(16)].map((_, i) => (
-          <motion.div
-            key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === 15
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
-            } rounded-full`}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
-          />
-        ))}
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.8 }}
+        className="absolute bottom-8 right-8 flex items-center gap-2 text-gray-400"
+      >
+        <span className="text-sm">Slide 15 of 16</span>
+      </motion.div>
 
-      {/* Navigation */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
-        aria-label="Previous slide"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.8 }}
+        className="absolute bottom-8 left-8"
       >
-        ←
-      </button>
-      <button
-        onClick={goToFirst}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
-        aria-label="Back to start"
-      >
-        ↺
-      </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            goToFirst();
+          }}
+          className="text-gray-400 hover:text-black transition-colors flex items-center gap-2"
+        >
+          <ArrowRight className="w-4 h-4 rotate-180" />
+          <span className="text-sm">Back to start</span>
+        </button>
+      </motion.div>
     </div>
   );
 }

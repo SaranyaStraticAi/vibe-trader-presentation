@@ -1,35 +1,54 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { UserX, Search, Copy } from 'lucide-react';
+import { Clock, Brain, Zap, AlertTriangle, ChartLine } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { Footnote, SuperScript } from '@/components/Footnote';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide3() {
+export default function Slide2() {
   const { nextSlide, prevSlide, currentSlide } = useSlideNavigation();
 
   const problems = [
     {
-      icon: UserX,
-      title: 'Catastrophic Retention',
-      stat: '<25%',
-      description: '1-year trader retention rate',
-      highlight: true,
+      icon: Clock,
+      title: 'Time-Consuming Analysis',
+      description: 'Traders spend hours analyzing multiple timeframes before making decisions',
+      stat: '3-4 hours',
+      subtext: 'Average analysis time per trade',
       ref: 1,
     },
     {
-      icon: Search,
-      title: 'Acquisition Nightmare',
-      stat: '10x',
-      description: 'Cost increase since 2020',
+      icon: Brain,
+      title: 'Emotional Trading',
+      description: 'Fear and greed drive 70% of trading decisions, leading to losses',
+      stat: '62%',
+      subtext: 'Retail accounts lose money',
       ref: 2,
     },
     {
-      icon: Copy,
-      title: 'Zero Differentiation',
-      stat: '95%',
-      description: 'Brokers offer identical features',
+      icon: Zap,
+      title: 'Market Speed',
+      description: 'Markets move in milliseconds while humans react in seconds',
+      stat: '2-3ms',
+      subtext: 'HFT execution vs 100-400ms human reaction',
+      ref: 3,
+    },
+    {
+      icon: AlertTriangle,
+      title: 'Scams & Fake Signals',
+      description: 'Traders lose billions to fraudulent signals and fake strategies',
+      stat: '$12.5B',
+      subtext: 'Lost to trading scams in 2024',
+      ref: 4,
+    },
+    {
+      icon: ChartLine,
+      title: 'No Performance Feedback',
+      description: 'Traders lack tools to analyze and improve their strategies',
+      stat: '70%',
+      subtext: 'Fail without proper analytics',
+      ref: 5,
     },
   ];
 
@@ -53,86 +72,86 @@ export default function Slide3() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="mb-10"
+          className="mb-12"
         >
           {/* Small accent line */}
           <motion.div 
-            className="w-12 h-1 bg-orange-500 mb-6"
+            className="w-12 h-1 bg-red-500 mb-6"
             initial={{ width: 0 }}
             animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <h1 className="text-6xl font-black text-black mb-3 tracking-tighter">
-            The Crisis
+            The Problem
           </h1>
           <p className="text-2xl text-gray-600 font-light">
-            Brokers Face an Existential Threat
+            Retail Traders Face Insurmountable Challenges
           </p>
         </motion.div>
 
-        {/* Problem cards - 3 column grid */}
-        <div className="grid grid-cols-3 gap-6 mb-8">
+        {/* Problems Grid - using subgrid for automatic alignment */}
+        <div className="grid grid-cols-5 grid-rows-[auto_auto_auto_auto] gap-x-6">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
             return (
               <motion.div
                 key={index}
-                className={`border ${problem.highlight ? 'border-orange-500 bg-orange-50' : 'border-gray-200 bg-white'} p-6 hover:shadow-lg transition-all`}
+                className="group grid grid-rows-subgrid row-span-4 bg-white border border-gray-200 p-6 hover:border-black transition-all hover:shadow-lg"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
               >
-                <div className={`w-12 h-12 ${problem.highlight ? 'bg-orange-500' : 'bg-gray-800'} text-white flex items-center justify-center mb-4`}>
+                {/* Row 1: Icon */}
+                <div className="w-12 h-12 bg-red-500 text-white flex items-center justify-center mb-4 group-hover:bg-red-600 transition-colors">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-black text-xl mb-3">
+
+                {/* Row 2: Title */}
+                <h3 className="font-bold text-black mb-2 text-lg">
                   {problem.title}
                 </h3>
-                <div className="text-5xl font-black text-black mb-2">
-                  {problem.stat}
-                  {problem.ref && <SuperScript number={problem.ref} />}
-                </div>
-                <p className="text-gray-600 text-sm">
+
+                {/* Row 3: Description */}
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {problem.description}
                 </p>
+
+                {/* Row 4: Stat */}
+                <div className="pt-4 border-t border-gray-100 self-end">
+                  <div className="text-3xl font-black text-black">
+                    {problem.stat}
+                    {problem.ref && <SuperScript number={problem.ref} />}
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    {problem.subtext}
+                  </div>
+                </div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Cost breakdown - full width */}
+        {/* Bottom stat */}
         <motion.div
-          className="p-6 bg-gray-50 border border-gray-200"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
+          className="mt-10 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.6 }}
         >
-          <h3 className="font-bold text-black mb-4 text-lg">The Churn & Burn Model is Dead</h3>
-          <div className="grid grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-gray-600 text-sm mb-1">New customer acquisition cost</div>
-              <div className="font-bold text-black text-xl">$200 → $2,000<SuperScript number={3} /></div>
-            </div>
-            <div className="text-center">
-              <div className="text-gray-600 text-sm mb-1">Cost to retain existing trader</div>
-              <div className="font-bold text-green-600 text-xl">7x cheaper<SuperScript number={4} /></div>
-            </div>
-            <div className="text-center">
-              <div className="text-gray-600 text-sm mb-1">Broker failure rate (Year 1)</div>
-              <div className="font-bold text-red-600 text-xl">25%<SuperScript number={5} /></div>
-            </div>
-          </div>
+          <p className="text-xl text-gray-600">
+            <span className="font-bold text-black">Result:</span> 70-90% of retail traders lose money consistently<SuperScript number={6} />
+          </p>
         </motion.div>
       </div>
 
       {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(16)].map((_, i) => (
+        {[...Array(17)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 2
+              i === 1
                 ? 'w-8 bg-black'
                 : 'w-2 bg-gray-300'
             } rounded-full`}
@@ -146,11 +165,12 @@ export default function Slide3() {
       {/* References */}
       <Footnote 
         references={[
-          { number: 1, text: 'Industry Average Retention Rates, Finance Magnates 2024' },
-          { number: 2, text: 'Digital Acquisition Cost Analysis, Google & Meta Ads Data' },
-          { number: 3, text: 'CAC Growth Study - Bloomberg, Investopedia Ad Networks' },
-          { number: 4, text: 'Customer Retention Economics Research 2024' },
-          { number: 5, text: 'New Broker Failure Rate Analysis 2023-2024' },
+          { number: 1, text: 'Multiple Timeframe Analysis Requirements Study 2024' },
+          { number: 2, text: 'Behavioral Finance Research, MIT 2024' },
+          { number: 3, text: 'High-Frequency Trading Speed Analysis, BIS 2024' },
+          { number: 4, text: 'FTC Fraud Report 2024 - Investment Scams' },
+          { number: 5, text: 'Retail Trading Performance Analytics Study' },
+          { number: 6, text: 'ESMA & NFA Trader Success Rate Data 2024' },
         ]}
       />
 
