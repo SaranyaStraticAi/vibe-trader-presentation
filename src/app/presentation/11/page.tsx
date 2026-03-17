@@ -13,9 +13,9 @@ export default function Slide11() {
       quarter: 'Now (Q1 2026)',
       title: 'Launch Pilots',
       tasks: [
-        'Start Blueberry pilot',
-        'Start D Prime pilot',
-        'Measure retention lift'
+        'Trading Latam pilot live',
+        'Launch HFM pilot',
+        'Arabic & Spanish live'
       ],
       kpis: { users: 1000, brokers: 2, arr: '$0.3M' },
       status: 'current'
@@ -26,7 +26,7 @@ export default function Slide11() {
       tasks: [
         'Pilot results analysis',
         'Onboard 3 more brokers',
-        'Multilingual rollout'
+        'Expand to more languages'
       ],
       kpis: { users: 5000, brokers: 5, arr: '$1.5M' },
       status: 'next'
@@ -202,11 +202,15 @@ export default function Slide11() {
                 </div>
                 <div>
                   <p className="font-bold text-black">✓ Beta Testing Done</p>
-                  <p className="text-sm text-gray-600">312 users, 96% retention</p>
+                  <p className="text-sm text-gray-600">456 beta users</p>
+                </div>
+                <div>
+                  <p className="font-bold text-black">✓ Multilingual</p>
+                  <p className="text-sm text-gray-600">Arabic & Spanish live</p>
                 </div>
                 <div>
                   <p className="font-bold text-black">→ Broker Pilots Starting</p>
-                  <p className="text-sm text-gray-600">Blueberry & D Prime ready</p>
+                  <p className="text-sm text-gray-600">Trading Latam live, HFM next</p>
                 </div>
               </div>
             </div>
