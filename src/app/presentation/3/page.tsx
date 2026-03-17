@@ -1,30 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { UserX, Search, Copy, TrendingDown, DollarSign } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
+import { UserX, Search, Copy } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { Footnote, SuperScript } from '@/components/Footnote';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 export default function Slide3() {
   const { nextSlide, prevSlide, currentSlide } = useSlideNavigation();
-
-  const retentionData = [
-    { month: 'Month 1', retention: 100 },
-    { month: 'Month 2', retention: 50 },
-    { month: 'Month 3', retention: 35 },
-    { month: 'Month 6', retention: 25 },
-    { month: 'Month 12', retention: 15 },
-  ];
-
-  const costData = [
-    { year: '2020', cost: 200 },
-    { year: '2021', cost: 500 },
-    { year: '2022', cost: 900 },
-    { year: '2023', cost: 1400 },
-    { year: '2024', cost: 2000 },
-  ];
 
   const problems = [
     {
@@ -88,148 +71,58 @@ export default function Slide3() {
           </p>
         </motion.div>
 
-        {/* Main content grid */}
-        <div className="grid grid-cols-2 gap-12">
-          {/* Left side - Key Problems */}
-          <div>
-            <div className="space-y-4">
-              {problems.map((problem, index) => {
-                const Icon = problem.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    className={`border ${problem.highlight ? 'border-orange-500 bg-orange-50' : 'border-gray-200 bg-white'} p-6 hover:shadow-lg transition-all`}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className={`w-12 h-12 ${problem.highlight ? 'bg-orange-500' : 'bg-gray-800'} text-white flex items-center justify-center flex-shrink-0`}>
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-black text-xl mb-1">
-                          {problem.title}
-                        </h3>
-                        <div className="flex items-baseline gap-3">
-                          <span className="text-4xl font-black text-black">
-                            {problem.stat}
-                            {problem.ref && <SuperScript number={problem.ref} />}
-                          </span>
-                          <span className="text-gray-600">
-                            {problem.description}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Cost breakdown */}
-            <motion.div
-              className="mt-6 p-6 bg-gray-50 border border-gray-200"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
-              <h3 className="font-bold text-black mb-3">The Churn & Burn Model is Dead</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">New customer acquisition cost:</span>
-                  <span className="font-bold text-black">$200 → $2,000<SuperScript number={3} /></span>
+        {/* Problem cards - 3 column grid */}
+        <div className="grid grid-cols-3 gap-6 mb-8">
+          {problems.map((problem, index) => {
+            const Icon = problem.icon;
+            return (
+              <motion.div
+                key={index}
+                className={`border ${problem.highlight ? 'border-orange-500 bg-orange-50' : 'border-gray-200 bg-white'} p-6 hover:shadow-lg transition-all`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
+              >
+                <div className={`w-12 h-12 ${problem.highlight ? 'bg-orange-500' : 'bg-gray-800'} text-white flex items-center justify-center mb-4`}>
+                  <Icon className="w-6 h-6" />
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Cost to retain existing trader:</span>
-                  <span className="font-bold text-green-600">7x cheaper<SuperScript number={4} /></span>
+                <h3 className="font-bold text-black text-xl mb-3">
+                  {problem.title}
+                </h3>
+                <div className="text-5xl font-black text-black mb-2">
+                  {problem.stat}
+                  {problem.ref && <SuperScript number={problem.ref} />}
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Broker failure rate (Year 1):</span>
-                  <span className="font-bold text-red-600">25%<SuperScript number={5} /></span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right side - Charts */}
-          <div className="space-y-6">
-            {/* Retention Chart */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="bg-white border border-gray-200 p-6"
-            >
-              <h3 className="text-lg font-bold text-black mb-4">Trader Retention Cliff</h3>
-              <ResponsiveContainer width="100%" height={200}>
-                <AreaChart data={retentionData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="month" stroke="#6b7280" fontSize={12} />
-                  <YAxis stroke="#6b7280" fontSize={12} />
-                  <Tooltip 
-                    formatter={(value) => `${value}%`}
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
-                      border: '1px solid #e5e7eb',
-                      borderRadius: 0 
-                    }}
-                  />
-                  <Area 
-                    type="monotone" 
-                    dataKey="retention" 
-                    stroke="#ef4444" 
-                    fill="#fee2e2"
-                    strokeWidth={2}
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </motion.div>
-
-            {/* Acquisition Cost Chart */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="bg-white border border-gray-200 p-6"
-            >
-              <h3 className="text-lg font-bold text-black mb-4">Acquisition Cost Explosion</h3>
-              <ResponsiveContainer width="100%" height={200}>
-                <LineChart data={costData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="year" stroke="#6b7280" fontSize={12} />
-                  <YAxis stroke="#6b7280" fontSize={12} />
-                  <Tooltip 
-                    formatter={(value) => `$${value}`}
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
-                      border: '1px solid #e5e7eb',
-                      borderRadius: 0 
-                    }}
-                  />
-                  <Line 
-                    type="monotone" 
-                    dataKey="cost" 
-                    stroke="#f97316" 
-                    strokeWidth={3}
-                    dot={{ fill: '#f97316', r: 4 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </motion.div>
-          </div>
+                <p className="text-gray-600 text-sm">
+                  {problem.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Bottom insight */}
+        {/* Cost breakdown - full width */}
         <motion.div
-          className="mt-8 text-center p-4 bg-black text-white"
+          className="p-6 bg-gray-50 border border-gray-200"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
         >
-          <p className="text-lg">
-            <span className="font-bold">The Verdict:</span> Brokers must innovate or face extinction in a commoditized market
-          </p>
+          <h3 className="font-bold text-black mb-4 text-lg">The Churn & Burn Model is Dead</h3>
+          <div className="grid grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-gray-600 text-sm mb-1">New customer acquisition cost</div>
+              <div className="font-bold text-black text-xl">$200 → $2,000<SuperScript number={3} /></div>
+            </div>
+            <div className="text-center">
+              <div className="text-gray-600 text-sm mb-1">Cost to retain existing trader</div>
+              <div className="font-bold text-green-600 text-xl">7x cheaper<SuperScript number={4} /></div>
+            </div>
+            <div className="text-center">
+              <div className="text-gray-600 text-sm mb-1">Broker failure rate (Year 1)</div>
+              <div className="font-bold text-red-600 text-xl">25%<SuperScript number={5} /></div>
+            </div>
+          </div>
         </motion.div>
       </div>
 

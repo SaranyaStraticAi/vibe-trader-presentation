@@ -90,43 +90,41 @@ export default function Slide2() {
           </p>
         </motion.div>
 
-        {/* Problems Grid */}
-        <div className="grid grid-cols-5 gap-6">
+        {/* Problems Grid - using subgrid for automatic alignment */}
+        <div className="grid grid-cols-5 grid-rows-[auto_auto_auto_auto] gap-x-6">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
             return (
               <motion.div
                 key={index}
-                className="relative group"
+                className="group grid grid-rows-subgrid row-span-4 bg-white border border-gray-200 p-6 hover:border-black transition-all hover:shadow-lg"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
               >
-                <div className="bg-white border border-gray-200 p-6 h-full hover:border-black transition-all hover:shadow-lg">
-                  {/* Icon */}
-                  <div className="w-12 h-12 bg-red-500 text-white flex items-center justify-center mb-4 group-hover:bg-red-600 transition-colors">
-                    <Icon className="w-6 h-6" />
+                {/* Row 1: Icon */}
+                <div className="w-12 h-12 bg-red-500 text-white flex items-center justify-center mb-4 group-hover:bg-red-600 transition-colors">
+                  <Icon className="w-6 h-6" />
+                </div>
+
+                {/* Row 2: Title */}
+                <h3 className="font-bold text-black mb-2 text-lg">
+                  {problem.title}
+                </h3>
+
+                {/* Row 3: Description */}
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  {problem.description}
+                </p>
+
+                {/* Row 4: Stat */}
+                <div className="pt-4 border-t border-gray-100 self-end">
+                  <div className="text-3xl font-black text-black">
+                    {problem.stat}
+                    {problem.ref && <SuperScript number={problem.ref} />}
                   </div>
-
-                  {/* Title */}
-                  <h3 className="font-bold text-black mb-2 text-lg">
-                    {problem.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                    {problem.description}
-                  </p>
-
-                  {/* Stat */}
-                  <div className="pt-4 border-t border-gray-100">
-                    <div className="text-3xl font-black text-black">
-                      {problem.stat}
-                      {problem.ref && <SuperScript number={problem.ref} />}
-                    </div>
-                    <div className="text-xs text-gray-500 mt-1">
-                      {problem.subtext}
-                    </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    {problem.subtext}
                   </div>
                 </div>
               </motion.div>

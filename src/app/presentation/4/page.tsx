@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Globe2, TrendingUp, Users, BarChart3, CheckCircle, Activity, Shield, Sparkles } from 'lucide-react';
+import { TrendingUp, Users, BarChart3, Activity, Shield, Sparkles } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { Footnote, SuperScript } from '@/components/Footnote';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
@@ -12,24 +12,21 @@ export default function Slide4() {
   const keyMetrics = [
     {
       icon: TrendingUp,
-      label: 'Volume Increase',
+      label: 'Volume Guarantee',
       value: '40-100%',
-      description: 'Conservative promise',
-      subtext: '(10-15x in tests)',
+      description: 'Promise to brokers (actual: 10-15x)',
     },
     {
       icon: Users,
       label: 'Trader Retention',
       value: '2x+',
-      description: 'Guaranteed minimum',
-      subtext: '(3x achieved)',
+      description: 'Guaranteed improvement',
     },
     {
       icon: BarChart3,
-      label: 'Win Rate',
-      value: '+45%',
-      description: 'Proven improvement',
-      subtext: '(Control group)',
+      label: 'Broker Compatible',
+      value: '1,000+',
+      description: 'Any MT4/MT5 broker supported',
     },
   ];
 
@@ -53,11 +50,12 @@ export default function Slide4() {
 
   return (
     <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
-      {/* Gradient background */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
+      {/* Subtle dot pattern background */}
+      <div
+        className="absolute inset-0 opacity-[0.02]"
         style={{
-          background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+          backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
         }}
       />
 
@@ -65,23 +63,20 @@ export default function Slide4() {
       <GlobeWatermark />
 
       <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
-        {/* Header with Scale Proof */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="mb-8 text-center"
+          className="mb-10"
         >
-          {/* Live indicator */}
-          <motion.div 
-            className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-green-50 border border-green-500 rounded-full"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
+          {/* Small accent line */}
+          <motion.div
+            className="w-12 h-1 bg-green-500 mb-6"
+            initial={{ width: 0 }}
+            animate={{ width: 48 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-green-700">LIVE WITH 5000+ BROKERS WORLDWIDE</span>
-          </motion.div>
+          />
 
           <h1 className="text-6xl font-black text-black mb-3 tracking-tighter">
             The Solution
@@ -91,114 +86,70 @@ export default function Slide4() {
           </p>
         </motion.div>
 
-        {/* Global Network Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="mb-10 relative"
-        >
-          <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8 border border-gray-200">
-            {/* World map representation with dots */}
-            <div className="relative h-48 flex items-center justify-center">
-              <Globe2 className="w-32 h-32 text-gray-300" />
-              {/* Animated connection lines */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1 h-20 bg-gradient-to-t from-green-500 to-transparent"
-                    style={{
-                      transform: `rotate(${i * 45}deg)`,
-                      transformOrigin: 'center',
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 0.3, scale: 1 }}
-                    transition={{ delay: 0.6 + i * 0.1, duration: 0.5 }}
-                  />
-                ))}
-              </div>
-              {/* Center dot */}
-              <div className="absolute w-4 h-4 bg-green-500 rounded-full animate-pulse" />
-            </div>
-            
-            <div className="text-center mt-6">
-              <h3 className="text-3xl font-black text-black mb-2">
-                One Platform. Global Scale.
-              </h3>
-              <p className="text-lg text-gray-600">
-                AI-powered trading intelligence embedded directly in broker platforms
-              </p>
-            </div>
+        {/* Key Metrics - 3 column grid */}
+        <div className="grid grid-cols-3 gap-6 mb-8">
+          {keyMetrics.map((metric, index) => {
+            const Icon = metric.icon;
+            return (
+              <motion.div
+                key={index}
+                className="border border-gray-200 bg-white p-6 hover:shadow-lg transition-all"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
+              >
+                <div className="w-12 h-12 bg-gray-800 text-white flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="font-bold text-black text-xl mb-3">
+                  {metric.label}
+                </h3>
+                <div className="text-5xl font-black text-black mb-2">
+                  {metric.value}
+                </div>
+                <p className="text-gray-600 text-sm">
+                  {metric.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
 
-            {/* Key metrics */}
-            <div className="grid grid-cols-3 gap-4 mt-8">
-              {keyMetrics.map((metric, index) => {
-                const Icon = metric.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    className="text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                  >
-                    <Icon className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                    <div className="text-3xl font-black text-black">{metric.value}</div>
-                    <div className="text-xs text-gray-500 uppercase tracking-wider">{metric.label}</div>
-                    <div className="text-xs text-gray-600 mt-1">{metric.description}</div>
-                    {metric.subtext && (
-                      <div className="text-xs text-gray-400 mt-0.5">{metric.subtext}</div>
-                    )}
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* How It Works */}
+        {/* Technology Stack - full width */}
         <motion.div
+          className="p-6 bg-gray-50 border border-gray-200 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
         >
-          <h3 className="text-xl font-bold text-black mb-4 text-center">
-            Proven Technology Stack
-          </h3>
-          <div className="grid grid-cols-3 gap-4">
+          <h3 className="font-bold text-black mb-4 text-lg">Proven Technology Stack</h3>
+          <div className="grid grid-cols-3 gap-6">
             {platformFeatures.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <motion.div
-                  key={index}
-                  className="bg-white border border-gray-200 p-4 hover:border-green-500 transition-all hover:shadow-md group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                >
-                  <Icon className="w-8 h-8 text-green-500 mb-3 group-hover:text-green-600 transition-colors" />
-                  <h4 className="font-bold text-black mb-1">
-                    {feature.title}
-                  </h4>
-                  <p className="text-xs text-gray-600">
-                    {feature.description}
-                  </p>
-                </motion.div>
+                <div key={index} className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gray-800 text-white flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-black text-sm">{feature.title}</h4>
+                    <p className="text-xs text-gray-600">{feature.description}</p>
+                  </div>
+                </div>
               );
             })}
           </div>
         </motion.div>
 
-        {/* Bottom CTA */}
+        {/* Bottom stat bar */}
         <motion.div
-          className="mt-8 text-center p-6 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl"
+          className="p-4 bg-green-500 text-white text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
         >
-          <p className="text-xl font-bold">
-            5000 Brokers. Millions of Traders. One Unstoppable Network.
+          <p className="text-lg font-bold">
+            Compatible with 1,000+ MT4/MT5 Brokers via MetaAPI
           </p>
         </motion.div>
       </div>
@@ -221,10 +172,9 @@ export default function Slide4() {
       </div>
 
       {/* References */}
-      <Footnote 
+      <Footnote
         references={[
-          { number: 1, text: 'Conservative promises based on control group testing showing 10-15x volume increase' },
-          { number: 2, text: 'Actual results may exceed guaranteed minimums based on trader engagement' },
+          { number: 1, text: 'Broker count based on MetaQuotes/Finance Magnates industry data 2024' },
         ]}
       />
 
