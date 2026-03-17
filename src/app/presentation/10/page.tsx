@@ -197,10 +197,10 @@ export default function Slide10() {
                       iconSize={null as any}
                       className="bg-transparent border-none outline-none overflow-visible"
                       icon={
-                         <div className="relative flex items-center gap-1 w-max -translate-x-1/2 -translate-y-1/2">
-                             <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.9)] animate-pulse shrink-0" />
-                             <div className="bg-black/90 text-white text-[7px] font-bold px-1 py-0.5 rounded">
-                                 Seattle — 4
+                         <div className="relative w-max -translate-x-1/2 -translate-y-1/2">
+                             <div className="bg-black/90 text-white text-[7px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1">
+                                 <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                                 Seattle
                              </div>
                          </div>
                       }
@@ -210,10 +210,10 @@ export default function Slide10() {
                       iconSize={null as any}
                       className="bg-transparent border-none outline-none overflow-visible"
                       icon={
-                         <div className="relative flex items-center gap-1 w-max -translate-x-1/2 -translate-y-1/2">
-                             <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.9)] animate-pulse shrink-0" />
-                             <div className="bg-black/90 text-white text-[7px] font-bold px-1 py-0.5 rounded">
-                                 India — 10
+                         <div className="relative w-max -translate-x-1/2 -translate-y-1/2">
+                             <div className="bg-black/90 text-white text-[7px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1">
+                                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                                 India
                              </div>
                          </div>
                       }
