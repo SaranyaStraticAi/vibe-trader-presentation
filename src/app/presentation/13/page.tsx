@@ -1,51 +1,43 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Globe, Users, TrendingUp, Activity, DollarSign, BarChart3 } from 'lucide-react';
+import { Users, TrendingUp, DollarSign, Target } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, AreaChart, Area, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 export default function Slide13() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   const marketSegments = [
-    { name: 'Untapped', value: 75, color: '#10b981' },
-    { name: 'Legacy Platforms', value: 20, color: '#6b7280' },
-    { name: 'Modern AI', value: 5, color: '#3b82f6' }
-  ];
-
-  const growthProjection = [
-    { year: '2024', tam: 100, sam: 30, som: 5 },
-    { year: '2025', tam: 120, sam: 45, som: 12 },
-    { year: '2026', tam: 150, sam: 65, som: 25 },
-    { year: '2027', tam: 200, sam: 90, som: 45 },
-    { year: '2028', tam: 250, sam: 120, som: 70 }
+    { name: 'Legacy Platforms', value: 75, color: '#6b7280' },
+    { name: 'Other Platforms', value: 20, color: '#f59e0b' },
+    { name: 'Modern AI', value: 5, color: '#10b981' }
   ];
 
   const marketStats = [
     {
       icon: Users,
-      metric: '100M+',
+      metric: '10M+',
       label: 'Global Traders',
-      description: 'Active retail forex traders worldwide'
+      description: 'Active retail forex traders'
     },
     {
       icon: DollarSign,
-      metric: '$2T+',
+      metric: '$9.6T',
       label: 'Daily Volume',
-      description: 'Forex market trading volume'
+      description: 'Global forex turnover'
     },
     {
       icon: TrendingUp,
-      metric: '15x',
-      label: 'Growth Potential',
-      description: 'Trading volume increase with AI'
+      metric: '11%',
+      label: 'Platform CAGR',
+      description: 'Market growth rate'
     }
   ];
 
   return (
-    <div 
+    <div
       className="min-h-screen bg-white relative flex items-center justify-center overflow-hidden cursor-pointer"
       onClick={nextSlide}
       onKeyDown={(e) => {
@@ -55,8 +47,9 @@ export default function Slide13() {
       tabIndex={0}
     >
       <GlobeWatermark opacity={0.03} />
-      
-      <div className="max-w-7xl mx-auto px-8 py-16 z-10">
+
+      <div className="max-w-7xl mx-auto px-8 pt-8 pb-16 z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,132 +63,149 @@ export default function Slide13() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+        {/* Hero Stats Row */}
+        <motion.div
+          className="grid grid-cols-3 gap-6 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {marketStats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+              className="bg-black text-white p-6 rounded-xl"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <stat.icon className="w-6 h-6 text-gray-400" />
+                <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">{stat.label}</span>
+              </div>
+              <div className="text-5xl font-black mb-1">{stat.metric}</div>
+              <p className="text-sm text-gray-500">{stat.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Main Content: Pie Chart + Insight */}
+        <div className="grid grid-cols-5 gap-8">
+          {/* Pie Chart - Takes 3 columns */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-semibold text-black mb-6">Market Size</h3>
-            <div className="space-y-6">
-              {marketStats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                  className="flex items-center gap-4 p-4 bg-gradient-to-r from-gray-50 to-white rounded-xl border border-gray-200"
-                >
-                  <div className="w-14 h-14 bg-black rounded-lg flex items-center justify-center">
-                    <stat.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-bold text-black">{stat.metric}</span>
-                      <span className="text-lg font-medium text-gray-600">{stat.label}</span>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-1">{stat.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="col-span-3 bg-gray-50 rounded-2xl p-8"
           >
-            <h3 className="text-2xl font-semibold text-black mb-6">Market Penetration</h3>
-            <div className="bg-gray-50 rounded-2xl p-6">
-              <ResponsiveContainer width="100%" height={250}>
-                <PieChart>
-                  <Pie
-                    data={marketSegments}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={100}
-                    paddingAngle={2}
-                    dataKey="value"
-                  >
-                    {marketSegments.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="flex justify-around mt-4">
+            <h3 className="text-xl font-bold text-black mb-2">Current Market Penetration</h3>
+            <p className="text-sm text-gray-500 mb-6">How traders currently access analytics tools</p>
+
+            <div className="flex items-center gap-8">
+              <div className="flex-1">
+                <ResponsiveContainer width="100%" height={220}>
+                  <PieChart>
+                    <Pie
+                      data={marketSegments}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={55}
+                      outerRadius={95}
+                      paddingAngle={3}
+                      dataKey="value"
+                    >
+                      {marketSegments.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Vertical Legend */}
+              <div className="space-y-4 pr-4">
                 {marketSegments.map((segment, index) => (
-                  <div key={index} className="text-center">
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className={`w-3 h-3 rounded-full`} style={{ backgroundColor: segment.color }}></div>
-                      <span className="text-sm font-medium text-gray-700">{segment.name}</span>
+                  <div key={index} className="flex items-center gap-3">
+                    <div
+                      className="w-4 h-4 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: segment.color }}
+                    />
+                    <div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-2xl font-black text-black">{segment.value}%</span>
+                      </div>
+                      <span className="text-sm text-gray-600">{segment.name}</span>
                     </div>
-                    <span className="text-xl font-bold text-black">{segment.value}%</span>
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
+
+          {/* Key Insight - Takes 2 columns */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="col-span-2 flex flex-col justify-center"
+          >
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                  <Target className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-sm font-bold text-green-700 uppercase tracking-wider">The Opportunity</span>
+              </div>
+
+              <div className="mb-4">
+                <span className="text-6xl font-black text-green-600">75%</span>
+                <p className="text-lg text-gray-700 mt-2">
+                  of traders are stuck on <strong>legacy platforms</strong> without modern AI capabilities
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-green-200">
+                <p className="text-sm text-gray-600">
+                  Only <strong className="text-green-600">5%</strong> currently use AI-powered tools — massive room for disruption
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8"
-        >
-          <h3 className="text-2xl font-semibold text-black mb-6">TAM • SAM • SOM Growth</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <AreaChart data={growthProjection}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="year" stroke="#6b7280" />
-              <YAxis stroke="#6b7280" />
-              <Tooltip />
-              <Area type="monotone" dataKey="tam" stackId="1" stroke="#10b981" fill="#10b981" fillOpacity={0.3} />
-              <Area type="monotone" dataKey="sam" stackId="1" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.5} />
-              <Area type="monotone" dataKey="som" stackId="1" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.7} />
-            </AreaChart>
-          </ResponsiveContainer>
-          <div className="flex justify-center gap-8 mt-4">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span className="text-sm text-gray-600">TAM: Total Market</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <span className="text-sm text-gray-600">SAM: Serviceable</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-              <span className="text-sm text-gray-600">SOM: Obtainable</span>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-8 text-center"
-        >
-          <p className="text-xl text-gray-500 italic">
-            "The opportunity to become the standard intelligence layer for global trading"
-          </p>
-        </motion.div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        className="absolute bottom-8 right-8 flex items-center gap-2 text-gray-400"
+      {/* Progress indicator */}
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
+        {[...Array(16)].map((_, i) => (
+          <motion.div
+            key={i + 1}
+            className={`h-2 transition-all duration-300 ${
+              i === 12
+                ? 'w-8 bg-black'
+                : 'w-2 bg-gray-300'
+            } rounded-full`}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.8 + i * 0.05 }}
+          />
+        ))}
+      </div>
+
+      {/* Navigation */}
+      <button
+        onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        aria-label="Previous slide"
       >
-        <span className="text-sm">Slide 13 of 16</span>
-      </motion.div>
+        ←
+      </button>
+      <button
+        onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        aria-label="Next slide"
+      >
+        →
+      </button>
     </div>
   );
 }
