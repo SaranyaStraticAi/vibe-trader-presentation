@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles, Brain, TrendingUp, MessageSquare, BarChart3, Zap, CheckCircle, Star } from 'lucide-react';
+import { Sparkles, Brain, TrendingUp, MessageSquare, BarChart3, Zap, CheckCircle, Star, Play } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
@@ -64,8 +64,8 @@ export default function Slide5() {
 
   const metrics = [
     { label: 'Avg Strategy Creation', value: '2 min', comparison: 'vs 2 hours traditional' },
-    { label: 'AI Response Time', value: '<1 sec', comparison: 'Real-time insights' },
-    { label: 'Historical Data', value: '10 years', comparison: 'Tick-level accuracy' },
+    { label: 'Full Strategy Analysis', value: '~15 sec', comparison: 'vs hours of manual research' },
+    { label: 'Historical Data', value: '3+ years', comparison: 'Growing daily' },
     { label: 'User Satisfaction', value: '94%', comparison: 'Would recommend' }
   ];
 
@@ -216,13 +216,13 @@ export default function Slide5() {
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
                 <Zap className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-2xl font-black">312</p>
+                <p className="text-2xl font-black">456</p>
                 <p className="text-xs opacity-80">Active Beta Users</p>
               </div>
               <div>
                 <CheckCircle className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-2xl font-black">4</p>
-                <p className="text-xs opacity-80">Enterprise Demos</p>
+                <p className="text-2xl font-black">20</p>
+                <p className="text-xs opacity-80">Brokers in Pipeline</p>
               </div>
               <div>
                 <TrendingUp className="w-8 h-8 mx-auto mb-2" />
@@ -231,8 +231,16 @@ export default function Slide5() {
               </div>
             </div>
             <div className="mt-4 text-center">
-              <p className="text-sm font-bold">Live Demo Available Upon Request</p>
-              <p className="text-xs opacity-70 mt-1">See the full platform in action with real trading data</p>
+              <a
+                href="https://app.vibetrader.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold hover:shadow-lg transition-all"
+              >
+                <Play className="w-5 h-5" />
+                Launch Live Demo
+              </a>
+              <p className="text-xs opacity-70 mt-2">See the full platform in action with real trading data</p>
             </div>
           </motion.div>
         </motion.div>
