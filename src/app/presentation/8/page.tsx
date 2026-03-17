@@ -93,22 +93,41 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
           >
-            <h3 className="text-lg font-bold mb-4 opacity-70">Pipeline Progression</h3>
-            <div className="grid grid-cols-3 gap-6">
-              <div className="border-l-4 border-green-400 pl-4">
-                <p className="text-green-400 text-sm font-bold uppercase tracking-wide">Pilot Live</p>
-                <p className="text-xl font-black mt-1">Trading Latam</p>
-                <p className="text-sm opacity-60">Contract signed, launched</p>
+            <div className="flex items-center gap-4">
+              {/* Stage 1: In Pipeline */}
+              <div className="flex-1 bg-gray-500/20 border border-gray-500/50 p-4 rounded">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-3 h-3 bg-gray-400 rounded-full" />
+                  <span className="text-gray-400 text-xs font-bold uppercase tracking-wider">In Pipeline</span>
+                </div>
+                <p className="text-lg font-black">20 Total</p>
+                <p className="text-xs opacity-60">12 brokers + 8 partners</p>
               </div>
-              <div className="border-l-4 border-blue-400 pl-4">
-                <p className="text-blue-400 text-sm font-bold uppercase tracking-wide">Entering Pilot</p>
-                <p className="text-xl font-black mt-1">NAGA, Blueberry, HFM</p>
-                <p className="text-sm opacity-60">High interest, scheduling kickoff</p>
+
+              {/* Arrow */}
+              <div className="text-gray-500 text-2xl">→</div>
+
+              {/* Stage 2: Entering Pilot */}
+              <div className="flex-1 bg-blue-500/20 border border-blue-500/50 p-4 rounded">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-3 h-3 bg-blue-400 rounded-full" />
+                  <span className="text-blue-400 text-xs font-bold uppercase tracking-wider">Entering Pilot</span>
+                </div>
+                <p className="text-lg font-black">NAGA, Blueberry, HFM</p>
+                <p className="text-xs opacity-60">Scheduling kickoff</p>
               </div>
-              <div className="border-l-4 border-gray-400 pl-4">
-                <p className="text-gray-400 text-sm font-bold uppercase tracking-wide">In Pipeline</p>
-                <p className="text-xl font-black mt-1">12 Brokers + 8 Partners</p>
-                <p className="text-sm opacity-60">Active demos & conversations</p>
+
+              {/* Arrow */}
+              <div className="text-gray-500 text-2xl">→</div>
+
+              {/* Stage 3: Pilot Live */}
+              <div className="flex-1 bg-green-500/20 border border-green-500/50 p-4 rounded">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
+                  <span className="text-green-400 text-xs font-bold uppercase tracking-wider">Pilot Live</span>
+                </div>
+                <p className="text-lg font-black">Trading Latam</p>
+                <p className="text-xs opacity-60">Contract signed</p>
               </div>
             </div>
           </motion.div>
