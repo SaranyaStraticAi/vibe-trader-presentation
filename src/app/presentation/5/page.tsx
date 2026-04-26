@@ -1,56 +1,46 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TrendingUp, Users, BarChart3, Activity, Shield, Sparkles } from 'lucide-react';
+import { Workflow, Brain, TestTube2, Plug, Library } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { Footnote, SuperScript } from '@/components/Footnote';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide4() {
-  const { nextSlide, prevSlide, currentSlide } = useSlideNavigation();
+const capabilities = [
+  {
+    icon: Workflow,
+    title: 'Strategy execution & optimization',
+    body: 'Already running for forex. Built to extend.',
+  },
+  {
+    icon: Brain,
+    title: 'AI strategy analyzer',
+    body: 'Context-fit, regime detection, parameter sensitivity.',
+  },
+  {
+    icon: TestTube2,
+    title: 'Backtesting framework',
+    body: 'Bar-based, multi-timeframe, sandboxed Python.',
+  },
+  {
+    icon: Plug,
+    title: 'Broker integration layer',
+    body: 'MetaAPI today; TradeStation, SnapTrade, direct integrations next.',
+  },
+  {
+    icon: Library,
+    title: 'Strategy library & marketplace',
+    body: 'Versioning, templates, community patterns.',
+  },
+];
 
-  const keyMetrics = [
-    {
-      icon: TrendingUp,
-      label: 'Volume Guarantee',
-      value: '40-100%',
-      description: 'Promise to brokers (actual: 10-15x)',
-    },
-    {
-      icon: Users,
-      label: 'Trader Retention',
-      value: '2x+',
-      description: 'Guaranteed improvement',
-    },
-    {
-      icon: BarChart3,
-      label: 'Broker Compatible',
-      value: '1,000+',
-      description: 'Any MT4/MT5 broker supported',
-    },
-  ];
-
-  const platformFeatures = [
-    {
-      icon: Activity,
-      title: 'Real-Time AI Analysis',
-      description: 'Instant market insights powered by millions of daily trades',
-    },
-    {
-      icon: Shield,
-      title: 'Risk Management',
-      description: 'Automated position sizing and exposure tracking',
-    },
-    {
-      icon: Sparkles,
-      title: 'Performance Analytics',
-      description: 'AI-powered journal tracking patterns across our network',
-    },
-  ];
+export default function Slide5() {
+  const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
-    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
-      {/* Subtle dot pattern background */}
+    <div
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      onClick={nextSlide}
+    >
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
@@ -59,110 +49,81 @@ export default function Slide4() {
         }}
       />
 
-      {/* Globe watermark */}
       <GlobeWatermark />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-20 w-full">
-        {/* Header */}
+      <div className="relative z-10 px-20 w-full">
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="mb-10"
         >
-          {/* Small accent line */}
           <motion.div
-            className="w-12 h-1 bg-green-500 mb-6"
+            className="w-16 h-1.5 bg-black mb-6"
             initial={{ width: 0 }}
-            animate={{ width: 48 }}
+            animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
-          <h1 className="text-6xl font-black text-black mb-3 tracking-tighter">
-            The Solution
-          </h1>
-          <p className="text-2xl text-gray-600 font-light">
-            AI Trading Intelligence Already Transforming the Industry
-          </p>
-        </motion.div>
+          <motion.h1
+            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            Where our platform fits
+          </motion.h1>
 
-        {/* Key Metrics - 3 column grid */}
-        <div className="grid grid-cols-3 gap-6 mb-8">
-          {keyMetrics.map((metric, index) => {
-            const Icon = metric.icon;
-            return (
-              <motion.div
-                key={index}
-                className="border border-gray-200 bg-white p-6 hover:shadow-lg transition-all"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
-              >
-                <div className="w-12 h-12 bg-gray-800 text-white flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-black text-xl mb-3">
-                  {metric.label}
-                </h3>
-                <div className="text-5xl font-black text-black mb-2">
-                  {metric.value}
-                </div>
-                <p className="text-gray-600 text-sm">
-                  {metric.description}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
+          <motion.p
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Infrastructure that maps directly to this project.
+          </motion.p>
 
-        {/* Technology Stack - full width */}
-        <motion.div
-          className="p-6 bg-gray-50 border border-gray-200 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-        >
-          <h3 className="font-bold text-black mb-4 text-lg">Proven Technology Stack</h3>
-          <div className="grid grid-cols-3 gap-6">
-            {platformFeatures.map((feature, index) => {
-              const Icon = feature.icon;
+          <div className="grid grid-cols-3 gap-6 mb-8">
+            {capabilities.map((c, i) => {
+              const Icon = c.icon;
               return (
-                <div key={index} className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-gray-800 text-white flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5" />
+                <motion.div
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
+                >
+                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
+                    <Icon className="w-7 h-7" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-black text-sm">{feature.title}</h4>
-                    <p className="text-xs text-gray-600">{feature.description}</p>
-                  </div>
-                </div>
+                  <p className="text-2xl font-bold text-black mb-2 leading-tight">{c.title}</p>
+                  <p className="text-xl text-gray-600 font-light leading-snug">{c.body}</p>
+                </motion.div>
               );
             })}
           </div>
-        </motion.div>
 
-        {/* Bottom stat bar */}
-        <motion.div
-          className="p-4 bg-green-500 text-white text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-        >
-          <p className="text-lg font-bold">
-            Compatible with 1,000+ MT4/MT5 Brokers via MetaAPI
-          </p>
+          <motion.div
+            className="bg-black text-white p-10 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+          >
+            <p className="text-xl uppercase tracking-widest text-gray-400 mb-2">What this means</p>
+            <p className="text-3xl font-light leading-snug">
+              The migration is an extension of what we&apos;re already doing —{' '}
+              <span className="font-bold">not a rebuild.</span>
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(17)].map((_, i) => (
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 3
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
+              i === 4 ? 'w-8 bg-black' : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -171,24 +132,22 @@ export default function Slide4() {
         ))}
       </div>
 
-      {/* References */}
-      <Footnote
-        references={[
-          { number: 1, text: 'Broker count based on MetaQuotes/Finance Magnates industry data 2024' },
-        ]}
-      />
-
-      {/* Navigation */}
       <button
-        onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          prevSlide();
+        }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →

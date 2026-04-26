@@ -58,23 +58,23 @@ export default function Home() {
         />
         
         {/* Title */}
-        <motion.h1 
-          className="mb-8 text-9xl font-black text-black leading-[0.9] tracking-tighter"
+        <motion.h1
+          className="mb-8 text-8xl font-black text-black leading-[0.9] tracking-tighter"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          Vibe<br />Trader
+          Vibe Trader<br /><span className="text-gray-400">×</span> MarketGauge
         </motion.h1>
 
         {/* Subtitle */}
-        <motion.p 
+        <motion.p
           className="mb-12 text-3xl text-gray-700 max-w-2xl font-light"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          Modernizing Global<br />FOREX Trading
+          Discovery and Scoping<br />Conversation · April 27, 2026
         </motion.p>
 
         {/* CTA Button */}
@@ -89,34 +89,34 @@ export default function Home() {
             style={{ fontSize: '2.25rem', padding: '2.5rem 4rem', fontWeight: 'bold' }}
             className="group bg-black text-white hover:bg-gray-800 rounded-none transition-all duration-300"
           >
-            {isSignedIn ? 'View Pitch Deck' : 'Sign In to Continue'}
+            {isSignedIn ? 'View Discovery Deck' : 'Sign In to Continue'}
             <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-1" />
           </Button>
-          
+
           {/* Professional messaging */}
-          <p className="mt-6 font-semibold text-gray-600" style={{ fontSize: '1.875rem' }}>
-            Confidential investor materials
+          <p className="mt-6 font-medium text-gray-500 text-xl">
+            Confidential partnership materials
           </p>
         </motion.div>
 
         {/* Vision points */}
-        <motion.div 
-          className="mt-16 flex gap-12"
+        <motion.div
+          className="mt-16 flex gap-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
         >
           <div>
-            <p className="text-3xl font-bold text-black">AI-Powered</p>
-            <p className="text-sm text-gray-500">Intelligence</p>
+            <p className="text-4xl font-bold text-black">Strategy</p>
+            <p className="text-xl text-gray-500 uppercase tracking-wider">Migration</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-black">Social</p>
-            <p className="text-sm text-gray-500">Trading</p>
+            <p className="text-4xl font-bold text-black">Investment</p>
+            <p className="text-xl text-gray-500 uppercase tracking-wider">Partnership</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-black">Global</p>
-            <p className="text-sm text-gray-500">Markets</p>
+            <p className="text-4xl font-bold text-black">Distribution</p>
+            <p className="text-xl text-gray-500 uppercase tracking-wider">Co-build</p>
           </div>
         </motion.div>
       </motion.div>

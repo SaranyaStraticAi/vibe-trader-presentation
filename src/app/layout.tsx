@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vibe Trader Presentation",
-  description: "Presentation for Vibe Trader platform",
+  title: "Vibe Trader × MarketGauge",
+  description: "Discovery and Scoping Conversation — April 27, 2026",
 };
 
 export default function RootLayout({
