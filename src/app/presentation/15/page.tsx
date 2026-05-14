@@ -1,32 +1,61 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { DollarSign, Rocket, Clock } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide14() {
-  const { prevSlide, nextSlide } = useSlideNavigation();
+const TOTAL_SLIDES = 17;
+const ACTIVE = 14;
 
-  const useOfFunds = [
-    { name: 'Engineering & Product', value: 40, color: '#10b981' },
-    { name: 'Sales & Marketing', value: 30, color: '#3b82f6' },
-    { name: 'Operations', value: 20, color: '#f59e0b' },
-    { name: 'Legal & Compliance', value: 10, color: '#8b5cf6' },
-  ];
+const streams = [
+  {
+    n: '1',
+    label: 'Achieved',
+    items: [
+      'Product built and live',
+      'MT4 / MT5 integrations complete',
+      '782+ users onboarded',
+      'Trading LATAM partnership progressing',
+      'Acuity Trading revenue-share signed',
+    ],
+  },
+  {
+    n: '2',
+    label: 'Current financial profile',
+    items: [
+      'Burn: ~$15K / month',
+      'Lean, founder-led execution',
+      'Infrastructure built efficiently pre-funding',
+    ],
+  },
+  {
+    n: '3',
+    label: 'Post-funding operating plan',
+    items: [
+      'Initial burn: ~$55K / month',
+      'Infrastructure & trading integrations',
+      'GTM validation, engineering, broker partnerships',
+    ],
+  },
+];
 
-  const investmentTerms = [
-    { label: 'Raise Amount', value: '$1M' },
-    { label: 'Valuation', value: '$10M' },
-    { label: 'Equity', value: '10%' },
-    { label: 'Type', value: 'SAFE' },
-  ];
+const targets = [
+  '5,000+ active users',
+  'Monetization rollout at scale',
+  'Expanded broker integrations',
+  'Multi-market expansion',
+  'Strong recurring subscription revenue',
+];
+
+export default function Slide15() {
+  const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
-    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
-      {/* Subtle dot pattern background */}
-      <div 
+    <div
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      onClick={nextSlide}
+    >
+      <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
@@ -42,212 +71,108 @@ export default function Slide14() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {/* Small accent line */}
-          <motion.div 
-            className="w-12 h-1 bg-black mb-8"
+          <motion.div
+            className="w-16 h-1.5 bg-black mb-6"
             initial={{ width: 0 }}
-            animate={{ width: 48 }}
+            animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-7xl md:text-8xl font-black text-black mb-4 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Our Ask
+            Milestones & financials
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-3xl"
+            className="text-3xl text-gray-600 mb-8 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Join us at the ground floor of a revolutionary opportunity
+            What we&apos;ve already built, and how we&apos;ll operate with the next round.
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-12">
-            {/* Investment Terms */}
-            <div>
+          <div className="grid grid-cols-3 gap-6 mb-8">
+            {streams.map((s, i) => (
               <motion.div
-                className="grid grid-cols-2 gap-4 mb-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, staggerChildren: 0.1 }}
-              >
-                {investmentTerms.map((term, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-black text-white p-6 text-center"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1 }}
-                  >
-                    <p className="text-3xl font-black mb-2">{term.value}</p>
-                    <p className="text-sm opacity-80">{term.label}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Unit Economics */}
-              <motion.div
-                className="bg-gray-50 border-2 border-black text-black p-6"
+                key={i}
+                className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.6 }}
+                transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
               >
-                <DollarSign className="w-8 h-8 mb-3 text-black" />
-                <p className="text-2xl font-black mb-1">
-                  Target Unit Economics
-                </p>
-                <p className="text-xs text-gray-500 mb-3">Pre-revenue • B2B2C model</p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>CAC (via broker)</span>
-                    <span className="font-bold">$0</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Target ARPU</span>
-                    <span className="font-bold">$125/mo</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Gross Margin</span>
-                    <span className="font-bold">85%</span>
-                  </div>
-                  <div className="flex justify-between border-t pt-2">
-                    <span>Payback</span>
-                    <span className="font-bold text-green-600">Instant</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Use of Funds Chart */}
-            <div>
-              <motion.h3
-                className="text-lg font-bold text-black mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                Use of Funds
-              </motion.h3>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-              >
-                <ResponsiveContainer width="100%" height={300}>
-                  <PieChart>
-                    <Pie
-                      data={useOfFunds}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={60}
-                      outerRadius={120}
-                      paddingAngle={2}
-                      dataKey="value"
-                      label={({name, value}) => `${value}%`}
-                      labelLine={true}
+                <div className="text-7xl font-black text-black mb-2 leading-none">{s.n}</div>
+                <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">{s.label}</p>
+                <ul className="space-y-2">
+                  {s.items.map((item, j) => (
+                    <li
+                      key={j}
+                      className="flex items-start gap-3 text-lg text-gray-700 font-light leading-snug"
                     >
-                      {useOfFunds.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip 
-                      formatter={(value) => `${value}%`}
-                      contentStyle={{ 
-                        backgroundColor: 'white', 
-                        border: '2px solid black',
-                        borderRadius: 0 
-                      }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
+                      <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
-
-              {/* Timeline */}
-              <motion.div
-                className="mt-6 bg-gray-50 p-4 border-2 border-gray-300"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <Clock className="w-5 h-5 text-gray-600" />
-                  <p className="font-bold text-black">12-Month Runway</p>
-                </div>
-                <p className="text-sm text-gray-600">
-                  Path to Series A with proven unit economics
-                </p>
-              </motion.div>
-            </div>
+            ))}
           </div>
 
-          {/* Bottom CTA */}
           <motion.div
-            className="mt-12 bg-black text-white p-8"
-            initial={{ opacity: 0, y: 30 }}
+            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.6 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <div className="grid grid-cols-2 gap-8 text-center max-w-2xl mx-auto">
-              <div>
-                <Rocket className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-3xl font-black mb-1">10x</p>
-                <p className="text-sm opacity-80">Return Potential</p>
-              </div>
-              <div>
-                <DollarSign className="w-8 h-8 mx-auto mb-2" />
-                <p className="text-3xl font-black mb-1">$100B</p>
-                <p className="text-sm opacity-80">Market Opportunity</p>
-              </div>
+            <p className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4">
+              18–24 month targets
+            </p>
+            <div className="grid grid-cols-2 gap-x-10 gap-y-2">
+              {targets.map((t, i) => (
+                <div key={i} className="flex items-start gap-3 text-xl text-gray-800 font-light">
+                  <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                  <span>{t}</span>
+                </div>
+              ))}
             </div>
-          </motion.div>
-
-          {/* Contact info */}
-          <motion.div
-            className="mt-6 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.6, duration: 0.6 }}
-          >
-            <p className="text-lg font-bold text-black">Let's Build the Future Together</p>
-            <p className="text-gray-600">invest@vibetrader.com</p>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(17)].map((_, i) => (
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
+        {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 13
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
+            transition={{ delay: 0.8 + i * 0.03 }}
           />
         ))}
       </div>
 
-      {/* Navigation */}
       <button
-        onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          prevSlide();
+        }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →

@@ -1,207 +1,175 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, TrendingUp, DollarSign, Target } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function Slide13() {
+const TOTAL_SLIDES = 17;
+const ACTIVE = 13;
+
+const ceo = [
+  '5+ years managing operations, financial planning, logistics, and strategic execution',
+  'Built and ran operational systems in dynamic, decision-heavy environments',
+  'Leads product vision, partnerships, GTM, fundraising, and ecosystem development',
+  'Grew the platform to 800+ trader participants and seeded broker / academy relationships',
+];
+
+const cto = [
+  'Former Amazon engineer with ~6 years building large-scale software systems',
+  '15+ years of software engineering across backend systems and infrastructure',
+  'Built VibeTrader’s core trading stack, MT4 / MT5 integrations, and real-time processing',
+  'Leads AI systems, strategy workflows, and the scalable intelligence layer',
+];
+
+const traderFeedback = [
+  'Veteran traders with decades of market exposure',
+  'Gen-Z traders with 2+ years of active trading behavior',
+  'Strategy-focused traders running workflows inside the platform',
+];
+
+export default function Slide14() {
   const { nextSlide, prevSlide } = useSlideNavigation();
-
-  const marketSegments = [
-    { name: 'Legacy Platforms', value: 75, color: '#6b7280' },
-    { name: 'Other Platforms', value: 20, color: '#f59e0b' },
-    { name: 'Modern AI', value: 5, color: '#10b981' }
-  ];
-
-  const marketStats = [
-    {
-      icon: Users,
-      metric: '10M+',
-      label: 'Global Traders',
-      description: 'Active retail forex traders'
-    },
-    {
-      icon: DollarSign,
-      metric: '$9.6T',
-      label: 'Daily Volume',
-      description: 'Global forex turnover'
-    },
-    {
-      icon: TrendingUp,
-      metric: '11%',
-      label: 'Platform CAGR',
-      description: 'Market growth rate'
-    }
-  ];
 
   return (
     <div
-      className="min-h-screen bg-white relative flex items-center justify-center overflow-hidden cursor-pointer"
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
       onClick={nextSlide}
-      onKeyDown={(e) => {
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
-      }}
-      tabIndex={0}
     >
-      <GlobeWatermark opacity={0.03} />
+      <div
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-8 pt-8 pb-16 z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-7xl font-bold text-black mb-4">
-            Market Opportunity
-          </h1>
-          <p className="text-2xl text-gray-600 mb-12">
-            AI decision intelligence can become the standard analytics layer
-          </p>
-        </motion.div>
+      <GlobeWatermark />
 
-        {/* Hero Stats Row */}
+      <div className="relative z-10 px-20 w-full">
         <motion.div
-          className="grid grid-cols-3 gap-6 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {marketStats.map((stat, index) => (
+          <motion.div
+            className="w-16 h-1.5 bg-black mb-6"
+            initial={{ width: 0 }}
+            animate={{ width: 64 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          />
+
+          <motion.h1
+            className="text-6xl font-black text-black mb-8 tracking-tighter"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            Team
+          </motion.h1>
+
+          <div className="grid grid-cols-2 gap-10 mb-8 max-w-7xl">
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="bg-black text-white p-6 rounded-xl"
+              className="border-2 border-gray-200 p-7"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <stat.icon className="w-6 h-6 text-gray-400" />
-                <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">{stat.label}</span>
-              </div>
-              <div className="text-5xl font-black mb-1">{stat.metric}</div>
-              <p className="text-sm text-gray-500">{stat.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Main Content: Pie Chart + Insight */}
-        <div className="grid grid-cols-5 gap-8">
-          {/* Pie Chart - Takes 3 columns */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="col-span-3 bg-gray-50 rounded-2xl p-8"
-          >
-            <h3 className="text-xl font-bold text-black mb-2">Current Market Penetration</h3>
-            <p className="text-sm text-gray-500 mb-6">How traders currently access analytics tools</p>
-
-            <div className="flex items-center gap-8">
-              <div className="flex-1">
-                <ResponsiveContainer width="100%" height={220}>
-                  <PieChart>
-                    <Pie
-                      data={marketSegments}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={55}
-                      outerRadius={95}
-                      paddingAngle={3}
-                      dataKey="value"
-                    >
-                      {marketSegments.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-
-              {/* Vertical Legend */}
-              <div className="space-y-4 pr-4">
-                {marketSegments.map((segment, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div
-                      className="w-4 h-4 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: segment.color }}
-                    />
-                    <div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-2xl font-black text-black">{segment.value}%</span>
-                      </div>
-                      <span className="text-sm text-gray-600">{segment.name}</span>
-                    </div>
-                  </div>
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CEO</p>
+              <h3 className="text-3xl font-bold text-black mb-5 leading-tight">
+                Saranya Amirthalingam
+              </h3>
+              <ul className="space-y-3">
+                {ceo.map((c, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-lg text-gray-700 font-light leading-snug"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
+                  >
+                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                    <span>{c}</span>
+                  </motion.li>
                 ))}
-              </div>
-            </div>
-          </motion.div>
+              </ul>
+            </motion.div>
 
-          {/* Key Insight - Takes 2 columns */}
+            <motion.div
+              className="border-2 border-gray-200 p-7"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CTO</p>
+              <h3 className="text-3xl font-bold text-black mb-5 leading-tight">Nithyakumaran</h3>
+              <ul className="space-y-3">
+                {cto.map((c, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-lg text-gray-700 font-light leading-snug"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
+                  >
+                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                    <span>{c}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="col-span-2 flex flex-col justify-center"
+            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                  <Target className="w-5 h-5 text-white" />
+            <p className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Built with feedback from
+            </p>
+            <div className="grid grid-cols-3 gap-x-10 gap-y-3">
+              {traderFeedback.map((t, i) => (
+                <div key={i} className="flex items-start gap-3 text-lg text-gray-800 font-light">
+                  <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                  <span>{t}</span>
                 </div>
-                <span className="text-sm font-bold text-green-700 uppercase tracking-wider">The Opportunity</span>
-              </div>
-
-              <div className="mb-4">
-                <span className="text-6xl font-black text-green-600">75%</span>
-                <p className="text-lg text-gray-700 mt-2">
-                  of traders are stuck on <strong>legacy platforms</strong> without modern AI capabilities
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-green-200">
-                <p className="text-sm text-gray-600">
-                  Only <strong className="text-green-600">5%</strong> currently use AI-powered tools — massive room for disruption
-                </p>
-              </div>
+              ))}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(17)].map((_, i) => (
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
+        {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 12
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
+            transition={{ delay: 0.8 + i * 0.03 }}
           />
         ))}
       </div>
 
-      {/* Navigation */}
       <button
-        onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          prevSlide();
+        }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →

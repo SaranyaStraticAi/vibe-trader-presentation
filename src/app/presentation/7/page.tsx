@@ -1,29 +1,52 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Database, Brain, Target, Zap } from 'lucide-react';
+import { Globe2, Target, Crosshair } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
-import dynamic from 'next/dynamic';
 
-// Dynamically import the DataFlywheel component to avoid SSR issues
-// Dynamically import the DataFlywheel component to avoid SSR issues
-const DataFlywheel = dynamic(() => import('@/components/DataFlywheelMagic'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-[600px] h-[600px] flex items-center justify-center">
-      <div className="text-gray-400">Loading flywheel...</div>
-    </div>
-  ),
-});
+const TOTAL_SLIDES = 17;
+const ACTIVE = 6;
 
-export default function Slide6() {
+const market = [
+  {
+    icon: Globe2,
+    label: 'TAM',
+    headline: '~$17B by 2030',
+    title: 'Global online trading platform market',
+    body:
+      'Estimated at ~$10.5B in 2024, projected to exceed ~$17B by 2030 — driven by retail trading growth, forex & crypto adoption, and AI-assisted workflows.',
+    accent: 'bg-black text-white',
+  },
+  {
+    icon: Target,
+    label: 'SAM',
+    headline: '30–40M traders',
+    title: 'Active retail traders globally',
+    body:
+      'Forex, CFDs, crypto, equities. BIS reports global FX trading reached $9.6T/day in April 2025 — a signal of the underlying scale.',
+    accent: 'bg-white text-black border-2 border-black',
+  },
+  {
+    icon: Crosshair,
+    label: 'SOM',
+    headline: '1–2M strategy-driven',
+    title: 'Strategy-driven retail forex traders',
+    body:
+      'Active users of strategy builders, automation tools, journaling systems, and analytics workflows — the MetaTrader / TradingView / Myfxbook communities.',
+    accent: 'bg-gray-100 text-black border-2 border-gray-300',
+  },
+];
+
+export default function Slide7() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
-    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
-      {/* Subtle dot pattern background */}
-      <div 
+    <div
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      onClick={nextSlide}
+    >
+      <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
@@ -34,125 +57,105 @@ export default function Slide6() {
       <GlobeWatermark />
 
       <div className="relative z-10 px-20 w-full">
-        <div className="grid grid-cols-2 gap-8 items-center">
-          {/* Left Column - Content */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="w-16 h-1.5 bg-black mb-6"
+            initial={{ width: 0 }}
+            animate={{ width: 64 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          />
+
+          <motion.h1
+            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
-            {/* Small accent line */}
-            <motion.div
-              className="w-12 h-1 bg-black mb-6"
-              initial={{ width: 0 }}
-              animate={{ width: 48 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            />
+            A massive, growing market
+          </motion.h1>
 
-            <motion.h1
-              className="text-5xl font-black text-black mb-3 tracking-tighter"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              Our Moat:<br />Why Every Trade<br />Makes Us Smarter
-            </motion.h1>
-
-            <motion.p
-              className="text-lg text-gray-600 mb-8 font-light"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              More users → More data → Smarter AI → Better outcomes → Repeat
-            </motion.p>
-
-            {/* Flywheel pillars - stacked vertically with matching icons */}
-            <motion.div
-              className="space-y-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <div className="flex items-center gap-4 bg-gradient-to-r from-blue-50 to-cyan-50 p-4 border-2 border-black">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Database className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="font-bold text-black">Cross-Broker Data</p>
-                  <p className="text-sm text-gray-600">Trades, intent & strategies across all brokers - patterns no single broker sees</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 bg-gradient-to-r from-violet-50 to-purple-50 p-4 border-2 border-black">
-                <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Brain className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="font-bold text-black">We Own The Data</p>
-                  <p className="text-sm text-gray-600">Users pick ChatGPT, Claude, Gemini - but none of them have our data</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 bg-gradient-to-r from-pink-50 to-rose-50 p-4 border-2 border-black">
-                <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Target className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="font-bold text-black">AI Gets Smarter</p>
-                  <p className="text-sm text-gray-600">More data = better predictions. Models keep learning and improving</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 bg-gradient-to-r from-amber-50 to-orange-50 p-4 border-2 border-black">
-                <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Zap className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="font-bold text-black">Better Outcomes</p>
-                  <p className="text-sm text-gray-600">Traders win more → attracts more users → cycle repeats</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Column - Flywheel Graphic */}
-          <motion.div
-            className="flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+          <motion.p
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <DataFlywheel />
-          </motion.div>
-        </div>
+            Global online trading, retail-driven, AI-ready.
+          </motion.p>
+
+          <div className="grid grid-cols-3 gap-6 mb-8">
+            {market.map((m, i) => {
+              const Icon = m.icon;
+              return (
+                <motion.div
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <div
+                      className={`w-14 h-14 flex items-center justify-center text-2xl font-black ${m.accent}`}
+                    >
+                      {m.label}
+                    </div>
+                    <Icon className="w-7 h-7 text-gray-400" />
+                  </div>
+                  <p className="text-4xl font-bold text-black leading-tight mb-2">{m.headline}</p>
+                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">{m.title}</p>
+                  <p className="text-xl text-gray-700 font-light leading-snug">{m.body}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <motion.p
+            className="text-2xl text-gray-600 italic font-light max-w-6xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+          >
+            Why now: AI can finally process behavioral and market data in real time — and the next
+            evolution of trading platforms is intelligence-driven infrastructure.
+          </motion.p>
+        </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(17)].map((_, i) => (
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
+        {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 5
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
+            transition={{ delay: 0.8 + i * 0.03 }}
           />
         ))}
       </div>
 
-      {/* Navigation */}
       <button
-        onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          prevSlide();
+        }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →

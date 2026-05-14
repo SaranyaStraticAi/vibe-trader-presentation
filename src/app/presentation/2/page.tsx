@@ -1,197 +1,167 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, TrendingDown, Lightbulb, Globe, ArrowRight } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-export default function OriginSlide() {
-  const { nextSlide, prevSlide } = useSlideNavigation();
+const TOTAL_SLIDES = 17;
+const ACTIVE = 1;
 
-  const journeySteps = [
-    {
-      icon: Bot,
-      title: 'Built an AI Algo Trader',
-      description: 'We wanted to build an AI system that could trade forex autonomously',
-      color: 'bg-blue-500'
-    },
-    {
-      icon: Globe,
-      title: 'Needed User Data',
-      description: 'Realized we needed traders on the platform to collect market behavior data',
-      color: 'bg-purple-500'
-    },
-    {
-      icon: Lightbulb,
-      title: 'Discovered a Problem',
-      description: 'Connected with a broker and uncovered a massive industry pain point',
-      color: 'bg-amber-500'
-    },
-    {
-      icon: TrendingDown,
-      title: 'The Pivot',
-      description: 'The tool we built for ourselves could solve their retention crisis',
-      color: 'bg-green-500'
-    }
-  ];
+const forTraders = [
+  'Strategies stop working as markets change',
+  'No clarity on what works in current conditions',
+  'Emotional and inconsistent decision-making',
+  'Existing platforms optimize execution, not decisions',
+];
+
+const forBrokers = [
+  'High trader churn',
+  'Limited visibility into trader behavior',
+  'Few tools improve trader outcomes and retention',
+];
+
+export default function Slide2() {
+  const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
     <div
-      className="min-h-screen bg-white relative flex items-center justify-center overflow-hidden cursor-pointer"
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
       onClick={nextSlide}
-      onKeyDown={(e) => {
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
-      }}
-      tabIndex={0}
     >
+      <div
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
+      />
+
       <GlobeWatermark />
 
-      <div className="max-w-7xl mx-auto px-8 py-12 z-10">
+      <div className="relative z-10 px-20 w-full">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {/* Accent bar */}
           <motion.div
-            className="w-12 h-1 bg-black mb-6"
+            className="w-16 h-1.5 bg-black mb-6"
             initial={{ width: 0 }}
-            animate={{ width: 48 }}
+            animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
-          <h1 className="text-7xl font-bold text-black mb-4">
-            Our Story
-          </h1>
-          <p className="text-2xl text-gray-600 mb-12">
-            How a chance meeting revealed a billion-dollar problem
-          </p>
-        </motion.div>
+          <motion.h1
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-[1.05]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            Trading has never had more tools —<br />yet most traders still lose
+          </motion.h1>
 
-        {/* Journey Timeline */}
-        <div className="relative">
-          {/* Timeline row with icons and arrows */}
-          <div className="flex items-center justify-between mb-6">
-            {journeySteps.map((step, index) => (
-              <React.Fragment key={index}>
-                {/* Icon circle */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.15 }}
-                  className={`w-14 h-14 ${step.color} rounded-full flex items-center justify-center z-10 shadow-lg flex-shrink-0`}
-                >
-                  <step.icon className="w-7 h-7 text-white" />
-                </motion.div>
+          <motion.p
+            className="text-2xl text-gray-600 mb-10 font-light"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Execution is solved. Decision-making is not.
+          </motion.p>
 
-                {/* Arrow between icons */}
-                {index < journeySteps.length - 1 && (
-                  <motion.div
-                    className="flex-1 flex items-center justify-center px-2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 + index * 0.15 }}
-                  >
-                    <div className="h-0.5 flex-1 bg-gray-200" />
-                    <ArrowRight className="w-5 h-5 text-gray-400 mx-1" />
-                    <div className="h-0.5 flex-1 bg-gray-200" />
-                  </motion.div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-
-          {/* Content cards grid */}
-          <div className="grid grid-cols-4 gap-6">
-            {journeySteps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
-                className="text-center"
-              >
-                <div className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-black transition-colors h-full">
-                  <h3 className="text-lg font-bold text-black mb-2">{step.title}</h3>
-                  <p className="text-sm text-gray-600">{step.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Key Insight Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="mt-12 bg-black text-white rounded-2xl p-8"
-        >
-          <div className="flex items-start gap-6">
-            <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <Lightbulb className="w-8 h-8 text-white" />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-2">The Insight</h3>
-              <p className="text-lg text-gray-300">
-                Brokers spend <span className="text-white font-bold">$2,000+ to acquire each trader</span>, then lose 75% within a year.
-                Our AI platform <span className="text-green-400 font-bold">keeps traders engaged and profitable</span> — solving their #1 problem.
+          <div className="grid grid-cols-2 gap-12 max-w-7xl mb-10">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-5">
+                For Traders
               </p>
-            </div>
-          </div>
-        </motion.div>
+              <ul className="space-y-3">
+                {forTraders.map((t, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-4 text-2xl text-gray-800 font-light leading-snug"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.08, duration: 0.4 }}
+                  >
+                    <span className="mt-3 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span>{t}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
 
-        {/* Why Forex callout */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
-          className="mt-6 flex justify-center gap-8 text-center"
-        >
-          <div className="bg-gray-50 border-2 border-gray-200 rounded-xl px-6 py-4">
-            <p className="text-3xl font-black text-black">24/5</p>
-            <p className="text-sm text-gray-600">Market Hours</p>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-5">
+                For Brokers
+              </p>
+              <ul className="space-y-3">
+                {forBrokers.map((b, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-4 text-2xl text-gray-800 font-light leading-snug"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.08, duration: 0.4 }}
+                  >
+                    <span className="mt-3 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span>{b}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
-          <div className="bg-gray-50 border-2 border-gray-200 rounded-xl px-6 py-4">
-            <p className="text-3xl font-black text-black">$9.6T</p>
-            <p className="text-sm text-gray-600">Daily Volume</p>
-          </div>
-          <div className="bg-gray-50 border-2 border-gray-200 rounded-xl px-6 py-4">
-            <p className="text-3xl font-black text-black">∞</p>
-            <p className="text-sm text-gray-600">Data Points</p>
-          </div>
+
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+          >
+            <p className="text-2xl font-light leading-snug">
+              Better decisions ={' '}
+              <span className="font-bold">better trader retention + higher trading activity</span>
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
-        {[...Array(17)].map((_, i) => (
+        {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 1
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
+            transition={{ delay: 0.8 + i * 0.03 }}
           />
         ))}
       </div>
 
-      {/* Navigation */}
       <button
-        onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          prevSlide();
+        }}
         className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
         className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
