@@ -1,187 +1,168 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'framer-motion';
-import { DollarSign, Users, Building2, TrendingUp, ArrowRight, Sparkles, BarChart3 } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+
+const TOTAL_SLIDES = 17;
+const ACTIVE = 11;
+
+const competitors = [
+  { name: 'MetaTrader 4 / 5', focus: 'Trade execution infrastructure', signal: 'Millions of traders globally' },
+  { name: 'TradingView', focus: 'Charting & indicators', signal: '100M+ users' },
+  { name: 'eToro', focus: 'Social investing & copy trading', signal: '40M+ registered users' },
+  { name: 'Myfxbook', focus: 'Forex analytics & tracking', signal: 'Large forex retail base' },
+  { name: 'NinjaTrader', focus: 'Futures trading platform', signal: '1.9M+ users' },
+];
+
+const moat = [
+  { title: 'Integrated workflow', body: 'Strategy, journaling, analytics, optimization — one platform.' },
+  { title: 'Proprietary behavioral dataset', body: 'Trader behavior + strategy-performance mapping that compounds.' },
+  { title: 'Broker & academy distribution', body: 'Embedded relationships create scalable acquisition channels.' },
+  { title: 'Compounding data advantage', body: 'The system improves as trading activity grows.' },
+];
 
 export default function Slide12() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const revenueStreams = [
-    {
-      icon: DollarSign,
-      title: 'Performance-Based CPA',
-      description: '$X per lot',
-      detail: 'Scaled by performance increase'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Revenue Share',
-      description: 'Success-aligned',
-      detail: 'Grow together with brokers'
-    },
-    {
-      icon: Building2,
-      title: 'Enterprise Licensing',
-      description: 'White-label',
-      detail: 'Full integration solutions'
-    },
-    {
-      icon: BarChart3,
-      title: 'Data & Analytics',
-      description: 'Trader Insights',
-      detail: 'Broker & PE interest confirmed'
-    }
-  ];
-
-  const partnershipFlow = [
-    { label: 'Broker Partners', icon: Users },
-    { label: 'AI Intelligence Layer', icon: Sparkles },
-    { label: 'Increased Volume', icon: TrendingUp },
-    { label: 'Shared Success', icon: DollarSign }
-  ];
-
   return (
-    <div 
-      className="min-h-screen bg-white relative flex items-center justify-center overflow-hidden cursor-pointer"
+    <div
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
       onClick={nextSlide}
-      onKeyDown={(e) => {
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
-      }}
-      tabIndex={0}
     >
+      <div
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
+      />
+
       <GlobeWatermark />
-      
-      <div className="max-w-7xl mx-auto px-8 py-12 z-10">
+
+      <div className="relative z-10 px-20 w-full">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {/* Accent bar */}
           <motion.div
-            className="w-12 h-1 bg-blue-600 mb-6"
+            className="w-16 h-1.5 bg-black mb-6"
             initial={{ width: 0 }}
-            animate={{ width: 48 }}
+            animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
-          <h1 className="text-7xl font-bold text-black mb-4">
-            Business Model
-          </h1>
-          <p className="text-2xl text-gray-600 mb-10">
-            Partner with brokers globally • 10-15x trading volume increase
-          </p>
-        </motion.div>
+          <motion.h1
+            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            Competition & moat
+          </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-4 gap-6 mb-10"
-        >
-          {revenueStreams.map((stream, index) => (
+          <motion.p
+            className="text-2xl text-gray-600 mb-6 font-light max-w-5xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Existing platforms optimize execution, charting, and copy trading. Our position: the
+            <span className="font-bold text-black"> intelligence infrastructure layer</span>.
+          </motion.p>
+
+          <div className="grid grid-cols-2 gap-10 max-w-7xl">
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-black transition-colors"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
             >
-              <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4">
-                <stream.icon className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-black mb-1">{stream.title}</h3>
-              <p className="text-2xl font-black text-black mb-2">{stream.description}</p>
-              <p className="text-sm text-gray-600">{stream.detail}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="bg-gray-50 border-2 border-gray-200 rounded-2xl p-6"
-        >
-          <h3 className="text-lg font-bold text-black mb-6 text-center">Partnership Flow</h3>
-          <div className="flex items-center justify-between max-w-3xl mx-auto">
-            {partnershipFlow.map((step, index) => (
-              <React.Fragment key={index}>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                  className="flex flex-col items-center"
-                >
-                  <div className="w-16 h-16 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center mb-3">
-                    <step.icon className="w-8 h-8 text-black" />
-                  </div>
-                  <span className="text-sm font-medium text-black text-center max-w-[90px]">
-                    {step.label}
-                  </span>
-                </motion.div>
-                {index < partnershipFlow.length - 1 && (
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">
+                Existing landscape
+              </p>
+              <div className="space-y-2">
+                {competitors.map((c, i) => (
                   <motion.div
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 'auto', opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                    key={i}
+                    className="grid grid-cols-[1.4fr_1.6fr_1fr] gap-3 items-center border-b border-gray-200 py-2"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.05, duration: 0.4 }}
                   >
-                    <ArrowRight className="w-6 h-6 text-gray-400" />
+                    <p className="text-lg font-bold text-black leading-tight">{c.name}</p>
+                    <p className="text-sm text-gray-600 font-light leading-snug">{c.focus}</p>
+                    <p className="text-sm text-gray-500 font-light italic leading-snug">{c.signal}</p>
                   </motion.div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-        {/* Data Analytics callout */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="mt-6 bg-blue-50 border-2 border-blue-200 rounded-xl p-4"
-        >
-          <div className="flex items-center gap-4">
-            <BarChart3 className="w-8 h-8 text-blue-600 flex-shrink-0" />
-            <div>
-              <p className="font-bold text-black">Future Revenue: Trader Intelligence Data</p>
-              <p className="text-sm text-gray-600">Brokers & PE firms interested in trader behavior insights, strategies, and market sentiment data</p>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">
+                Why we&apos;re hard to replicate
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {moat.map((m, i) => (
+                  <motion.div
+                    key={i}
+                    className="border-2 border-gray-200 hover:border-black transition-colors p-4"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + i * 0.08, duration: 0.4 }}
+                  >
+                    <p className="text-lg font-bold text-black mb-1 leading-tight">{m.title}</p>
+                    <p className="text-sm text-gray-600 font-light leading-snug">{m.body}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
+
+          <motion.p
+            className="text-2xl text-gray-600 italic font-light mt-8 max-w-6xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            Not an AI feature — a continuously improving trading intelligence system.
+          </motion.p>
         </motion.div>
       </div>
 
-      {/* Progress indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
-        {[...Array(16)].map((_, i) => (
+        {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 11
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
+            transition={{ delay: 0.8 + i * 0.03 }}
           />
         ))}
       </div>
 
-      {/* Navigation */}
       <button
-        onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          prevSlide();
+        }}
         className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
         className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >

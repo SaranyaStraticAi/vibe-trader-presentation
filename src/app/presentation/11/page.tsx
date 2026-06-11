@@ -1,72 +1,52 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, Target, Rocket, CheckCircle } from 'lucide-react';
+import { UserCheck, Users2, Building2 } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+
+const TOTAL_SLIDES = 17;
+const ACTIVE = 10;
+
+const phases = [
+  {
+    icon: UserCheck,
+    label: '1',
+    title: 'Convert existing users',
+    timeline: '0–6 months',
+    body:
+      'Tap the current 782-user base. Trigger upgrades after strategy creation, AI insight usage, and live deployment. Goal: first paying users + validated pricing.',
+    accent: 'bg-black text-white',
+  },
+  {
+    icon: Users2,
+    label: '2',
+    title: 'Community expansion',
+    timeline: '6–12 months',
+    body:
+      'Trading academies, communities, and affiliate creators. Trading LATAM is the live pilot. Goal: 5,000+ active users and community-led growth.',
+    accent: 'bg-white text-black border-2 border-black',
+  },
+  {
+    icon: Building2,
+    label: '3',
+    title: 'Broker distribution',
+    timeline: '12–24 months',
+    body:
+      'CPA partnerships, white-label intelligence layer, broker ecosystem integrations. Goal: a scalable acquisition engine.',
+    accent: 'bg-gray-100 text-black border-2 border-gray-300',
+  },
+];
 
 export default function Slide11() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const timeline = [
-    {
-      quarter: 'Now (Q1 2026)',
-      title: 'Launch Pilots',
-      tasks: [
-        'Trading Latam pilot live',
-        'Launch HFM pilot',
-        'Arabic & Spanish live'
-      ],
-      kpis: { users: 1000, brokers: 2, arr: '$0.3M' },
-      status: 'current'
-    },
-    {
-      quarter: 'Q2 2026',
-      title: 'Validate & Scale',
-      tasks: [
-        'Pilot results analysis',
-        'Onboard 3 more brokers',
-        'Expand to more languages'
-      ],
-      kpis: { users: 5000, brokers: 5, arr: '$1.5M' },
-      status: 'next'
-    },
-    {
-      quarter: 'Q3 2026',
-      title: 'Accelerate',
-      tasks: [
-        'Full broker rollouts',
-        'Launch affiliate program',
-        'API marketplace'
-      ],
-      kpis: { users: 15000, brokers: 10, arr: '$4.5M' },
-      status: 'future'
-    },
-    {
-      quarter: 'Q4 2026',
-      title: 'Series A',
-      tasks: [
-        'Proven unit economics',
-        'International expansion',
-        'Raise Series A'
-      ],
-      kpis: { users: 30000, brokers: 20, arr: '$9M' },
-      status: 'future'
-    }
-  ];
-
-  const monthlyBurn = [
-    { category: 'Engineering', amount: 8 },
-    { category: 'Sales & Marketing', amount: 5 },
-    { category: 'Operations', amount: 4 },
-    { category: 'Infrastructure', amount: 2 },
-    { category: 'Other', amount: 1 },
-  ];
-
   return (
-    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
-      {/* Subtle dot pattern background */}
-      <div 
+    <div
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      onClick={nextSlide}
+    >
+      <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
@@ -82,170 +62,102 @@ export default function Slide11() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {/* Small accent line */}
-          <motion.div 
-            className="w-12 h-1 bg-black mb-8"
+          <motion.div
+            className="w-16 h-1.5 bg-black mb-6"
             initial={{ width: 0 }}
-            animate={{ width: 48 }}
+            animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Our Timeline
+            Three-phase GTM
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-3xl"
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Product built, beta tested, now executing B2B2C go-to-market
+            Existing users → community → broker distribution.
           </motion.p>
 
-          {/* Timeline */}
-          <div className="grid grid-cols-4 gap-6 mb-12">
-            {timeline.map((quarter, index) => (
-              <motion.div
-                key={index}
-                className="relative"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + index * 0.15, duration: 0.5 }}
-              >
-                {/* Connection line */}
-                {index < timeline.length - 1 && (
-                  <div className="absolute top-6 left-full w-full h-0.5 bg-gray-300 z-0" />
-                )}
-                
-                <div className="relative z-10">
-                  {/* Quarter header */}
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      quarter.status === 'current' 
-                        ? 'bg-green-600 text-white'
-                        : quarter.status === 'next'
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-400 text-white'
-                    }`}>
-                      <Calendar className="w-6 h-6" />
+          <div className="grid grid-cols-3 gap-6 mb-8">
+            {phases.map((p, i) => {
+              const Icon = p.icon;
+              return (
+                <motion.div
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <div
+                      className={`w-14 h-14 flex items-center justify-center text-3xl font-black ${p.accent}`}
+                    >
+                      {p.label}
                     </div>
-                    <div>
-                      <p className="font-bold text-black">{quarter.quarter}</p>
-                      <p className="text-sm text-gray-600">{quarter.title}</p>
-                    </div>
+                    <Icon className="w-7 h-7 text-gray-400" />
                   </div>
-
-                  {/* Tasks */}
-                  <div className="bg-gray-50 p-4 border-2 border-gray-200 mb-4">
-                    <ul className="space-y-2">
-                      {quarter.tasks.map((task, taskIndex) => (
-                        <li key={taskIndex} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{task}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* KPIs */}
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Users:</span>
-                      <span className="font-bold">{quarter.kpis.users}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Brokers:</span>
-                      <span className="font-bold">{quarter.kpis.brokers}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">ARR:</span>
-                      <span className="font-bold text-black">{quarter.kpis.arr}</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  <h3 className="text-3xl font-bold text-black leading-tight mb-2">{p.title}</h3>
+                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">
+                    {p.timeline}
+                  </p>
+                  <p className="text-xl text-gray-700 font-light leading-snug">{p.body}</p>
+                </motion.div>
+              );
+            })}
           </div>
 
-          {/* Monthly burn breakdown */}
-          <motion.div
-            className="grid grid-cols-2 gap-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
+          <motion.p
+            className="text-2xl text-gray-600 italic font-light max-w-6xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <div className="bg-gray-50 p-6 border-2 border-black">
-              <h3 className="text-lg font-bold text-black mb-4">Monthly Burn Rate: $20K</h3>
-              <p className="text-xs text-gray-600 mb-3 italic">*Some founders not taking salary</p>
-              <div className="space-y-2">
-                {monthlyBurn.map((item, index) => (
-                  <div key={index} className="flex justify-between">
-                    <span className="text-gray-600">{item.category}</span>
-                    <span className="font-bold">${item.amount}K ({Math.round(item.amount * 100 / 20)}%)</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-gray-50 p-6 border-2 border-gray-300">
-              <h3 className="text-lg font-bold text-black mb-4">Current Status</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-bold text-black">✓ Product Complete</p>
-                  <p className="text-sm text-gray-600">AI platform built and tested</p>
-                </div>
-                <div>
-                  <p className="font-bold text-black">✓ Beta Testing Done</p>
-                  <p className="text-sm text-gray-600">456 beta users</p>
-                </div>
-                <div>
-                  <p className="font-bold text-black">✓ Multilingual</p>
-                  <p className="text-sm text-gray-600">Arabic & Spanish live</p>
-                </div>
-                <div>
-                  <p className="font-bold text-black">→ Broker Pilots Starting</p>
-                  <p className="text-sm text-gray-600">Trading Latam live, HFM next</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            Users generate intelligence. Intelligence improves outcomes. Better outcomes attract
+            more users.
+          </motion.p>
         </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(16)].map((_, i) => (
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
+        {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 10
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
+            transition={{ delay: 0.8 + i * 0.03 }}
           />
         ))}
       </div>
 
-      {/* Navigation */}
       <button
-        onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          prevSlide();
+        }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →

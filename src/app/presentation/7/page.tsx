@@ -1,27 +1,52 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Globe, Bitcoin, TrendingUp, Shield, AlertTriangle, DollarSign, Languages, Users } from 'lucide-react';
+import { Globe2, Target, Crosshair } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { Footnote, SuperScript } from '@/components/Footnote';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+
+const TOTAL_SLIDES = 17;
+const ACTIVE = 6;
+
+const market = [
+  {
+    icon: Globe2,
+    label: 'TAM',
+    headline: '~$17B by 2030',
+    title: 'Global online trading platform market',
+    body:
+      'Estimated at ~$10.5B in 2024, projected to exceed ~$17B by 2030 — driven by retail trading growth, forex & crypto adoption, and AI-assisted workflows.',
+    accent: 'bg-black text-white',
+  },
+  {
+    icon: Target,
+    label: 'SAM',
+    headline: '30–40M traders',
+    title: 'Active retail traders globally',
+    body:
+      'Forex, CFDs, crypto, equities. BIS reports global FX trading reached $9.6T/day in April 2025 — a signal of the underlying scale.',
+    accent: 'bg-white text-black border-2 border-black',
+  },
+  {
+    icon: Crosshair,
+    label: 'SOM',
+    headline: '1–2M strategy-driven',
+    title: 'Strategy-driven retail forex traders',
+    body:
+      'Active users of strategy builders, automation tools, journaling systems, and analytics workflows — the MetaTrader / TradingView / Myfxbook communities.',
+    accent: 'bg-gray-100 text-black border-2 border-gray-300',
+  },
+];
 
 export default function Slide7() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
-  const marketComparison = [
-    { market: 'FOREX', value: 7500, color: '#10b981' },
-    { market: 'Crypto', value: 2000, color: '#3b82f6' },
-    { market: 'NYSE', value: 100, color: '#6b7280' },
-    { market: 'Options', value: 500, color: '#f59e0b' },
-  ];
-
-
   return (
-    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
-      {/* Subtle dot pattern background */}
-      <div 
+    <div
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      onClick={nextSlide}
+    >
+      <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
@@ -37,202 +62,100 @@ export default function Slide7() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {/* Small accent line */}
-          <motion.div 
-            className="w-12 h-1 bg-black mb-8"
+          <motion.div
+            className="w-16 h-1.5 bg-black mb-6"
             initial={{ width: 0 }}
-            animate={{ width: 48 }}
+            animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-6xl md:text-7xl font-black text-black mb-4 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Why FOREX First?
+            A massive, growing market
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-3xl"
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            $7.5T daily volume trapped in 20-year-old tools with 70-80% trader churn
+            Global online trading, retail-driven, AI-ready.
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-12">
-            {/* Market Size Comparison */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <h3 className="text-lg font-bold text-black mb-4">Daily Trading Volume ($B)<SuperScript number={1} /></h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={marketComparison}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="market" />
-                  <YAxis />
-                  <Tooltip 
-                    formatter={(value) => `$${value}B`}
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
-                      border: '2px solid black',
-                      borderRadius: 0 
-                    }}
-                  />
-                  <Bar dataKey="value">
-                    {marketComparison.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-              
-              <motion.div
-                className="mt-6 bg-gray-50 p-4 border-2 border-black"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.5 }}
-              >
-                <p className="text-4xl font-black text-black">75x</p>
-                <p className="text-sm text-gray-600">Larger than NYSE</p>
-              </motion.div>
-            </motion.div>
-
-            {/* Market Problems */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
-              <h3 className="text-lg font-bold text-black mb-6">Why FOREX is Perfect Entry</h3>
-              
-              <div className="space-y-3">
+          <div className="grid grid-cols-3 gap-6 mb-8">
+            {market.map((m, i) => {
+              const Icon = m.icon;
+              return (
                 <motion.div
-                  className="flex items-start gap-3 p-3 border-2 border-red-200 bg-red-50"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.9, duration: 0.5 }}
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
                 >
-                  <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
-                  <div>
-                    <p className="font-bold text-black">70-80% Trader Churn</p>
-                    <p className="text-sm text-gray-600">Brokers lose most traders in first 90 days</p>
+                  <div className="flex items-center gap-4 mb-5">
+                    <div
+                      className={`w-14 h-14 flex items-center justify-center text-2xl font-black ${m.accent}`}
+                    >
+                      {m.label}
+                    </div>
+                    <Icon className="w-7 h-7 text-gray-400" />
                   </div>
+                  <p className="text-4xl font-bold text-black leading-tight mb-2">{m.headline}</p>
+                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">{m.title}</p>
+                  <p className="text-xl text-gray-700 font-light leading-snug">{m.body}</p>
                 </motion.div>
-
-                <motion.div
-                  className="flex items-start gap-3 p-3 border-2 border-orange-200 bg-orange-50"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.0, duration: 0.5 }}
-                >
-                  <DollarSign className="w-5 h-5 text-orange-600 mt-0.5" />
-                  <div>
-                    <p className="font-bold text-black">$2,000-4,000 CAC</p>
-                    <p className="text-sm text-gray-600">Brokers spend massively to acquire traders</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-start gap-3 p-3 border-2 border-gray-300 bg-gray-50"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.1, duration: 0.5 }}
-                >
-                  <Globe className="w-5 h-5 text-gray-600 mt-0.5" />
-                  <div>
-                    <p className="font-bold text-black">20-Year-Old Tools</p>
-                    <p className="text-sm text-gray-600">MT4 (2005), MT5 (2010) - no innovation</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-start gap-3 p-3 border-2 border-purple-200 bg-purple-50"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.2, duration: 0.5 }}
-                >
-                  <Languages className="w-5 h-5 text-purple-600 mt-0.5" />
-                  <div>
-                    <p className="font-bold text-black">English-Only Platforms</p>
-                    <p className="text-sm text-gray-600">Global traders forced to use English tools</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-start gap-3 p-3 border-2 border-blue-200 bg-blue-50"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.3, duration: 0.5 }}
-                >
-                  <Users className="w-5 h-5 text-blue-600 mt-0.5" />
-                  <div>
-                    <p className="font-bold text-black">No Behavioral Analytics</p>
-                    <p className="text-sm text-gray-600">Brokers blind to why traders fail</p>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Our Solution */}
-              <motion.div
-                className="mt-6 bg-black text-white p-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.4, duration: 0.5 }}
-              >
-                <p className="font-bold mb-2">Vibe Trader Solves All This</p>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div>✓ Multilingual AI</div>
-                  <div>✓ Behavioral insights</div>
-                  <div>✓ Modern tools</div>
-                  <div>✓ Reduce churn to &lt;20%</div>
-                </div>
-              </motion.div>
-            </motion.div>
+              );
+            })}
           </div>
+
+          <motion.p
+            className="text-2xl text-gray-600 italic font-light max-w-6xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+          >
+            Why now: AI can finally process behavioral and market data in real time — and the next
+            evolution of trading platforms is intelligence-driven infrastructure.
+          </motion.p>
         </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
-        {[...Array(16)].map((_, i) => (
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
+        {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
             className={`h-2 transition-all duration-300 ${
-              i === 6
-                ? 'w-8 bg-black'
-                : 'w-2 bg-gray-300'
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
             } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.8 + i * 0.05 }}
+            transition={{ delay: 0.8 + i * 0.03 }}
           />
         ))}
       </div>
 
-      {/* References */}
-      <Footnote 
-        references={[
-          { number: 1, text: 'BIS 2024, NYSE Market Data 2024' },
-        ]}
-      />
-
-      {/* Navigation */}
       <button
-        onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          prevSlide();
+        }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →
