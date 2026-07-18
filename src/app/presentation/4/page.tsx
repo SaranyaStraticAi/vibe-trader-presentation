@@ -3,28 +3,26 @@
 import { motion } from 'framer-motion';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { Flywheel } from '@/components/Flywheel';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 3;
 
 const layers = [
   {
     n: '1',
     title: 'Input layer',
-    body:
-      'Trades, strategies, market conditions, and behavioral patterns flow in continuously.',
+    body: 'Trades, strategies, market conditions, and behavior flow in continuously.',
   },
   {
     n: '2',
     title: 'Intelligence layer',
-    body:
-      'Behavioral analysis, strategy performance mapping, and AI learning detect what works when.',
+    body: 'Behavioral analysis and AI learning detect what works when.',
   },
   {
     n: '3',
     title: 'Decision layer',
-    body:
-      'Real-time decision guidance, strategy optimization, and risk intelligence — surfaced where the trader acts.',
+    body: 'Real-time guidance, surfaced where the trader acts.',
   },
 ];
 
@@ -77,36 +75,28 @@ export default function Slide4() {
             A system that learns how decisions perform over time and adapts accordingly.
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {layers.map((s, i) => (
-              <motion.div
-                key={i}
-                className="border-2 border-gray-200 hover:border-black transition-colors p-8 group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
-              >
-                <div className="text-8xl font-black text-black mb-4 leading-none">{s.n}</div>
-                <h3 className="text-3xl font-bold text-black mb-3 leading-tight">{s.title}</h3>
-                <p className="text-xl text-gray-700 font-light leading-snug">{s.body}</p>
-              </motion.div>
-            ))}
-          </div>
+          <div className="flex items-center gap-16 mb-4">
+            <Flywheel stages={layers} centerLabel="Decision Intelligence" centerSub="VibeTrader" />
 
-          <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
-          >
-            <p className="text-xl uppercase tracking-widest text-gray-400 mb-2">The loop</p>
-            <p className="text-3xl font-light leading-snug">
-              Trade <span className="text-gray-500">→</span> Analyze{' '}
-              <span className="text-gray-500">→</span> Learn{' '}
-              <span className="text-gray-500">→</span>{' '}
-              <span className="font-bold">Improve</span>
-            </p>
-          </motion.div>
+            <motion.div
+              className="bg-black text-white p-8 flex-1"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+            >
+              <p className="text-xl uppercase tracking-widest text-gray-400 mb-2">The loop</p>
+              <p className="text-3xl font-light leading-snug">
+                Trade <span className="text-gray-500">→</span> Analyze{' '}
+                <span className="text-gray-500">→</span> Learn{' '}
+                <span className="text-gray-500">→</span>{' '}
+                <span className="font-bold">Improve</span>
+              </p>
+              <p className="text-lg text-gray-400 font-light leading-snug mt-4">
+                Every stage of the flywheel feeds the next — the system compounds with every
+                trade.
+              </p>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

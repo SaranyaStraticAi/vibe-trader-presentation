@@ -1,51 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cpu, Megaphone, Users } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 15;
 
-const deployment = [
-  {
-    icon: Cpu,
-    amount: '$650K',
-    title: 'Product & infrastructure',
-    body:
-      'Decision intelligence engine, infrastructure expansion, strategy optimization, trading-infra scaling.',
-  },
-  {
-    icon: Megaphone,
-    amount: '$500K',
-    title: 'GTM & distribution',
-    body: 'Trading communities, broker partnerships, affiliate ecosystem, user acquisition.',
-  },
-  {
-    icon: Users,
-    amount: '$350K',
-    title: 'Team & operations',
-    body: 'Engineering expansion, customer support, core operations.',
-  },
-];
-
-const outcomes = [
-  '5,000+ active users',
-  'Monetization rollout at scale',
-  'Expanded broker distribution',
-  'Stronger proprietary data advantage',
-  'Expansion into stocks / options workflows',
-];
-
 export default function Slide16() {
-  const { nextSlide, prevSlide } = useSlideNavigation();
+  const { prevSlide, goToFirst } = useSlideNavigation();
 
   return (
-    <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
-      onClick={nextSlide}
-    >
+    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
@@ -63,72 +29,40 @@ export default function Slide16() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.div
-            className="w-16 h-1.5 bg-black mb-6"
+            className="w-16 h-1.5 bg-black mb-10"
             initial={{ width: 0 }}
             animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-7xl font-black text-black mb-3 tracking-tighter leading-[0.95]"
+            className="text-8xl font-black text-black mb-6 tracking-tighter leading-[0.95]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Raising $1.5M <span className="text-gray-400">at a</span> $10M valuation
+            Trading platforms<br />helped traders <span className="text-gray-400">execute.</span>
           </motion.h1>
 
-          <motion.p
-            className="text-2xl text-gray-600 mb-10 font-light max-w-5xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            18–20 months runway · monetization validation · broker distribution · multi-market
-            preparation.
-          </motion.p>
-
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {deployment.map((d, i) => {
-              const Icon = d.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
-                >
-                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <p className="text-5xl font-black text-black mb-2 leading-none tracking-tighter">
-                    {d.amount}
-                  </p>
-                  <p className="text-xl font-bold text-black mb-2 leading-tight">{d.title}</p>
-                  <p className="text-lg text-gray-700 font-light leading-snug">{d.body}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          <motion.div
-            className="bg-black text-white p-7 max-w-7xl"
+          <motion.h2
+            className="text-7xl font-black text-black mb-12 tracking-tighter leading-[0.95]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">
-              Expected outcomes (18–24 months)
+            VibeTrader helps traders <span className="italic">evolve.</span>
+          </motion.h2>
+
+          <motion.div
+            className="bg-black text-white p-10 max-w-5xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">VibeTrader</p>
+            <p className="text-3xl font-light leading-snug">
+              The <span className="font-bold">AI decision intelligence layer</span> for trading.
             </p>
-            <div className="grid grid-cols-2 gap-x-10 gap-y-2">
-              {outcomes.map((o, i) => (
-                <div key={i} className="flex items-center gap-3 text-xl font-light">
-                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
-                  <span>{o}</span>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -137,9 +71,8 @@ export default function Slide16() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
@@ -148,24 +81,18 @@ export default function Slide16() {
       </div>
 
       <button
-        onClick={(e) => {
-          e.stopPropagation();
-          prevSlide();
-        }}
+        onClick={prevSlide}
         className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={(e) => {
-          e.stopPropagation();
-          nextSlide();
-        }}
+        onClick={goToFirst}
         className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
-        aria-label="Next slide"
+        aria-label="Back to start"
       >
-        →
+        ↺
       </button>
     </div>
   );

@@ -1,35 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CreditCard, Handshake, Server, BarChart3 } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { Flywheel } from '@/components/Flywheel';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 8;
 
-const streams = [
-  {
-    icon: CreditCard,
-    title: 'Trader subscriptions',
-    body: 'Trader $25 / Pro $99 / Elite $200 per month. Pro is the core monetization layer.',
-  },
-  {
-    icon: Handshake,
-    title: 'Broker partnerships',
-    body: 'CPA partnerships, revenue-sharing, and distribution agreements with global brokers.',
-  },
-  {
-    icon: Server,
-    title: 'Software licensing',
-    body: 'Decision intelligence infrastructure for broker ecosystems, academies, and communities.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Aggregated intelligence',
-    body:
-      'Future layer: anonymous strategy-performance trends, behavioral signals, institutional dashboards.',
-  },
+const flywheelStages = [
+  { n: '1', title: 'Trade', body: 'Real-world activity' },
+  { n: '2', title: 'Learn', body: 'Personal context' },
+  { n: '3', title: 'Adapt', body: 'Smarter guidance' },
+  { n: '4', title: 'Decide', body: 'Greater confidence' },
 ];
 
 export default function Slide9() {
@@ -57,69 +40,46 @@ export default function Slide9() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.div
-            className="w-16 h-1.5 bg-black mb-6"
+            className="w-16 h-1.5 bg-black mb-8"
             initial={{ width: 0 }}
             animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-7xl font-black text-black mb-4 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Multi-layered revenue model
+            Why Customers Stay
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-600 mb-8 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Traders, brokers, and ecosystems — all paying for adaptive intelligence.
+            Value compounds with every interaction.
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-6 mb-8 max-w-7xl">
-            {streams.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
-                >
-                  <div className="flex gap-5">
-                    <div className="w-14 h-14 bg-black text-white flex items-center justify-center shrink-0 group-hover:bg-gray-700 transition-colors">
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                      <p className="text-lg text-gray-600 font-light leading-snug">{s.body}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+          <div className="flex justify-center mb-6">
+            <Flywheel stages={flywheelStages} centerLabel="Decision Intelligence" centerSub="VibeTrader" />
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-8 max-w-7xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
           >
             <p className="text-lg uppercase tracking-widest text-gray-400 mb-2">
-              Why customers pay
+              Compounding Advantage
             </p>
-            <p className="text-3xl font-light leading-snug">
-              Existing tools show charts.{' '}
-              <span className="font-bold">
-                VibeTrader optimizes performance consistency in live trading.
-              </span>
+            <p className="text-2xl font-light leading-snug">
+              The platform becomes more personalized with every interaction, increasing retention
+              and long-term customer value.
             </p>
           </motion.div>
         </motion.div>

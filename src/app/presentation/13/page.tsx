@@ -1,41 +1,33 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CandlestickChart, LineChart, Bitcoin } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 12;
 
-const phases = [
-  {
-    icon: CandlestickChart,
-    label: '1',
-    title: 'Forex',
-    timeline: 'Current focus',
-    body:
-      'Largest and most active financial market. High-frequency decision environment. Strong broker ecosystem. MT4 / MT5 already integrated.',
-    accent: 'bg-black text-white',
-  },
-  {
-    icon: LineChart,
-    label: '2',
-    title: 'Stocks & Options',
-    timeline: 'Phase 2',
-    body:
-      'Multi-asset portfolio intelligence, options strategy workflows, risk & position management, cross-market behavioral analysis.',
-    accent: 'bg-white text-black border-2 border-black',
-  },
-  {
-    icon: Bitcoin,
-    label: '3',
-    title: 'Futures & Crypto',
-    timeline: 'Phase 3',
-    body:
-      'Futures: high-frequency, quant, risk-intensive. Crypto: 24/7 markets, fast-evolving strategies, high behavioral volatility.',
-    accent: 'bg-gray-100 text-black border-2 border-gray-300',
-  },
+const ceo = [
+  'Leads product strategy, go-to-market, partnerships, and fundraising',
+  'Grew VibeTrader to 1,650+ registered traders with live broker and academy pilots',
+  '5+ years leading business operations, strategy, finance, and growth',
+];
+
+const cto = [
+  'Former Amazon engineer',
+  '15+ years building software, cloud infrastructure, and AI systems',
+  'Built VibeTrader’s AI platform, MT4 / MT5 integrations, and real-time trading infrastructure',
+];
+
+const tradingExpertise = [
+  'Tony Sotelo — 39+ years of Forex market experience',
+  'Built and refined with experienced retail traders',
+];
+
+const traderFeedback = [
+  'Veteran traders with decades of market exposure',
+  'Gen-Z traders with 2+ years of active trading behavior',
+  'Strategy-focused traders running workflows inside the platform',
 ];
 
 export default function Slide13() {
@@ -70,63 +62,110 @@ export default function Slide13() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-8 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Expansion strategy
+            Leadership Team
           </motion.h1>
 
-          <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Clear path across global trading markets — same engine, new market layers.
-          </motion.p>
+          <div className="grid grid-cols-3 gap-6 mb-8 max-w-7xl">
+            <motion.div
+              className="border-2 border-gray-200 p-6"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CEO</p>
+              <h3 className="text-2xl font-bold text-black mb-4 leading-tight">
+                Saranya Amirthalingam
+              </h3>
+              <ul className="space-y-3">
+                {ceo.map((c, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-base text-gray-700 font-light leading-snug"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
+                  >
+                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                    <span>{c}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {phases.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
-                >
-                  <div className="flex items-center gap-4 mb-5">
-                    <div
-                      className={`w-14 h-14 flex items-center justify-center text-3xl font-black ${p.accent}`}
-                    >
-                      {p.label}
-                    </div>
-                    <Icon className="w-7 h-7 text-gray-400" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-black leading-tight mb-2">{p.title}</h3>
-                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">
-                    {p.timeline}
-                  </p>
-                  <p className="text-xl text-gray-700 font-light leading-snug">{p.body}</p>
-                </motion.div>
-              );
-            })}
+            <motion.div
+              className="border-2 border-gray-200 p-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.6 }}
+            >
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CTO</p>
+              <h3 className="text-2xl font-bold text-black mb-4 leading-tight">Nithyakumaran</h3>
+              <ul className="space-y-3">
+                {cto.map((c, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-base text-gray-700 font-light leading-snug"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
+                  >
+                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                    <span>{c}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className="border-2 border-gray-200 p-6"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">
+                Trading Expertise
+              </p>
+              <h3 className="text-2xl font-bold text-black mb-4 leading-tight">Tony Sotelo</h3>
+              <ul className="space-y-3">
+                {tradingExpertise.map((c, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-base text-gray-700 font-light leading-snug"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.06, duration: 0.4 }}
+                  >
+                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                    <span>{c}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
 
-          <motion.p
-            className="text-2xl text-gray-600 italic font-light max-w-6xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
+          <motion.div
+            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
           >
-            We are not building for one instrument. We are building{' '}
-            <span className="font-bold not-italic text-black">
-              intelligence infrastructure for trading itself.
-            </span>
-          </motion.p>
+            <p className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Built with feedback from
+            </p>
+            <div className="grid grid-cols-3 gap-x-10 gap-y-3">
+              {traderFeedback.map((t, i) => (
+                <div key={i} className="flex items-start gap-3 text-lg text-gray-800 font-light">
+                  <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                  <span>{t}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -134,9 +173,8 @@ export default function Slide13() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
