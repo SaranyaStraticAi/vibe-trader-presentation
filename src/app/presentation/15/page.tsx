@@ -1,50 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Users, Handshake, Cpu } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 14;
 
-const streams = [
+const deployment = [
   {
-    n: '1',
-    label: 'Achieved',
-    items: [
-      'Product built and live',
-      'MT4 / MT5 integrations complete',
-      '782+ users onboarded',
-      'Trading LATAM partnership progressing',
-      'Acuity Trading revenue-share signed',
-    ],
+    icon: Users,
+    title: 'Build the Team',
+    body: 'Expand engineering, product, customer success, and go-to-market.',
   },
   {
-    n: '2',
-    label: 'Current financial profile',
-    items: [
-      'Burn: ~$15K / month',
-      'Lean, founder-led execution',
-      'Infrastructure built efficiently pre-funding',
-    ],
+    icon: Handshake,
+    title: 'Grow the Business',
+    body: 'Expand broker partnerships, trading academies, affiliates, and customer acquisition.',
   },
   {
-    n: '3',
-    label: 'Post-funding operating plan',
-    items: [
-      'Initial burn: ~$55K / month',
-      'Infrastructure & trading integrations',
-      'GTM validation, engineering, broker partnerships',
-    ],
+    icon: Cpu,
+    title: 'Advance the Platform',
+    body: 'Enhance AI capabilities, infrastructure, security, compliance, and mobile applications.',
   },
 ];
 
-const targets = [
+const outcomes = [
   '5,000+ active users',
-  'Monetization rollout at scale',
-  'Expanded broker integrations',
-  'Multi-market expansion',
+  'Commercial broker partnerships',
   'Strong recurring subscription revenue',
+  'Expansion beyond Forex',
+  'Seed-round readiness',
 ];
 
 export default function Slide15() {
@@ -79,63 +66,67 @@ export default function Slide15() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-7xl font-black text-black mb-3 tracking-tighter leading-[0.95]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Milestones & financials
+            Funding the Next Stage
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-8 font-light max-w-4xl"
+            className="text-2xl text-gray-600 mb-10 font-light max-w-5xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            What we&apos;ve already built, and how we&apos;ll operate with the next round.
+            $1M Pre-Seed · YC Post-Money SAFE · $10M Valuation Cap
+          </motion.p>
+
+          <motion.p
+            className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.45, duration: 0.6 }}
+          >
+            Where we&apos;ll invest
           </motion.p>
 
           <div className="grid grid-cols-3 gap-6 mb-8">
-            {streams.map((s, i) => (
-              <motion.div
-                key={i}
-                className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
-              >
-                <div className="text-7xl font-black text-black mb-2 leading-none">{s.n}</div>
-                <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">{s.label}</p>
-                <ul className="space-y-2">
-                  {s.items.map((item, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-3 text-lg text-gray-700 font-light leading-snug"
-                    >
-                      <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+            {deployment.map((d, i) => {
+              const Icon = d.icon;
+              return (
+                <motion.div
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
+                >
+                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
+                    <Icon className="w-7 h-7" />
+                  </div>
+                  <p className="text-xl font-bold text-black mb-2 leading-tight">{d.title}</p>
+                  <p className="text-lg text-gray-700 font-light leading-snug">{d.body}</p>
+                </motion.div>
+              );
+            })}
           </div>
 
           <motion.div
-            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-7xl"
+            className="bg-black text-white p-7 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4">
-              18–24 month targets
+            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">
+              What this unlocks
             </p>
             <div className="grid grid-cols-2 gap-x-10 gap-y-2">
-              {targets.map((t, i) => (
-                <div key={i} className="flex items-start gap-3 text-xl text-gray-800 font-light">
-                  <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
-                  <span>{t}</span>
+              {outcomes.map((o, i) => (
+                <div key={i} className="flex items-center gap-3 text-xl font-light">
+                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
+                  <span>{o}</span>
                 </div>
               ))}
             </div>

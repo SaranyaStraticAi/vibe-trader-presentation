@@ -1,30 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Wrench, BookOpen, Sparkles } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 4;
-
-const products = [
-  {
-    icon: Wrench,
-    title: 'Strategy Builder',
-    body: 'Build & optimize strategies. Backtest workflows. AI trade analysis.',
-  },
-  {
-    icon: BookOpen,
-    title: 'AI Trading Journal',
-    body: 'Auto-journaling. Trade review workflows. Performance tracking.',
-  },
-  {
-    icon: Sparkles,
-    title: 'AI Insights',
-    body: 'Market condition analysis. Decision guidance. Risk signals.',
-  },
-];
 
 export default function Slide5() {
   const { nextSlide, prevSlide } = useSlideNavigation();
@@ -63,65 +44,27 @@ export default function Slide5() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Core product experience
+            Decision Intelligence in Action
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-600 mb-6 font-light max-w-4xl italic"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Three workflows. One adaptive intelligence layer underneath.
+            See how VibeTrader helps traders make smarter decisions in real time.
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {products.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-                >
-                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <p className="text-2xl font-bold text-black mb-2 leading-tight">{p.title}</p>
-                  <p className="text-xl text-gray-600 font-light leading-snug">{p.body}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-
           <motion.div
-            className="grid grid-cols-2 gap-6 max-w-7xl"
+            className="mb-8 max-w-5xl aspect-video border-2 border-dashed border-gray-300 bg-gray-50 flex items-center justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 0.45, duration: 0.6 }}
           >
-            <div className="border-2 border-gray-200 p-6">
-              <p className="text-lg uppercase tracking-widest text-gray-500 mb-3">
-                Before VibeTrader
-              </p>
-              <ul className="space-y-2 text-xl text-gray-700 font-light">
-                <li>Guessing whether strategies still work</li>
-                <li>Repeating emotional mistakes</li>
-                <li>Static tools and indicators</li>
-              </ul>
-            </div>
-            <div className="bg-black text-white p-6">
-              <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">
-                With VibeTrader
-              </p>
-              <ul className="space-y-2 text-xl font-light">
-                <li>Context-aware strategy insights</li>
-                <li>Real-time guidance</li>
-                <li>Continuous optimization</li>
-              </ul>
-            </div>
+            <p className="text-xl text-gray-400 font-light uppercase tracking-widest">
+              Video embed — 30-90 sec walkthrough
+            </p>
           </motion.div>
         </motion.div>
       </div>

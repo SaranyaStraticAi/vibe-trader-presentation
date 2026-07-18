@@ -1,41 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Globe2, Target, Crosshair } from 'lucide-react';
+import { Users, Rocket, Handshake } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 6;
 
-const market = [
+const stats = [
   {
-    icon: Globe2,
-    label: 'TAM',
-    headline: '~$17B by 2030',
-    title: 'Global online trading platform market',
-    body:
-      'Estimated at ~$10.5B in 2024, projected to exceed ~$17B by 2030 — driven by retail trading growth, forex & crypto adoption, and AI-assisted workflows.',
-    accent: 'bg-black text-white',
+    icon: Users,
+    metric: '1,650+',
+    label: 'Registered traders',
+    detail: 'Growing validation from traders and industry partners.',
   },
   {
-    icon: Target,
-    label: 'SAM',
-    headline: '30–40M traders',
-    title: 'Active retail traders globally',
-    body:
-      'Forex, CFDs, crypto, equities. BIS reports global FX trading reached $9.6T/day in April 2025 — a signal of the underlying scale.',
-    accent: 'bg-white text-black border-2 border-black',
+    icon: Rocket,
+    metric: '2',
+    label: 'Live pilots',
+    detail: 'Trading LatAm (Academy) · Dupoin (Broker).',
   },
   {
-    icon: Crosshair,
-    label: 'SOM',
-    headline: '1–2M strategy-driven',
-    title: 'Strategy-driven retail forex traders',
-    body:
-      'Active users of strategy builders, automation tools, journaling systems, and analytics workflows — the MetaTrader / TradingView / Myfxbook communities.',
-    accent: 'bg-gray-100 text-black border-2 border-gray-300',
+    icon: Handshake,
+    metric: '7+',
+    label: 'Broker pipeline',
+    detail: 'Lirunex · PU Prime · GTCFX · Blueberry Markets · HFM · Ultima Markets · OneRoyal.',
   },
+];
+
+const infra = [
+  'MT4 / MT5 integration',
+  'Multi-language platform: English · Spanish · Arabic',
+  'Broker ecosystem',
 ];
 
 export default function Slide7() {
@@ -75,7 +72,7 @@ export default function Slide7() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            A massive, growing market
+            Market Validation
           </motion.h1>
 
           <motion.p
@@ -84,45 +81,52 @@ export default function Slide7() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Global online trading, retail-driven, AI-ready.
+            Growing validation from traders and industry partners.
           </motion.p>
 
           <div className="grid grid-cols-3 gap-6 mb-8">
-            {market.map((m, i) => {
-              const Icon = m.icon;
+            {stats.map((s, i) => {
+              const Icon = s.icon;
               return (
                 <motion.div
                   key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
+                  transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
                 >
-                  <div className="flex items-center gap-4 mb-5">
-                    <div
-                      className={`w-14 h-14 flex items-center justify-center text-2xl font-black ${m.accent}`}
-                    >
-                      {m.label}
-                    </div>
-                    <Icon className="w-7 h-7 text-gray-400" />
+                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
+                    <Icon className="w-7 h-7" />
                   </div>
-                  <p className="text-4xl font-bold text-black leading-tight mb-2">{m.headline}</p>
-                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">{m.title}</p>
-                  <p className="text-xl text-gray-700 font-light leading-snug">{m.body}</p>
+                  <p className="text-5xl font-black text-black mb-2 leading-none tracking-tighter">
+                    {s.metric}
+                  </p>
+                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-3">{s.label}</p>
+                  <p className="text-lg text-gray-700 font-light leading-snug">{s.detail}</p>
                 </motion.div>
               );
             })}
           </div>
 
-          <motion.p
-            className="text-2xl text-gray-600 italic font-light max-w-6xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
           >
-            Why now: AI can finally process behavioral and market data in real time — and the next
-            evolution of trading platforms is intelligence-driven infrastructure.
-          </motion.p>
+            <p className="text-lg uppercase tracking-widest text-gray-400 mb-4">
+              Ready to scale
+            </p>
+            <div className="grid grid-cols-3 gap-x-10 gap-y-3">
+              {infra.map((m, i) => (
+                <div key={i} className="flex items-center gap-3 text-xl font-light">
+                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
+                  <span>{m}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-lg text-gray-400 italic mt-5">As of Jul 14, 2026</p>
+          </motion.div>
         </motion.div>
       </div>
 

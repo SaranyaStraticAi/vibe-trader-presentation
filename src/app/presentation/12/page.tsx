@@ -1,25 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { CandlestickChart, LineChart, Bitcoin } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 11;
 
-const competitors = [
-  { name: 'MetaTrader 4 / 5', focus: 'Trade execution infrastructure', signal: 'Millions of traders globally' },
-  { name: 'TradingView', focus: 'Charting & indicators', signal: '100M+ users' },
-  { name: 'eToro', focus: 'Social investing & copy trading', signal: '40M+ registered users' },
-  { name: 'Myfxbook', focus: 'Forex analytics & tracking', signal: 'Large forex retail base' },
-  { name: 'NinjaTrader', focus: 'Futures trading platform', signal: '1.9M+ users' },
-];
-
-const moat = [
-  { title: 'Integrated workflow', body: 'Strategy, journaling, analytics, optimization — one platform.' },
-  { title: 'Proprietary behavioral dataset', body: 'Trader behavior + strategy-performance mapping that compounds.' },
-  { title: 'Broker & academy distribution', body: 'Embedded relationships create scalable acquisition channels.' },
-  { title: 'Compounding data advantage', body: 'The system improves as trading activity grows.' },
+const phases = [
+  {
+    icon: CandlestickChart,
+    label: '1',
+    title: 'Forex',
+    timeline: 'Today',
+    points: ['Largest retail trading market', 'MT4 / MT5 ecosystem', 'Strong broker network'],
+    accent: 'bg-black text-white',
+  },
+  {
+    icon: LineChart,
+    label: '2',
+    title: 'Stocks & Options',
+    timeline: 'Next',
+    points: ['Portfolio intelligence', 'Options workflows', 'Cross-market insights'],
+    accent: 'bg-white text-black border-2 border-black',
+  },
+  {
+    icon: Bitcoin,
+    label: '3',
+    title: 'Futures & Crypto',
+    timeline: 'Future',
+    points: ['Quant strategies', '24/7 markets', 'High-frequency decisions'],
+    accent: 'bg-gray-100 text-black border-2 border-gray-300',
+  },
 ];
 
 export default function Slide12() {
@@ -59,77 +72,67 @@ export default function Slide12() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Competition & moat
+            Expansion Strategy
           </motion.h1>
 
           <motion.p
-            className="text-2xl text-gray-600 mb-6 font-light max-w-5xl"
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Existing platforms optimize execution, charting, and copy trading. Our position: the
-            <span className="font-bold text-black"> intelligence infrastructure layer</span>.
+            One intelligence engine. Multiple trading markets.
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-10 max-w-7xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">
-                Existing landscape
-              </p>
-              <div className="space-y-2">
-                {competitors.map((c, i) => (
-                  <motion.div
-                    key={i}
-                    className="grid grid-cols-[1.4fr_1.6fr_1fr] gap-3 items-center border-b border-gray-200 py-2"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6 + i * 0.05, duration: 0.4 }}
-                  >
-                    <p className="text-lg font-bold text-black leading-tight">{c.name}</p>
-                    <p className="text-sm text-gray-600 font-light leading-snug">{c.focus}</p>
-                    <p className="text-sm text-gray-500 font-light italic leading-snug">{c.signal}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">
-                Why we&apos;re hard to replicate
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {moat.map((m, i) => (
-                  <motion.div
-                    key={i}
-                    className="border-2 border-gray-200 hover:border-black transition-colors p-4"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 + i * 0.08, duration: 0.4 }}
-                  >
-                    <p className="text-lg font-bold text-black mb-1 leading-tight">{m.title}</p>
-                    <p className="text-sm text-gray-600 font-light leading-snug">{m.body}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+          <div className="grid grid-cols-3 gap-6 mb-8">
+            {phases.map((p, i) => {
+              const Icon = p.icon;
+              return (
+                <motion.div
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <div
+                      className={`w-14 h-14 flex items-center justify-center text-3xl font-black ${p.accent}`}
+                    >
+                      {p.label}
+                    </div>
+                    <Icon className="w-7 h-7 text-gray-400" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-black leading-tight mb-2">{p.title}</h3>
+                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">
+                    {p.timeline}
+                  </p>
+                  <ul className="space-y-2">
+                    {p.points.map((pt, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-3 text-xl text-gray-700 font-light leading-snug"
+                      >
+                        <span className="mt-2.5 inline-block h-2 w-2 shrink-0 bg-black" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
           </div>
 
           <motion.p
-            className="text-2xl text-gray-600 italic font-light mt-8 max-w-6xl"
+            className="text-2xl text-gray-600 italic font-light max-w-6xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
           >
-            Not an AI feature — a continuously improving trading intelligence system.
+            Built for Forex today.{' '}
+            <span className="font-bold not-italic text-black">
+              Designed for every market tomorrow.
+            </span>
           </motion.p>
         </motion.div>
       </div>

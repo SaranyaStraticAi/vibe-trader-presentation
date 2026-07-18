@@ -15,7 +15,7 @@ const Globe = dynamic(() => import('@/components/Globe'), {
   ),
 });
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 
 export default function Slide1() {
   const { nextSlide } = useSlideNavigation();
@@ -58,7 +58,16 @@ export default function Slide1() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          AI Decision Intelligence<br />for Traders
+          AI Decision Intelligence for Traders
+        </motion.p>
+
+        <motion.p
+          className="mb-2 text-3xl text-black font-bold tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.8 }}
+        >
+          Trade Beyond Instinct.
         </motion.p>
 
         <motion.p
@@ -67,7 +76,7 @@ export default function Slide1() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          Learn what works, when — and turn it into real-time decision intelligence.
+          Helping traders make smarter decisions through intelligence that continuously learns and adapts.
         </motion.p>
 
         <motion.div
@@ -112,9 +121,8 @@ export default function Slide1() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}

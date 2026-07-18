@@ -4,20 +4,19 @@ import { motion } from 'framer-motion';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 1;
 
 const forTraders = [
   'Strategies stop working as markets change',
   'No clarity on what works in current conditions',
-  'Emotional and inconsistent decision-making',
-  'Existing platforms optimize execution, not decisions',
+  'Emotional decision-making'
 ];
 
 const forBrokers = [
-  'High trader churn',
-  'Limited visibility into trader behavior',
-  'Few tools improve trader outcomes and retention',
+  'High churn',
+  'Limited visibility',
+  'Poor retention'
 ];
 
 export default function Slide2() {
@@ -57,7 +56,7 @@ export default function Slide2() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Trading has never had more tools —<br />yet most traders still lose
+            The Decision Gap
           </motion.h1>
 
           <motion.p
@@ -66,7 +65,7 @@ export default function Slide2() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Execution is solved. Decision-making is not.
+            Trading has never had more tools — yet most traders still lose. Execution is solved. Decision-making is not.
           </motion.p>
 
           <div className="grid grid-cols-2 gap-12 max-w-7xl mb-10">
@@ -137,9 +136,8 @@ export default function Slide2() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}

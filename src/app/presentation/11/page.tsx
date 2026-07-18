@@ -1,41 +1,33 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { UserCheck, Users2, Building2 } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 16;
 const ACTIVE = 10;
 
-const phases = [
-  {
-    icon: UserCheck,
-    label: '1',
-    title: 'Convert existing users',
-    timeline: '0–6 months',
-    body:
-      'Tap the current 782-user base. Trigger upgrades after strategy creation, AI insight usage, and live deployment. Goal: first paying users + validated pricing.',
-    accent: 'bg-black text-white',
-  },
-  {
-    icon: Users2,
-    label: '2',
-    title: 'Community expansion',
-    timeline: '6–12 months',
-    body:
-      'Trading academies, communities, and affiliate creators. Trading LATAM is the live pilot. Goal: 5,000+ active users and community-led growth.',
-    accent: 'bg-white text-black border-2 border-black',
-  },
-  {
-    icon: Building2,
-    label: '3',
-    title: 'Broker distribution',
-    timeline: '12–24 months',
-    body:
-      'CPA partnerships, white-label intelligence layer, broker ecosystem integrations. Goal: a scalable acquisition engine.',
-    accent: 'bg-gray-100 text-black border-2 border-gray-300',
-  },
+const traditional = [
+  'Execute Trades (MT4 / MT5 • Robinhood)',
+  'Analyze Markets (TradingView)',
+  'Copy Strategies (eToro • DupliTrade)',
+  'Track Performance (Myfxbook)',
+  'General AI (OpenAI • Claude)',
+];
+
+const vibeTrader = [
+  'Learn Decisions',
+  'Personalized Intelligence',
+  'Adaptive Decision Support',
+  'Continuous Optimization',
+  'Trader Decision Memory',
+];
+
+const moat = [
+  { title: 'Decision Memory', body: 'Learns from every interaction.' },
+  { title: 'Personalized Intelligence', body: 'Adapts to every trader.' },
+  { title: 'Unified Workflow', body: 'One connected platform.' },
+  { title: 'Network Intelligence', body: 'Improves with every user.' },
 ];
 
 export default function Slide11() {
@@ -75,55 +67,100 @@ export default function Slide11() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Three-phase GTM
+            Competitive Advantage
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-2xl text-gray-600 mb-6 font-light max-w-5xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Existing users → community → broker distribution.
+            The decision intelligence layer for modern trading.
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {phases.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
-                >
-                  <div className="flex items-center gap-4 mb-5">
-                    <div
-                      className={`w-14 h-14 flex items-center justify-center text-3xl font-black ${p.accent}`}
-                    >
-                      {p.label}
-                    </div>
-                    <Icon className="w-7 h-7 text-gray-400" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-black leading-tight mb-2">{p.title}</h3>
-                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">
-                    {p.timeline}
-                  </p>
-                  <p className="text-xl text-gray-700 font-light leading-snug">{p.body}</p>
-                </motion.div>
-              );
-            })}
+          <div className="grid grid-cols-2 gap-10 max-w-7xl mb-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">
+                Traditional Platforms
+              </p>
+              <ul className="space-y-3">
+                {traditional.map((t, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-xl text-gray-700 font-light leading-snug border-b border-gray-200 pb-3"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.05, duration: 0.4 }}
+                  >
+                    <span className="mt-2.5 inline-block h-2 w-2 shrink-0 bg-gray-400" />
+                    <span>{t}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">
+                VibeTrader
+              </p>
+              <ul className="space-y-3">
+                {vibeTrader.map((v, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-xl text-black font-bold leading-snug border-b border-black pb-3"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.05, duration: 0.4 }}
+                  >
+                    <span className="mt-2.5 inline-block h-2 w-2 shrink-0 bg-black" />
+                    <span>{v}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
 
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">Why we win</p>
+            <div className="grid grid-cols-4 gap-4 max-w-7xl">
+              {moat.map((m, i) => (
+                <motion.div
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.0 + i * 0.08, duration: 0.4 }}
+                >
+                  <p className="text-lg font-bold text-black mb-1 leading-tight">{m.title}</p>
+                  <p className="text-sm text-gray-600 font-light leading-snug">{m.body}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
           <motion.p
-            className="text-2xl text-gray-600 italic font-light max-w-6xl"
+            className="text-2xl text-gray-600 italic font-light mt-6 max-w-6xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
+            transition={{ delay: 1.4, duration: 0.6 }}
           >
-            Users generate intelligence. Intelligence improves outcomes. Better outcomes attract
-            more users.
+            AI models evolve.{' '}
+            <span className="font-bold not-italic text-black">
+              Decision intelligence compounds.
+            </span>
           </motion.p>
         </motion.div>
       </div>
