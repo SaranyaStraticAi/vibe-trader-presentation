@@ -50,7 +50,7 @@ export default function Slide16() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            VibeTrader helps traders <span className="italic">evolve.</span>
+            VibeTrader helps traders <span className="italic">decide.</span>
           </motion.h2>
 
           <motion.div

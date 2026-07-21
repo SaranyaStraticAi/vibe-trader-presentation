@@ -122,10 +122,10 @@ export default function Slide15() {
             <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">
               What this unlocks
             </p>
-            <div className="grid grid-cols-2 gap-x-10 gap-y-2">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
               {outcomes.map((o, i) => (
-                <div key={i} className="flex items-center gap-3 text-xl font-light">
-                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
+                <div key={i} className="flex items-center gap-2 text-base xl:text-lg font-light whitespace-nowrap">
+                  <span className="inline-block h-1.5 w-1.5 shrink-0 bg-white" />
                   <span>{o}</span>
                 </div>
               ))}

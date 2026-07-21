@@ -8,20 +8,20 @@ const TOTAL_SLIDES = 16;
 const ACTIVE = 12;
 
 const ceo = [
-  'Leads product strategy, go-to-market, partnerships, and fundraising',
-  'Grew VibeTrader to 1,650+ registered traders with live broker and academy pilots',
-  '5+ years leading business operations, strategy, finance, and growth',
+  'Leads product strategy, go-to-market, partnerships, and fundraising.',
+  'Grew VibeTrader to 1,650+ registered traders with live broker and academy pilots.',
+  '5+ years leading business operations, strategy, finance, and growth.',
 ];
 
 const cto = [
-  'Former Amazon engineer',
-  '15+ years building software, cloud infrastructure, and AI systems',
-  'Built VibeTrader’s AI platform, MT4 / MT5 integrations, and real-time trading infrastructure',
+  'Former Amazon engineer.',
+  '15+ years building software, cloud infrastructure, and AI systems.',
+  'Built VibeTrader’s AI platform, MT4/MT5 integrations, and real-time trading infrastructure.',
 ];
 
 const tradingExpertise = [
-  'Tony Sotelo — 39+ years of Forex market experience',
-  'Built and refined with experienced retail traders',
+  'Tony Sotelo — 39+ years of Forex market experience.',
+  'Built and refined with experienced retail traders.',
 ];
 
 const traderFeedback = [
@@ -104,7 +104,7 @@ export default function Slide13() {
               transition={{ delay: 0.45, duration: 0.6 }}
             >
               <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CTO</p>
-              <h3 className="text-2xl font-bold text-black mb-4 leading-tight">Nithyakumaran</h3>
+              <h3 className="text-2xl font-bold text-black mb-4 leading-tight">Nithyakumaran Gnanasekar</h3>
               <ul className="space-y-3">
                 {cto.map((c, i) => (
                   <motion.li
