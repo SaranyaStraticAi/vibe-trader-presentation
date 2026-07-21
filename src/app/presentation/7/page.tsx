@@ -66,6 +66,15 @@ export default function Slide7() {
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
+          <motion.p
+            className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-2 font-medium"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            As of July 12, 2026
+          </motion.p>
+
           <motion.h1
             className="text-6xl font-black text-black mb-3 tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
@@ -109,23 +118,22 @@ export default function Slide7() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-7 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-4">
+            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">
               Ready to scale
             </p>
-            <div className="grid grid-cols-3 gap-x-10 gap-y-3">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
               {infra.map((m, i) => (
-                <div key={i} className="flex items-center gap-3 text-xl font-light">
-                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
+                <div key={i} className="flex items-center gap-2 text-base xl:text-lg font-light whitespace-nowrap">
+                  <span className="inline-block h-1.5 w-1.5 shrink-0 bg-white" />
                   <span>{m}</span>
                 </div>
               ))}
             </div>
-            <p className="text-lg text-gray-400 italic mt-5">As of Jul 14, 2026</p>
           </motion.div>
         </motion.div>
       </div>
