@@ -83,70 +83,76 @@ export default function Slide8() {
             Multiple recurring revenue streams.
           </motion.p>
 
-          <motion.p
-            className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.45, duration: 0.5 }}
-          >
-            Now
-          </motion.p>
-          <div className="grid grid-cols-2 gap-6 mb-6 max-w-7xl">
-            {nowStreams.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
-                >
-                  <div className="flex gap-5">
-                    <div className="w-14 h-14 bg-black text-white flex items-center justify-center shrink-0 group-hover:bg-gray-700 transition-colors">
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                      <p className="text-lg text-gray-600 font-light leading-snug">{s.body}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+          <div className="grid grid-cols-2 gap-12 max-w-7xl mb-8">
+            <div>
+              <motion.p
+                className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                Now
+              </motion.p>
+              <div className="flex flex-col gap-6">
+                {nowStreams.map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      className="border-2 border-gray-200 hover:border-black transition-colors p-7 group h-full"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
+                    >
+                      <div className="flex gap-5 h-full">
+                        <div className="w-14 h-14 bg-black text-white flex items-center justify-center shrink-0 group-hover:bg-gray-700 transition-colors">
+                          <Icon className="w-7 h-7" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
+                          <p className="text-lg text-gray-600 font-light leading-snug">{s.body}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
 
-          <motion.p
-            className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.65, duration: 0.5 }}
-          >
-            Next
-          </motion.p>
-          <div className="grid grid-cols-2 gap-6 mb-8 max-w-7xl">
-            {nextStreams.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 + i * 0.08, duration: 0.5 }}
-                >
-                  <div className="flex gap-5">
-                    <div className="w-14 h-14 bg-white text-black border-2 border-black flex items-center justify-center shrink-0 group-hover:bg-gray-100 transition-colors">
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                      <p className="text-lg text-gray-600 font-light leading-snug">{s.body}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+            <div>
+              <motion.p
+                className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.65, duration: 0.5 }}
+              >
+                Next
+              </motion.p>
+              <div className="flex flex-col gap-6">
+                {nextStreams.map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      className="border-2 border-gray-200 hover:border-black transition-colors p-7 group h-full"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 + i * 0.08, duration: 0.5 }}
+                    >
+                      <div className="flex gap-5 h-full">
+                        <div className="w-14 h-14 bg-white text-black border-2 border-black flex items-center justify-center shrink-0 group-hover:bg-gray-100 transition-colors">
+                          <Icon className="w-7 h-7" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
+                          <p className="text-lg text-gray-600 font-light leading-snug">{s.body}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           <motion.div
