@@ -1,33 +1,34 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Brain, Layers, Network, Sparkles, X, Check, ArrowRight } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 const TOTAL_SLIDES = 16;
 const ACTIVE = 10;
 
-const traditional = [
-  'Execute Trades (MT4 / MT5 • Robinhood)',
-  'Analyze Markets (TradingView)',
-  'Copy Strategies (eToro • DupliTrade)',
-  'Track Performance (Myfxbook)',
-  'General AI (OpenAI • Claude)',
+const traditionalStack = [
+  { action: 'Execute Trades', tools: 'MT4 / MT5 · Robinhood' },
+  { action: 'Analyze Markets', tools: 'TradingView' },
+  { action: 'Copy Strategies', tools: 'eToro · DupliTrade' },
+  { action: 'Track Performance', tools: 'Myfxbook' },
+  { action: 'General AI Prompting', tools: 'OpenAI · Claude' },
 ];
 
-const vibeTrader = [
-  'Learn Decisions',
-  'Personalized Intelligence',
-  'Adaptive Decision Support',
-  'Continuous Optimization',
-  'Trader Decision Memory',
+const vibeTraderStack = [
+  { title: 'Trader Decision Memory', desc: 'Captures & remembers every trade decision context' },
+  { title: 'Personalized Intelligence', desc: 'Adapts dynamically to individual trader habits' },
+  { title: 'Adaptive Decision Support', desc: 'Real-time guidance before execution' },
+  { title: 'Continuous Optimization', desc: 'Refines strategy rules and risk parameters' },
+  { title: 'Network Intelligence', desc: 'Compounding insights across active traders' },
 ];
 
-const moat = [
-  { title: 'Decision Memory', body: 'Learns from every interaction.' },
-  { title: 'Personalized Intelligence', body: 'Adapts to every trader.' },
-  { title: 'Unified Workflow', body: 'One connected platform.' },
-  { title: 'Network Intelligence', body: 'Improves with every user.' },
+const moats = [
+  { icon: Brain, title: 'Decision Memory', body: 'Learns & remembers every interaction' },
+  { icon: Sparkles, title: 'Personalized AI', body: 'Tailored to individual trader DNA' },
+  { icon: Layers, title: 'Unified Workflow', body: 'Replaces 5+ fragmented apps' },
+  { icon: Network, title: 'Network Engine', body: 'Compounds value with community scale' },
 ];
 
 export default function Slide11() {
@@ -35,7 +36,7 @@ export default function Slide11() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-center overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -54,15 +55,16 @@ export default function Slide11() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
+          {/* Header Line */}
           <motion.div
-            className="w-16 h-1.5 bg-black mb-6"
+            className="w-16 h-1.5 bg-black mb-4"
             initial={{ width: 0 }}
             animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
+            className="text-6xl font-black text-black mb-2 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -71,7 +73,7 @@ export default function Slide11() {
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-2xl text-gray-600 mb-6 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -79,93 +81,138 @@ export default function Slide11() {
             The decision intelligence layer for modern trading.
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-10 max-w-7xl mb-6">
+          {/* Side-by-Side Comparison Cards */}
+          <div className="grid grid-cols-2 gap-6 max-w-7xl mb-6">
+            {/* Legacy Fragmented Stack */}
             <motion.div
+              className="border-2 border-gray-200 bg-gray-50/50 p-6 flex flex-col justify-between"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">
-                Traditional Platforms
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-bold uppercase tracking-[0.25em] text-gray-400 bg-gray-200 px-3 py-1">
+                    Status Quo
+                  </span>
+                  <span className="text-xs text-gray-400 font-medium uppercase tracking-wider">
+                    Fragmented Tools
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Traditional Fragmented Stack</h3>
+                <div className="space-y-2.5">
+                  {traditionalStack.map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center justify-between p-2.5 bg-white border border-gray-200 text-sm"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <X className="w-4 h-4 text-gray-400 shrink-0" />
+                        <span className="font-semibold text-gray-700">{item.action}</span>
+                      </div>
+                      <span className="text-xs text-gray-500 font-mono bg-gray-100 px-2 py-0.5">
+                        {item.tools}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 italic mt-4 pt-3 border-t border-gray-200">
+                High friction, zero shared context, manual copy-pasting between platforms.
               </p>
-              <ul className="space-y-3">
-                {traditional.map((t, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex items-start gap-3 text-xl text-gray-700 font-light leading-snug border-b border-gray-200 pb-3"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6 + i * 0.05, duration: 0.4 }}
-                  >
-                    <span className="mt-2.5 inline-block h-2 w-2 shrink-0 bg-gray-400" />
-                    <span>{t}</span>
-                  </motion.li>
-                ))}
-              </ul>
             </motion.div>
 
+            {/* VibeTrader Decision Layer */}
             <motion.div
+              className="bg-black text-white p-6 flex flex-col justify-between relative overflow-hidden shadow-xl"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">
-                VibeTrader
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-bold uppercase tracking-[0.25em] text-black bg-white px-3 py-1">
+                    VibeTrader
+                  </span>
+                  <span className="text-xs text-gray-400 font-medium uppercase tracking-wider flex items-center gap-1">
+                    Unified Engine <Sparkles className="w-3 h-3 text-white" />
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Integrated Decision Layer</h3>
+                <div className="space-y-2.5">
+                  {vibeTraderStack.map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center justify-between p-2.5 bg-white/10 border border-white/15 text-sm"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <Check className="w-4 h-4 text-white shrink-0" />
+                        <span className="font-bold text-white">{item.title}</span>
+                      </div>
+                      <span className="text-xs text-gray-300 font-light truncate max-w-[220px]">
+                        {item.desc}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-xs text-gray-400 font-light mt-4 pt-3 border-t border-white/20">
+                Unified workflow with compounding intelligence across every trading session.
               </p>
-              <ul className="space-y-3">
-                {vibeTrader.map((v, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex items-start gap-3 text-xl text-black font-bold leading-snug border-b border-black pb-3"
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6 + i * 0.05, duration: 0.4 }}
-                  >
-                    <span className="mt-2.5 inline-block h-2 w-2 shrink-0 bg-black" />
-                    <span>{v}</span>
-                  </motion.li>
-                ))}
-              </ul>
             </motion.div>
           </div>
 
+          {/* Moat / Why We Win Cards */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-4">Why we win</p>
-            <div className="grid grid-cols-4 gap-4 max-w-7xl">
-              {moat.map((m, i) => (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-4"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.0 + i * 0.08, duration: 0.4 }}
-                >
-                  <p className="text-lg font-bold text-black mb-1 leading-tight">{m.title}</p>
-                  <p className="text-sm text-gray-600 font-light leading-snug">{m.body}</p>
-                </motion.div>
-              ))}
+            <div className="grid grid-cols-4 gap-4 max-w-7xl mb-4">
+              {moats.map((m, i) => {
+                const Icon = m.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    className="border-2 border-gray-200 hover:border-black transition-colors p-4 group bg-white"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9 + i * 0.08, duration: 0.4 }}
+                  >
+                    <div className="w-9 h-9 bg-black text-white flex items-center justify-center mb-2.5 group-hover:bg-gray-800 transition-colors">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <p className="text-base font-bold text-black mb-1 leading-tight">{m.title}</p>
+                    <p className="text-xs text-gray-600 font-light leading-snug">{m.body}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
+          {/* Bottom High-Impact Banner */}
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl mt-6"
-            initial={{ opacity: 0, y: 20 }}
+            className="bg-gray-900 text-white px-6 py-3.5 max-w-7xl flex items-center justify-between"
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.6 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <p className="text-2xl font-light leading-snug">
-              AI models evolve.{' '}
-              <span className="font-bold">Decision intelligence compounds.</span>
-            </p>
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+              <p className="text-lg font-light">
+                AI models evolve.{' '}
+                <span className="font-bold text-white">Decision intelligence compounds.</span>
+              </p>
+            </div>
+            <span className="text-xs uppercase tracking-widest text-gray-400 font-mono">
+              Defensive Moat
+            </span>
           </motion.div>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
+      {/* Slide Navigation */}
+      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
