@@ -31,7 +31,7 @@ export default function Slide4() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
