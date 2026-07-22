@@ -31,7 +31,7 @@ export default function Slide4() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -84,16 +84,15 @@ export default function Slide4() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0, duration: 0.6 }}
             >
-              <p className="text-xl uppercase tracking-widest text-gray-400 mb-2">The loop</p>
-              <p className="text-3xl font-light leading-snug">
+              <p className="text-2xl font-light leading-snug">
                 Trade <span className="text-gray-500">→</span> Analyze{' '}
                 <span className="text-gray-500">→</span> Learn{' '}
                 <span className="text-gray-500">→</span>{' '}
                 <span className="font-bold">Improve</span>
               </p>
-              <p className="text-lg text-gray-400 font-light leading-snug mt-4">
+              <p className="text-lg text-gray-400 font-light leading-snug mt-3">
                 Every stage of the flywheel feeds the next — the system compounds with every
-                trade.
+                trader action.
               </p>
             </motion.div>
           </div>

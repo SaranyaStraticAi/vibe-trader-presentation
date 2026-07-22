@@ -40,7 +40,7 @@ export default function Slide7() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -119,18 +119,18 @@ export default function Slide7() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-7 max-w-7xl"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">
+            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3 font-semibold">
               Ready to scale
             </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-xl font-light leading-snug">
               {infra.map((m, i) => (
-                <div key={i} className="flex items-center gap-2 text-base xl:text-lg font-light whitespace-nowrap">
-                  <span className="inline-block h-1.5 w-1.5 shrink-0 bg-white" />
+                <div key={i} className="flex items-center gap-2.5">
+                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
                   <span>{m}</span>
                 </div>
               ))}

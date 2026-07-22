@@ -26,7 +26,7 @@ export default function Slide3() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -136,11 +136,8 @@ export default function Slide3() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-2">
-              Bottom takeaway
-            </p>
             <p className="text-2xl font-light leading-snug">
-              Static strategies cannot adapt to dynamic markets.
+              Static strategies <span className="font-bold">cannot adapt to dynamic markets.</span>
             </p>
           </motion.div>
         </motion.div>

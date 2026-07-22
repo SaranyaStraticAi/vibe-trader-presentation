@@ -43,7 +43,7 @@ export default function Slide14() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -113,6 +113,17 @@ export default function Slide14() {
             ))}
           </div>
 
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
+          >
+            <p className="text-2xl font-light leading-snug">
+              The product is built and validated.{' '}
+              <span className="font-bold">The next step is scaling market adoption.</span>
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 

@@ -43,7 +43,7 @@ export default function Slide10() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -129,16 +129,17 @@ export default function Slide10() {
             })}
           </div>
 
-          <motion.p
-            className="text-2xl text-gray-600 italic font-light max-w-6xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            Users generate intelligence. Intelligence improves outcomes. Better outcomes attract
-            more users. Designed to scale across our initial 150K–250K MT4/MT5 retail trader
-            market.
-          </motion.p>
+            <p className="text-2xl font-light leading-snug">
+              Users generate intelligence <span className="text-gray-500">→</span> Intelligence improves outcomes <span className="text-gray-500">→</span>{' '}
+              <span className="font-bold">Better outcomes attract more users.</span>
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 

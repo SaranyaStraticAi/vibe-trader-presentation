@@ -20,7 +20,7 @@ export default function Slide9() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -69,17 +69,14 @@ export default function Slide9() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl mx-auto"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-2">
-              Compounding Advantage
-            </p>
             <p className="text-2xl font-light leading-snug">
-              The platform becomes more personalized with every interaction, increasing retention
-              and long-term customer value.
+              The platform becomes more personalized with every interaction,{' '}
+              <span className="font-bold">increasing retention and long-term customer value.</span>
             </p>
           </motion.div>
         </motion.div>

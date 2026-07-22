@@ -35,7 +35,7 @@ export default function Slide11() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -151,17 +151,17 @@ export default function Slide11() {
             </div>
           </motion.div>
 
-          <motion.p
-            className="text-2xl text-gray-600 italic font-light mt-6 max-w-6xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl mt-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4, duration: 0.6 }}
           >
-            AI models evolve.{' '}
-            <span className="font-bold not-italic text-black">
-              Decision intelligence compounds.
-            </span>
-          </motion.p>
+            <p className="text-2xl font-light leading-snug">
+              AI models evolve.{' '}
+              <span className="font-bold">Decision intelligence compounds.</span>
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 

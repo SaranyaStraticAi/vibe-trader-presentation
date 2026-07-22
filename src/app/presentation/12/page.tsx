@@ -40,7 +40,7 @@ export default function Slide12() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-20 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -123,17 +123,17 @@ export default function Slide12() {
             })}
           </div>
 
-          <motion.p
-            className="text-2xl text-gray-600 italic font-light max-w-6xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            Built for Forex today.{' '}
-            <span className="font-bold not-italic text-black">
-              Designed for every market tomorrow.
-            </span>
-          </motion.p>
+            <p className="text-2xl font-light leading-snug">
+              Built for Forex today.{' '}
+              <span className="font-bold">Designed for every market tomorrow.</span>
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
