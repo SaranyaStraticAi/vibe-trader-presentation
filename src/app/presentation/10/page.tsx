@@ -106,10 +106,12 @@ export default function Slide10() {
                     </div>
                     <Icon className="w-7 h-7 text-gray-400" />
                   </div>
-                  <p className="text-sm uppercase tracking-[0.25em] text-gray-400 mb-1">
+                  <h3 className="text-3xl font-bold text-black leading-tight mb-1">
                     {p.category}
+                  </h3>
+                  <p className="text-sm uppercase tracking-[0.25em] text-gray-400 mb-2">
+                    {p.title}
                   </p>
-                  <h3 className="text-3xl font-bold text-black leading-tight mb-2">{p.title}</h3>
                   <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">
                     {p.timeline}
                   </p>
@@ -136,8 +138,8 @@ export default function Slide10() {
             transition={{ delay: 1.1, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              Users generate intelligence <span className="text-gray-500">→</span> Intelligence improves outcomes <span className="text-gray-500">→</span>{' '}
-              <span className="font-bold">Better outcomes attract more users.</span>
+              Designed to scale across our initial{' '}
+              <span className="font-bold">150K–250K MT4/MT5 retail trader market</span>.
             </p>
           </motion.div>
         </motion.div>
