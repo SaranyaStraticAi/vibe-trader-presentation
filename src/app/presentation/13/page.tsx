@@ -24,12 +24,6 @@ const tradingExpertise = [
   'Built and refined with experienced retail traders.',
 ];
 
-const traderFeedback = [
-  'Veteran traders with decades of market exposure',
-  'Gen-Z traders with 2+ years of active trading behavior',
-  'Strategy-focused traders running workflows inside the platform',
-];
-
 export default function Slide13() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
@@ -70,7 +64,7 @@ export default function Slide13() {
             Leadership Team
           </motion.h1>
 
-          <div className="grid grid-cols-3 gap-6 mb-8 max-w-7xl">
+          <div className="grid grid-cols-2 gap-6 mb-8 max-w-5xl">
             <motion.div
               className="border-2 border-gray-200 p-6"
               initial={{ opacity: 0, x: -20 }}
@@ -120,45 +114,19 @@ export default function Slide13() {
                 ))}
               </ul>
             </motion.div>
-
-            <motion.div
-              className="border-2 border-gray-200 p-6"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">
-                Trading Expertise
-              </p>
-              <h3 className="text-2xl font-bold text-black mb-4 leading-tight">Tony Sotelo</h3>
-              <ul className="space-y-3">
-                {tradingExpertise.map((c, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex items-start gap-3 text-base text-gray-700 font-light leading-snug"
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6 + i * 0.06, duration: 0.4 }}
-                  >
-                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
-                    <span>{c}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
           </div>
 
           <motion.div
-            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-7xl"
+            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-5xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
             <p className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4">
-              Built with feedback from
+              Trading Expertise
             </p>
-            <div className="grid grid-cols-3 gap-x-10 gap-y-3">
-              {traderFeedback.map((t, i) => (
+            <div className="flex flex-col gap-3">
+              {tradingExpertise.map((t, i) => (
                 <div key={i} className="flex items-start gap-3 text-lg text-gray-800 font-light">
                   <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
                   <span>{t}</span>
