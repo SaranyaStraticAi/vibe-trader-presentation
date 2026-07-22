@@ -54,14 +54,13 @@ export default function Slide16() {
           </motion.h2>
 
           <motion.div
-            className="bg-black text-white p-10 max-w-5xl"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">VibeTrader</p>
-            <p className="text-3xl font-light leading-snug">
-              The <span className="font-bold">AI decision intelligence layer</span> for trading.
+            <p className="text-2xl font-light leading-snug">
+              VibeTrader = The <span className="font-bold">AI decision intelligence layer</span> for modern trading.
             </p>
           </motion.div>
         </motion.div>

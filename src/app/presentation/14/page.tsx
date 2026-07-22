@@ -43,7 +43,7 @@ export default function Slide14() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -70,7 +70,7 @@ export default function Slide14() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -79,7 +79,7 @@ export default function Slide14() {
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-8 font-light max-w-4xl"
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -113,6 +113,17 @@ export default function Slide14() {
             ))}
           </div>
 
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
+          >
+            <p className="text-2xl font-light leading-snug">
+              The product is built and validated.{' '}
+              <span className="font-bold">The next step is scaling market adoption.</span>
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 

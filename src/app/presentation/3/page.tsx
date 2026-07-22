@@ -26,7 +26,7 @@ export default function Slide3() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -53,7 +53,7 @@ export default function Slide3() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-8 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -61,16 +61,14 @@ export default function Slide3() {
             What we learned?
           </motion.h1>
 
-          <motion.blockquote
-            className="border-l-8 border-black pl-10 py-3 mb-10 max-w-6xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.6 }}
+          <motion.p
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <p className="text-4xl italic text-gray-800 font-light leading-snug">
-              &ldquo;There is no permanent winning strategy.&rdquo;
-            </p>
-          </motion.blockquote>
+            &ldquo;There is no permanent winning strategy.&rdquo;
+          </motion.p>
 
           <motion.div
             className="mb-10 max-w-7xl"
@@ -138,11 +136,8 @@ export default function Slide3() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-2">
-              Bottom takeaway
-            </p>
             <p className="text-2xl font-light leading-snug">
-              Static strategies cannot adapt to dynamic markets.
+              Static strategies <span className="font-bold">cannot adapt to dynamic markets.</span>
             </p>
           </motion.div>
         </motion.div>

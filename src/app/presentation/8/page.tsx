@@ -39,7 +39,7 @@ export default function Slide8() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -66,7 +66,7 @@ export default function Slide8() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -155,10 +155,7 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-2">
-              Why customers pay
-            </p>
-            <p className="text-3xl font-light leading-snug">
+            <p className="text-2xl font-light leading-snug">
               Existing platforms help traders execute.{' '}
               <span className="font-bold">VibeTrader helps them make better decisions.</span>
             </p>

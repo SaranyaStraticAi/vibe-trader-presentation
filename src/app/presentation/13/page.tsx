@@ -35,7 +35,7 @@ export default function Slide13() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -62,7 +62,7 @@ export default function Slide13() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-8 tracking-tighter"
+            className="text-6xl font-black text-black mb-10 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}

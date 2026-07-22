@@ -40,7 +40,7 @@ export default function Slide7() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -59,24 +59,25 @@ export default function Slide7() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <motion.div
-            className="w-16 h-1.5 bg-black mb-6"
-            initial={{ width: 0 }}
-            animate={{ width: 64 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          />
-
-          <motion.p
-            className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-2 font-medium"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            As of July 12, 2026
-          </motion.p>
+          <div className="flex items-center gap-4 mb-6">
+            <motion.div
+              className="w-16 h-1.5 bg-black"
+              initial={{ width: 0 }}
+              animate={{ width: 64 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            />
+            <motion.p
+              className="text-xs uppercase tracking-[0.3em] text-gray-400 font-medium"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              As of July 12, 2026
+            </motion.p>
+          </div>
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -118,18 +119,18 @@ export default function Slide7() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-7 max-w-7xl"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">
+            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3 font-semibold">
               Ready to scale
             </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-xl font-light leading-snug">
               {infra.map((m, i) => (
-                <div key={i} className="flex items-center gap-2 text-base xl:text-lg font-light whitespace-nowrap">
-                  <span className="inline-block h-1.5 w-1.5 shrink-0 bg-white" />
+                <div key={i} className="flex items-center gap-2.5">
+                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
                   <span>{m}</span>
                 </div>
               ))}

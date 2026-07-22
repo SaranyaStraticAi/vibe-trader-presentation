@@ -20,7 +20,7 @@ export default function Slide9() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -40,14 +40,14 @@ export default function Slide9() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.div
-            className="w-16 h-1.5 bg-black mb-8"
+            className="w-16 h-1.5 bg-black mb-6"
             initial={{ width: 0 }}
             animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-7xl font-black text-black mb-4 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -56,7 +56,7 @@ export default function Slide9() {
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-8 font-light max-w-4xl"
+            className="text-3xl text-gray-600 mb-6 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -64,22 +64,19 @@ export default function Slide9() {
             Value compounds with every interaction.
           </motion.p>
 
-          <div className="flex justify-center mb-6">
-            <Flywheel stages={flywheelStages} centerLabel="Decision Intelligence" centerSub="VibeTrader" />
+          <div className="flex justify-center my-1">
+            <Flywheel stages={flywheelStages} centerLabel="Decision Intelligence" centerSub="VibeTrader" size={460} />
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl mx-auto"
+            className="bg-black text-white p-8 max-w-7xl mt-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-2">
-              Compounding Advantage
-            </p>
             <p className="text-2xl font-light leading-snug">
-              The platform becomes more personalized with every interaction, increasing retention
-              and long-term customer value.
+              The platform becomes more personalized with every interaction,{' '}
+              <span className="font-bold">increasing retention and long-term customer value.</span>
             </p>
           </motion.div>
         </motion.div>
@@ -89,9 +86,8 @@ export default function Slide9() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
