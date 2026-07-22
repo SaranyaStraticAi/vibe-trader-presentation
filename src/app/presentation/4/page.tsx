@@ -67,7 +67,7 @@ export default function Slide4() {
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-600 mb-4 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -75,27 +75,26 @@ export default function Slide4() {
             A system that learns how decisions perform over time and adapts accordingly.
           </motion.p>
 
-          <div className="flex items-center gap-16 mb-4">
-            <Flywheel stages={layers} centerLabel="Decision Intelligence" centerSub="VibeTrader" />
-
-            <motion.div
-              className="bg-black text-white p-8 flex-1"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.6 }}
-            >
-              <p className="text-2xl font-light leading-snug">
-                Trade <span className="text-gray-500">→</span> Analyze{' '}
-                <span className="text-gray-500">→</span> Learn{' '}
-                <span className="text-gray-500">→</span>{' '}
-                <span className="font-bold">Improve</span>
-              </p>
-              <p className="text-lg text-gray-400 font-light leading-snug mt-3">
-                Every stage of the flywheel feeds the next — the system compounds with every
-                trader action.
-              </p>
-            </motion.div>
+          <div className="flex justify-center my-1">
+            <Flywheel stages={layers} centerLabel="Decision Intelligence" centerSub="VibeTrader" size={480} />
           </div>
+
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
+          >
+            <p className="text-2xl font-light text-center mb-2">
+              Trade <span className="text-gray-400">→</span> Analyze{' '}
+              <span className="text-gray-400">→</span> Learn{' '}
+              <span className="text-gray-400">→</span>{' '}
+              <span className="font-bold text-white">Improve</span>
+            </p>
+            <p className="text-xl text-gray-300 font-light leading-snug text-center">
+              Every stage of the flywheel feeds the next — the system compounds with every trader action.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -103,9 +102,8 @@ export default function Slide4() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
