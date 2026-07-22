@@ -11,7 +11,7 @@ const ACTIVE = 6;
 const stats = [
   {
     icon: Users,
-    metric: '1,650+',
+    metric: '1,800+',
     label: 'Registered traders',
     detail: 'Growing validation from traders and industry partners.',
   },
@@ -72,7 +72,7 @@ export default function Slide7() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              As of July 12, 2026
+              As of July 21, 2026
             </motion.p>
           </div>
 
@@ -143,9 +143,8 @@ export default function Slide7() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}

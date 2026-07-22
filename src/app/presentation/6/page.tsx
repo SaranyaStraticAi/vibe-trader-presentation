@@ -14,7 +14,6 @@ const market = [
     label: 'TAM',
     headline: '$20B by 2030',
     title: 'Global Online Trading Platform Market [1]',
-    body: 'Projected to grow from ~$10.5B in 2024 to $20B by 2030, driven by retail trading growth, forex & crypto adoption, and AI-assisted workflows.',
     accent: 'bg-black text-white',
   },
   {
@@ -22,7 +21,6 @@ const market = [
     label: 'SAM',
     headline: '7.4M+',
     title: 'Active Retail FX & CFD Accounts [2]',
-    body: 'Retail FX/CFD client base hit a new high in Q1 2026, spanning forex, CFDs, crypto, and equities.',
     accent: 'bg-white text-black border-2 border-black',
   },
   {
@@ -30,7 +28,6 @@ const market = [
     label: 'SOM',
     headline: '150K–250K*',
     title: 'MT4/MT5 Retail Traders',
-    body: 'Strategy-driven traders using strategy builders, automation, journaling, and analytics — the MetaTrader / TradingView / Myfxbook communities.',
     accent: 'bg-gray-100 text-black border-2 border-gray-300',
   },
 ];
@@ -107,15 +104,6 @@ export default function Slide6() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Global online trading, retail-driven, AI-ready.
-          </motion.p>
-
-          <motion.p
-            className="text-2xl text-black font-bold mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.45, duration: 0.6 }}
-          >
             $9.6T — Daily FX Trading Volume{' '}
             <sup className="text-sm font-normal text-gray-500">[3]</sup>
           </motion.p>
@@ -141,21 +129,11 @@ export default function Slide6() {
                   </div>
                   <p className="text-4xl font-bold text-black leading-tight mb-2">{m.headline}</p>
                   <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">{m.title}</p>
-                  <p className="text-xl text-gray-700 font-light leading-snug">{m.body}</p>
                 </motion.div>
               );
             })}
           </div>
 
-          <motion.p
-            className="text-2xl text-gray-600 italic font-light max-w-6xl mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
-          >
-            Why now: AI can finally process behavioral and market data in real time — and the next
-            evolution of trading platforms is intelligence-driven infrastructure.
-          </motion.p>
 
           <motion.div
             className="max-w-6xl border-t border-gray-200 pt-4"
@@ -191,9 +169,8 @@ export default function Slide6() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
