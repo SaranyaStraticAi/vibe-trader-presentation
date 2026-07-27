@@ -5,7 +5,7 @@ import { UserCheck, Users2, Building2 } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 17;
 const ACTIVE = 9;
 
 const phases = [

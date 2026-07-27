@@ -5,7 +5,7 @@ import { CreditCard, Handshake, Server, BarChart3, ArrowRight } from 'lucide-rea
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 17;
 const ACTIVE = 7;
 
 const nowStreams = [
