@@ -91,15 +91,7 @@ export default function Slide11() {
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold uppercase tracking-[0.25em] text-gray-400 bg-gray-200 px-3 py-1">
-                    Status Quo
-                  </span>
-                  <span className="text-xs text-gray-400 font-medium uppercase tracking-wider">
-                    Fragmented Tools
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Traditional Fragmented Stack</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Fragmented Tool</h3>
                 <div className="space-y-2.5">
                   {traditionalStack.map((item, i) => (
                     <div
@@ -117,9 +109,6 @@ export default function Slide11() {
                   ))}
                 </div>
               </div>
-              <p className="text-xs text-gray-500 italic mt-4 pt-3 border-t border-gray-200">
-                High friction, zero shared context, manual copy-pasting between platforms.
-              </p>
             </motion.div>
 
             {/* VibeTrader Decision Layer */}
@@ -130,35 +119,21 @@ export default function Slide11() {
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold uppercase tracking-[0.25em] text-black bg-white px-3 py-1">
-                    VibeTrader
-                  </span>
-                  <span className="text-xs text-gray-400 font-medium uppercase tracking-wider flex items-center gap-1">
-                    Unified Engine <Sparkles className="w-3 h-3 text-white" />
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">Integrated Decision Layer</h3>
+                <h3 className="text-xl font-bold text-white mb-3">VibeTrader</h3>
                 <div className="space-y-2.5">
                   {vibeTraderStack.map((item, i) => (
                     <div
                       key={i}
-                      className="flex items-center justify-between p-2.5 bg-white/10 border border-white/15 text-sm"
+                      className="flex items-center p-2.5 bg-white/10 border border-white/15 text-sm"
                     >
                       <div className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-white shrink-0" />
                         <span className="font-bold text-white">{item.title}</span>
                       </div>
-                      <span className="text-xs text-gray-300 font-light truncate max-w-[220px]">
-                        {item.desc}
-                      </span>
                     </div>
                   ))}
                 </div>
               </div>
-              <p className="text-xs text-gray-400 font-light mt-4 pt-3 border-t border-white/20">
-                Unified workflow with compounding intelligence across every trading session.
-              </p>
             </motion.div>
           </div>
 
@@ -192,21 +167,15 @@ export default function Slide11() {
 
           {/* Bottom High-Impact Banner */}
           <motion.div
-            className="bg-gray-900 text-white px-6 py-3.5 max-w-7xl flex items-center justify-between"
-            initial={{ opacity: 0, y: 15 }}
+            className="bg-black text-white p-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <div className="flex items-center gap-3">
-              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-              <p className="text-lg font-light">
-                AI models evolve.{' '}
-                <span className="font-bold text-white">Decision intelligence compounds.</span>
-              </p>
-            </div>
-            <span className="text-xs uppercase tracking-widest text-gray-400 font-mono">
-              Defensive Moat
-            </span>
+            <p className="text-2xl font-light leading-snug">
+              AI models evolve.{' '}
+              <span className="font-bold text-white">Decision intelligence compounds.</span>
+            </p>
           </motion.div>
         </motion.div>
       </div>

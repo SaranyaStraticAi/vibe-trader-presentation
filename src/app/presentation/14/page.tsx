@@ -87,24 +87,24 @@ export default function Slide14() {
             The product is built. The next step is growth.
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-3 gap-10 mb-8">
             {streams.map((s, i) => (
               <motion.div
                 key={i}
-                className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
+                className="border-2 border-gray-200 hover:border-black transition-colors p-10 rounded-lg group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
               >
-                <div className="text-7xl font-black text-black mb-2 leading-none">{s.n}</div>
-                <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">{s.label}</p>
-                <ul className="space-y-2">
+                <div className="text-8xl font-black text-black mb-3 leading-none">{s.n}</div>
+                <p className="text-xl uppercase tracking-widest text-gray-500 mb-5">{s.label}</p>
+                <ul className="space-y-3">
                   {s.items.map((item, j) => (
                     <li
                       key={j}
-                      className="flex items-start gap-3 text-lg text-gray-700 font-light leading-snug"
+                      className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
                     >
-                      <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                      <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -114,14 +114,14 @@ export default function Slide14() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-8 w-full mt-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-2xl font-light leading-snug">
+            <p className="text-3xl font-light leading-snug text-center whitespace-nowrap">
               The product is built and validated.{' '}
-              <span className="font-bold">The next step is scaling market adoption.</span>
+              <span className="font-bold text-white">The next step is scaling market adoption.</span>
             </p>
           </motion.div>
         </motion.div>

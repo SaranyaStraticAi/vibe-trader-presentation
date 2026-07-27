@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CreditCard, Handshake, Server, BarChart3 } from 'lucide-react';
+import { CreditCard, Handshake, Server, BarChart3, ArrowRight } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
@@ -17,7 +17,7 @@ const nowStreams = [
   {
     icon: Handshake,
     title: 'Broker partnerships',
-    body: 'Piloting with Dupoin — CPA, revenue-share, and distribution agreements.',
+    body: 'Piloting with Dupoin — CPA, API, and distribution agreements.',
   },
 ];
 
@@ -84,34 +84,34 @@ export default function Slide8() {
           </motion.p>
 
           <div className="grid grid-cols-2 gap-12 max-w-7xl mb-8">
+            {/* NOW Column */}
             <div>
-              <motion.p
-                className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-3"
+              <motion.div
+                className="flex items-center gap-3 mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.45, duration: 0.5 }}
               >
-                Now
-              </motion.p>
+                <span className="h-2.5 w-2.5 rounded-full bg-black animate-pulse" />
+                <h2 className="text-xs uppercase tracking-[0.3em] text-black font-bold">Now</h2>
+              </motion.div>
               <div className="flex flex-col gap-6">
                 {nowStreams.map((s, i) => {
                   const Icon = s.icon;
                   return (
                     <motion.div
                       key={i}
-                      className="border-2 border-gray-200 hover:border-black transition-colors p-7 group h-full"
+                      className="bg-gray-50/30 border border-gray-100 hover:border-black transition-all duration-300 p-8 rounded-lg flex gap-6 items-start min-h-[190px]"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
                     >
-                      <div className="flex gap-5 h-full">
-                        <div className="w-14 h-14 bg-black text-white flex items-center justify-center shrink-0 group-hover:bg-gray-700 transition-colors">
-                          <Icon className="w-7 h-7" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                          <p className="text-lg text-gray-600 font-light leading-snug">{s.body}</p>
-                        </div>
+                      <div className="w-14 h-14 bg-black text-white flex items-center justify-center shrink-0 rounded-lg">
+                        <Icon className="w-7 h-7" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-4xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
+                        <p className="text-2xl text-gray-600 font-light leading-relaxed">{s.body}</p>
                       </div>
                     </motion.div>
                   );
@@ -119,34 +119,34 @@ export default function Slide8() {
               </div>
             </div>
 
+            {/* NEXT Column */}
             <div>
-              <motion.p
-                className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-3"
+              <motion.div
+                className="flex items-center gap-3 mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.65, duration: 0.5 }}
               >
-                Next
-              </motion.p>
+                <span className="h-2.5 w-2.5 rounded-full bg-gray-400" />
+                <h2 className="text-xs uppercase tracking-[0.3em] text-gray-500 font-bold">Next</h2>
+              </motion.div>
               <div className="flex flex-col gap-6">
                 {nextStreams.map((s, i) => {
                   const Icon = s.icon;
                   return (
                     <motion.div
                       key={i}
-                      className="border-2 border-gray-200 hover:border-black transition-colors p-7 group h-full"
+                      className="bg-gray-50/30 border border-gray-100 hover:border-black transition-all duration-300 p-8 rounded-lg flex gap-6 items-start min-h-[190px]"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.7 + i * 0.08, duration: 0.5 }}
                     >
-                      <div className="flex gap-5 h-full">
-                        <div className="w-14 h-14 bg-white text-black border-2 border-black flex items-center justify-center shrink-0 group-hover:bg-gray-100 transition-colors">
-                          <Icon className="w-7 h-7" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                          <p className="text-lg text-gray-600 font-light leading-snug">{s.body}</p>
-                        </div>
+                      <div className="w-14 h-14 bg-white text-black border border-gray-200 flex items-center justify-center shrink-0 rounded-lg">
+                        <Icon className="w-7 h-7" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-4xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
+                        <p className="text-2xl text-gray-600 font-light leading-relaxed">{s.body}</p>
                       </div>
                     </motion.div>
                   );
@@ -156,14 +156,14 @@ export default function Slide8() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-8 max-w-7xl mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
               Existing platforms help traders execute.{' '}
-              <span className="font-bold">VibeTrader helps them make better decisions.</span>
+              <span className="font-bold text-white">VibeTrader helps them make better decisions.</span>
             </p>
           </motion.div>
         </motion.div>

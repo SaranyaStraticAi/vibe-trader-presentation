@@ -80,7 +80,7 @@ export function Flywheel({
     return `M ${p.x} ${p.y} A ${ringR} ${ringR} 0 0 1 ${next.x} ${next.y}`;
   });
 
-  const cardWidth = count === 3 ? 190 : 170;
+  const cardWidth = count === 3 ? 220 : 210;
   const activeStage = stages[activeIndex];
 
   return (
@@ -267,14 +267,14 @@ export function Flywheel({
                   isActive ? 'bg-white text-black' : 'bg-gray-100 text-black'
                 }`}
               >
-                <IconComponent className="w-4 h-4 shrink-0" />
+                <IconComponent className="w-5 h-5 shrink-0" />
               </div>
-              <p className={`text-sm xl:text-base font-bold leading-tight tracking-tight ${isActive ? 'text-white' : 'text-black'}`}>
+              <p className={`text-lg xl:text-xl font-bold leading-tight tracking-tight ${isActive ? 'text-white' : 'text-black'}`}>
                 {s.title}
               </p>
             </div>
             {s.body && (
-              <p className={`text-xs xl:text-sm font-light leading-relaxed pl-0.5 ${isActive ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className={`text-sm xl:text-base font-light leading-relaxed pl-0.5 ${isActive ? 'text-gray-300' : 'text-gray-600'}`}>
                 {s.body}
               </p>
             )}
