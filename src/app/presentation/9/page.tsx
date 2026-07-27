@@ -69,14 +69,14 @@ export default function Slide9() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl mt-16"
+            className="bg-black text-white p-8 w-full mt-24"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <p className="text-2xl font-light leading-snug">
+            <p className="text-3xl font-light leading-snug text-center whitespace-nowrap">
               The platform becomes more personalized with every interaction,{' '}
-              <span className="font-bold">increasing retention and long-term customer value.</span>
+              <span className="font-bold text-white">increasing retention and long-term customer value.</span>
             </p>
           </motion.div>
         </motion.div>

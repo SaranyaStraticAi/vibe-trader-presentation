@@ -64,27 +64,27 @@ export default function Slide13() {
             Leadership Team
           </motion.h1>
 
-          <div className="grid grid-cols-2 gap-6 mb-8 max-w-5xl">
+          <div className="grid grid-cols-2 gap-12 max-w-7xl mb-8">
             <motion.div
-              className="border-2 border-gray-200 p-6"
+              className="border-2 border-gray-200 p-10 rounded-lg"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CEO</p>
-              <h3 className="text-2xl font-bold text-black mb-4 leading-tight">
+              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-2">CEO</p>
+              <h3 className="text-3xl font-black text-black mb-4 leading-tight">
                 Saranya Amirthalingam
               </h3>
               <ul className="space-y-3">
                 {ceo.map((c, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start gap-3 text-base text-gray-700 font-light leading-snug"
+                    className="flex items-start gap-3 text-xl text-gray-700 font-light leading-relaxed"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
                   >
-                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                    <span className="mt-3 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
                     <span>{c}</span>
                   </motion.li>
                 ))}
@@ -92,23 +92,23 @@ export default function Slide13() {
             </motion.div>
 
             <motion.div
-              className="border-2 border-gray-200 p-6"
+              className="border-2 border-gray-200 p-10 rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6 }}
             >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CTO</p>
-              <h3 className="text-2xl font-bold text-black mb-4 leading-tight">Nithyakumaran Gnanasekar</h3>
+              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-2">CTO</p>
+              <h3 className="text-3xl font-black text-black mb-4 leading-tight">Nithyakumaran Gnanasekar</h3>
               <ul className="space-y-3">
                 {cto.map((c, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start gap-3 text-base text-gray-700 font-light leading-snug"
+                    className="flex items-start gap-3 text-xl text-gray-700 font-light leading-relaxed"
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
                   >
-                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
+                    <span className="mt-3 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
                     <span>{c}</span>
                   </motion.li>
                 ))}
@@ -117,19 +117,29 @@ export default function Slide13() {
           </div>
 
           <motion.div
-            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-5xl"
+            className="bg-black text-white p-8 max-w-7xl mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4">
+            <p className="text-xl uppercase tracking-[0.3em] text-gray-400 mb-4">
               Trading Expertise
             </p>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
               {tradingExpertise.map((t, i) => (
-                <div key={i} className="flex items-start gap-3 text-lg text-gray-800 font-light">
-                  <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
-                  <span>{t}</span>
+                <div key={i} className="flex items-start gap-3 text-2xl text-white font-light leading-relaxed">
+                  <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-white" />
+                  <span>
+                    {i === 0 ? (
+                      <>
+                        <span className="font-bold text-white">Tony Sotelo</span> — 39+ years of Forex market experience.
+                      </>
+                    ) : (
+                      <>
+                        Built and refined alongside <span className="font-bold text-white">experienced retail traders</span>.
+                      </>
+                    )}
+                  </span>
                 </div>
               ))}
             </div>

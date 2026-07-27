@@ -67,7 +67,7 @@ export default function Slide7() {
               transition={{ delay: 0.2, duration: 0.5 }}
             />
             <motion.p
-              className="text-xs uppercase tracking-[0.3em] text-gray-400 font-medium"
+              className="text-base uppercase tracking-[0.25em] text-gray-600 font-bold"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}

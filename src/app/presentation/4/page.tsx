@@ -79,22 +79,6 @@ export default function Slide4() {
             <Flywheel stages={layers} centerLabel="Decision Intelligence" centerSub="VibeTrader" size={480} />
           </div>
 
-          <motion.div
-            className="bg-black text-white p-8 max-w-7xl mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
-          >
-            <p className="text-2xl font-light text-center mb-2">
-              Trade <span className="text-gray-400">→</span> Analyze{' '}
-              <span className="text-gray-400">→</span> Learn{' '}
-              <span className="text-gray-400">→</span>{' '}
-              <span className="font-bold text-white">Improve</span>
-            </p>
-            <p className="text-xl text-gray-300 font-light leading-snug text-center">
-              Every stage of the flywheel feeds the next — the system compounds with every trader action.
-            </p>
-          </motion.div>
         </motion.div>
       </div>
 

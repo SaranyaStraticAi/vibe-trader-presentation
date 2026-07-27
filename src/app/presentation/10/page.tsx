@@ -93,35 +93,35 @@ export default function Slide10() {
               return (
                 <motion.div
                   key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-10 flex flex-col rounded-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
                 >
                   <div className="flex items-center gap-4 mb-5">
                     <div
-                      className={`w-14 h-14 flex items-center justify-center text-3xl font-black ${p.accent}`}
+                      className={`w-16 h-16 flex items-center justify-center text-4xl font-black rounded-lg ${p.accent}`}
                     >
                       {p.label}
                     </div>
-                    <Icon className="w-7 h-7 text-gray-400" />
+                    <Icon className="w-9 h-9 text-gray-400" />
                   </div>
-                  <h3 className="text-3xl font-bold text-black leading-tight mb-1">
+                  <h3 className="text-4xl font-bold text-black leading-tight mb-1">
                     {p.category}
                   </h3>
-                  <p className="text-sm uppercase tracking-[0.25em] text-gray-400 mb-2">
+                  <p className="text-base uppercase tracking-[0.25em] text-gray-400 mb-2">
                     {p.title}
                   </p>
-                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">
+                  <p className="text-xl uppercase tracking-widest text-gray-500 mb-5">
                     {p.timeline}
                   </p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {p.points.map((pt, j) => (
                       <li
                         key={j}
-                        className="flex items-start gap-3 text-xl text-gray-700 font-light leading-snug"
+                        className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
                       >
-                        <span className="mt-2.5 inline-block h-2 w-2 shrink-0 bg-black" />
+                        <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
                         <span>{pt}</span>
                       </li>
                     ))}
@@ -132,14 +132,14 @@ export default function Slide10() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-8 w-full mt-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <p className="text-2xl font-light leading-snug">
+            <p className="text-3xl font-light leading-snug text-center whitespace-nowrap">
               Designed to scale across our initial{' '}
-              <span className="font-bold">150K–250K MT4/MT5 retail trader market</span>.
+              <span className="font-bold text-white">150K–250K MT4/MT5 retail trader market</span>.
             </p>
           </motion.div>
         </motion.div>

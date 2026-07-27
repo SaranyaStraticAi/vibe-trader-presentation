@@ -80,11 +80,11 @@ export default function Slide15() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            $1M Pre-Seed · YC Post-Money SAFE · $10M Valuation Cap
+            $1M Pre-Seed
           </motion.p>
 
           <motion.p
-            className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4"
+            className="text-xl uppercase tracking-[0.3em] text-gray-500 mb-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.45, duration: 0.6 }}
@@ -92,40 +92,37 @@ export default function Slide15() {
             Where we&apos;ll invest
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-3 gap-10 mb-8">
             {deployment.map((d, i) => {
               const Icon = d.icon;
               return (
                 <motion.div
                   key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-10 rounded-lg group"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
                 >
-                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
-                    <Icon className="w-7 h-7" />
+                  <div className="w-16 h-16 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4 rounded-lg">
+                    <Icon className="w-9 h-9" />
                   </div>
-                  <p className="text-xl font-bold text-black mb-2 leading-tight">{d.title}</p>
-                  <p className="text-lg text-gray-700 font-light leading-snug">{d.body}</p>
+                  <p className="text-3xl font-bold text-black mb-3 leading-tight">{d.title}</p>
+                  <p className="text-xl text-gray-700 font-light leading-relaxed">{d.body}</p>
                 </motion.div>
               );
             })}
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-8 w-full mt-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-3 font-semibold">
-              What this unlocks
-            </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-xl font-light leading-snug">
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 text-2xl font-light leading-snug">
               {outcomes.map((o, i) => (
                 <div key={i} className="flex items-center gap-2.5">
-                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
+                  <span className="inline-block h-2.5 w-2.5 shrink-0 bg-white" />
                   <span>{o}</span>
                 </div>
               ))}
