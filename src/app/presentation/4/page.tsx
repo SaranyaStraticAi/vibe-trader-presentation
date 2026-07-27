@@ -5,7 +5,7 @@ import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 import { Flywheel } from '@/components/Flywheel';
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 17;
 const ACTIVE = 3;
 
 const layers = [

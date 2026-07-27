@@ -3,26 +3,15 @@
 import { motion } from 'framer-motion';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
-import { Flywheel } from '@/components/Flywheel';
 
 const TOTAL_SLIDES = 17;
-const ACTIVE = 8;
+const ACTIVE = 16;
 
-const flywheelStages = [
-  { n: '1', title: 'Trade', body: 'Real-world activity' },
-  { n: '2', title: 'Learn', body: 'Personal context' },
-  { n: '3', title: 'Adapt', body: 'Smarter guidance' },
-  { n: '4', title: 'Decide', body: 'Greater confidence' },
-];
-
-export default function Slide9() {
-  const { nextSlide, prevSlide } = useSlideNavigation();
+export default function Slide17() {
+  const { prevSlide, goToFirst } = useSlideNavigation();
 
   return (
-    <div
-      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
-      onClick={nextSlide}
-    >
+    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
@@ -40,43 +29,38 @@ export default function Slide9() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.div
-            className="w-16 h-1.5 bg-black mb-6"
+            className="w-16 h-1.5 bg-black mb-10"
             initial={{ width: 0 }}
             animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
+            className="text-8xl font-black text-black mb-6 tracking-tighter leading-[0.95]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Why Customers Stay
+            Trading platforms<br />helped traders <span className="text-gray-400">execute.</span>
           </motion.h1>
 
-          <motion.p
-            className="text-3xl text-gray-600 mb-6 font-light max-w-4xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Value compounds with every interaction.
-          </motion.p>
-
-          <div className="flex justify-center my-1">
-            <Flywheel stages={flywheelStages} centerLabel="Decision Intelligence" centerSub="VibeTrader" size={460} />
-          </div>
-
-          <motion.div
-            className="bg-black text-white p-8 w-full mt-24"
+          <motion.h2
+            className="text-7xl font-black text-black mb-12 tracking-tighter leading-[0.95]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <p className="text-3xl font-light leading-snug text-center whitespace-nowrap">
-              The platform becomes more personalized with every interaction,{' '}
-              <span className="font-bold text-white">increasing retention and long-term customer value.</span>
+            VibeTrader helps traders <span className="italic">decide.</span>
+          </motion.h2>
+
+          <motion.div
+            className="bg-black text-white p-8 max-w-7xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            <p className="text-2xl font-light leading-snug">
+              VibeTrader = The <span className="font-bold">AI decision intelligence layer</span> for modern trading.
             </p>
           </motion.div>
         </motion.div>
@@ -96,24 +80,18 @@ export default function Slide9() {
       </div>
 
       <button
-        onClick={(e) => {
-          e.stopPropagation();
-          prevSlide();
-        }}
+        onClick={prevSlide}
         className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
       </button>
       <button
-        onClick={(e) => {
-          e.stopPropagation();
-          nextSlide();
-        }}
+        onClick={goToFirst}
         className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
-        aria-label="Next slide"
+        aria-label="Back to start"
       >
-        →
+        ↺
       </button>
     </div>
   );

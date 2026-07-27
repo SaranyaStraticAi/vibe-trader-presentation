@@ -5,7 +5,7 @@ import { Globe2, Target, Crosshair } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 17;
 const ACTIVE = 5;
 
 const market = [

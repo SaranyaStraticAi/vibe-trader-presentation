@@ -5,7 +5,7 @@ import { Brain, Layers, Network, Sparkles, X, Check, ArrowRight } from 'lucide-r
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 17;
 const ACTIVE = 10;
 
 const traditionalStack = [
