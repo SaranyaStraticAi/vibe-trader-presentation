@@ -15,7 +15,7 @@ const phases = [
     category: 'Direct',
     title: 'Acquire',
     timeline: '0–6 months',
-    points: ['Direct Acquisition', '1,650+ Registered Traders'],
+    points: ['Organic acquisition', 'Product-led onboarding'],
     accent: 'bg-black text-white',
   },
   {
@@ -24,7 +24,7 @@ const phases = [
     category: 'Community',
     title: 'Expand',
     timeline: '6–12 months',
-    points: ['Trading Academies & Affiliates', 'Trading LatAm Pilot'],
+    points: ['Trading academies', 'Affiliates and educators'],
     accent: 'bg-white text-black border-2 border-black',
   },
   {
@@ -33,7 +33,7 @@ const phases = [
     category: 'Broker',
     title: 'Scale',
     timeline: '12–24 months',
-    points: ['Broker Partnerships', 'Dupoin Pilot / 7-Broker Pipeline'],
+    points: ['Embedded distribution', 'Broker partnerships', 'White-label / API'],
     accent: 'bg-gray-100 text-black border-2 border-gray-300',
   },
 ];
@@ -132,12 +132,12 @@ export default function Slide10() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 w-full mt-10"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <p className="text-3xl font-light leading-snug text-center whitespace-nowrap">
+            <p className="text-2xl font-light leading-snug">
               Designed to scale across our initial{' '}
               <span className="font-bold text-white">150K–250K MT4/MT5 retail trader market</span>.
             </p>

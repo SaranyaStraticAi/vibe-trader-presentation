@@ -61,7 +61,7 @@ export default function Slide9() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Value compounds with every interaction.
+            The Intelligence Flywheel
           </motion.p>
 
           <div className="flex justify-center my-1">
@@ -69,14 +69,13 @@ export default function Slide9() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 w-full mt-24"
+            className="bg-black text-white p-8 max-w-7xl mt-24"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <p className="text-3xl font-light leading-snug text-center whitespace-nowrap">
-              The platform becomes more personalized with every interaction,{' '}
-              <span className="font-bold text-white">increasing retention and long-term customer value.</span>
+            <p className="text-2xl font-light leading-snug">
+              Every interaction makes VibeTrader more personalized and harder to replace.
             </p>
           </motion.div>
         </motion.div>

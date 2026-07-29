@@ -13,7 +13,7 @@ const stats = [
     icon: Users,
     metric: '1,800+',
     label: 'Registered traders',
-    detail: 'Growing validation from traders and industry partners.',
+    detail: 'Users across 100+ countries.',
   },
   {
     icon: Rocket,

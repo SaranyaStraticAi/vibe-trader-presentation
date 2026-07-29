@@ -62,15 +62,6 @@ export default function Slide1() {
         </motion.p>
 
         <motion.p
-          className="mb-2 text-3xl text-black font-bold tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.8 }}
-        >
-          Trade Beyond Instinct.
-        </motion.p>
-
-        <motion.p
           className="mb-12 text-2xl text-gray-500 font-light italic"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

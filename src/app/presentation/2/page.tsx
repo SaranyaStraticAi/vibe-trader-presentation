@@ -14,9 +14,9 @@ const forTraders = [
 ];
 
 const forBrokers = [
-  'High churn',
-  'Limited visibility',
-  'Poor retention'
+  'High trader churn',
+  'Limited visibility into trader behavior',
+  'Difficult to sustain engagement',
 ];
 
 export default function Slide2() {

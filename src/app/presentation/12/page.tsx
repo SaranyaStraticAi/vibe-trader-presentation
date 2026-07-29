@@ -14,7 +14,11 @@ const phases = [
     label: '1',
     title: 'Forex',
     timeline: 'Today',
-    points: ['Largest retail trading market', 'MT4 / MT5 ecosystem', 'Strong broker network'],
+    points: [
+      'Deep MT4/MT5 ecosystem',
+      'Global broker distribution',
+      'High-frequency decision environment',
+    ],
     accent: 'bg-black text-white',
   },
   {
@@ -124,12 +128,12 @@ export default function Slide12() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 w-full mt-10"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <p className="text-3xl font-light leading-snug text-center whitespace-nowrap">
+            <p className="text-2xl font-light leading-snug">
               Built for Forex today.{' '}
               <span className="font-bold text-white">Designed for every market tomorrow.</span>
             </p>

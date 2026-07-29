@@ -93,7 +93,7 @@ export default function Slide8() {
                 transition={{ delay: 0.45, duration: 0.5 }}
               >
                 <span className="h-2.5 w-2.5 rounded-full bg-black animate-pulse" />
-                <h2 className="text-xs uppercase tracking-[0.3em] text-black font-bold">Now</h2>
+                <h2 className="text-2xl uppercase tracking-[0.2em] text-black font-bold">Now</h2>
               </motion.div>
               <div className="flex flex-col gap-6">
                 {nowStreams.map((s, i) => {
@@ -128,7 +128,7 @@ export default function Slide8() {
                 transition={{ delay: 0.65, duration: 0.5 }}
               >
                 <span className="h-2.5 w-2.5 rounded-full bg-gray-400" />
-                <h2 className="text-xs uppercase tracking-[0.3em] text-gray-500 font-bold">Next</h2>
+                <h2 className="text-2xl uppercase tracking-[0.2em] text-gray-500 font-bold">Next</h2>
               </motion.div>
               <div className="flex flex-col gap-6">
                 {nextStreams.map((s, i) => {
@@ -162,8 +162,7 @@ export default function Slide8() {
             transition={{ delay: 1.0, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              Existing platforms help traders execute.{' '}
-              <span className="font-bold text-white">VibeTrader helps them make better decisions.</span>
+              B2C subscriptions | Partner distribution | Enterprise licensing
             </p>
           </motion.div>
         </motion.div>
