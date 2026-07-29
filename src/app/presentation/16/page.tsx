@@ -10,26 +10,29 @@ const ACTIVE = 15;
 
 const deployment = [
   {
-    icon: Users,
-    title: 'Build the Team',
-    body: 'Expand engineering, product, customer success, and go-to-market.',
+    icon: Cpu,
+    category: 'PRODUCT',
+    title: 'Advance the Platform',
+    points: ['AI decision intelligence', 'Mobile experience', 'Infrastructure & security'],
   },
   {
     icon: Handshake,
-    title: 'Grow the Business',
-    body: 'Expand broker partnerships, trading academies, affiliates, and customer acquisition.',
+    category: 'GROWTH',
+    title: 'Scale Distribution',
+    points: ['Broker partnerships', 'Academies & affiliates', 'Trader acquisition'],
   },
   {
-    icon: Cpu,
-    title: 'Advance the Platform',
-    body: 'Enhance AI capabilities, infrastructure, security, compliance, and mobile applications.',
+    icon: Users,
+    category: 'TEAM',
+    title: 'Build for Scale',
+    points: ['Engineering', 'Sales & partnerships', 'Customer success'],
   },
 ];
 
 const outcomes = [
   '5,000+ active users',
   'Commercial broker partnerships',
-  'Strong recurring subscription revenue',
+  'Recurring Revenue Growth',
   'Expansion beyond Forex',
   'Seed-round readiness',
 ];
@@ -106,8 +109,16 @@ export default function Slide16() {
                   <div className="w-16 h-16 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4 rounded-lg">
                     <Icon className="w-9 h-9" />
                   </div>
-                  <p className="text-3xl font-bold text-black mb-3 leading-tight">{d.title}</p>
-                  <p className="text-xl text-gray-700 font-light leading-relaxed">{d.body}</p>
+                  <p className="text-sm uppercase tracking-widest text-gray-400 font-bold mb-1">{d.category}</p>
+                  <h3 className="text-3xl font-black text-black leading-tight mb-4">{d.title}</h3>
+                  <ul className="space-y-3">
+                    {d.points.map((pt, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xl text-gray-700 font-light leading-relaxed">
+                        <span className="mt-3.5 inline-block h-2 w-2 shrink-0 bg-black" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               );
             })}
@@ -119,7 +130,7 @@ export default function Slide16() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 text-2xl font-light leading-snug">
+            <div className="flex flex-wrap items-center justify-between gap-y-2 text-xl font-light leading-snug">
               {outcomes.map((o, i) => (
                 <div key={i} className="flex items-center gap-2.5">
                   <span className="inline-block h-2.5 w-2.5 shrink-0 bg-white" />
