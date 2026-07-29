@@ -57,14 +57,21 @@ export default function Slide5() {
           </motion.p>
 
           <motion.div
-            className="mb-8 max-w-5xl aspect-video border-2 border-dashed border-gray-300 bg-gray-50 flex items-center justify-center"
+            className="mb-8 max-w-5xl aspect-video border border-gray-200 bg-black rounded-lg overflow-hidden relative shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.6 }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <p className="text-xl text-gray-400 font-light uppercase tracking-widest">
-              Video embed — 30-90 sec walkthrough
-            </p>
+            <video
+              src="/100.mp4"
+              className="w-full h-full object-contain"
+              controls
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
           </motion.div>
         </motion.div>
       </div>
