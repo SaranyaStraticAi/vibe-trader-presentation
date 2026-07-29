@@ -7,34 +7,26 @@ import { GlobeWatermark } from '@/components/GlobeWatermark';
 const TOTAL_SLIDES = 17;
 const ACTIVE = 13;
 
-const streams = [
+const cards = [
   {
-    n: '1',
-    label: 'Product Ready',
-    items: [
-      'AI-powered trading platform live',
-      '1,650+ registered traders',
-      '2 live pilots',
-      '7+ broker partners in pipeline',
-    ],
+    category: 'PRODUCT',
+    title: 'Built & Live',
+    points: ['AI decision intelligence', 'Live trading infrastructure'],
   },
   {
-    n: '2',
-    label: 'Built Efficiently',
-    items: [
-      'Burn: ~$25K / month',
-      'Founder-led execution',
-      'Product built before institutional funding',
-    ],
+    category: 'MARKET',
+    title: 'Early Validation',
+    points: ['Trader adoption', 'Live partner pilots'],
   },
   {
-    n: '3',
-    label: 'Ready to Grow',
-    items: [
-      'Product validation complete',
-      'Distribution channels established',
-      'Focused on recurring subscription revenue',
-    ],
+    category: 'EFFICIENCY',
+    title: '~$25K Monthly Burn',
+    points: ['Lean execution', 'Capital efficient'],
+  },
+  {
+    category: 'DISTRIBUTION',
+    title: 'Ready to Scale',
+    points: ['Direct acquisition', 'Broker & academy channels'],
   },
 ];
 
@@ -84,28 +76,31 @@ export default function Slide14() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            The product is built. The next step is growth.
+            From Validation to Scale
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-10 mb-8">
-            {streams.map((s, i) => (
+          <div className="grid grid-cols-4 gap-6 mb-8 w-full max-w-[1500px]">
+            {cards.map((c, i) => (
               <motion.div
                 key={i}
-                className="border-2 border-gray-200 hover:border-black transition-colors p-10 rounded-lg group"
+                className="border-2 border-gray-200 hover:border-black transition-colors p-8 rounded-lg group bg-white"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
+                transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
               >
-                <div className="text-8xl font-black text-black mb-3 leading-none">{s.n}</div>
-                <p className="text-xl uppercase tracking-widest text-gray-500 mb-5">{s.label}</p>
+                <div className="text-8xl font-black text-black mb-3 leading-none">{i + 1}</div>
+                <p className="text-sm uppercase tracking-widest text-gray-400 font-bold mb-3">{c.category}</p>
+                <h3 className="text-2xl font-black text-black leading-tight mb-4 min-h-[40px] flex items-center">
+                  {c.title}
+                </h3>
                 <ul className="space-y-3">
-                  {s.items.map((item, j) => (
+                  {c.points.map((pt, j) => (
                     <li
                       key={j}
-                      className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
+                      className="flex items-start gap-2.5 text-xl text-gray-700 font-light leading-relaxed"
                     >
-                      <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
-                      <span>{item}</span>
+                      <span className="mt-3 inline-block h-2 w-2 shrink-0 bg-black" />
+                      <span>{pt}</span>
                     </li>
                   ))}
                 </ul>
@@ -120,8 +115,7 @@ export default function Slide14() {
             transition={{ delay: 1.0, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              The product is built and validated.{' '}
-              <span className="font-bold text-white">The next step is scaling market adoption.</span>
+              The product is built. The market is validating. Capital accelerates commercialization.
             </p>
           </motion.div>
         </motion.div>

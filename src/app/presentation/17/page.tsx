@@ -116,10 +116,10 @@ export default function Slide17() {
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               {/* QR code — Real scannable QR Code for https://vibetrader.com */}
-              <div className="border-2 border-gray-200 rounded-lg p-3 bg-white">
+              <div className="border-2 border-gray-200 rounded-lg p-4 bg-white">
                 <svg
-                  width="140"
-                  height="140"
+                  width="200"
+                  height="200"
                   viewBox="0 0 33 33"
                   xmlns="http://www.w3.org/2000/svg"
                   shapeRendering="crispEdges"
@@ -127,11 +127,11 @@ export default function Slide17() {
                   <path fill="#ffffff" d="M0 0h33v33H0z"/>
                   <path
                     stroke="#000000"
-                    d="M4 4.5h7m2 0h1m2 0h1m1 0h1m1 0h1m1 0h7M4 5.5h1m5 0h1m3 0h4m1 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h3m4 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h3m2 0h3m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h4m3 0h2M4 12.5h1m1 0h5m4 0h5m2 0h5M4 13.5h2m1 0h2m2 0h1m2 0h2m4 0h1m2 0h1m3 0h1M5 14.5h2m2 0h2m2 0h3m1 0h1m1 0h2m3 0h2m1 0h2M4 15.5h1m6 0h5m2 0h2m1 0h3m4 0h1M5 16.5h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m1 0h4m1 0h3M4 17.5h3m4 0h1m2 0h1m1 0h2m2 0h1m2 0h1m1 0h1m1 0h1M4 18.5h1m2 0h8m2 0h3m2 0h4m1 0h2M4 19.5h1m3 0h2m1 0h4m1 0h1m1 0h1m4 0h2m3 0h1M4 20.5h1m5 0h1m2 0h1m2 0h9m1 0h1M12 21.5h1m4 0h1m2 0h1m3 0h2M4 22.5h7m3 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3M4 23.5h1m5 0h1m1 0h4m2 0h1m1 0h1m3 0h2M4 24.5h1m1 0h3m1 0h1m1 0h4m3 0h6m1 0h3M4 25.5h1m1 0h3m1 0h1m1 0h3m1 0h2m1 0h1m1 0h2m1 0h5M4 26.5h1m1 0h3m1 0h1m1 0h3m2 0h2m6 0h2m1 0h1M4 27.5h1m5 0h1m5 0h2m2 0h6m2 0h1M4 28.5h7m1 0h2m2 0h1m1 0h1m2 0h8"
+                    d="M4 4.5h7m2 0h1m2 0h1m1 0h1m1 0h1m1 0h7M4 5.5h1m5 0h1m3 0h4m1 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h3m4 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h3m2 0h3m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h4m3 0h2M4 12.5h1m1 0h5m4 0h5m2 0h5M4 13.5h2m1 0h2m2 0h1m2 0h2m4 0h1m2 0h1m3 0h1M5 14.5h2m2 0h2m2 0h3m1 0h1m1 0h2m3 0h2m1 0h2M4 15.5h1m6 0h5m2 0h2m1 0h3m4 0h1M5 16.5h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m1 0h4m1 0h3M4 17.5h3m4 0h1m2 0h1m1 0h2m2 0h1m2 0h1m1 0h1m1 0h1M4 18.5h1m2 0h8m2 0h3m2 0h4m1 0h2M4 19.5h1m3 0h2m1 0h4m1 0h1m1 0h1m4 0h2m3 0h1M4 20.5h1m5 0h1m2 0h1m2 0h9m1 0h1M12 21.5h1m4 0h1m2 0h1m3 0h2M4 22.5h7m3 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3M4 23.5h1m5 0h1m1 0h4m2 0h1m1 0h1m3 0h2M4 24.5h1m1 0h3m1 0h1m1 0h4m3 0h6m1 0h3M4 25.5h1m1 0h3m1 0h1m1 0h3m1 0h2m1 0h1m1 0h2m1 0h5M4 26.5h1m1 0h3m1 0h1m1 0h3m2 0h2m6 0h2m1 0h1M4 27.5h1m5 0h1m5 0h2m2 0h6m2 0h1M4 28.5h7m1 0h2m2 0h1m1 0h1m2 0h8"
                   />
                 </svg>
               </div>
-              <p className="text-xs text-gray-400 font-medium uppercase tracking-widest text-center">
+              <p className="text-sm text-gray-400 font-medium uppercase tracking-widest text-center mt-1">
                 Scan to visit<br />vibetrader.com
               </p>
             </motion.div>

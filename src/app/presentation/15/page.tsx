@@ -9,10 +9,10 @@ const ACTIVE = 14;
 
 // Chart data: barH = full bar height in px (out of 120 chart area)
 const bars = [
-  { year: 'Year 1', revenue: '$0.5M', users: '8K',   barH: 22  },
-  { year: 'Year 2', revenue: '$1.5M', users: '25K',  barH: 44  },
-  { year: 'Year 3', revenue: '$4M',   users: '60K',  barH: 68  },
-  { year: 'Year 4', revenue: '$8M',   users: '120K', barH: 92  },
+  { year: 'Year 1', revenue: '$0.5M', users: '8K', barH: 22 },
+  { year: 'Year 2', revenue: '$1.5M', users: '25K', barH: 44 },
+  { year: 'Year 3', revenue: '$4M', users: '60K', barH: 68 },
+  { year: 'Year 4', revenue: '$8M', users: '120K', barH: 92 },
   { year: 'Year 5', revenue: '$15M+', users: '200K', barH: 120 },
 ];
 
@@ -83,9 +83,9 @@ export default function Slide15() {
           {/* ── Three Metric Cards (horizontal) ── */}
           <div className="flex gap-5 mb-6">
             {[
-              { value: '1.8K → 200K', label: 'Registered Users',    sub: 'Actual → Year 5 Target',                          delay: 0.5 },
-              { value: '5%',          label: 'Base-Case Conversion', sub: '10K Paying Subscribers by Year 5',                delay: 0.6 },
-              { value: '3',           label: 'Revenue Engines',      sub: 'Subscriptions · Broker Partnerships · Licensing', delay: 0.7 },
+              { value: '1.8K → 200K', label: 'Registered Users', sub: 'Actual → Year 5 Target', delay: 0.5 },
+              { value: '5%', label: 'Base-Case Conversion', sub: '10K Paying Subscribers by Year 5', delay: 0.6 },
+              { value: '3', label: 'Revenue Engines', sub: 'Subscriptions · Broker Partnerships · Licensing', delay: 0.7 },
             ].map((card, i) => (
               <motion.div
                 key={i}
@@ -102,10 +102,10 @@ export default function Slide15() {
             ))}
           </div>
 
-          {/* ── Growth Chart — animated gradient bars ── */}
+          {/* ── Growth Chart — animated area line chart ── */}
           <motion.div
             className="border border-gray-100 rounded-lg bg-gray-50/30 mb-6"
-            style={{ padding: '1rem 1.5rem' }}
+            style={{ padding: '1.5rem 1.5rem' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
@@ -114,64 +114,113 @@ export default function Slide15() {
               Projected Annual Revenue Growth
             </p>
 
-            <div className="flex items-end justify-between gap-3" style={{ height: '160px' }}>
-              {bars.map((bar, i) => (
-                <div key={i} className="flex flex-col items-center justify-end flex-1 h-full">
-                  {/* Revenue label above bar */}
-                  <motion.span
-                    className="font-black text-black text-center leading-tight mb-1"
-                    style={{ fontSize: '1.05rem' }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.9 + i * 0.12, duration: 0.4 }}
-                  >
-                    {bar.revenue}
-                  </motion.span>
+            <div className="relative w-full" style={{ height: '185px' }}>
+              {/* Gridlines */}
+              <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-40" style={{ bottom: '35px', top: '15px' }}>
+                <div className="border-b border-dashed border-gray-200 w-full h-0" />
+                <div className="border-b border-dashed border-gray-200 w-full h-0" />
+                <div className="border-b border-dashed border-gray-200 w-full h-0" />
+                <div className="border-b border-dashed border-gray-200 w-full h-0" />
+              </div>
 
-                  {/* Animated bar */}
-                  <motion.div
-                    className="w-full rounded-t-md"
-                    style={{
-                      background: i === 4
-                        ? 'black'
-                        : `rgba(0,0,0,${0.12 + i * 0.16})`,
-                      maxWidth: '80px',
-                    }}
-                    initial={{ height: 0 }}
-                    animate={{ height: bar.barH }}
-                    transition={{ delay: 0.9 + i * 0.12, duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
-                  />
+              {/* SVG Area & Line Chart */}
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 185" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="rgba(0,0,0,0.15)" />
+                    <stop offset="100%" stopColor="rgba(0,0,0,0.0)" />
+                  </linearGradient>
+                </defs>
 
-                  {/* Year label */}
-                  <span
-                    className="font-bold text-black text-center mt-2"
-                    style={{ fontSize: '0.78rem' }}
-                  >
-                    {bar.year}
-                  </span>
+                {/* Filled Area */}
+                <motion.path
+                  d="M 100 135 L 300 120 L 500 95 L 700 65 L 900 25 L 900 150 L 100 150 Z"
+                  fill="url(#chartGrad)"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.9, duration: 0.5 }}
+                />
 
-                  {/* Users count */}
-                  <span
-                    className="text-gray-400 font-medium text-center"
-                    style={{ fontSize: '0.68rem' }}
-                  >
-                    {bar.users} users
-                  </span>
-                </div>
-              ))}
+                {/* Line */}
+                <motion.path
+                  d="M 100 135 L 300 120 L 500 95 L 700 65 L 900 25"
+                  fill="none"
+                  stroke="black"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
+                />
+
+                {/* Dots */}
+                {[
+                  { x: 100, y: 135 },
+                  { x: 300, y: 120 },
+                  { x: 500, y: 95 },
+                  { x: 700, y: 65 },
+                  { x: 900, y: 25 }
+                ].map((pt, i) => (
+                  <g key={i}>
+                    <motion.circle
+                      cx={pt.x}
+                      cy={pt.y}
+                      r="6"
+                      fill="white"
+                      stroke="black"
+                      strokeWidth="3"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.9 + i * 0.1, duration: 0.3 }}
+                    />
+                  </g>
+                ))}
+              </svg>
+
+              {/* HTML Labels Overlay */}
+              <div className="absolute inset-0 pointer-events-none">
+                {bars.map((bar, i) => {
+                  const xPositions = ['10%', '30%', '50%', '70%', '90%'];
+                  const yOffsets = ['105px', '90px', '65px', '35px', '-5px'];
+                  return (
+                    <div
+                      key={i}
+                      style={{ position: 'absolute', left: xPositions[i], top: 0, bottom: 0, width: '100px', transform: 'translateX(-50%)' }}
+                    >
+                      {/* Revenue Text */}
+                      <div style={{ position: 'absolute', top: yOffsets[i], left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
+                        <span className="font-black text-black text-sm block tracking-tight">
+                          {bar.revenue}
+                        </span>
+                      </div>
+
+                      {/* Year & Users (Fixed at bottom) */}
+                      <div style={{ position: 'absolute', bottom: '0px', left: 0, right: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <span className="font-bold text-black text-xs">
+                          {bar.year}
+                        </span>
+                        <span className="text-gray-400 font-medium text-[10px] whitespace-nowrap">
+                          {bar.users} users
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
 
 
           {/* ── Bottom Takeaway ── */}
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white px-8 py-7 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              Base case: 5% paid conversion with a 50% Trader ($25) / 40% Pro ($99) / 10% Elite ($200) subscription mix, plus revenue from broker partnerships and platform licensing.
+              Base case: 5% paid conversion across subscription tiers, broker partnerships, and platform licensing.
             </p>
           </motion.div>
 
