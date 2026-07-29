@@ -114,7 +114,7 @@ export default function Slide16() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 w-full mt-10"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}

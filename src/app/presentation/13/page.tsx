@@ -8,20 +8,15 @@ const TOTAL_SLIDES = 17;
 const ACTIVE = 12;
 
 const ceo = [
-  'Leads product strategy, go-to-market, partnerships, and fundraising.',
-  'Grew VibeTrader to 1,650+ registered traders with live broker and academy pilots.',
-  '5+ years leading business operations, strategy, finance, and growth.',
+  'Leads product strategy, go-to-market, partnerships, and fundraising',
+  '5+ years leading business operations, strategy, finance, and growth',
+  'Built VibeTrader\'s early trader community and broker/academy relationships',
 ];
 
 const cto = [
-  'Former Amazon engineer.',
-  '15+ years building software, cloud infrastructure, and AI systems.',
-  'Built VibeTrader’s AI platform, MT4/MT5 integrations, and real-time trading infrastructure.',
-];
-
-const tradingExpertise = [
-  'Tony Sotelo — 39+ years of Forex market experience.',
-  'Built and refined with experienced retail traders.',
+  'Former Amazon engineer',
+  '15+ years building software, cloud infrastructure, and AI systems',
+  'Architected VibeTrader\'s AI platform, MT4/MT5 integrations, and real-time trading infrastructure',
 ];
 
 export default function Slide13() {
@@ -64,6 +59,7 @@ export default function Slide13() {
             Leadership Team
           </motion.h1>
 
+          {/* CEO & CTO Cards with original p-10 padding */}
           <div className="grid grid-cols-2 gap-12 max-w-7xl mb-8">
             <motion.div
               className="border-2 border-gray-200 p-10 rounded-lg"
@@ -71,10 +67,10 @@ export default function Slide13() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-2">CEO</p>
-              <h3 className="text-3xl font-black text-black mb-4 leading-tight">
-                Saranya Amirthalingam
+              <h3 className="text-3xl font-black text-black leading-tight mb-3">
+                Saranya Amirthalingam — CEO
               </h3>
+              <p className="text-2xl text-gray-500 font-bold mb-6">Product, GTM & Partnerships</p>
               <ul className="space-y-3">
                 {ceo.map((c, i) => (
                   <motion.li
@@ -97,8 +93,10 @@ export default function Slide13() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6 }}
             >
-              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-2">CTO</p>
-              <h3 className="text-3xl font-black text-black mb-4 leading-tight">Nithyakumaran Gnanasekar</h3>
+              <h3 className="text-3xl font-black text-black leading-tight mb-3">
+                Nithyakumaran Gnanasekar — CTO
+              </h3>
+              <p className="text-2xl text-gray-500 font-bold mb-6">AI & Trading Infrastructure</p>
               <ul className="space-y-3">
                 {cto.map((c, i) => (
                   <motion.li
@@ -116,32 +114,35 @@ export default function Slide13() {
             </motion.div>
           </div>
 
+          {/* Single Standard Bottom Banner Box containing Domain Expertise & Takeaway */}
           <motion.div
             className="bg-black text-white p-8 max-w-7xl mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-xl uppercase tracking-[0.3em] text-gray-400 mb-4">
+            <p className="text-xl uppercase tracking-[0.3em] text-gray-400 mb-4 font-bold">
               Trading Expertise
             </p>
             <div className="flex flex-col gap-4">
-              {tradingExpertise.map((t, i) => (
-                <div key={i} className="flex items-start gap-3 text-2xl text-white font-light leading-relaxed">
-                  <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-white" />
-                  <span>
-                    {i === 0 ? (
-                      <>
-                        <span className="font-bold text-white">Tony Sotelo</span> — 39+ years of Forex market experience.
-                      </>
-                    ) : (
-                      <>
-                        Built and refined alongside <span className="font-bold text-white">experienced retail traders</span>.
-                      </>
-                    )}
-                  </span>
-                </div>
-              ))}
+              <div className="flex items-start gap-3 text-2xl text-white font-light leading-relaxed">
+                <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-white" />
+                <span>
+                  <strong className="font-bold text-white">Tony Sotelo</strong> — 39+ years of Forex market experience.
+                </span>
+              </div>
+              <div className="flex items-start gap-3 text-2xl text-white font-light leading-relaxed">
+                <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-white" />
+                <span>
+                  Built and refined alongside <strong className="font-bold text-white">experienced retail traders</strong>.
+                </span>
+              </div>
+              <div className="flex items-start gap-3 text-2xl text-white font-light leading-relaxed">
+                <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-white" />
+                <span>
+                  Deep AI engineering + real trading experience + direct access to the market we serve.
+                </span>
+              </div>
             </div>
           </motion.div>
         </motion.div>
@@ -151,8 +152,9 @@ export default function Slide13() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-              } rounded-full`}
+            className={`h-2 transition-all duration-300 ${
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+            } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
@@ -183,3 +185,4 @@ export default function Slide13() {
     </div>
   );
 }
+

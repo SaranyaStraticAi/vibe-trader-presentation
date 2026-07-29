@@ -7,12 +7,13 @@ import { GlobeWatermark } from '@/components/GlobeWatermark';
 const TOTAL_SLIDES = 17;
 const ACTIVE = 14;
 
-const points = [
-  { year: 'Year 1', revenue: '$0.5M', users: '8K users',   x: 100, y: 100 },
-  { year: 'Year 2', revenue: '$1.5M', users: '25K users',  x: 300, y: 88  },
-  { year: 'Year 3', revenue: '$4M',   users: '60K users',  x: 500, y: 68  },
-  { year: 'Year 4', revenue: '$8M',   users: '120K users', x: 700, y: 38  },
-  { year: 'Year 5', revenue: '$15M+', users: '200K users', x: 900, y: 6   },
+// Chart data: barH = full bar height in px (out of 120 chart area)
+const bars = [
+  { year: 'Year 1', revenue: '$0.5M', users: '8K',   barH: 22  },
+  { year: 'Year 2', revenue: '$1.5M', users: '25K',  barH: 44  },
+  { year: 'Year 3', revenue: '$4M',   users: '60K',  barH: 68  },
+  { year: 'Year 4', revenue: '$8M',   users: '120K', barH: 92  },
+  { year: 'Year 5', revenue: '$15M+', users: '200K', barH: 120 },
 ];
 
 export default function Slide15() {
@@ -101,7 +102,7 @@ export default function Slide15() {
             ))}
           </div>
 
-          {/* ── Growth Chart ── */}
+          {/* ── Growth Chart — animated gradient bars ── */}
           <motion.div
             className="border border-gray-100 rounded-lg bg-gray-50/30 mb-6"
             style={{ padding: '1rem 1.5rem' }}
@@ -109,66 +110,67 @@ export default function Slide15() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <p className="uppercase tracking-widest text-gray-400 font-bold mb-3 text-xs">
+            <p className="uppercase tracking-widest text-gray-400 font-bold mb-4 text-xs">
               Projected Annual Revenue Growth
             </p>
 
-            <svg
-              viewBox="0 -45 1000 230"
-              className="w-full"
-              style={{ height: '180px' }}
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Baseline */}
-              <line x1="50" y1="130" x2="950" y2="130" stroke="#e5e7eb" strokeWidth="2" />
+            <div className="flex items-end justify-between gap-3" style={{ height: '160px' }}>
+              {bars.map((bar, i) => (
+                <div key={i} className="flex flex-col items-center justify-end flex-1 h-full">
+                  {/* Revenue label above bar */}
+                  <motion.span
+                    className="font-black text-black text-center leading-tight mb-1"
+                    style={{ fontSize: '1.05rem' }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.9 + i * 0.12, duration: 0.4 }}
+                  >
+                    {bar.revenue}
+                  </motion.span>
 
-              {/* Animated trend line */}
-              <motion.path
-                d="M 100,110 C 200,110 250,97 300,97 C 350,97 450,75 500,75 C 550,75 650,43 700,43 C 750,43 850,9 900,9"
-                stroke="black"
-                strokeWidth="4"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ delay: 1.0, duration: 1.4, ease: 'easeInOut' }}
-              />
+                  {/* Animated bar */}
+                  <motion.div
+                    className="w-full rounded-t-md"
+                    style={{
+                      background: i === 4
+                        ? 'black'
+                        : `rgba(0,0,0,${0.12 + i * 0.16})`,
+                      maxWidth: '80px',
+                    }}
+                    initial={{ height: 0 }}
+                    animate={{ height: bar.barH }}
+                    transition={{ delay: 0.9 + i * 0.12, duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
+                  />
 
-              {points.map((p, i) => (
-                <g key={i}>
-                  <circle cx={p.x} cy={p.y + 12} r="7" fill="black" />
+                  {/* Year label */}
+                  <span
+                    className="font-bold text-black text-center mt-2"
+                    style={{ fontSize: '0.78rem' }}
+                  >
+                    {bar.year}
+                  </span>
 
-                  <text x={p.x} y={p.y - 10} textAnchor="middle"
-                    fill="black" fontWeight="900" fontSize="26"
-                    fontFamily="Inter, system-ui, sans-serif">
-                    {p.revenue}
-                  </text>
-
-                  <text x={p.x} y="152" textAnchor="middle"
-                    fill="black" fontWeight="800" fontSize="18"
-                    fontFamily="Inter, system-ui, sans-serif">
-                    {p.year}
-                  </text>
-
-                  <text x={p.x} y="170" textAnchor="middle"
-                    fill="#9ca3af" fontWeight="600" fontSize="13"
-                    fontFamily="Inter, system-ui, sans-serif">
-                    {p.users}
-                  </text>
-                </g>
+                  {/* Users count */}
+                  <span
+                    className="text-gray-400 font-medium text-center"
+                    style={{ fontSize: '0.68rem' }}
+                  >
+                    {bar.users} users
+                  </span>
+                </div>
               ))}
-            </svg>
+            </div>
           </motion.div>
+
 
           {/* ── Bottom Takeaway ── */}
           <motion.div
-            className="bg-black text-white"
-            style={{ padding: '1rem 1.5rem' }}
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <p className="font-light leading-snug text-lg">
+            <p className="text-2xl font-light leading-snug">
               Base case: 5% paid conversion with a 50% Trader ($25) / 40% Pro ($99) / 10% Elite ($200) subscription mix, plus revenue from broker partnerships and platform licensing.
             </p>
           </motion.div>

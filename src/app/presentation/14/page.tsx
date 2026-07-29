@@ -114,12 +114,12 @@ export default function Slide14() {
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 w-full mt-10"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-3xl font-light leading-snug text-center whitespace-nowrap">
+            <p className="text-2xl font-light leading-snug">
               The product is built and validated.{' '}
               <span className="font-bold text-white">The next step is scaling market adoption.</span>
             </p>
