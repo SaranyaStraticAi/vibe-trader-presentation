@@ -60,7 +60,7 @@ export default function Slide2() {
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-600 mb-16 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -68,25 +68,25 @@ export default function Slide2() {
             Trading has never had more tools — yet most traders still lose. Execution is solved. Decision-making is not.
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-12 max-w-7xl mb-10">
+          <div className="grid grid-cols-2 gap-24 max-w-7xl mb-16">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
-              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-5">
+              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-8">
                 For Traders
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-8">
                 {forTraders.map((t, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start gap-4 text-2xl text-gray-800 font-light leading-snug"
+                    className="flex items-start gap-6 text-2xl text-gray-800 font-light leading-snug"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 + i * 0.08, duration: 0.4 }}
                   >
-                    <span className="mt-3 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
                     <span>{t}</span>
                   </motion.li>
                 ))}
@@ -98,19 +98,19 @@ export default function Slide2() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
-              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-5">
+              <p className="text-xl uppercase tracking-[0.25em] text-gray-500 mb-8">
                 For Brokers
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-8">
                 {forBrokers.map((b, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start gap-4 text-2xl text-gray-800 font-light leading-snug"
+                    className="flex items-start gap-6 text-2xl text-gray-800 font-light leading-snug"
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 + i * 0.08, duration: 0.4 }}
                   >
-                    <span className="mt-3 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
                     <span>{b}</span>
                   </motion.li>
                 ))}

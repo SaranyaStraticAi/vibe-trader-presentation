@@ -19,6 +19,12 @@ const cto = [
   'Architected VibeTrader\'s AI platform, MT4/MT5 integrations, and real-time trading infrastructure',
 ];
 
+const advisor = [
+  'Tony Sotelo — 39+ years of Forex market experience',
+  'Built and refined alongside a community of active retail traders',
+  'Provides direct access and deep insight into target market needs',
+];
+
 export default function Slide13() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
@@ -59,54 +65,83 @@ export default function Slide13() {
             Leadership Team
           </motion.h1>
 
-          {/* CEO & CTO Cards with original p-10 padding */}
-          <div className="grid grid-cols-2 gap-12 max-w-7xl mb-8">
+          {/* 3 Columns Grid for Team Cards */}
+          <div className="grid grid-cols-3 gap-8 w-full max-w-[1450px] mb-8">
+            {/* CEO Card */}
             <motion.div
-              className="border-2 border-gray-200 p-10 rounded-lg"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              className="border-2 border-gray-200 p-8 rounded-lg bg-white group hover:border-black transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <h3 className="text-3xl font-black text-black leading-tight mb-3">
-                Saranya Amirthalingam — CEO
+              <h3 className="text-3xl font-black text-black leading-tight mb-2">
+                Saranya Amirthalingam
               </h3>
-              <p className="text-2xl text-gray-500 font-bold mb-6">Product, GTM & Partnerships</p>
+              <p className="text-2xl text-gray-500 font-bold mb-6">Co-Founder & CEO</p>
               <ul className="space-y-3">
                 {ceo.map((c, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start gap-3 text-xl text-gray-700 font-light leading-relaxed"
+                    className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
+                    transition={{ delay: 0.5 + i * 0.05, duration: 0.4 }}
                   >
-                    <span className="mt-3 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
                     <span>{c}</span>
                   </motion.li>
                 ))}
               </ul>
             </motion.div>
 
+            {/* CTO Card */}
             <motion.div
-              className="border-2 border-gray-200 p-10 rounded-lg"
+              className="border-2 border-gray-200 p-8 rounded-lg bg-white group hover:border-black transition-colors"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6 }}
             >
-              <h3 className="text-3xl font-black text-black leading-tight mb-3">
-                Nithyakumaran Gnanasekar — CTO
+              <h3 className="text-3xl font-black text-black leading-tight mb-2">
+                Nithyakumaran Gnanasekar
               </h3>
-              <p className="text-2xl text-gray-500 font-bold mb-6">AI & Trading Infrastructure</p>
+              <p className="text-2xl text-gray-500 font-bold mb-6">Co-Founder & CTO</p>
               <ul className="space-y-3">
                 {cto.map((c, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start gap-3 text-xl text-gray-700 font-light leading-relaxed"
-                    initial={{ opacity: 0, x: 10 }}
+                    className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
+                    initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
+                    transition={{ delay: 0.55 + i * 0.05, duration: 0.4 }}
                   >
-                    <span className="mt-3 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span>{c}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Advisor / Domain Expert Card */}
+            <motion.div
+              className="border-2 border-gray-200 p-8 rounded-lg bg-white group hover:border-black transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <h3 className="text-3xl font-black text-black leading-tight mb-2">
+                Active Traders
+              </h3>
+              <p className="text-2xl text-gray-500 font-bold mb-6">Forex & Market Expertise</p>
+              <ul className="space-y-3">
+                {advisor.map((c, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.05, duration: 0.4 }}
+                  >
+                    <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
                     <span>{c}</span>
                   </motion.li>
                 ))}
@@ -114,36 +149,16 @@ export default function Slide13() {
             </motion.div>
           </div>
 
-          {/* Single Standard Bottom Banner Box containing Domain Expertise & Takeaway */}
+          {/* Simplified Bottom Takeaway */}
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl mt-8"
+            className="bg-black text-white p-8 w-full max-w-[1450px] mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-xl uppercase tracking-[0.3em] text-gray-400 mb-4 font-bold">
-              Trading Expertise
+            <p className="text-2xl font-light leading-snug">
+              Deep AI engineering + real trading experience.
             </p>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-start gap-3 text-2xl text-white font-light leading-relaxed">
-                <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-white" />
-                <span>
-                  <strong className="font-bold text-white">Tony Sotelo</strong> — 39+ years of Forex market experience.
-                </span>
-              </div>
-              <div className="flex items-start gap-3 text-2xl text-white font-light leading-relaxed">
-                <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-white" />
-                <span>
-                  Built and refined alongside <strong className="font-bold text-white">experienced retail traders</strong>.
-                </span>
-              </div>
-              <div className="flex items-start gap-3 text-2xl text-white font-light leading-relaxed">
-                <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-white" />
-                <span>
-                  Deep AI engineering + real trading experience + direct access to the market we serve.
-                </span>
-              </div>
-            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -185,4 +200,3 @@ export default function Slide13() {
     </div>
   );
 }
-

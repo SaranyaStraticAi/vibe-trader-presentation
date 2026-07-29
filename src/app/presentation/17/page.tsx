@@ -11,7 +11,7 @@ const contacts = [
   {
     icon: '👤',
     label: 'Saranya Amirthalingam',
-    sub: 'Founder & CEO, VibeTrader',
+    sub: 'Co-Founder & CEO, VibeTrader',
   },
   {
     icon: '✉',
@@ -68,7 +68,7 @@ export default function Slide17() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-600 mb-16 font-light max-w-7xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -78,13 +78,13 @@ export default function Slide17() {
           </motion.p>
 
           {/* Contact cards + QR side by side */}
-          <div className="flex gap-8 items-start mb-10">
-            {/* Left: Contact details */}
-            <div className="flex flex-col gap-4 flex-1">
+          <div className="flex gap-10 items-stretch mb-10 w-full max-w-[1550px]">
+            {/* Left: Contact details (Heights match QR code card via flex-1 stretching) */}
+            <div className="flex flex-col gap-4 max-w-7xl w-full flex-1">
               {contacts.map((c, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-center gap-5 border-2 border-gray-200 rounded-lg p-5 hover:border-black transition-colors group"
+                  className="flex items-center gap-5 border-2 border-gray-200 rounded-lg p-6 hover:border-black transition-colors group bg-white flex-1"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
@@ -108,18 +108,18 @@ export default function Slide17() {
               ))}
             </div>
 
-            {/* Right: QR code */}
+            {/* Right: QR code card (Vertically aligned) */}
             <motion.div
-              className="flex-shrink-0 flex flex-col items-center gap-3"
+              className="flex-shrink-0 flex flex-col items-center justify-between gap-4 bg-white p-8 border-2 border-gray-200 rounded-lg w-[320px]"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               {/* QR code — Real scannable QR Code for https://vibetrader.com */}
-              <div className="border-2 border-gray-200 rounded-lg p-4 bg-white">
+              <div className="flex items-center justify-center flex-1">
                 <svg
-                  width="200"
-                  height="200"
+                  width="220"
+                  height="220"
                   viewBox="0 0 33 33"
                   xmlns="http://www.w3.org/2000/svg"
                   shapeRendering="crispEdges"
@@ -131,21 +131,21 @@ export default function Slide17() {
                   />
                 </svg>
               </div>
-              <p className="text-sm text-gray-400 font-medium uppercase tracking-widest text-center mt-1">
+              <p className="text-sm text-gray-400 font-medium uppercase tracking-widest text-center mt-2">
                 Scan to visit<br />vibetrader.com
               </p>
             </motion.div>
           </div>
 
-          {/* Bottom Takeaway — same style as all other slides */}
+          {/* Bottom Takeaway — standard style matching all other slides */}
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-8 max-w-7xl w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              The <span className="font-bold">AI decision intelligence layer</span> for trading.
+              The <span className="font-bold text-white">AI decision intelligence layer</span> for trading.
             </p>
           </motion.div>
 
@@ -170,11 +170,6 @@ export default function Slide17() {
         className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >←</button>
-      <button
-        onClick={goToFirst}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
-        aria-label="Back to start"
-      >↺</button>
     </div>
   );
 }

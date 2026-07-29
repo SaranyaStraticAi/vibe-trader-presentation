@@ -8,11 +8,11 @@ const TOTAL_SLIDES = 17;
 const ACTIVE = 10;
 
 const rows = [
-  { feature: 'Market Analysis', tv: '✓', cap: '✓', ts: '✓', dt: '◐', vibe: '✓' },
-  { feature: 'Strategy Building & Testing', tv: '✓', cap: '✓', ts: '✓', dt: '—', vibe: '✓' },
-  { feature: 'Trade Automation', tv: '◐', cap: '✓', ts: '✓', dt: '✓', vibe: '✓' },
-  { feature: 'Trader Decision Memory', tv: '—', cap: '—', ts: '—', dt: '—', vibe: '✓' },
-  { feature: 'Adaptive Intelligence', tv: '—', cap: '◐', ts: '◐', dt: '—', vibe: '✓' },
+  { feature: 'Market Analysis', tv: '✓', cap: '✓', ts: '✓', comp: '◐', vibe: '✓' },
+  { feature: 'Strategy Building & Testing', tv: '✓', cap: '✓', ts: '✓', comp: '✓', vibe: '✓' },
+  { feature: 'Trade Automation', tv: '◐', cap: '✓', ts: '✓', comp: '✓', vibe: '✓' },
+  { feature: 'Trader Decision Memory', tv: '—', cap: '—', ts: '—', comp: '—', vibe: '✓' },
+  { feature: 'Adaptive Intelligence', tv: '—', cap: '◐', ts: '◐', comp: '◐', vibe: '✓' },
 ];
 
 const renderValue = (val: string, isVibe = false) => {
@@ -84,7 +84,7 @@ export default function Slide11() {
                   <th className="py-3.5 px-6 text-center text-lg font-bold text-gray-800">TradingView</th>
                   <th className="py-3.5 px-6 text-center text-lg font-bold text-gray-800">Capitalise.ai</th>
                   <th className="py-3.5 px-6 text-center text-lg font-bold text-gray-800">TrendSpider</th>
-                  <th className="py-3.5 px-6 text-center text-lg font-bold text-gray-800">DupliTrade</th>
+                  <th className="py-3.5 px-6 text-center text-lg font-bold text-gray-800">Composer</th>
                   <th className="py-3.5 px-6 text-center text-lg font-black text-white bg-black rounded-t-lg">VibeTrader</th>
                 </tr>
               </thead>
@@ -95,7 +95,7 @@ export default function Slide11() {
                     <td className="py-3.5 px-6 text-center text-xl">{renderValue(row.tv)}</td>
                     <td className="py-3.5 px-6 text-center text-xl">{renderValue(row.cap)}</td>
                     <td className="py-3.5 px-6 text-center text-xl">{renderValue(row.ts)}</td>
-                    <td className="py-3.5 px-6 text-center text-xl">{renderValue(row.dt)}</td>
+                    <td className="py-3.5 px-6 text-center text-xl">{renderValue(row.comp)}</td>
                     <td className="py-3.5 px-6 text-center text-xl font-bold bg-gray-50/50 border-x-2 border-black last:border-b-2">
                       {renderValue(row.vibe, true)}
                     </td>
