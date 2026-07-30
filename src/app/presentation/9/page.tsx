@@ -65,7 +65,17 @@ export default function Slide9() {
           </motion.p>
 
           <div className="flex justify-center my-1">
-            <Flywheel stages={flywheelStages} centerLabel="Decision Intelligence" centerSub="VibeTrader" size={460} />
+            <Flywheel
+              stages={flywheelStages}
+              centerLabel="Decision Intelligence"
+              centerSub="VibeTrader"
+              size={460}
+              customCardOffsets={{
+                1: { x: 25 },  // Move right card (Learn) outward
+                2: { y: -35 }, // Move bottom card (Adapt) upward
+                3: { x: -25 }, // Move left card (Decide) outward
+              }}
+            />
           </div>
 
           <motion.div

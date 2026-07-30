@@ -75,8 +75,16 @@ export default function Slide4() {
             A system that learns how decisions perform over time and adapts accordingly.
           </motion.p>
 
-          <div className="flex justify-center my-3 overflow-visible">
-            <Flywheel stages={layers} centerLabel="Decision Intelligence" centerSub="VibeTrader" size={460} />
+          <div className="flex justify-center mt-12 mb-3 overflow-visible">
+            <Flywheel
+              stages={layers}
+              centerLabel="Decision Intelligence"
+              centerSub="VibeTrader"
+              size={460}
+              customCardOffsets={{
+                0: { y: -25 }, // Move the top card (Input layer) up slightly
+              }}
+            />
           </div>
 
         </motion.div>

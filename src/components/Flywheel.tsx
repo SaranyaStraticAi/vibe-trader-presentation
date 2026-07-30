@@ -18,6 +18,7 @@ interface FlywheelProps {
   delay?: number;
   size?: number;
   rotationDuration?: number; // total seconds for a full 360deg loop
+  customCardOffsets?: { [key: number]: { x?: number; y?: number } };
 }
 
 function getStageIcon(title: string, index: number, total: number): LucideIcon {
@@ -38,6 +39,7 @@ export function Flywheel({
   delay = 0.4,
   size = 520,
   rotationDuration = 8,
+  customCardOffsets,
 }: FlywheelProps) {
   const count = stages.length;
   const stageStepDuration = (rotationDuration * 1000) / count;
@@ -243,6 +245,10 @@ export function Flywheel({
         const IconComponent = s.icon || getStageIcon(s.title, i, count);
         const isActive = i === activeIndex;
 
+        const offset = customCardOffsets?.[i] || {};
+        const offsetX = offset.x || 0;
+        const offsetY = offset.y || 0;
+
         return (
           <motion.div
             key={i}
@@ -254,8 +260,8 @@ export function Flywheel({
             }`}
             style={{
               width: cardWidth,
-              left: p.x - cardWidth / 2,
-              top: p.y - 45,
+              left: p.x - cardWidth / 2 + offsetX,
+              top: p.y - 45 + offsetY,
             }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1 }}
