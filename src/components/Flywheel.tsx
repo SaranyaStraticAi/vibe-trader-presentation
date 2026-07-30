@@ -58,8 +58,8 @@ export function Flywheel({
 
   const cx = size / 2;
   const cy = size / 2;
-  const ringR = size * 0.33;
-  const labelR = size * 0.46;
+  const ringR = size * 0.32;
+  const labelR = size * (count === 3 ? 0.53 : 0.48);
   const circumference = 2 * Math.PI * ringR;
 
   // Angles in degrees (-90deg is top)
