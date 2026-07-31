@@ -110,7 +110,7 @@ export default function Slide5() {
 
           {/* Bottom Takeaway */}
           <motion.div
-            className="bg-black text-white py-5 px-8 w-full max-w-[1450px]"
+            className="bg-black text-white p-8 w-full max-w-[1450px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
