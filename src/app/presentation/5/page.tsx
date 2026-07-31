@@ -3,16 +3,40 @@
 import { motion } from 'framer-motion';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { PRESENTATION_CONFIG } from '@/config/presentation';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
 const ACTIVE = 4;
+
+const channels = [
+  {
+    badge: 'DIRECT',
+    title: 'Product-Led Growth',
+    points: ['Direct trader acquisition', 'Organic viral growth', 'Community distribution'],
+  },
+  {
+    badge: 'PARTNERS',
+    title: 'Channel Acceleration',
+    points: ['Broker integrations', 'Trading academies', 'Affiliate networks'],
+  },
+  {
+    badge: 'PRICING',
+    title: 'Tiered Subscriptions',
+    points: ['Trader plans: $25 / mo', 'Pro plans: $99 / mo', 'Elite plans: $200 / mo'],
+  },
+  {
+    badge: 'B2B2C',
+    title: 'Enterprise Models',
+    points: ['White-label licensing', 'CPA partnerships', 'Broker revenue share'],
+  },
+];
 
 export default function Slide5() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-24 overflow-hidden bg-white cursor-pointer"
       onClick={nextSlide}
     >
       <div
@@ -32,7 +56,7 @@ export default function Slide5() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.div
-            className="w-16 h-1.5 bg-black mb-6"
+            className="w-16 h-1.5 bg-black mb-4"
             initial={{ width: 0 }}
             animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -44,34 +68,56 @@ export default function Slide5() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Decision Intelligence in Action
+            Scalable Distribution
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-2xl text-gray-700 mb-6 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            See how VibeTrader helps traders make smarter decisions in real time.
+            Combining direct organic adoption with high-leverage institutional partner distribution.
           </motion.p>
 
+          {/* 4 Channel Blocks in 1 Row */}
+          <div className="grid grid-cols-4 gap-6 w-full max-w-[1450px] mb-8">
+            {channels.map((ch, i) => (
+              <motion.div
+                key={ch.badge}
+                className="border-2 border-gray-200 p-6 rounded-lg bg-white group hover:border-black transition-colors flex flex-col justify-between"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+              >
+                <div>
+                  <span className="text-[10px] font-mono font-black tracking-[0.2em] bg-black text-white px-2.5 py-1 uppercase mb-4 inline-block">
+                    {ch.badge}
+                  </span>
+                  <h3 className="text-2xl font-black text-black mb-3 leading-tight">{ch.title}</h3>
+                  <ul className="space-y-2 text-lg text-gray-700 font-light">
+                    {ch.points.map((pt, j) => (
+                      <li key={j} className="flex items-start gap-2.5">
+                        <span className="h-2 w-2 bg-black shrink-0 mt-2" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom Takeaway */}
           <motion.div
-            className="mb-8 max-w-5xl aspect-video border border-gray-200 bg-black rounded-lg overflow-hidden relative shadow-lg"
+            className="bg-black text-white py-6 px-8 w-full max-w-[1450px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.6 }}
-            onClick={(e) => e.stopPropagation()}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <video
-              src="/100.mp4"
-              className="w-full h-full object-contain"
-              controls
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
+            <p className="text-2xl font-light leading-snug">
+              Direct adoption builds demand. Partners accelerate scale.
+            </p>
           </motion.div>
         </motion.div>
       </div>
@@ -113,3 +159,4 @@ export default function Slide5() {
     </div>
   );
 }
+
