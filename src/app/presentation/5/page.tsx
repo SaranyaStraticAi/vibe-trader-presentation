@@ -56,14 +56,14 @@ export default function Slide5() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.div
-            className="w-16 h-1.5 bg-black mb-6"
+            className="w-16 h-1.5 bg-black mb-4"
             initial={{ width: 0 }}
             animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-4 tracking-tighter leading-tight"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -72,7 +72,7 @@ export default function Slide5() {
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-700 mb-10 font-light max-w-4xl leading-relaxed"
+            className="text-3xl text-gray-700 mb-6 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -81,21 +81,21 @@ export default function Slide5() {
           </motion.p>
 
           {/* 4 Channel Blocks */}
-          <div className="grid grid-cols-2 gap-8 w-full max-w-[1450px] mb-10">
+          <div className="grid grid-cols-2 gap-6 w-full max-w-[1450px] mb-6">
             {channels.map((ch, i) => (
               <motion.div
                 key={ch.badge}
-                className="border-2 border-gray-200 p-8 rounded-lg bg-white group hover:border-black transition-colors flex flex-col justify-between"
+                className="border-2 border-gray-200 p-6 rounded-lg bg-white group hover:border-black transition-colors flex flex-col justify-between"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
               >
                 <div>
-                  <span className="text-xs font-mono font-black tracking-[0.2em] bg-black text-white px-3 py-1 uppercase mb-4 inline-block">
+                  <span className="text-xs font-mono font-black tracking-[0.2em] bg-black text-white px-3 py-1 uppercase mb-3 inline-block">
                     {ch.badge}
                   </span>
-                  <h3 className="text-3xl font-black text-black mb-4">{ch.title}</h3>
-                  <ul className="space-y-3 text-2xl text-gray-700 font-light">
+                  <h3 className="text-2xl font-black text-black mb-3">{ch.title}</h3>
+                  <ul className="space-y-2 text-xl text-gray-700 font-light">
                     {ch.points.map((pt, j) => (
                       <li key={j} className="flex items-center gap-3">
                         <span className="h-2 w-2 bg-black shrink-0" />
@@ -110,7 +110,7 @@ export default function Slide5() {
 
           {/* Bottom Takeaway */}
           <motion.div
-            className="bg-black text-white p-8 w-full max-w-[1450px]"
+            className="bg-black text-white py-5 px-8 w-full max-w-[1450px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
