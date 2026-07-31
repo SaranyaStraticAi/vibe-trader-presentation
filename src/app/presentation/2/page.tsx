@@ -13,22 +13,22 @@ const pillars = [
   {
     icon: Activity,
     category: 'MARKET INTELLIGENCE',
-    description: 'Real-time market context & regime detection',
+    description: 'Real-time market context ',
   },
   {
     icon: Cpu,
     category: 'STRATEGY INTELLIGENCE',
-    description: 'Build, test, and adapt strategies automatically',
+    description: 'Build, test, and adapt strategies',
   },
   {
     icon: ShieldCheck,
     category: 'RISK INTELLIGENCE',
-    description: 'Personalized risk guidance & drawdown protection',
+    description: 'Personalized risk guidance',
   },
   {
     icon: UserCheck,
     category: 'TRADER INTELLIGENCE',
-    description: 'Behavioral insights & automated AI trading journal',
+    description: 'Behavioral insights and AI journal',
   },
 ];
 
@@ -128,9 +128,8 @@ export default function Slide2() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
