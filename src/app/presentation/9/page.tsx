@@ -1,33 +1,50 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Users, Handshake, Cpu } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 import { PRESENTATION_CONFIG } from '@/config/presentation';
 
 const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
+
 const ACTIVE = 8;
 
-const fundsAllocation = [
-  { percent: '40%', category: 'PRODUCT & AI', detail: 'Decision intelligence & core algorithms' },
-  { percent: '30%', category: 'SALES & PARTNERSHIPS', detail: 'Broker & academy channel expansion' },
-  { percent: '20%', category: 'ENGINEERING', detail: 'Infrastructure, MT4/MT5 & mobile scale' },
-  { percent: '10%', category: 'OPERATIONS', detail: 'Legal, compliance & administration' },
+const deployment = [
+  {
+    icon: Cpu,
+    category: 'PRODUCT',
+    title: 'Advance the Platform',
+    points: ['AI decision intelligence', 'Mobile experience', 'Infrastructure & security'],
+  },
+  {
+    icon: Handshake,
+    category: 'GROWTH',
+    title: 'Scale Distribution',
+    points: ['Broker partnerships', 'Academies & affiliates', 'Trader acquisition'],
+  },
+  {
+    icon: Users,
+    category: 'TEAM',
+    title: 'Build for Scale',
+    points: ['Engineering', 'Sales & partnerships', 'Customer success'],
+  },
 ];
 
-const milestones = [
+const outcomes = [
+  '5,000+ active users',
   'Commercial broker partnerships',
-  'Recurring revenue growth',
-  'Mobile app launch',
+  'Recurring Revenue Growth',
+  'Expansion beyond Forex',
   'Enterprise licensing',
 ];
 
-export default function Slide9() {
+export default function Slide16() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white cursor-pointer"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -54,7 +71,7 @@ export default function Slide9() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-4 tracking-tighter leading-tight"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -63,69 +80,66 @@ export default function Slide9() {
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-700 mb-10 font-light max-w-4xl leading-relaxed"
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Raising <span className="font-bold text-black">$1M Pre-Seed</span> to accelerate commercialization.
+            $1M Pre-Seed
           </motion.p>
 
-          {/* 4 Allocation Pillars Grid */}
-          <div className="grid grid-cols-4 gap-6 w-full max-w-[1450px] mb-8">
-            {fundsAllocation.map((item, i) => (
-              <motion.div
-                key={item.category}
-                className="border-2 border-gray-200 p-6 rounded-lg bg-white group hover:border-black transition-colors flex flex-col justify-between"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
-              >
-                <div>
-                  <div className="text-5xl font-black text-black mb-2 tracking-tight">
-                    {item.percent}
+          <motion.p
+            className="text-xl uppercase tracking-[0.3em] text-gray-500 mb-5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.45, duration: 0.6 }}
+          >
+            Where we&apos;ll invest
+          </motion.p>
+
+          <div className="grid grid-cols-3 gap-10 mb-8">
+            {deployment.map((d, i) => {
+              const Icon = d.icon;
+              return (
+                <motion.div
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-10 rounded-lg group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
+                >
+                  <div className="w-16 h-16 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4 rounded-lg">
+                    <Icon className="w-9 h-9" />
                   </div>
-                  <span className="text-[10px] font-mono font-black tracking-[0.2em] bg-black text-white px-2.5 py-1 uppercase mb-4 inline-block">
-                    {item.category}
-                  </span>
-                  <p className="text-xl text-gray-600 font-light leading-snug">
-                    {item.detail}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                  <p className="text-sm uppercase tracking-widest text-gray-400 font-bold mb-1">{d.category}</p>
+                  <h3 className="text-3xl font-black text-black leading-tight mb-4">{d.title}</h3>
+                  <ul className="space-y-3">
+                    {d.points.map((pt, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xl text-gray-700 font-light leading-relaxed">
+                        <span className="mt-3.5 inline-block h-2 w-2 shrink-0 bg-black" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
           </div>
 
-          {/* 18-Month Milestones Line */}
           <motion.div
-            className="border-2 border-gray-100 bg-gray-50 p-6 rounded-lg w-full max-w-[1450px] mb-8"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <div className="text-xs font-mono font-black tracking-[0.2em] text-gray-400 uppercase mb-3">
-              18-MONTH MILESTONES
-            </div>
-            <div className="flex justify-between items-center text-xl font-bold text-black">
-              {milestones.map((ms, j) => (
-                <div key={j} className="flex items-center gap-3">
-                  {j > 0 && <span className="text-gray-300">·</span>}
-                  <span>{ms}</span>
+            <div className="flex flex-wrap items-center justify-between gap-y-2 text-xl font-light leading-snug">
+              {outcomes.map((o, i) => (
+                <div key={i} className="flex items-center gap-2.5">
+                  <span className="inline-block h-2.5 w-2.5 shrink-0 bg-white" />
+                  <span>{o}</span>
                 </div>
               ))}
             </div>
-          </motion.div>
-
-          {/* Bottom Takeaway */}
-          <motion.div
-            className="bg-black text-white p-8 w-full max-w-[1450px]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
-          >
-            <p className="text-2xl font-light leading-snug">
-              Capital converts early validation into commercial scale.
-            </p>
           </motion.div>
         </motion.div>
       </div>
@@ -134,9 +148,8 @@ export default function Slide9() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
@@ -149,7 +162,7 @@ export default function Slide9() {
           e.stopPropagation();
           prevSlide();
         }}
-        className="absolute left-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
@@ -159,7 +172,7 @@ export default function Slide9() {
           e.stopPropagation();
           nextSlide();
         }}
-        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →
@@ -167,4 +180,3 @@ export default function Slide9() {
     </div>
   );
 }
-
