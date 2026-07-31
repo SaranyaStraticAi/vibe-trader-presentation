@@ -34,7 +34,7 @@ const outcomes = [
   'Commercial broker partnerships',
   'Recurring Revenue Growth',
   'Expansion beyond Forex',
-  'Seed-round readiness',
+  'Enterprise licensing',
 ];
 
 export default function Slide16() {
@@ -146,9 +146,8 @@ export default function Slide16() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}

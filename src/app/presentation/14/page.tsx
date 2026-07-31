@@ -115,7 +115,7 @@ export default function Slide14() {
             transition={{ delay: 1.0, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              The product is built. The market is validating. Capital accelerates commercialization.
+              Built lean. Validated in market. Ready to scale.
             </p>
           </motion.div>
         </motion.div>
@@ -125,9 +125,8 @@ export default function Slide14() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
