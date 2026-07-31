@@ -134,7 +134,7 @@ export default function Slide13() {
                 </div>
               </div>
 
-              <h3 className="text-3xl font-black text-black leading-tight mb-4">
+              <h3 className="text-2xl font-black text-black leading-tight mb-4 whitespace-nowrap">
                 Nithyakumaran Gnanasekar
               </h3>
               <p className="text-xl text-gray-500 font-bold mb-4 mt-2">Co-Founder & CTO</p>
