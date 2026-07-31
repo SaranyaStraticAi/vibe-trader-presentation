@@ -27,7 +27,7 @@ const channels = [
   {
     badge: 'B2B2C',
     title: 'Enterprise Models',
-    points: ['White-label licensing', 'CPA partnerships', 'Broker revenue share'],
+    points: ['White-label licensing', 'Embedded distributions', 'White-label/API Licensing'],
   },
 ];
 
@@ -126,9 +126,8 @@ export default function Slide5() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}

@@ -58,26 +58,18 @@ export default function Slide10() {
           <div className="grid grid-cols-2 gap-10 w-full max-w-[1450px] mb-8">
             {/* OFFER CARD */}
             <motion.div
-              className="border-2 border-black p-10 rounded-lg bg-black text-white flex flex-col justify-between"
+              className="border-2 border-black p-10 rounded-lg bg-black text-white flex flex-col"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              <div>
-                <span className="text-xs font-mono font-black tracking-[0.2em] bg-white/20 text-white px-3 py-1 uppercase mb-6 inline-block">
-                  INVESTMENT OFFER
-                </span>
-                <div className="text-6xl font-black tracking-tight mb-4">
+              <span className="text-xs font-mono font-black tracking-[0.2em] bg-white text-black px-3 py-1 uppercase mb-6 inline-block self-start">
+                INVESTMENT OFFER
+              </span>
+              <div className="flex-1 flex items-center">
+                <div className="text-8xl font-black tracking-tight leading-none">
                   $1M SAFE
                 </div>
-                <div className="text-3xl font-light text-gray-300 mb-8">
-                  $10M Valuation Cap
-                </div>
-              </div>
-              <div className="border-t border-white/20 pt-6">
-                <p className="text-xl text-gray-300 font-light">
-                  Capital allocates directly to product scaling, broker integrations, and trader acquisition.
-                </p>
               </div>
             </motion.div>
 
@@ -89,7 +81,7 @@ export default function Slide10() {
               transition={{ delay: 0.5, duration: 0.5 }}
             >
               <div>
-                <span className="text-xs font-mono font-black tracking-[0.2em] bg-black text-white px-3 py-1 uppercase mb-6 inline-block">
+                <span className="text-xs font-mono font-black tracking-[0.2em] bg-black text-white px-3 py-1 uppercase mb-5 inline-block">
                   LONG-TERM PATH
                 </span>
                 <h3 className="text-3xl font-black text-black mb-4">Strategic Exit & Growth</h3>
@@ -110,7 +102,7 @@ export default function Slide10() {
                   VISION STATEMENT
                 </p>
                 <p className="text-2xl font-bold text-black">
-                  Bring institutional-grade intelligence to every trader.
+                  Give everyone the financial intelligence to move forward—and, in doing so, move the global economy forward.
                 </p>
               </div>
             </motion.div>
@@ -137,17 +129,7 @@ export default function Slide10() {
             </a>
           </motion.div>
 
-          {/* Bottom Takeaway */}
-          <motion.div
-            className="bg-black text-white p-8 w-full max-w-[1450px]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
-          >
-            <p className="text-2xl font-light leading-snug">
-              Join us in building the intelligence layer for modern trading.
-            </p>
-          </motion.div>
+
         </motion.div>
       </div>
 
@@ -155,9 +137,8 @@ export default function Slide10() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
