@@ -75,19 +75,16 @@ export default function Slide13() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              {/* Photo Placeholder */}
+              {/* Photo Image */}
               <div
                 className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group-hover:border-gray-200 transition-colors shrink-0"
-                style={{ height: '200px', width: '50%', alignSelf: 'center' }}
+                style={{ height: '200px', width: '200px', alignSelf: 'center' }}
               >
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-12 h-12 rounded-full bg-gray-200/50 flex items-center justify-center text-gray-400">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase font-black">Photo Placeholder</span>
-                </div>
+                <img
+                  src="/saranya mam image.jpg"
+                  alt="Saranya Amirthalingam"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               <h3 className="text-3xl font-black text-black leading-tight mb-4">
@@ -119,19 +116,16 @@ export default function Slide13() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6 }}
             >
-              {/* Photo Placeholder */}
+              {/* Photo Image */}
               <div
                 className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group-hover:border-gray-200 transition-colors shrink-0"
-                style={{ height: '200px', width: '50%', alignSelf: 'center' }}
+                style={{ height: '200px', width: '200px', alignSelf: 'center' }}
               >
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-12 h-12 rounded-full bg-gray-200/50 flex items-center justify-center text-gray-400">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase font-black">Photo Placeholder</span>
-                </div>
+                <img
+                  src="/nithya sir image.jpg"
+                  alt="Nithyakumaran Gnanasekar"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               <h3 className="text-2xl font-black text-black leading-tight mb-4 whitespace-nowrap">
@@ -166,15 +160,35 @@ export default function Slide13() {
               {/* Visual Placeholder */}
               <div
                 className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group-hover:border-gray-200 transition-colors shrink-0"
-                style={{ height: '200px', width: '50%', alignSelf: 'center' }}
+                style={{ height: '200px', width: '200px', alignSelf: 'center' }}
               >
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-12 h-12 rounded-full bg-gray-200/50 flex items-center justify-center text-gray-400">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
+                <div className="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-br from-gray-50 to-gray-100/50">
+                  <div className="flex justify-between items-center text-[10px] font-mono text-gray-400">
+                    <span>LIVE VIBE SYSTEM</span>
+                    <span className="text-emerald-500 font-bold">+18.4%</span>
                   </div>
-                  <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase font-black">Market Validation</span>
+                  <svg className="w-full h-24 text-emerald-500" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none">
+                    <path
+                      d="M0,45 Q15,40 30,32 T60,25 T90,8 L100,5"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M0,45 Q15,40 30,32 T60,25 T90,8 L100,5 L100,50 L0,50 Z"
+                      fill="url(#chart-grad)"
+                      opacity="0.15"
+                    />
+                    <defs>
+                      <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#10B981" />
+                        <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div className="text-[10px] font-mono text-gray-400 uppercase tracking-widest text-center font-bold">
+                    MARKET VALIDATION
+                  </div>
                 </div>
               </div>
 
