@@ -141,7 +141,7 @@ export default function Slide5() {
           e.stopPropagation();
           prevSlide();
         }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute left-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
@@ -151,7 +151,7 @@ export default function Slide5() {
           e.stopPropagation();
           nextSlide();
         }}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →

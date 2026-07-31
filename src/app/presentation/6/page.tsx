@@ -1,69 +1,32 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Globe2, Target, Crosshair } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { PRESENTATION_CONFIG } from '@/config/presentation';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
 const ACTIVE = 5;
 
-const market = [
-  {
-    icon: Globe2,
-    label: 'TAM',
-    headline: '$20B by 2030',
-    title: 'Global Online Trading Platform Market',
-    accent: 'bg-black text-white',
-  },
-  {
-    icon: Target,
-    label: 'SAM',
-    headline: '7.4M+',
-    title: 'Active Retail FX & CFD Accounts',
-    accent: 'bg-white text-black border-2 border-black',
-  },
-  {
-    icon: Crosshair,
-    label: 'SOM',
-    headline: '150K–250K*',
-    title: 'MT4/MT5 Retail Traders',
-    accent: 'bg-gray-100 text-black border-2 border-gray-300',
-  },
+const revenueEngines = [
+  'Trader subscriptions ($25 / $99 / $200 mo)',
+  'Broker B2B2C partnerships & volume share',
+  'Enterprise white-label & API licensing',
 ];
 
-const sources = [
-  {
-    n: '1',
-    text: 'Next Move Strategy Consulting, "Online Trading Platform Market"',
-    url: 'https://www.nextmsc.com/report/online-trading-platform-market-bf3483',
-  },
-  {
-    n: '2',
-    text: 'Finance Magnates Intelligence, "7.4 Million Active Accounts: Retail FX/CFD Client Base Hits New High in Q1 2026"',
-    url: 'https://www.financemagnates.com/forex/analysis/74-million-active-accounts-retail-fxcfd-client-base-hits-new-high-in-q1-2026/',
-  },
-  {
-    n: '3',
-    text: 'BIS Triennial Central Bank Survey, 2025',
-    url: 'https://www.bis.org/press/p250930.htm',
-  },
+const financialOutlook = [
+  '$15M+ Year 5 projected ARR',
+  '~$25K capital-efficient monthly burn',
+  'High-margin software unit economics',
+  'Break-even targeted as recurring revenue scales',
 ];
-
-function sourceHost(url: string) {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '');
-  } catch {
-    return url;
-  }
-}
 
 export default function Slide6() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white cursor-pointer"
       onClick={nextSlide}
     >
       <div
@@ -90,78 +53,78 @@ export default function Slide6() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
+            className="text-6xl font-black text-black mb-4 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Market Opportunity
+            Recurring Revenue Business
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-700 mb-10 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            $9.6T — Daily FX Trading Volume
+            A high-margin SaaS model built for predictable growth and capital efficiency.
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-8 mb-12">
-            {market.map((m, i) => {
-              const Icon = m.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-10 flex flex-col justify-between min-h-[220px]"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
-                >
-                  <div>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div
-                        className={`w-14 h-14 flex items-center justify-center text-2xl font-black ${m.accent}`}
-                      >
-                        {m.label}
-                      </div>
-                      <Icon className="w-7 h-7 text-gray-400" />
-                    </div>
-                    <p className="text-4xl font-bold text-black leading-tight mb-3">{m.headline}</p>
-                  </div>
-                  <p className="text-sm uppercase tracking-widest text-gray-500 font-medium">{m.title}</p>
-                </motion.div>
-              );
-            })}
+          {/* 50/50 Split Grid */}
+          <div className="grid grid-cols-2 gap-10 w-full max-w-[1450px] mb-10">
+            {/* Left: REVENUE ENGINES */}
+            <motion.div
+              className="border-2 border-gray-200 p-8 rounded-lg bg-white group hover:border-black transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              <span className="text-xs font-mono font-black tracking-[0.2em] bg-black text-white px-3 py-1 uppercase mb-6 inline-block">
+                REVENUE ENGINES
+              </span>
+              <h3 className="text-3xl font-black text-black mb-6">Diversified Monetization</h3>
+              <ul className="space-y-4 text-2xl text-gray-700 font-light">
+                {revenueEngines.map((item, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <span className="h-2.5 w-2.5 bg-black shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Right: FINANCIAL OUTLOOK */}
+            <motion.div
+              className="border-2 border-gray-200 p-8 rounded-lg bg-white group hover:border-black transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+            >
+              <span className="text-xs font-mono font-black tracking-[0.2em] bg-gray-200 text-black px-3 py-1 uppercase mb-6 inline-block">
+                FINANCIAL OUTLOOK
+              </span>
+              <h3 className="text-3xl font-black text-black mb-6">Capital-Efficient Scale</h3>
+              <ul className="space-y-4 text-2xl text-gray-700 font-light">
+                {financialOutlook.map((item, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <span className="h-2.5 w-2.5 bg-black shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
 
-
+          {/* Bottom Takeaway */}
           <motion.div
-            className="max-w-6xl border-t border-gray-200 pt-6 mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
+            className="bg-black text-white p-8 w-full max-w-[1450px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <p className="text-sm uppercase tracking-widest text-gray-500 mb-4 font-bold">Sources</p>
-            <div className="space-y-4">
-              {sources.map((s) => (
-                <div key={s.n} className="flex gap-3 text-lg leading-relaxed">
-                  <span className="shrink-0 text-gray-400 font-semibold">•</span>
-                  <p className="text-gray-700 font-normal">
-                    {s.text}{' '}
-                    <a
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-500 underline decoration-gray-300 underline-offset-4 hover:text-black transition-colors ml-2 font-medium"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {sourceHost(s.url)}
-                    </a>
-                  </p>
-                </div>
-              ))}
-            </div>
+            <p className="text-2xl font-light leading-snug">
+              Multiple recurring revenue streams. Capital-efficient execution.
+            </p>
           </motion.div>
         </motion.div>
       </div>
@@ -170,8 +133,9 @@ export default function Slide6() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-              } rounded-full`}
+            className={`h-2 transition-all duration-300 ${
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+            } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
@@ -184,7 +148,7 @@ export default function Slide6() {
           e.stopPropagation();
           prevSlide();
         }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute left-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
@@ -194,7 +158,7 @@ export default function Slide6() {
           e.stopPropagation();
           nextSlide();
         }}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →
@@ -202,3 +166,4 @@ export default function Slide6() {
     </div>
   );
 }
+

@@ -1,37 +1,29 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CreditCard, Handshake, Server, BarChart3, ArrowRight } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { PRESENTATION_CONFIG } from '@/config/presentation';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
 const ACTIVE = 7;
 
-const nowStreams = [
-  {
-    icon: CreditCard,
-    title: 'Trader subscriptions',
-    body: 'Trader $25 / Pro $99 / Elite $200 per month. Pro is the core monetization layer.',
-  },
-  {
-    icon: Handshake,
-    title: 'Broker partnerships',
-    body: 'Piloting with Dupoin — CPA, API, and distribution agreements.',
-  },
+const ceoPoints = [
+  'Product strategy & vision',
+  'Broker & academy partnerships',
+  'Growth & fundraising',
 ];
 
-const nextStreams = [
-  {
-    icon: Server,
-    title: 'Software licensing',
-    body: 'Decision intelligence for brokers, academies, and trading communities.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Market intelligence',
-    body: 'Anonymous behavioral insights and institutional analytics.',
-  },
+const ctoPoints = [
+  'Former Amazon engineer',
+  '15+ years in AI & cloud infrastructure',
+  'Built VibeTrader\'s AI platform & integrations',
+];
+
+const domainPoints = [
+  'AI, Enterprise Software, and Forex experience',
+  'Built alongside active retail traders',
+  'Next Hires: Sales, AI Engineering, Customer Success',
 ];
 
 export default function Slide8() {
@@ -39,7 +31,7 @@ export default function Slide8() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white cursor-pointer"
       onClick={nextSlide}
     >
       <div
@@ -66,103 +58,154 @@ export default function Slide8() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
+            className="text-6xl font-black text-black mb-4 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Business Model
+            Built by Traders & AI Engineers
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-700 mb-10 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Multiple recurring revenue streams.
+            Technical leadership with deep domain knowledge in AI, trading, and platform scale.
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-12 max-w-7xl mb-8">
-            {/* NOW Column */}
-            <div>
-              <motion.div
-                className="flex items-center gap-3 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.45, duration: 0.5 }}
+          {/* 3 Columns Grid */}
+          <div className="grid grid-cols-3 gap-8 w-full max-w-[1450px] mb-10">
+            {/* CEO Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col p-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shrink-0"
+                style={{ height: '180px', width: '180px', alignSelf: 'center' }}
               >
-                <span className="h-2.5 w-2.5 rounded-full bg-black animate-pulse" />
-                <h2 className="text-2xl uppercase tracking-[0.2em] text-black font-bold">Now</h2>
-              </motion.div>
-              <div className="flex flex-col gap-6">
-                {nowStreams.map((s, i) => {
-                  const Icon = s.icon;
-                  return (
-                    <motion.div
-                      key={i}
-                      className="bg-gray-50/30 border border-gray-100 hover:border-black transition-all duration-300 p-8 rounded-lg flex gap-6 items-start min-h-[190px]"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
-                    >
-                      <div className="w-14 h-14 bg-black text-white flex items-center justify-center shrink-0 rounded-lg">
-                        <Icon className="w-7 h-7" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-4xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                        <p className="text-2xl text-gray-600 font-light leading-relaxed">{s.body}</p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+                <img
+                  src="/saranya mam image.jpg"
+                  alt="Saranya Amirthalingam"
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </div>
 
-            {/* NEXT Column */}
-            <div>
-              <motion.div
-                className="flex items-center gap-3 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.65, duration: 0.5 }}
+              <h3 className="text-3xl font-black text-black leading-tight mb-2">
+                Saranya Amirthalingam
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4">Co-Founder & CEO</p>
+              <ul className="space-y-3 text-xl text-gray-700 font-light">
+                {ceoPoints.map((pt, i) => (
+                  <li key={i} className="flex items-center gap-2.5">
+                    <span className="h-2 w-2 bg-black shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* CTO Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col p-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.6 }}
+            >
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shrink-0"
+                style={{ height: '180px', width: '180px', alignSelf: 'center' }}
               >
-                <span className="h-2.5 w-2.5 rounded-full bg-gray-400" />
-                <h2 className="text-2xl uppercase tracking-[0.2em] text-gray-500 font-bold">Next</h2>
-              </motion.div>
-              <div className="flex flex-col gap-6">
-                {nextStreams.map((s, i) => {
-                  const Icon = s.icon;
-                  return (
-                    <motion.div
-                      key={i}
-                      className="bg-gray-50/30 border border-gray-100 hover:border-black transition-all duration-300 p-8 rounded-lg flex gap-6 items-start min-h-[190px]"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7 + i * 0.08, duration: 0.5 }}
-                    >
-                      <div className="w-14 h-14 bg-white text-black border border-gray-200 flex items-center justify-center shrink-0 rounded-lg">
-                        <Icon className="w-7 h-7" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-4xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                        <p className="text-2xl text-gray-600 font-light leading-relaxed">{s.body}</p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+                <img
+                  src="/nithya sir image.jpg"
+                  alt="Nithyakumaran Gnanasekar"
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </div>
+
+              <h3 className="text-2xl font-black text-black leading-tight mb-2 whitespace-nowrap">
+                Nithyakumaran Gnanasekar
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4">Co-Founder & CTO</p>
+              <ul className="space-y-3 text-xl text-gray-700 font-light">
+                {ctoPoints.map((pt, i) => (
+                  <li key={i} className="flex items-center gap-2.5">
+                    <span className="h-2 w-2 bg-black shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Domain & Next Hires Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col p-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shrink-0"
+                style={{ height: '180px', width: '180px', alignSelf: 'center' }}
+              >
+                <div className="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-br from-gray-50 to-gray-100/50">
+                  <div className="flex justify-between items-center text-[10px] font-mono text-gray-400">
+                    <span>LIVE VIBE SYSTEM</span>
+                    <span className="text-emerald-500 font-bold">+18.4%</span>
+                  </div>
+                  <svg className="w-full h-20 text-emerald-500" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none">
+                    <path
+                      d="M0,45 Q15,40 30,32 T60,25 T90,8 L100,5"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M0,45 Q15,40 30,32 T60,25 T90,8 L100,5 L100,50 L0,50 Z"
+                      fill="url(#chart-grad-8)"
+                      opacity="0.15"
+                    />
+                    <defs>
+                      <linearGradient id="chart-grad-8" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#10B981" />
+                        <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div className="text-[10px] font-mono text-gray-400 uppercase tracking-widest text-center font-bold">
+                    DOMAIN EXPERTISE
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-3xl font-black text-black leading-tight mb-2">
+                Domain & Next Hires
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4">Forex & Scale Team</p>
+              <ul className="space-y-3 text-xl text-gray-700 font-light">
+                {domainPoints.map((pt, i) => (
+                  <li key={i} className="flex items-center gap-2.5">
+                    <span className="h-2 w-2 bg-black shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
 
+          {/* Bottom Takeaway */}
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl mt-8"
+            className="bg-black text-white p-8 w-full max-w-[1450px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              B2C subscriptions | Partner distribution | Enterprise licensing
+              A technical founding team with product, trading, and distribution experience.
             </p>
           </motion.div>
         </motion.div>
@@ -172,8 +215,9 @@ export default function Slide8() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-              } rounded-full`}
+            className={`h-2 transition-all duration-300 ${
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+            } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
@@ -186,7 +230,7 @@ export default function Slide8() {
           e.stopPropagation();
           prevSlide();
         }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute left-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
@@ -196,7 +240,7 @@ export default function Slide8() {
           e.stopPropagation();
           nextSlide();
         }}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →
@@ -204,3 +248,4 @@ export default function Slide8() {
     </div>
   );
 }
+

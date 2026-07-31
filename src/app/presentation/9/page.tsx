@@ -3,16 +3,23 @@
 import { motion } from 'framer-motion';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
-import { Flywheel } from '@/components/Flywheel';
+import { PRESENTATION_CONFIG } from '@/config/presentation';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
 const ACTIVE = 8;
 
-const flywheelStages = [
-  { n: '1', title: 'Trade', body: 'Real-world activity' },
-  { n: '2', title: 'Learn', body: 'Personal context' },
-  { n: '3', title: 'Adapt', body: 'Smarter guidance' },
-  { n: '4', title: 'Decide', body: 'Greater confidence' },
+const fundsAllocation = [
+  { percent: '40%', category: 'PRODUCT & AI', detail: 'Decision intelligence & core algorithms' },
+  { percent: '30%', category: 'SALES & PARTNERSHIPS', detail: 'Broker & academy channel expansion' },
+  { percent: '20%', category: 'ENGINEERING', detail: 'Infrastructure, MT4/MT5 & mobile scale' },
+  { percent: '10%', category: 'OPERATIONS', detail: 'Legal, compliance & administration' },
+];
+
+const milestones = [
+  'Commercial broker partnerships',
+  'Recurring revenue growth',
+  'Mobile app launch',
+  'Enterprise licensing',
 ];
 
 export default function Slide9() {
@@ -20,7 +27,7 @@ export default function Slide9() {
 
   return (
     <div
-      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white cursor-pointer"
       onClick={nextSlide}
     >
       <div
@@ -47,45 +54,77 @@ export default function Slide9() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
+            className="text-6xl font-black text-black mb-4 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Why Customers Stay
+            Funding the Next Stage
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-6 font-light max-w-4xl"
+            className="text-3xl text-gray-700 mb-10 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            The Intelligence Flywheel
+            Raising <span className="font-bold text-black">$1M Pre-Seed</span> to accelerate commercialization.
           </motion.p>
 
-          <div className="flex justify-center my-1">
-            <Flywheel
-              stages={flywheelStages}
-              centerLabel="Decision Intelligence"
-              centerSub="VibeTrader"
-              size={460}
-              customCardOffsets={{
-                1: { x: 25 },  // Move right card (Learn) outward
-                2: { y: -35 }, // Move bottom card (Adapt) upward
-                3: { x: -25 }, // Move left card (Decide) outward
-              }}
-            />
+          {/* 4 Allocation Pillars Grid */}
+          <div className="grid grid-cols-4 gap-6 w-full max-w-[1450px] mb-8">
+            {fundsAllocation.map((item, i) => (
+              <motion.div
+                key={item.category}
+                className="border-2 border-gray-200 p-6 rounded-lg bg-white group hover:border-black transition-colors flex flex-col justify-between"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+              >
+                <div>
+                  <div className="text-5xl font-black text-black mb-2 tracking-tight">
+                    {item.percent}
+                  </div>
+                  <span className="text-[10px] font-mono font-black tracking-[0.2em] bg-black text-white px-2.5 py-1 uppercase mb-4 inline-block">
+                    {item.category}
+                  </span>
+                  <p className="text-xl text-gray-600 font-light leading-snug">
+                    {item.detail}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
+          {/* 18-Month Milestones Line */}
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl mt-24"
+            className="border-2 border-gray-100 bg-gray-50 p-6 rounded-lg w-full max-w-[1450px] mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            <div className="text-xs font-mono font-black tracking-[0.2em] text-gray-400 uppercase mb-3">
+              18-MONTH MILESTONES
+            </div>
+            <div className="flex justify-between items-center text-xl font-bold text-black">
+              {milestones.map((ms, j) => (
+                <div key={j} className="flex items-center gap-3">
+                  {j > 0 && <span className="text-gray-300">·</span>}
+                  <span>{ms}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Bottom Takeaway */}
+          <motion.div
+            className="bg-black text-white p-8 w-full max-w-[1450px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              Every interaction makes VibeTrader more personalized and harder to replace.
+              Capital converts early validation into commercial scale.
             </p>
           </motion.div>
         </motion.div>
@@ -95,8 +134,9 @@ export default function Slide9() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-              } rounded-full`}
+            className={`h-2 transition-all duration-300 ${
+              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+            } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
@@ -109,7 +149,7 @@ export default function Slide9() {
           e.stopPropagation();
           prevSlide();
         }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute left-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
@@ -119,7 +159,7 @@ export default function Slide9() {
           e.stopPropagation();
           nextSlide();
         }}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →
@@ -127,3 +167,4 @@ export default function Slide9() {
     </div>
   );
 }
+
