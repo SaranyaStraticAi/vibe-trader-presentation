@@ -1,35 +1,25 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CreditCard, Handshake, Server, BarChart3 } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { PRESENTATION_CONFIG } from '@/config/presentation';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
 const ACTIVE = 8;
 
-const streams = [
-  {
-    icon: CreditCard,
-    title: 'Trader subscriptions',
-    body: 'Trader $25 / Pro $99 / Elite $200 per month. Pro is the core monetization layer.',
-  },
-  {
-    icon: Handshake,
-    title: 'Broker partnerships',
-    body: 'CPA partnerships, revenue-sharing, and distribution agreements with global brokers.',
-  },
-  {
-    icon: Server,
-    title: 'Software licensing',
-    body: 'Decision intelligence infrastructure for broker ecosystems, academies, and communities.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Aggregated intelligence',
-    body:
-      'Future layer: anonymous strategy-performance trends, behavioral signals, institutional dashboards.',
-  },
+const fundsAllocation = [
+  { percent: '40%', category: 'PRODUCT & AI', detail: 'Decision intelligence & core algorithms' },
+  { percent: '30%', category: 'SALES & PARTNERSHIPS', detail: 'Broker & academy channel expansion' },
+  { percent: '20%', category: 'ENGINEERING', detail: 'Infrastructure, MT4/MT5 & mobile scale' },
+  { percent: '10%', category: 'OPERATIONS', detail: 'Legal, compliance & administration' },
+];
+
+const milestones = [
+  'Commercial broker partnerships',
+  'Recurring revenue growth',
+  'Mobile app launch',
+  'Enterprise licensing',
 ];
 
 export default function Slide9() {
@@ -37,7 +27,7 @@ export default function Slide9() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white cursor-pointer"
       onClick={nextSlide}
     >
       <div
@@ -64,62 +54,77 @@ export default function Slide9() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-4 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Multi-layered revenue model
+            Funding the Next Stage
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-700 mb-10 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Traders, brokers, and ecosystems — all paying for adaptive intelligence.
+            Raising <span className="font-bold text-black">$1M Pre-Seed</span> to accelerate commercialization.
           </motion.p>
 
-          <div className="grid grid-cols-2 gap-6 mb-8 max-w-7xl">
-            {streams.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
-                >
-                  <div className="flex gap-5">
-                    <div className="w-14 h-14 bg-black text-white flex items-center justify-center shrink-0 group-hover:bg-gray-700 transition-colors">
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                      <p className="text-lg text-gray-600 font-light leading-snug">{s.body}</p>
-                    </div>
+          {/* 4 Allocation Pillars Grid */}
+          <div className="grid grid-cols-4 gap-6 w-full max-w-[1450px] mb-8">
+            {fundsAllocation.map((item, i) => (
+              <motion.div
+                key={item.category}
+                className="border-2 border-gray-200 p-6 rounded-lg bg-white group hover:border-black transition-colors flex flex-col justify-between"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+              >
+                <div>
+                  <div className="text-5xl font-black text-black mb-2 tracking-tight">
+                    {item.percent}
                   </div>
-                </motion.div>
-              );
-            })}
+                  <span className="text-[10px] font-mono font-black tracking-[0.2em] bg-black text-white px-2.5 py-1 uppercase mb-4 inline-block">
+                    {item.category}
+                  </span>
+                  <p className="text-xl text-gray-600 font-light leading-snug">
+                    {item.detail}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
+          {/* 18-Month Milestones Line */}
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="border-2 border-gray-100 bg-gray-50 p-6 rounded-lg w-full max-w-[1450px] mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-2">
-              Why customers pay
-            </p>
-            <p className="text-3xl font-light leading-snug">
-              Existing tools show charts.{' '}
-              <span className="font-bold">
-                VibeTrader optimizes performance consistency in live trading.
-              </span>
+            <div className="text-xs font-mono font-black tracking-[0.2em] text-gray-400 uppercase mb-3">
+              18-MONTH MILESTONES
+            </div>
+            <div className="flex justify-between items-center text-xl font-bold text-black">
+              {milestones.map((ms, j) => (
+                <div key={j} className="flex items-center gap-3">
+                  {j > 0 && <span className="text-gray-300">·</span>}
+                  <span>{ms}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Bottom Takeaway */}
+          <motion.div
+            className="bg-black text-white p-8 w-full max-w-[1450px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            <p className="text-2xl font-light leading-snug">
+              Capital converts early validation into commercial scale.
             </p>
           </motion.div>
         </motion.div>
@@ -144,7 +149,7 @@ export default function Slide9() {
           e.stopPropagation();
           prevSlide();
         }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute left-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
@@ -154,7 +159,7 @@ export default function Slide9() {
           e.stopPropagation();
           nextSlide();
         }}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →
@@ -162,3 +167,4 @@ export default function Slide9() {
     </div>
   );
 }
+

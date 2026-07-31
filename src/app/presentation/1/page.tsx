@@ -1,27 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
-import { ArrowRight } from 'lucide-react';
-import dynamic from 'next/dynamic';
+import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { PRESENTATION_CONFIG } from '@/config/presentation';
 
-const Globe = dynamic(() => import('@/components/Globe'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-[600px] h-[600px] flex items-center justify-center">
-      <div className="text-gray-400">Loading globe...</div>
-    </div>
-  ),
-});
-
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
 
 export default function Slide1() {
   const { nextSlide } = useSlideNavigation();
 
   return (
-    <div className="relative flex h-full w-full items-center overflow-hidden bg-white">
+    <div
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white cursor-pointer"
+      onClick={nextSlide}
+    >
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
@@ -30,85 +23,123 @@ export default function Slide1() {
         }}
       />
 
-      <motion.div
-        className="relative z-10 w-1/2 px-20"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
+      <GlobeWatermark />
+
+      <div className="relative z-10 px-20 w-full">
         <motion.div
-          className="w-16 h-1.5 bg-black mb-10"
-          initial={{ width: 0 }}
-          animate={{ width: 64 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        />
-
-        <motion.h1
-          className="mb-6 text-8xl font-black text-black leading-[0.95] tracking-tighter"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          VibeTrader
-        </motion.h1>
+          <motion.div
+            className="w-16 h-1.5 bg-black mb-6"
+            initial={{ width: 0 }}
+            animate={{ width: 64 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          />
 
-        <motion.p
-          className="mb-4 text-3xl text-gray-700 font-light leading-snug"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          AI Decision Intelligence<br />for Traders
-        </motion.p>
+          <div className="flex items-center justify-between max-w-[1450px] mb-8">
+            <motion.h1
+              className="text-6xl font-black text-black tracking-tighter leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              The Decision Gap
+            </motion.h1>
+            <span className="text-xl font-mono text-gray-400 font-bold uppercase tracking-widest">
+              VibeTrader · AI Decision Intelligence
+            </span>
+          </div>
 
-        <motion.p
-          className="mb-12 text-2xl text-gray-500 font-light italic"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          Learn what works, when — and turn it into real-time decision intelligence.
-        </motion.p>
-
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <p className="text-xl uppercase tracking-[0.3em] text-gray-500 mb-3">Presented by</p>
-          <p className="text-2xl text-gray-800 font-light">
-            Saranya Amirthalingam <span className="text-gray-400">·</span> CEO
-          </p>
-          <p className="text-xl text-gray-500 font-light">VibeTrader, Inc.</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.6 }}
-        >
-          <Button
-            onClick={nextSlide}
-            size="lg"
-            className="group bg-black text-white hover:bg-gray-800 text-2xl px-14 py-9 rounded-none font-medium transition-all duration-300"
+          {/* Lead Statement */}
+          <motion.p
+            className="text-3xl text-gray-800 font-light max-w-4xl leading-snug mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Begin
-            <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
-          </Button>
+            Trading platforms help traders execute trades. <br />
+            <span className="font-bold text-black">They do not help traders consistently make better decisions.</span>
+          </motion.p>
+
+          {/* 2 Columns: TRADERS vs BROKERS */}
+          <div className="grid grid-cols-2 gap-10 w-full max-w-[1450px] mb-10">
+            {/* TRADERS CARD */}
+            <motion.div
+              className="border-2 border-gray-200 p-10 rounded-lg bg-white group hover:border-black transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-xs font-mono font-black tracking-[0.2em] bg-black text-white px-3 py-1 uppercase">
+                  TRADERS
+                </span>
+                <h3 className="text-3xl font-black text-black">The Retail Struggle</h3>
+              </div>
+              <ul className="space-y-4 text-2xl text-gray-700 font-light">
+                <li className="flex items-center gap-3">
+                  <span className="h-2 w-2 bg-black shrink-0" />
+                  <span>Markets change dynamically</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="h-2 w-2 bg-black shrink-0" />
+                  <span>Strategies stop working without notice</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="h-2 w-2 bg-black shrink-0" />
+                  <span>Emotion & bias drive poor decision quality</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* BROKERS CARD */}
+            <motion.div
+              className="border-2 border-gray-200 p-10 rounded-lg bg-white group hover:border-black transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-xs font-mono font-black tracking-[0.2em] bg-gray-200 text-black px-3 py-1 uppercase">
+                  BROKERS
+                </span>
+                <h3 className="text-3xl font-black text-black">The Institutional Gap</h3>
+              </div>
+              <ul className="space-y-4 text-2xl text-gray-700 font-light">
+                <li className="flex items-center gap-3">
+                  <span className="h-2 w-2 bg-black shrink-0" />
+                  <span>High trader churn & account burn</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="h-2 w-2 bg-black shrink-0" />
+                  <span>Low long-term trader engagement</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="h-2 w-2 bg-black shrink-0" />
+                  <span>Limited real-time trader behavioral insight</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Bottom Takeaway */}
+          <motion.div
+            className="bg-black text-white p-8 w-full max-w-[1450px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
+            <p className="text-2xl font-light leading-snug">
+              VibeTrader closes the gap between trade execution and decision quality.
+            </p>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="relative w-1/2 h-full flex items-center justify-center"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.4, duration: 1 }}
-      >
-        <Globe />
-      </motion.div>
-
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2">
+      {/* Slide Navigation Dots */}
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-2 z-20">
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
@@ -121,6 +152,18 @@ export default function Slide1() {
           />
         ))}
       </div>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          nextSlide();
+        }}
+        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
+        aria-label="Next slide"
+      >
+        →
+      </button>
     </div>
   );
 }
+

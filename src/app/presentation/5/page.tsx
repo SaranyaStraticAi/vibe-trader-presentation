@@ -1,28 +1,33 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Wrench, BookOpen, Sparkles } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { PRESENTATION_CONFIG } from '@/config/presentation';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
 const ACTIVE = 4;
 
-const products = [
+const channels = [
   {
-    icon: Wrench,
-    title: 'Strategy Builder',
-    body: 'Build & optimize strategies. Backtest workflows. AI trade analysis.',
+    badge: 'DIRECT',
+    title: 'Product-Led Growth',
+    points: ['Direct trader acquisition', 'Organic viral growth', 'Community distribution'],
   },
   {
-    icon: BookOpen,
-    title: 'AI Trading Journal',
-    body: 'Auto-journaling. Trade review workflows. Performance tracking.',
+    badge: 'PARTNERS',
+    title: 'Channel Acceleration',
+    points: ['Broker integrations', 'Trading academies', 'Affiliate networks'],
   },
   {
-    icon: Sparkles,
-    title: 'AI Insights',
-    body: 'Market condition analysis. Decision guidance. Risk signals.',
+    badge: 'PRICING',
+    title: 'Tiered Subscriptions',
+    points: ['Trader plans: $25 / mo', 'Pro plans: $99 / mo', 'Elite plans: $200 / mo'],
+  },
+  {
+    badge: 'B2B2C',
+    title: 'Enterprise Models',
+    points: ['White-label licensing', 'CPA partnerships', 'Broker revenue share'],
   },
 ];
 
@@ -31,7 +36,7 @@ export default function Slide5() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white cursor-pointer"
       onClick={nextSlide}
     >
       <div
@@ -51,77 +56,68 @@ export default function Slide5() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.div
-            className="w-16 h-1.5 bg-black mb-6"
+            className="w-16 h-1.5 bg-black mb-4"
             initial={{ width: 0 }}
             animate={{ width: 64 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Core product experience
+            Scalable Distribution
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-700 mb-6 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Three workflows. One adaptive intelligence layer underneath.
+            Combining direct organic adoption with high-leverage institutional partner distribution.
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {products.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-                >
-                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <p className="text-2xl font-bold text-black mb-2 leading-tight">{p.title}</p>
-                  <p className="text-xl text-gray-600 font-light leading-snug">{p.body}</p>
-                </motion.div>
-              );
-            })}
+          {/* 4 Channel Blocks */}
+          <div className="grid grid-cols-2 gap-6 w-full max-w-[1450px] mb-6">
+            {channels.map((ch, i) => (
+              <motion.div
+                key={ch.badge}
+                className="border-2 border-gray-200 p-6 rounded-lg bg-white group hover:border-black transition-colors flex flex-col justify-between"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+              >
+                <div>
+                  <span className="text-xs font-mono font-black tracking-[0.2em] bg-black text-white px-3 py-1 uppercase mb-3 inline-block">
+                    {ch.badge}
+                  </span>
+                  <h3 className="text-2xl font-black text-black mb-3">{ch.title}</h3>
+                  <ul className="space-y-2 text-xl text-gray-700 font-light">
+                    {ch.points.map((pt, j) => (
+                      <li key={j} className="flex items-center gap-3">
+                        <span className="h-2 w-2 bg-black shrink-0" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
+          {/* Bottom Takeaway */}
           <motion.div
-            className="grid grid-cols-2 gap-6 max-w-7xl"
+            className="bg-black text-white p-8 w-full max-w-[1450px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <div className="border-2 border-gray-200 p-6">
-              <p className="text-lg uppercase tracking-widest text-gray-500 mb-3">
-                Before VibeTrader
-              </p>
-              <ul className="space-y-2 text-xl text-gray-700 font-light">
-                <li>Guessing whether strategies still work</li>
-                <li>Repeating emotional mistakes</li>
-                <li>Static tools and indicators</li>
-              </ul>
-            </div>
-            <div className="bg-black text-white p-6">
-              <p className="text-lg uppercase tracking-widest text-gray-400 mb-3">
-                With VibeTrader
-              </p>
-              <ul className="space-y-2 text-xl font-light">
-                <li>Context-aware strategy insights</li>
-                <li>Real-time guidance</li>
-                <li>Continuous optimization</li>
-              </ul>
-            </div>
+            <p className="text-2xl font-light leading-snug">
+              Direct adoption builds demand. Partners accelerate scale.
+            </p>
           </motion.div>
         </motion.div>
       </div>
@@ -145,7 +141,7 @@ export default function Slide5() {
           e.stopPropagation();
           prevSlide();
         }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute left-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
@@ -155,7 +151,7 @@ export default function Slide5() {
           e.stopPropagation();
           nextSlide();
         }}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →
@@ -163,3 +159,4 @@ export default function Slide5() {
     </div>
   );
 }
+

@@ -1,41 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CandlestickChart, LineChart, Bitcoin } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 const TOTAL_SLIDES = 17;
 const ACTIVE = 12;
 
-const phases = [
-  {
-    icon: CandlestickChart,
-    label: '1',
-    title: 'Forex',
-    timeline: 'Current focus',
-    body:
-      'Largest and most active financial market. High-frequency decision environment. Strong broker ecosystem. MT4 / MT5 already integrated.',
-    accent: 'bg-black text-white',
-  },
-  {
-    icon: LineChart,
-    label: '2',
-    title: 'Stocks & Options',
-    timeline: 'Phase 2',
-    body:
-      'Multi-asset portfolio intelligence, options strategy workflows, risk & position management, cross-market behavioral analysis.',
-    accent: 'bg-white text-black border-2 border-black',
-  },
-  {
-    icon: Bitcoin,
-    label: '3',
-    title: 'Futures & Crypto',
-    timeline: 'Phase 3',
-    body:
-      'Futures: high-frequency, quant, risk-intensive. Crypto: 24/7 markets, fast-evolving strategies, high behavioral volatility.',
-    accent: 'bg-gray-100 text-black border-2 border-gray-300',
-  },
+const ceo = [
+  { text: 'Product strategy, partnerships, and fundraising', style: { paddingBottom: '20px' } },
+  { text: 'Built broker and academy partnerships', style: { paddingBottom: '20px' } },
+  { text: '1,800+ traders · 2 live B2B pilots', style: { paddingBottom: '0px' } },
+];
+
+const cto = [
+  { text: 'Former Amazon engineer', style: { paddingBottom: '20px' } },
+  { text: '15+ years in AI and cloud infrastructure', style: { paddingBottom: '20px' } },
+  { text: 'Built VibeTrader\'s AI platform and MT4/MT5 integrations', style: { paddingBottom: '0px' } },
+];
+
+const advisor = [
+  { text: '50+ years combined Forex experience', style: { paddingBottom: '20px' } },
+  { text: 'Built alongside active retail traders', style: { paddingBottom: '20px' } },
+  { text: 'Continuous real-market validation', style: { paddingBottom: '0px' } },
 ];
 
 export default function Slide13() {
@@ -43,7 +30,7 @@ export default function Slide13() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -70,63 +57,174 @@ export default function Slide13() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-10 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Expansion strategy
+            Leadership Team
           </motion.h1>
 
-          <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Clear path across global trading markets — same engine, new market layers.
-          </motion.p>
+          {/* 3 Columns Grid for Team Cards */}
+          <div className="grid grid-cols-3 gap-8 w-full max-w-[1450px] mb-2">
+            {/* CEO Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col"
+              style={{ minHeight: '440px', paddingTop: '24px', paddingBottom: '32px', paddingLeft: '32px', paddingRight: '32px' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              {/* Photo Image */}
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group-hover:border-gray-200 transition-colors shrink-0"
+                style={{ height: '200px', width: '200px', alignSelf: 'center' }}
+              >
+                <img
+                  src="/saranya mam image.jpg"
+                  alt="Saranya Amirthalingam"
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {phases.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-8 flex flex-col"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
-                >
-                  <div className="flex items-center gap-4 mb-5">
-                    <div
-                      className={`w-14 h-14 flex items-center justify-center text-3xl font-black ${p.accent}`}
-                    >
-                      {p.label}
-                    </div>
-                    <Icon className="w-7 h-7 text-gray-400" />
+              <h3 className="text-3xl font-black text-black leading-tight mb-4">
+                Saranya Amirthalingam
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4 mt-2">Co-Founder & CEO</p>
+              <ul className="w-full mt-2">
+                {ceo.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
+                    style={item.style}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + i * 0.05, duration: 0.4 }}
+                  >
+                    <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span>{item.text}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* CTO Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col"
+              style={{ minHeight: '440px', paddingTop: '24px', paddingBottom: '32px', paddingLeft: '32px', paddingRight: '32px' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.6 }}
+            >
+              {/* Photo Image */}
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group-hover:border-gray-200 transition-colors shrink-0"
+                style={{ height: '200px', width: '200px', alignSelf: 'center' }}
+              >
+                <img
+                  src="/nithya sir image.jpg"
+                  alt="Nithyakumaran Gnanasekar"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <h3 className="text-2xl font-black text-black leading-tight mb-4 whitespace-nowrap">
+                Nithyakumaran Gnanasekar
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4 mt-2">Co-Founder & CTO</p>
+              <ul className="w-full mt-2">
+                {cto.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
+                    style={item.style}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.55 + i * 0.05, duration: 0.4 }}
+                  >
+                    <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span>{item.text}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Advisor / Domain Expert Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col"
+              style={{ minHeight: '440px', paddingTop: '24px', paddingBottom: '32px', paddingLeft: '32px', paddingRight: '32px' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              {/* Visual Placeholder */}
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group-hover:border-gray-200 transition-colors shrink-0"
+                style={{ height: '200px', width: '200px', alignSelf: 'center' }}
+              >
+                <div className="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-br from-gray-50 to-gray-100/50">
+                  <div className="flex justify-between items-center text-[10px] font-mono text-gray-400">
+                    <span>LIVE VIBE SYSTEM</span>
+                    <span className="text-emerald-500 font-bold">+18.4%</span>
                   </div>
-                  <h3 className="text-3xl font-bold text-black leading-tight mb-2">{p.title}</h3>
-                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-4">
-                    {p.timeline}
-                  </p>
-                  <p className="text-xl text-gray-700 font-light leading-snug">{p.body}</p>
-                </motion.div>
-              );
-            })}
+                  <svg className="w-full h-24 text-emerald-500" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none">
+                    <path
+                      d="M0,45 Q15,40 30,32 T60,25 T90,8 L100,5"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M0,45 Q15,40 30,32 T60,25 T90,8 L100,5 L100,50 L0,50 Z"
+                      fill="url(#chart-grad)"
+                      opacity="0.15"
+                    />
+                    <defs>
+                      <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#10B981" />
+                        <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div className="text-[10px] font-mono text-gray-400 uppercase tracking-widest text-center font-bold">
+                    MARKET VALIDATION
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-3xl font-black text-black leading-tight mb-4">
+                Trading Expertise
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4 mt-2">Forex & Market Validation</p>
+              <ul className="w-full mt-2">
+                {advisor.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 text-2xl text-gray-700 font-light leading-relaxed"
+                    style={item.style}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.05, duration: 0.4 }}
+                  >
+                    <span className="mt-3.5 inline-block h-2.5 w-2.5 shrink-0 bg-black" />
+                    <span>{item.text}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
 
-          <motion.p
-            className="text-2xl text-gray-600 italic font-light max-w-6xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
+          {/* Simplified Bottom Takeaway */}
+          <motion.div
+            className="bg-black text-white p-8 w-full max-w-[1450px] mt-6 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
           >
-            We are not building for one instrument. We are building{' '}
-            <span className="font-bold not-italic text-black">
-              intelligence infrastructure for trading itself.
-            </span>
-          </motion.p>
+            <p className="text-2xl font-light leading-snug">
+              Deep AI engineering + real trading experience.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -134,9 +232,8 @@ export default function Slide13() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}

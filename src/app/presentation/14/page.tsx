@@ -7,24 +7,27 @@ import { GlobeWatermark } from '@/components/GlobeWatermark';
 const TOTAL_SLIDES = 17;
 const ACTIVE = 13;
 
-const ceo = [
-  '5+ years managing operations, financial planning, logistics, and strategic execution',
-  'Built and ran operational systems in dynamic, decision-heavy environments',
-  'Leads product vision, partnerships, GTM, fundraising, and ecosystem development',
-  'Grew the platform to 800+ trader participants and seeded broker / academy relationships',
-];
-
-const cto = [
-  'Former Amazon engineer with ~6 years building large-scale software systems',
-  '15+ years of software engineering across backend systems and infrastructure',
-  'Built VibeTrader’s core trading stack, MT4 / MT5 integrations, and real-time processing',
-  'Leads AI systems, strategy workflows, and the scalable intelligence layer',
-];
-
-const traderFeedback = [
-  'Veteran traders with decades of market exposure',
-  'Gen-Z traders with 2+ years of active trading behavior',
-  'Strategy-focused traders running workflows inside the platform',
+const cards = [
+  {
+    category: 'PRODUCT',
+    title: 'Built & Live',
+    points: ['AI decision intelligence', 'Live trading infrastructure'],
+  },
+  {
+    category: 'MARKET',
+    title: 'Early Validation',
+    points: ['Trader adoption', 'Live partner pilots'],
+  },
+  {
+    category: 'EFFICIENCY',
+    title: '~$25K Monthly Burn',
+    points: ['Lean execution', 'Capital efficient'],
+  },
+  {
+    category: 'DISTRIBUTION',
+    title: 'Ready to Scale',
+    points: ['Direct acquisition', 'Broker & academy channels'],
+  },
 ];
 
 export default function Slide14() {
@@ -32,7 +35,7 @@ export default function Slide14() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -59,83 +62,61 @@ export default function Slide14() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-8 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Team
+            Why Invest Now
           </motion.h1>
 
-          <div className="grid grid-cols-2 gap-10 mb-8 max-w-7xl">
-            <motion.div
-              className="border-2 border-gray-200 p-7"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CEO</p>
-              <h3 className="text-3xl font-bold text-black mb-5 leading-tight">
-                Saranya Amirthalingam
-              </h3>
-              <ul className="space-y-3">
-                {ceo.map((c, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex items-start gap-3 text-lg text-gray-700 font-light leading-snug"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
-                  >
-                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
-                    <span>{c}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+          <motion.p
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            From Validation to Scale
+          </motion.p>
 
-            <motion.div
-              className="border-2 border-gray-200 p-7"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <p className="text-lg uppercase tracking-[0.25em] text-gray-500 mb-2">CTO</p>
-              <h3 className="text-3xl font-bold text-black mb-5 leading-tight">Nithyakumaran</h3>
-              <ul className="space-y-3">
-                {cto.map((c, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex items-start gap-3 text-lg text-gray-700 font-light leading-snug"
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
-                  >
-                    <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
-                    <span>{c}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+          <div className="grid grid-cols-4 gap-6 mb-8 w-full max-w-[1500px]">
+            {cards.map((c, i) => (
+              <motion.div
+                key={i}
+                className="border-2 border-gray-200 hover:border-black transition-colors p-8 rounded-lg group bg-white"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
+              >
+                <div className="text-8xl font-black text-black mb-3 leading-none">{i + 1}</div>
+                <p className="text-sm uppercase tracking-widest text-gray-400 font-bold mb-3">{c.category}</p>
+                <h3 className="text-2xl font-black text-black leading-tight mb-4 min-h-[40px] flex items-center">
+                  {c.title}
+                </h3>
+                <ul className="space-y-3">
+                  {c.points.map((pt, j) => (
+                    <li
+                      key={j}
+                      className="flex items-start gap-2.5 text-xl text-gray-700 font-light leading-relaxed"
+                    >
+                      <span className="mt-3 inline-block h-2 w-2 shrink-0 bg-black" />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
 
           <motion.div
-            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-7xl"
+            className="bg-black text-white p-8 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4">
-              Built with feedback from
+            <p className="text-2xl font-light leading-snug">
+              Built lean. Validated in market. Ready to scale.
             </p>
-            <div className="grid grid-cols-3 gap-x-10 gap-y-3">
-              {traderFeedback.map((t, i) => (
-                <div key={i} className="flex items-start gap-3 text-lg text-gray-800 font-light">
-                  <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-black" />
-                  <span>{t}</span>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -144,9 +125,8 @@ export default function Slide14() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}

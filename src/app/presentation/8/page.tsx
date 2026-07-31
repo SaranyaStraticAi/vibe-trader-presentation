@@ -1,41 +1,29 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Activity, Handshake } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
+import { PRESENTATION_CONFIG } from '@/config/presentation';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = PRESENTATION_CONFIG.lastSlide;
 const ACTIVE = 7;
 
-const stats = [
-  {
-    icon: Users,
-    metric: '782',
-    label: 'Total users onboarded',
-    detail: '38 new sign-ups last week · 22 weekly active sign-ins · consistent upward trend.',
-  },
-  {
-    icon: Activity,
-    metric: '3 modules',
-    label: 'Strongest engagement',
-    detail:
-      'Strategy Builder, AI Insights, Trading Journal — users actively creating, testing, iterating.',
-  },
-  {
-    icon: Handshake,
-    metric: '7+ brokers',
-    label: 'Partnership pipeline',
-    detail:
-      'Doo Prime · Exness · TMGM · Tickmill · PU Prime · AvaTrade · Libertex. Acuity Trading revenue-share signed.',
-  },
+const ceoPoints = [
+  'Product strategy & vision',
+  'Broker & academy partnerships',
+  'Growth & fundraising',
 ];
 
-const infra = [
-  'MT4 / MT5 integrations live',
-  'Multi-language: English · Spanish · Arabic',
-  'Real-time processing infrastructure deployed',
-  'Trading LATAM academies partnership progressing',
+const ctoPoints = [
+  'Former Amazon engineer',
+  '15+ years in AI & cloud infrastructure',
+  'Built VibeTrader\'s AI platform & integrations',
+];
+
+const domainPoints = [
+  'AI, Enterprise Software, and Forex experience',
+  'Built alongside active retail traders',
+  'Next Hires: Sales, AI Engineering, Customer Success',
 ];
 
 export default function Slide8() {
@@ -43,7 +31,7 @@ export default function Slide8() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white cursor-pointer"
       onClick={nextSlide}
     >
       <div
@@ -70,66 +58,154 @@ export default function Slide8() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-4 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Early traction
+            Built by Traders & AI Engineers
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
+            className="text-3xl text-gray-700 mb-10 font-light max-w-4xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Engagement and ecosystem demand, validated.
+            Technical leadership with deep domain knowledge in AI, trading, and platform scale.
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {stats.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-                >
-                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
-                    <Icon className="w-7 h-7" />
+          {/* 3 Columns Grid */}
+          <div className="grid grid-cols-3 gap-8 w-full max-w-[1450px] mb-10">
+            {/* CEO Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col p-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shrink-0"
+                style={{ height: '180px', width: '180px', alignSelf: 'center' }}
+              >
+                <img
+                  src="/saranya mam image.jpg"
+                  alt="Saranya Amirthalingam"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <h3 className="text-3xl font-black text-black leading-tight mb-2">
+                Saranya Amirthalingam
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4">Co-Founder & CEO</p>
+              <ul className="space-y-3 text-xl text-gray-700 font-light">
+                {ceoPoints.map((pt, i) => (
+                  <li key={i} className="flex items-center gap-2.5">
+                    <span className="h-2 w-2 bg-black shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* CTO Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col p-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.6 }}
+            >
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shrink-0"
+                style={{ height: '180px', width: '180px', alignSelf: 'center' }}
+              >
+                <img
+                  src="/nithya sir image.jpg"
+                  alt="Nithyakumaran Gnanasekar"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <h3 className="text-2xl font-black text-black leading-tight mb-2 whitespace-nowrap">
+                Nithyakumaran Gnanasekar
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4">Co-Founder & CTO</p>
+              <ul className="space-y-3 text-xl text-gray-700 font-light">
+                {ctoPoints.map((pt, i) => (
+                  <li key={i} className="flex items-center gap-2.5">
+                    <span className="h-2 w-2 bg-black shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Domain & Next Hires Card */}
+            <motion.div
+              className="border-2 border-gray-200 rounded-lg bg-white group hover:border-black transition-colors flex flex-col p-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <div
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shrink-0"
+                style={{ height: '180px', width: '180px', alignSelf: 'center' }}
+              >
+                <div className="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-br from-gray-50 to-gray-100/50">
+                  <div className="flex justify-between items-center text-[10px] font-mono text-gray-400">
+                    <span>LIVE VIBE SYSTEM</span>
+                    <span className="text-emerald-500 font-bold">+18.4%</span>
                   </div>
-                  <p className="text-5xl font-black text-black mb-2 leading-none tracking-tighter">
-                    {s.metric}
-                  </p>
-                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-3">{s.label}</p>
-                  <p className="text-lg text-gray-700 font-light leading-snug">{s.detail}</p>
-                </motion.div>
-              );
-            })}
+                  <svg className="w-full h-20 text-emerald-500" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none">
+                    <path
+                      d="M0,45 Q15,40 30,32 T60,25 T90,8 L100,5"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M0,45 Q15,40 30,32 T60,25 T90,8 L100,5 L100,50 L0,50 Z"
+                      fill="url(#chart-grad-8)"
+                      opacity="0.15"
+                    />
+                    <defs>
+                      <linearGradient id="chart-grad-8" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#10B981" />
+                        <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div className="text-[10px] font-mono text-gray-400 uppercase tracking-widest text-center font-bold">
+                    DOMAIN EXPERTISE
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-3xl font-black text-black leading-tight mb-2">
+                Domain & Next Hires
+              </h3>
+              <p className="text-xl text-gray-500 font-bold mb-4">Forex & Scale Team</p>
+              <ul className="space-y-3 text-xl text-gray-700 font-light">
+                {domainPoints.map((pt, i) => (
+                  <li key={i} className="flex items-center gap-2.5">
+                    <span className="h-2 w-2 bg-black shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
 
+          {/* Bottom Takeaway */}
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-8 w-full max-w-[1450px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-4">
-              Product & infrastructure ready
-            </p>
-            <div className="grid grid-cols-2 gap-x-10 gap-y-3">
-              {infra.map((m, i) => (
-                <div key={i} className="flex items-center gap-3 text-xl font-light">
-                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
-                  <span>{m}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-xl text-gray-300 italic mt-5">
-              Transitioning from engagement → monetization → scale.
+            <p className="text-2xl font-light leading-snug">
+              A technical founding team with product, trading, and distribution experience.
             </p>
           </motion.div>
         </motion.div>
@@ -154,7 +230,7 @@ export default function Slide8() {
           e.stopPropagation();
           prevSlide();
         }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute left-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Previous slide"
       >
         ←
@@ -164,7 +240,7 @@ export default function Slide8() {
           e.stopPropagation();
           nextSlide();
         }}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors z-20"
+        className="absolute right-12 bottom-6 text-xl font-bold text-gray-400 hover:text-black transition-colors z-20"
         aria-label="Next slide"
       >
         →
@@ -172,3 +248,4 @@ export default function Slide8() {
     </div>
   );
 }
+
