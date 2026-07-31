@@ -105,7 +105,7 @@ export default function Slide11() {
             </table>
 
             {/* Legend */}
-            <div className="mt-6 text-xs tracking-wider text-gray-400 text-left font-medium uppercase">
+            <div className="mt-6 text-sm tracking-wider text-gray-400 text-left font-medium uppercase">
               ✓ Core &middot; ◐ Partial &middot; &mdash; Not core
             </div>
           </div>

@@ -134,7 +134,7 @@ export default function Slide12() {
             transition={{ delay: 1.1, duration: 0.6 }}
           >
             <p className="text-2xl font-light leading-snug">
-              Built for Forex today.{' '}
+              Starting with Forex.{' '}
               <span className="font-bold text-white">Designed for every market tomorrow.</span>
             </p>
           </motion.div>
