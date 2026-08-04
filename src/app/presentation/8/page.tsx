@@ -1,41 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Activity, Handshake } from 'lucide-react';
+import { CreditCard, Handshake, Server, BarChart3, ArrowRight } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 const TOTAL_SLIDES = 17;
 const ACTIVE = 7;
 
-const stats = [
+const nowStreams = [
   {
-    icon: Users,
-    metric: '782',
-    label: 'Total users onboarded',
-    detail: '38 new sign-ups last week · 22 weekly active sign-ins · consistent upward trend.',
-  },
-  {
-    icon: Activity,
-    metric: '3 modules',
-    label: 'Strongest engagement',
-    detail:
-      'Strategy Builder, AI Insights, Trading Journal — users actively creating, testing, iterating.',
+    icon: CreditCard,
+    title: 'Trader subscriptions',
+    body: 'Trader $25 / Pro $99 / Elite $200 per month. Pro is the core monetization layer.',
   },
   {
     icon: Handshake,
-    metric: '7+ brokers',
-    label: 'Partnership pipeline',
-    detail:
-      'Doo Prime · Exness · TMGM · Tickmill · PU Prime · AvaTrade · Libertex. Acuity Trading revenue-share signed.',
+    title: 'Broker partnerships',
+    body: 'Piloting with Dupoin — CPA, API, and distribution agreements.',
   },
 ];
 
-const infra = [
-  'MT4 / MT5 integrations live',
-  'Multi-language: English · Spanish · Arabic',
-  'Real-time processing infrastructure deployed',
-  'Trading LATAM academies partnership progressing',
+const nextStreams = [
+  {
+    icon: Server,
+    title: 'Software licensing',
+    body: 'Decision intelligence for brokers, academies, and trading communities.',
+  },
+  {
+    icon: BarChart3,
+    title: 'Market intelligence',
+    body: 'Anonymous behavioral insights and institutional analytics.',
+  },
 ];
 
 export default function Slide8() {
@@ -43,7 +39,7 @@ export default function Slide8() {
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -70,12 +66,12 @@ export default function Slide8() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Early traction
+            Business Model
           </motion.h1>
 
           <motion.p
@@ -84,52 +80,89 @@ export default function Slide8() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Engagement and ecosystem demand, validated.
+            Multiple recurring revenue streams.
           </motion.p>
 
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            {stats.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="border-2 border-gray-200 hover:border-black transition-colors p-7 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-                >
-                  <div className="w-14 h-14 bg-black text-white flex items-center justify-center group-hover:bg-gray-700 transition-colors mb-4">
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <p className="text-5xl font-black text-black mb-2 leading-none tracking-tighter">
-                    {s.metric}
-                  </p>
-                  <p className="text-lg uppercase tracking-widest text-gray-500 mb-3">{s.label}</p>
-                  <p className="text-lg text-gray-700 font-light leading-snug">{s.detail}</p>
-                </motion.div>
-              );
-            })}
+          <div className="grid grid-cols-2 gap-12 max-w-7xl mb-8">
+            {/* NOW Column */}
+            <div>
+              <motion.div
+                className="flex items-center gap-3 mb-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                <span className="h-2.5 w-2.5 rounded-full bg-black animate-pulse" />
+                <h2 className="text-2xl uppercase tracking-[0.2em] text-black font-bold">Now</h2>
+              </motion.div>
+              <div className="flex flex-col gap-6">
+                {nowStreams.map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      className="bg-gray-50/30 border border-gray-100 hover:border-black transition-all duration-300 p-8 rounded-lg flex gap-6 items-start min-h-[190px]"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
+                    >
+                      <div className="w-14 h-14 bg-black text-white flex items-center justify-center shrink-0 rounded-lg">
+                        <Icon className="w-7 h-7" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-4xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
+                        <p className="text-2xl text-gray-600 font-light leading-relaxed">{s.body}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* NEXT Column */}
+            <div>
+              <motion.div
+                className="flex items-center gap-3 mb-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.65, duration: 0.5 }}
+              >
+                <span className="h-2.5 w-2.5 rounded-full bg-gray-400" />
+                <h2 className="text-2xl uppercase tracking-[0.2em] text-gray-500 font-bold">Next</h2>
+              </motion.div>
+              <div className="flex flex-col gap-6">
+                {nextStreams.map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      className="bg-gray-50/30 border border-gray-100 hover:border-black transition-all duration-300 p-8 rounded-lg flex gap-6 items-start min-h-[190px]"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 + i * 0.08, duration: 0.5 }}
+                    >
+                      <div className="w-14 h-14 bg-white text-black border border-gray-200 flex items-center justify-center shrink-0 rounded-lg">
+                        <Icon className="w-7 h-7" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-4xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
+                        <p className="text-2xl text-gray-600 font-light leading-relaxed">{s.body}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           <motion.div
-            className="bg-black text-white p-8 max-w-7xl"
+            className="bg-black text-white p-8 max-w-7xl mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-widest text-gray-400 mb-4">
-              Product & infrastructure ready
-            </p>
-            <div className="grid grid-cols-2 gap-x-10 gap-y-3">
-              {infra.map((m, i) => (
-                <div key={i} className="flex items-center gap-3 text-xl font-light">
-                  <span className="inline-block h-2 w-2 shrink-0 bg-white" />
-                  <span>{m}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-xl text-gray-300 italic mt-5">
-              Transitioning from engagement → monetization → scale.
+            <p className="text-2xl font-light leading-snug">
+              B2C subscriptions | Partner distribution | Enterprise licensing
             </p>
           </motion.div>
         </motion.div>
@@ -139,9 +172,8 @@ export default function Slide8() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}

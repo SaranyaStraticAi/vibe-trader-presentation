@@ -1,48 +1,69 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Globe2, Target, Crosshair } from 'lucide-react';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import { GlobeWatermark } from '@/components/GlobeWatermark';
 
 const TOTAL_SLIDES = 17;
 const ACTIVE = 5;
 
-const steps = [
+const market = [
   {
-    n: '1',
-    title: 'Build or connect a strategy',
-    body: 'Create strategies natively or connect existing workflows via MT4 / MT5 integrations.',
+    icon: Globe2,
+    label: 'TAM',
+    headline: '$20B by 2030',
+    title: 'Global Online Trading Platform Market',
+    accent: 'bg-black text-white',
   },
   {
-    n: '2',
-    title: 'Analyze trading behavior',
-    body: 'Track strategy performance, market conditions, behavioral patterns, and risk exposure.',
+    icon: Target,
+    label: 'SAM',
+    headline: '7.4M+',
+    title: 'Active Retail FX & CFD Accounts',
+    accent: 'bg-white text-black border-2 border-black',
   },
   {
-    n: '3',
-    title: 'Generate real-time insights',
-    body: 'AI surfaces weaknesses, optimization paths, and adaptations to changing conditions.',
-  },
-  {
-    n: '4',
-    title: 'Learn continuously',
-    body: 'Every trade, strategy, and outcome feeds the system. It compounds with use.',
+    icon: Crosshair,
+    label: 'SOM',
+    headline: '150K–250K*',
+    title: 'MT4/MT5 Retail Traders',
+    accent: 'bg-gray-100 text-black border-2 border-gray-300',
   },
 ];
 
-const modules = [
-  'Strategy Builder',
-  'AI Trading Journal',
-  'AI Insights',
-  'MT4 / MT5 integrations',
+const sources = [
+  {
+    n: '1',
+    text: 'Next Move Strategy Consulting, "Online Trading Platform Market"',
+    url: 'https://www.nextmsc.com/report/online-trading-platform-market-bf3483',
+  },
+  {
+    n: '2',
+    text: 'Finance Magnates Intelligence, "7.4 Million Active Accounts: Retail FX/CFD Client Base Hits New High in Q1 2026"',
+    url: 'https://www.financemagnates.com/forex/analysis/74-million-active-accounts-retail-fxcfd-client-base-hits-new-high-in-q1-2026/',
+  },
+  {
+    n: '3',
+    text: 'BIS Triennial Central Bank Survey, 2025',
+    url: 'https://www.bis.org/press/p250930.htm',
+  },
 ];
+
+function sourceHost(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return url;
+  }
+}
 
 export default function Slide6() {
   const { nextSlide, prevSlide } = useSlideNavigation();
 
   return (
     <div
-      className="relative flex h-full w-full items-center overflow-hidden bg-white"
+      className="relative flex h-full w-full items-start pt-36 overflow-hidden bg-white"
       onClick={nextSlide}
     >
       <div
@@ -69,53 +90,75 @@ export default function Slide6() {
           />
 
           <motion.h1
-            className="text-6xl font-black text-black mb-3 tracking-tighter"
+            className="text-6xl font-black text-black mb-3 tracking-tighter leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Live product workflow
+            Market Opportunity
           </motion.h1>
 
           <motion.p
-            className="text-3xl text-gray-600 mb-8 font-light max-w-4xl"
+            className="text-3xl text-gray-600 mb-10 font-light max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            From strategy creation to continuous optimization.
+            $9.6T — Daily FX Trading Volume
           </motion.p>
 
-          <div className="grid grid-cols-4 gap-5 mb-8">
-            {steps.map((s, i) => (
-              <motion.div
-                key={i}
-                className="border-2 border-gray-200 hover:border-black transition-colors p-6 group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-              >
-                <div className="text-7xl font-black text-black mb-3 leading-none">{s.n}</div>
-                <h3 className="text-2xl font-bold text-black mb-2 leading-tight">{s.title}</h3>
-                <p className="text-lg text-gray-700 font-light leading-snug">{s.body}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-3 gap-8 mb-12">
+            {market.map((m, i) => {
+              const Icon = m.icon;
+              return (
+                <motion.div
+                  key={i}
+                  className="border-2 border-gray-200 hover:border-black transition-colors p-10 flex flex-col justify-between min-h-[220px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.5 }}
+                >
+                  <div>
+                    <div className="flex items-center gap-4 mb-6">
+                      <div
+                        className={`w-14 h-14 flex items-center justify-center text-2xl font-black ${m.accent}`}
+                      >
+                        {m.label}
+                      </div>
+                      <Icon className="w-7 h-7 text-gray-400" />
+                    </div>
+                    <p className="text-4xl font-bold text-black leading-tight mb-3">{m.headline}</p>
+                  </div>
+                  <p className="text-sm uppercase tracking-widest text-gray-500 font-medium">{m.title}</p>
+                </motion.div>
+              );
+            })}
           </div>
 
+
           <motion.div
-            className="bg-gray-50 border-2 border-gray-200 p-6 max-w-7xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            className="max-w-6xl border-t border-gray-200 pt-6 mt-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <p className="text-lg uppercase tracking-[0.3em] text-gray-500 mb-4">
-              Product modules live today
-            </p>
-            <div className="flex flex-wrap gap-x-10 gap-y-3">
-              {modules.map((m, i) => (
-                <div key={i} className="flex items-center gap-3 text-xl text-gray-800 font-light">
-                  <span className="inline-block h-2 w-2 shrink-0 bg-black" />
-                  <span>{m}</span>
+            <p className="text-sm uppercase tracking-widest text-gray-500 mb-4 font-bold">Sources</p>
+            <div className="space-y-4">
+              {sources.map((s) => (
+                <div key={s.n} className="flex gap-3 text-lg leading-relaxed">
+                  <span className="shrink-0 text-gray-400 font-semibold">•</span>
+                  <p className="text-gray-700 font-normal">
+                    {s.text}{' '}
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-500 underline decoration-gray-300 underline-offset-4 hover:text-black transition-colors ml-2 font-medium"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {sourceHost(s.url)}
+                    </a>
+                  </p>
                 </div>
               ))}
             </div>
@@ -127,9 +170,8 @@ export default function Slide6() {
         {[...Array(TOTAL_SLIDES)].map((_, i) => (
           <motion.div
             key={i + 1}
-            className={`h-2 transition-all duration-300 ${
-              i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
-            } rounded-full`}
+            className={`h-2 transition-all duration-300 ${i === ACTIVE ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+              } rounded-full`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.8 + i * 0.03 }}
